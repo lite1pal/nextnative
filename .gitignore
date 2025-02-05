@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+# nested projects
+/docs
+
 # testing
 /coverage
 

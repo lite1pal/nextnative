@@ -15,7 +15,7 @@ function Component() {
   const [isDark, setIsDark] = useState(false);
 
   return (
-    <div className="p-5">
+    <div className="sm:p-5">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8">
           <motion.div

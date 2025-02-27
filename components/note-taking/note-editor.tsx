@@ -209,7 +209,7 @@ export default function NoteEditor({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
-      className="fixed inset-0 md:relative bg-white dark:bg-gray-900 z-50"
+      className="inset-0 relative bg-white dark:bg-gray-900 z-50"
     >
       {/* Header */}
       <header className="sticky top-0 bg-white dark:bg-gray-900 backdrop-blur-xl border-b border-gray-200 z-10">

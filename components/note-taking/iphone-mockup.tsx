@@ -11,14 +11,14 @@ export default function IPhoneMockup({
   isDark?: boolean;
 }) {
   return (
-    <div className="p-5">
+    <div className="sm:p-5">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-md mx-auto"
       >
         {/* iPhone mockup using DaisyUI with custom styling */}
-        <div className="mockup-phone">
+        <div className="mockup-phone scale-75 sm:scale-100 -left-[50px] -top-24 relative">
           <div className="mockup-phone-camera"></div>
           <div className="mockup-phone-display relative">
             {/* Status bar */}

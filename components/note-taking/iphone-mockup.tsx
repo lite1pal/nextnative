@@ -18,7 +18,7 @@ export default function IPhoneMockup({
         className="max-w-md mx-auto"
       >
         {/* iPhone mockup using DaisyUI with custom styling */}
-        <div className="mockup-phone scale-75 sm:scale-100 -left-[50px] -top-24 relative">
+        <div className="mockup-phone max-sm:scale-75 max-sm:-left-[50px] max-sm:-top-24 max-sm:relative">
           <div className="mockup-phone-camera"></div>
           <div className="mockup-phone-display relative">
             {/* Status bar */}

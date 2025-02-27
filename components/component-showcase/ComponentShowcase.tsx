@@ -34,7 +34,7 @@ export default function ComponentShowcase() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="sticky top-0 z-10 backdrop-blur-sm py-4 border-b">
+      <div className="sm:sticky sm:top-0 z-10 backdrop-blur-sm py-4 sm:border-b">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-2 overflow-x-auto pb-5">
             {categories.map((category) => (

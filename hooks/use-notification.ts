@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
 
 export function useNotification() {
   const requestPermission = useCallback(async () => {
@@ -17,15 +17,26 @@ export function useNotification() {
     return permission === "granted";
   }, []);
 
-  const sendNotification = useCallback((title: string, body: string) => {
-    if (Notification.permission === "granted") {
-      new Notification(title, { body });
-    }
-  }, []);
+  const sendNotification = useCallback(
+    async (title: string, body: string) => {
+      // First check if we already have permission
+      if (Notification.permission === "granted") {
+        new Notification(title, { body });
+        return true;
+      }
 
-  useEffect(() => {
-    requestPermission();
-  }, [requestPermission]);
+      // If not granted, request permission and send if granted
+      const isGranted = await requestPermission();
+      if (isGranted) {
+        new Notification(title, { body });
+        return true;
+      }
 
+      return false;
+    },
+    [requestPermission]
+  );
+
+  // Remove the automatic permission request on mount
   return { requestPermission, sendNotification };
 }

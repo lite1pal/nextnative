@@ -9,14 +9,14 @@ interface FooterLink {
 
 const productLinks: FooterLink[] = [
   { label: "Pricing", href: "/#pricing" },
-  { label: "Documentation", href: "/docs" },
-  { label: "Showcase", href: "/showcase" },
+  // { label: "Documentation", href: "/#docs" },
+  { label: "Components", href: "/components" },
 ];
 
 const legalLinks: FooterLink[] = [
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-  { label: "License", href: "/license" },
+  { label: "Privacy", href: "/#privacy" },
+  { label: "Terms", href: "/#terms" },
+  { label: "License", href: "/#license" },
 ];
 
 function FooterLinkGroup({
@@ -57,7 +57,7 @@ function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://twitter.com/nextnativedev"
+                href="https://x.com/lite_pal"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray hover:text-foreground transition-colors"
@@ -71,7 +71,7 @@ function Footer() {
                 </svg>
               </a>
               <a
-                href="https://github.com/nextnative"
+                href="https://github.com/lite1pal"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray hover:text-foreground transition-colors"

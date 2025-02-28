@@ -1,4 +1,5 @@
 import Button from "./Button";
+import CTA from "./CTA";
 import StarburstSign from "./StarburstSign";
 import Subheading from "./Subheading";
 
@@ -25,7 +26,9 @@ function CallToAction({
         className="items-center"
       />
       <div className="relative">
-        <StarburstSign
+        <CTA />
+
+        {/* <StarburstSign
           size="small"
           rotation={270}
           position="bottom-left"
@@ -35,7 +38,7 @@ function CallToAction({
           <Button variant="primary" className="w-full">
             {buttonText}
           </Button>
-        </StarburstSign>
+        </StarburstSign> */}
       </div>
     </div>
   );

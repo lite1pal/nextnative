@@ -8,7 +8,7 @@ import Image from "next/image";
 
 function DemoVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+  // const videoUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
   const embedUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
 
   return (
@@ -19,18 +19,18 @@ function DemoVideo() {
         explaining the code in 3 minutes
       </span>
       <StarburstSign position="bottom-right" rotation={180}>
-        <div className="w-full h-[600px] rounded-[20px] overflow-hidden relative">
+        <div className="w-full h-[300px] md:h-[700px] rounded-[20px] overflow-hidden relative">
           {!isPlaying ? (
             <div
               onClick={() => setIsPlaying(true)}
               className="w-full group cursor-pointer h-full relative"
             >
               <Image
-                src="/video-demo.png"
+                src="/video-demo-1.png"
                 alt="video-demo"
                 width={1000}
                 height={1000}
-                className="w-full h-full blur-xs object-cover"
+                className="w-full h-full blur-xs object-top"
               />
               {/* Thumbnail placeholder - you may want to add an actual thumbnail image */}
               <div className="w-full h-full bg-gray-100" />

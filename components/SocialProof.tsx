@@ -11,7 +11,7 @@ function SocialProof() {
       <div className="flex items-center w-full justify-evenly gap-16">
         <div className="flex items-center gap-2">
           <Image
-            src="/product-hunt.svg"
+            src="/featured-on/producthunt.png"
             alt="Product Hunt"
             width={40}
             height={40}
@@ -31,7 +31,7 @@ function SocialProof() {
 
         <div className="flex items-center gap-2">
           <Image
-            src="/reddit.svg"
+            src="/featured-on/reddit.png"
             alt="Reddit"
             width={40}
             height={40}

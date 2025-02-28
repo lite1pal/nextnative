@@ -1,9 +1,11 @@
+"use client";
+
 import Button from "./Button";
 import HighlightedSpan from "./HighlightedSpan";
 import StarburstSign from "./StarburstSign";
-import LogoSymbol from "./LogoSymbol";
 import Subheading from "./Subheading";
 import { Playpen_Sans } from "next/font/google";
+import Link from "next/link";
 
 export const playpenSans = Playpen_Sans({
   subsets: ["latin"],
@@ -11,21 +13,46 @@ export const playpenSans = Playpen_Sans({
 });
 
 interface PricingFeature {
-  text: string;
+  text: string | React.ReactNode;
 }
 
 const pricingFeatures: PricingFeature[] = [
   { text: "Next.js boilerplate" },
   { text: "Auth" },
   { text: "Push notifications" },
-  { text: "Lifetime updates" },
   { text: "In-App purchases" },
-  { text: "MongoDB" },
+  { text: "Database" },
+  {
+    text: (
+      <Link
+        href="/components"
+        className="text-primary group transition-colors relative"
+      >
+        Beautiful UI components
+        <span className="h-0.5 group-hover:w-full w-0 transition-all duration-300 absolute bottom-0 left-0 bg-primary rounded-full"></span>
+      </Link>
+    ),
+  },
   { text: "Guides on deploying to the stores" },
   { text: "GPT prompts for terms & privacy" },
+  { text: "Lifetime updates" },
 ];
 
 function PricingSection() {
+  const handleGetNextnative = () => {
+    // Find the waitlist input element
+    const waitlistInput = document.getElementById("waitlist-input");
+
+    if (waitlistInput) {
+      // Smooth scroll to the element
+      waitlistInput.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Wait for scroll to complete before focusing
+      setTimeout(() => {
+        (waitlistInput as HTMLInputElement).focus();
+      }, 300);
+    }
+  };
   return (
     <div
       id="pricing"
@@ -41,7 +68,7 @@ function PricingSection() {
         <span
           className={`${playpenSans.className} text-sm sm:text-base font-[500] text-gray ml-auto`}
         >
-          limited launch %50 discount
+          limited launch %40 discount
         </span>
 
         <div
@@ -58,11 +85,11 @@ function PricingSection() {
 
             <div className="flex gap-1">
               <span className="text-lg sm:text-xl md:text-2xl text-gray line-through">
-                $199
+                $249
               </span>
               <div className="flex items-end gap-2">
                 <h3 className="text-3xl sm:text-4xl md:text-[54px] font-[500] leading-none">
-                  <HighlightedSpan>$99</HighlightedSpan>
+                  <HighlightedSpan>$149</HighlightedSpan>
                 </h3>
                 <span className="text-lg sm:text-xl md:text-2xl text-gray">
                   /forever
@@ -106,6 +133,7 @@ function PricingSection() {
                 svgClassName="top-[-5px] right-[-25px]"
               >
                 <Button
+                  onClick={handleGetNextnative}
                   variant="primary"
                   className="w-full flex items-center justify-center gap-2 text-[18px] py-4 mt-7"
                 >

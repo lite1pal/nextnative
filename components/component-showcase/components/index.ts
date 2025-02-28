@@ -62,7 +62,7 @@ export const components = [
   FeatureCards,
   // FeatureTabs,
   // FeatureGridDark,
-  FeatureCarousel,
+  // FeatureCarousel,
   TemplateGrid,
   LandingTemplates,
   ContactForm,

@@ -10,27 +10,48 @@ import Subheading from "./Subheading";
 
 const faqItems = [
   {
-    question: "What do I get exactly?",
+    question: "What exactly am I getting here?",
     answer:
-      "The NextJS starter with all the boilerplate code you need to run a cross-platform mobile app: a payment system, a database, login, a blog, UI components, and much more.",
+      "You're getting a complete Next.js starter kit that turns into a mobile app. It comes with everything you need: payments already set up, database ready to go, authentication, blog system, and a bunch of UI components. Basically, all the boring stuff is done for you!",
   },
   {
-    question: "Javascript or Typescript?",
-    answer: "Typescript",
-  },
-  {
-    question: "Should I install Xcode & Android Studio?",
+    question: "Can I use my favorite UI libraries?",
     answer:
-      "Yes, you need to install Xcode and Android Studio to run the app on your phone.",
+      "Absolutely! While the starter comes with TailwindCSS pre-configured, you can use any UI library you want - DaisyUI, ShadcnUI, you name it. The architecture is designed to be flexible, so you can make it your own.",
   },
   {
-    question: "Can I get a refund?",
-    answer: "No, you can't get a refund.",
+    question: "Is this TypeScript or JavaScript?",
+    answer:
+      "It's all TypeScript! I believe it makes your life easier in the long run. But don't worry if you're new to TypeScript - the code is written in a way that's easy to understand and modify.",
+  },
+  {
+    question: "Do I need to deal with Xcode and Android Studio?",
+    answer:
+      "Yeah, you'll need both to test on real devices. But don't stress - we've got clear guides to help you set everything up. Plus, you can do all of your development right in your browser!",
+  },
+  {
+    question: "How long until I can publish to the stores?",
+    answer:
+      "The initial store setup and review process can take a few days. Apple and Google need to review your app, and they might have questions. But once you're set up, future updates and publishing are lightning fast! I've included detailed guides to help you through the process.",
+  },
+  {
+    question: "What if it's not what I expected?",
+    answer:
+      "I don't offer refunds because you get immediate access to all the code. But I'm super responsive to questions and feedback. Just reach out if you need help! I want you to succeed with this.",
   },
   {
     question: "Can I use Next.js server actions?",
+    answer: "Nope, but you can use Next.js Serverless API endpoints instead.",
+  },
+  {
+    question: "How long does it take to launch an app?",
     answer:
-      "No, you can't use server actions. We use Next.js serverless functions instead.",
+      "With our starter, you can have a basic app running in 10 minutes! The real timeline depends on your app's complexity. Way faster than starting from scratch!",
+  },
+  {
+    question: "Do I need to know mobile development?",
+    answer:
+      "Nope! If you know React and Next.js, you're good to go. We handle all the mobile-specific stuff behind the scenes. You just write React code like you normally would!",
   },
 ];
 

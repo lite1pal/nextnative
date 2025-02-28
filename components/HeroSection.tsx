@@ -1,6 +1,6 @@
-import Button from "./Button";
+import CTA from "./CTA";
 import Heading from "./Heading";
-import StarburstSign from "./StarburstSign";
+
 function HeroSection() {
   return (
     <div className="flex flex-col py-12 md:py-20 items-center max-w-[764px] mx-auto justify-center">
@@ -21,15 +21,21 @@ function HeroSection() {
           </p>
         </div>
 
-        <StarburstSign
-          rotation={270}
-          position="bottom-left"
-          className="mx-auto"
-        >
-          <a href="#pricing" className="mx-auto">
-            <Button variant="primary">Launch mobile apps</Button>
-          </a>
-        </StarburstSign>
+        <CTA />
+
+        {/* {isWaitlist ? (
+          <JoinWaitlistForm />
+        ) : (
+          <StarburstSign
+            rotation={270}
+            position="bottom-left"
+            className="mx-auto"
+          >
+            <a href="#pricing" className="mx-auto">
+              <Button variant="primary">Build your app today</Button>
+            </a>
+          </StarburstSign>
+        )} */}
       </div>
     </div>
   );

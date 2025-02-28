@@ -51,7 +51,7 @@ function Component() {
   };
 
   return (
-    <div className="py-20 px-4 bg-gray-50">
+    <div className="py-20 px-4">
       <motion.div
         className="max-w-7xl mx-auto"
         variants={containerVariants}

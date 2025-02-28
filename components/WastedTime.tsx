@@ -4,7 +4,7 @@ import HighlightedSpan from "./HighlightedSpan";
 function WastedTime() {
   return (
     <div className="flex flex-col gap-10 md:gap-[80px] max-w-[764px] py-12 md:py-20 mx-auto">
-      <h2 className="text-2xl sm:text-3xl md:text-[40px] font-[500] leading-snug">
+      <h2 className="text-[44px] md:text-[54px] font-[500]">
         Wasting time on...
       </h2>
 

@@ -23,6 +23,16 @@ function Navbar() {
     };
   }, [isMenuOpen]);
 
+  const handleSignIn = () => {
+    setIsMenuOpen(false);
+    const waitlistInput = document.getElementById("waitlist-input");
+
+    if (waitlistInput) {
+      waitlistInput.scrollIntoView({ behavior: "smooth", block: "center" });
+      (waitlistInput as HTMLInputElement).focus();
+    }
+  };
+
   return (
     <div className="flex py-4 md:py-5 items-center justify-between navbar">
       <div onClick={() => setIsMenuOpen(false)}>
@@ -45,25 +55,32 @@ function Navbar() {
 
       {/* Desktop navigation */}
       <div className="hidden md:flex items-center gap-8 lg:gap-14">
-        <Link
-          href="/#pricing"
-          className="text-base md:text-lg hover:text-primary transition-colors"
+        <a
+          onClick={() => {
+            const pricingSection = document.getElementById("pricing");
+            if (pricingSection) {
+              pricingSection.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
         >
           Pricing
-        </Link>
-        <Link
+        </a>
+        {/* <Link
           href="/docs"
           className="text-base md:text-lg hover:text-primary transition-colors"
         >
           Docs
-        </Link>
+        </Link> */}
         <Link
           href="/components"
           className="text-base md:text-lg hover:text-primary transition-colors"
         >
           Components
         </Link>
-        <Button variant="secondary">Sign in</Button>
+        <Button onClick={handleSignIn} variant="secondary">
+          Sign in
+        </Button>
       </div>
 
       {/* Mobile navigation */}
@@ -76,13 +93,13 @@ function Navbar() {
           >
             Pricing
           </Link>
-          <Link
+          {/* <Link
             onClick={() => setIsMenuOpen(false)}
             href="/docs"
             className="text-base hover:text-primary transition-colors"
           >
             Docs
-          </Link>
+          </Link> */}
           <Link
             onClick={() => setIsMenuOpen(false)}
             href="/components"
@@ -90,7 +107,7 @@ function Navbar() {
           >
             Components
           </Link>
-          <Button variant="secondary" className="w-full">
+          <Button onClick={handleSignIn} variant="secondary" className="w-full">
             Sign in
           </Button>
         </div>

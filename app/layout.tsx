@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { Outfit } from "next/font/google";
 import Footer from "@/components/Footer";
 import BackgroundSVG from "@/components/BackgroundSVG";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "NextNative",
@@ -38,6 +39,7 @@ export default function RootLayout({
             <Footer />
           </Container>
         </main>
+        <Analytics />
       </body>
     </html>
   );

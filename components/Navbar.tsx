@@ -78,6 +78,12 @@ function Navbar() {
         >
           Components
         </Link>
+        {/* <Link
+          href="/templates/heroes"
+          className="text-base md:text-lg hover:text-primary transition-colors"
+        >
+          Hero Templates
+        </Link> */}
         <Button onClick={handleSignIn} variant="secondary">
           Sign in
         </Button>
@@ -107,6 +113,13 @@ function Navbar() {
           >
             Components
           </Link>
+          {/* <Link
+            onClick={() => setIsMenuOpen(false)}
+            href="/templates/heroes"
+            className="text-base hover:text-primary transition-colors"
+          >
+            Hero Templates
+          </Link> */}
           <Button onClick={handleSignIn} variant="secondary" className="w-full">
             Sign in
           </Button>

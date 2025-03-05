@@ -47,7 +47,7 @@ function FooterLinkGroup({
 function Footer() {
   return (
     <footer className="border-t border-gray/20 mt-20">
-      <div className="max-w-[962px] mx-auto px-4 md:px-0 py-16">
+      <div className="mx-auto px-4 md:px-0 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Logo and social section */}
           <div className="col-span-1 md:col-span-4 flex flex-col gap-6">

@@ -23,35 +23,43 @@ function WastedTimeItem({
 
   return (
     <div
-      className={`relative w-full flex ${
-        isEven ? "justify-start" : "justify-end"
-      } mb-10 md:mb-14`}
+      className={`relative w-full flex flex-col md:flex-row ${
+        isEven ? "md:justify-start" : "md:justify-end"
+      } mb-8 md:mb-14`}
     >
-      {/* Timeline dot */}
+      {/* Timeline dot - hidden on mobile, shown on md+ */}
       <div
-        className={`absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full transition-all duration-700 bg-primary`}
+        className={`hidden md:block absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full transition-all duration-700 bg-primary`}
       />
+
+      {/* Mobile timeline dot and line */}
+      <div className="md:hidden absolute left-4 top-6 w-3 h-3 rounded-full bg-primary"></div>
+      <div className="md:hidden absolute left-5 top-9 w-[1px] h-[calc(100%-30px)] bg-primary"></div>
 
       {/* Content card */}
       <div
-        className={`w-[calc(50%-20px)] bg-white rounded-lg p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}
+        className={`w-full md:w-[calc(50%-20px)] ml-10 md:ml-0 bg-white rounded-lg p-4 md:p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}
         style={{
           transitionDelay: `${index * 5}ms`,
         }}
       >
         <div className="flex items-start gap-3">
-          <div className="text-2xl p-2 rounded-lg bg-gray-50">{item.emoji}</div>
-          <div>
+          <div className="text-xl md:text-2xl p-2 rounded-lg bg-gray-50">
+            {item.emoji}
+          </div>
+          <div className="w-full">
             <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-primary">
+              <span className="text-lg md:text-xl font-bold text-primary">
                 {item.time}
               </span>
               <div className="h-[1px] flex-grow bg-gray-200"></div>
             </div>
-            <div className="text-lg text-foreground mt-1">
+            <div className="text-base md:text-lg text-foreground mt-1">
               {item.description}
             </div>
-            <div className="text-lg mt-2 text-gray">{item.comment}</div>
+            <div className="text-sm md:text-lg mt-2 text-gray">
+              {item.comment}
+            </div>
           </div>
         </div>
       </div>
@@ -120,18 +128,18 @@ function WastedTime() {
   const totalTime = "3+ weeks!";
 
   return (
-    <div className="py-16 md:py-24 px-4 relative overflow-hidden">
+    <div className="py-12 md:py-24 px-4 relative overflow-hidden">
       <div className="max-w-5xl mx-auto">
         <h2
-          className={`text-4xl md:text-5xl font-[500] text-center mb-16 transition-all duration-700`}
+          className={`text-3xl md:text-5xl font-[500] text-center mb-12 md:mb-16 transition-all duration-700`}
         >
           Wasting <span className="text-primary">time</span> on...
         </h2>
 
         <div className="relative">
-          {/* Timeline vertical line */}
+          {/* Timeline vertical line - hidden on mobile */}
           <div
-            className={`absolute left-1/2 -translate-x-1/2 w-[3px] h-full bg-primary transition-transform duration-1000`}
+            className={`hidden md:block absolute left-1/2 -translate-x-1/2 w-[3px] h-full bg-primary transition-transform duration-1000`}
             style={{ transformOrigin: "top" }}
           ></div>
 
@@ -144,29 +152,32 @@ function WastedTime() {
             />
           ))}
 
-          {/* Summary card */}
+          {/* Summary card - minimalistic version */}
           <div
-            className={`w-full max-w-md relative z-10 mx-auto mt-16 p-6 rounded-lg bg-white`}
+            className={`w-full max-w-md relative z-10 mx-auto mt-12 md:mt-16 p-6 rounded-lg bg-white`}
           >
-            <h3 className="text-2xl font-[500] mb-4 text-center">The cost</h3>
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <div className="text-gray mb-1">Total time wasted</div>
-              <div className="text-3xl font-bold text-indigo-600">
+            <h3 className="text-xl md:text-2xl font-medium text-center">
+              Time wasted
+            </h3>
+
+            <div className="text-center py-4 px-3">
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                 {totalTime}
               </div>
-            </div>
-            <div className="text-gray mt-4 text-center">
-              That could have been spent building your actual product
+
+              <div className="text-sm md:text-base text-gray-600 mt-3">
+                That could have been spent building your actual product
+              </div>
             </div>
           </div>
         </div>
 
         <div
-          className={`text-2xl sm:text-3xl md:text-4xl mx-auto mt-20 text-center transition-all duration-700`}
+          className={`text-xl sm:text-2xl md:text-4xl mx-auto mt-16 md:mt-20 text-center transition-all duration-700`}
         >
           <HighlightedSpan>
-            <div className="flex items-center justify-center gap-3">
-              <ArrowDown className="w-8 h-8" />
+            <div className="flex items-center justify-center gap-2 md:gap-3">
+              <ArrowDown className="w-6 h-6 md:w-8 md:h-8" />
               <span>There's a better way</span>
             </div>
           </HighlightedSpan>

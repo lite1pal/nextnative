@@ -32,7 +32,7 @@ const ExpenseApp = dynamic(() => import("@/components/expenses/expense-app"), {
 export default function Home() {
   return (
     <>
-      <div className="grid grid-cols-1 items-center lg:grid-cols-2 gap-16">
+      <div className="grid grid-cols-1 items-center lg:grid-cols-2 gap-8 sm:gap-16">
         <HeroSection />
 
         {/* Add the TechStackShowcase component */}
@@ -40,14 +40,14 @@ export default function Home() {
           <Image
             className="w-full h-full object-cover"
             src="/hero-section-tools.png"
-            alt="Tools included in nextnative"
+            alt="Tools included in NextNative"
             priority
             width={600}
             height={600}
           />
         </div>
       </div>
-      <div className="flex justify-center max-md:scale-50 py-16 space-x-[-200px]">
+      <div className="flex justify-center max-md:scale-50 h-[500px] sm:h-full md:py-16 space-x-[-200px]">
         <div className="rotate-[-30deg]">
           <IPhoneMockup isDark={false}>
             <NoteList />

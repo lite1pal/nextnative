@@ -69,7 +69,7 @@ function DemoVideo() {
                 width={1920}
                 height={1080}
                 className="w-full h-full object-cover"
-                priority
+                loading="lazy"
               />
 
               {/* <div className="absolute bottom-6 right-6 text-white z-20 max-w-md text-left">

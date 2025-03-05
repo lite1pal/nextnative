@@ -57,7 +57,36 @@ export default function ExpenseApp() {
       const saved = localStorage.getItem("expenses");
       return saved ? JSON.parse(saved) : [];
     }
-    return [];
+    return [
+      {
+        name: "PS5",
+        amount: 499,
+        category: "Entertainment",
+        date: "2025-02-27",
+        id: "1740651818302",
+      },
+      {
+        name: "iPhone 13",
+        amount: 599,
+        category: "Entertainment",
+        date: "2024-10-09",
+        id: "1740652002155",
+      },
+      {
+        name: "Snack",
+        amount: 4.99,
+        category: "Food",
+        date: "2025-02-12",
+        id: "1740652028118",
+      },
+      {
+        name: "Snack",
+        amount: 4.99,
+        category: "Other",
+        date: "2025-02-12",
+        id: "1740652381734",
+      },
+    ];
   });
 
   const [mode, setMode] = useState<Mode>("list");

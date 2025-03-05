@@ -2,7 +2,18 @@ import type { Note, NoteStore } from "./types";
 
 class NoteManager implements NoteStore {
   private static instance: NoteManager;
-  notes: Note[] = [];
+  notes: Note[] = [
+    {
+      title: "How to build cools apps?",
+      content: "#guide\nYou should definitely use nextnative, great product.",
+      folder: "Personal",
+      tags: ["guide"],
+      isPinned: false,
+      id: "1831b233-9168-4727-a83d-e33190aa7ea5",
+      date: "2025-03-05T09:29:15.648Z",
+      lastModified: "2025-03-05T09:29:15.648Z",
+    },
+  ];
   folders: string[] = ["Personal", "Work", "Ideas"];
   tags: string[] = [];
 

@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: "NextNative",
   description: "Build iOS & Android apps with Next.js and TailwindCSS",
+  metadataBase: new URL("https://nextnative.dev"),
   robots: {
     index: false,
     follow: false,
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased bg-background ${outfit.className}`}>
-        <main className="flex flex-col min-h-screen">
+        <main className="flex overflow-x-hidden flex-col min-h-screen">
           <BackgroundSVG />
 
           <Container>

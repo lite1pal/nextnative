@@ -10,11 +10,62 @@ import FAQ from "@/components/FAQ";
 import DemoVideo from "@/components/DemoVideo";
 import Testimonial from "@/components/Testimonial";
 import SetupByDefault from "@/components/SetupByDefault";
+import Image from "next/image";
+import IPhoneMockup from "@/components/note-taking/iphone-mockup";
+import dynamic from "next/dynamic";
+
+const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
+  ssr: false,
+});
+
+const PomodoroApp = dynamic(
+  () => import("@/components/pomodoro/pomodoro-app"),
+  {
+    ssr: false,
+  }
+);
+
+const ExpenseApp = dynamic(() => import("@/components/expenses/expense-app"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
     <>
-      <HeroSection />
+      <div className="grid grid-cols-1 items-center lg:grid-cols-2 gap-16">
+        <HeroSection />
+
+        {/* Add the TechStackShowcase component */}
+        <div className="relative max-w-xl mx-auto">
+          <Image
+            className="w-full h-full object-cover"
+            src="/hero-section-tools.png"
+            alt="Tools included in nextnative"
+            priority
+            width={100}
+            height={100}
+          />
+        </div>
+      </div>
+      <div className="flex justify-center max-md:scale-50 py-16 space-x-[-200px]">
+        <div className="rotate-[-30deg]">
+          <IPhoneMockup isDark={false}>
+            <NoteList />
+          </IPhoneMockup>
+        </div>
+        <div className="rotate-[0deg] z-20">
+          <IPhoneMockup isDark={true}>
+            <div className="dark">
+              <PomodoroApp />
+            </div>
+          </IPhoneMockup>
+        </div>
+        <div className="rotate-[30deg]">
+          <IPhoneMockup isDark={false}>
+            <ExpenseApp />
+          </IPhoneMockup>
+        </div>
+      </div>
       <DemoVideo />
       <SocialProof />
       <Testimonial />

@@ -50,7 +50,7 @@ function JoinWaitlistForm() {
     <StarburstSign
       rotation={180}
       position="bottom-right"
-      className="mx-auto w-full max-w-[600px]"
+      className="w-full max-w-[600px]"
       svgClassName="bottom-[-10px]"
     >
       <form onSubmit={handleSubmit} className="flex relative flex-col gap-4">

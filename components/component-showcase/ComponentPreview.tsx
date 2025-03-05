@@ -43,7 +43,7 @@ export default function ComponentPreview({
       </div>
 
       <div className="relative mt-5">
-        <div className="sm:bg-white min-h-[300px]">{component}</div>
+        <div className=" min-h-[300px]">{component}</div>
 
         {isCodeVisible && (
           <div className="absolute inset-0 z-[99] bg-gray-900 text-white overflow-auto">

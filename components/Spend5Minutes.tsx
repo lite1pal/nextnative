@@ -3,7 +3,7 @@
 function Spend5Minutes() {
   return (
     <div
-      className={`flex flex-col leading-[48px] xl:leading-[68px] text-[24px] xl:text-[40px] text-gray font-[500] gap-6 xl:gap-10 max-w-[764px] mx-auto py-20 transition-all duration-700`}
+      className={`flex flex-col leading-[48px] xl:leading-[68px] text-[24px] xl:text-[40px] text-gray font-[500] gap-6 xl:gap-10 max-w-[764px] mx-auto py-6 md:py-20 transition-all duration-700`}
     >
       <div>
         Setup your cross-platform mobile app in just{" "}

@@ -128,7 +128,7 @@ function WastedTime() {
   const totalTime = "3+ weeks!";
 
   return (
-    <div className="py-12 md:py-24 px-4 relative overflow-hidden">
+    <div className="py-6 md:py-24 px-4 relative overflow-hidden">
       <div className="max-w-5xl mx-auto">
         <h2
           className={`text-3xl md:text-5xl font-[500] text-center mb-12 md:mb-16 transition-all duration-700`}

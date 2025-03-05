@@ -42,8 +42,8 @@ export default function Home() {
             src="/hero-section-tools.png"
             alt="Tools included in nextnative"
             priority
-            width={100}
-            height={100}
+            width={600}
+            height={600}
           />
         </div>
       </div>

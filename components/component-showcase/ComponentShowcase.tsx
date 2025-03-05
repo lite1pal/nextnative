@@ -7,6 +7,7 @@ import { components, type ComponentCategory } from "./components";
 const categories = [
   { id: "all", name: "All Components" },
   { id: "mobile-apps", name: "Mobile Apps" },
+  { id: "3d", name: "3D" },
   { id: "navbar", name: "Navigation" },
   { id: "hero", name: "Hero Sections" },
   { id: "features", name: "Features" },

@@ -3,10 +3,11 @@ import Link from "next/link";
 import Button from "./Button";
 import Logo from "./Logo";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     const handleOutsideClick = (event: any) => {
       if (!event.target.closest(".navbar")) {
@@ -30,6 +31,8 @@ function Navbar() {
     if (waitlistInput) {
       waitlistInput.scrollIntoView({ behavior: "smooth", block: "center" });
       (waitlistInput as HTMLInputElement).focus();
+    } else {
+      router.push("/#waitlist");
     }
   };
 
@@ -60,6 +63,8 @@ function Navbar() {
             const pricingSection = document.getElementById("pricing");
             if (pricingSection) {
               pricingSection.scrollIntoView({ behavior: "smooth" });
+            } else {
+              router.push("/#pricing");
             }
           }}
           className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"

@@ -12,7 +12,7 @@ const faqItems = [
   {
     question: "What exactly am I getting here?",
     answer:
-      "You're getting a complete Next.js starter kit that turns into a mobile app. It comes with everything you need: payments already set up, database ready to go, authentication, blog system, and a bunch of UI components. Basically, all the boring stuff is done for you!",
+      "You're getting a complete Next.js starter kit that turns into a mobile app. It comes with everything you need: payments already set up, database ready to go, authentication, push notifications, and a bunch of UI components. Basically, all the boring stuff is done for you!",
   },
   {
     question: "Can I use my favorite UI libraries?",

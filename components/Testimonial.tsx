@@ -2,14 +2,14 @@ import Image from "next/image";
 
 function Testimonial() {
   return (
-    <div className="flex flex-col text-lg md:text-[28px] gap-8 mx-auto max-w-[759.07px] py-16">
+    <div className="flex flex-col text-lg md:text-[24px] gap-8 mx-auto max-w-[759.07px] py-16">
       <div className="flex items-center gap-4">
-        <div className="relative w-[110px] h-[110px]">
+        <div className="relative w-[80px] h-[80px]">
           <Image
             src="https://pbs.twimg.com/profile_images/1799370892855660544/sd7E-_7S_400x400.jpg"
             alt="Profile picture"
             fill
-            className="rounded-full object-cover w-[110px] h-[110px]"
+            className="rounded-full object-cover w-[80px] h-[80px]"
           />
         </div>
         <div className="flex flex-col">

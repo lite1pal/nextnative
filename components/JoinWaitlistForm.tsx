@@ -53,7 +53,11 @@ function JoinWaitlistForm() {
       className="w-full max-w-[600px]"
       svgClassName="bottom-[-10px]"
     >
-      <form onSubmit={handleSubmit} className="flex relative flex-col gap-4">
+      <form
+        id="waitlist"
+        onSubmit={handleSubmit}
+        className="flex relative flex-col gap-4"
+      >
         <div className="flex flex-col sm:flex-row gap-4 w-full mx-auto">
           <input
             id="waitlist-input"

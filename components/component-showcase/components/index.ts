@@ -21,8 +21,6 @@ import { TemplateGrid } from "./features/template-grid";
 import { DarkPricing } from "./pricing/dark-pricing";
 import { CurvedCta } from "./cta/curved-cta";
 import { NotepadHero } from "./hero/notepad-hero";
-import { TwitterWall } from "./testimonials/twitter-wall";
-import { BlogCards } from "./cards/blog-cards";
 import { VideoHero } from "./hero/video-hero";
 import { StartupHero } from "./hero/startup-hero";
 import { FeatureGridDark } from "./features/feature-grid-dark";
@@ -38,6 +36,11 @@ import { PomodoroShowcase } from "./pomodoro/pomodoro-showcase";
 import { FlashcardShowcase } from "./flashcards/flashcard-showcase";
 import { ExpenseShowcase } from "./expenses/expense-showcase";
 import { TaskShowcase } from "./tasks/task-showcase";
+import dynamic from "next/dynamic";
+
+const Galaxy = dynamic(() => import("@/components/portfolio/galaxy"), {
+  ssr: false,
+});
 
 export const components = [
   // SimpleHero,
@@ -74,12 +77,19 @@ export const components = [
   CurvedCta,
   SimpleTestimonial,
   // TwitterWall,
-  BlogCards,
   NoteShowcase,
   PomodoroShowcase,
   FlashcardShowcase,
   ExpenseShowcase,
   TaskShowcase,
+  {
+    id: "galaxy",
+    name: "Galaxy",
+    description: "A 3D galaxy component",
+    category: "3d",
+    component: Galaxy,
+    code: "",
+  },
 ] as const;
 
 export type ComponentCategory =
@@ -92,7 +102,8 @@ export type ComponentCategory =
   | "footer"
   | "forms"
   | "cards"
-  | "mobile-apps";
+  | "mobile-apps"
+  | "3d";
 
 export interface ShowcaseComponent {
   id: string;

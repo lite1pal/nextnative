@@ -14,9 +14,9 @@ const productLinks: FooterLink[] = [
 ];
 
 const legalLinks: FooterLink[] = [
-  { label: "Privacy", href: "/#privacy" },
-  { label: "Terms", href: "/#terms" },
-  { label: "License", href: "/#license" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+  { label: "Refund", href: "/refund" },
 ];
 
 function FooterLinkGroup({

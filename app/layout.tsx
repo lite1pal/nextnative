@@ -11,10 +11,6 @@ export const metadata: Metadata = {
   title: "NextNative",
   description: "Build iOS & Android apps with Next.js and TailwindCSS",
   metadataBase: new URL("https://nextnative.dev"),
-  robots: {
-    index: false,
-    follow: false,
-  },
 };
 
 const outfit = Outfit({

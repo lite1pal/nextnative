@@ -7,6 +7,13 @@ import Subheading from "./Subheading";
 import { Playpen_Sans } from "next/font/google";
 import Link from "next/link";
 
+const isWaitlist = false;
+
+const dodoPaymentLinks = {
+  allAccess: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS || "",
+  starter: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER || "",
+};
+
 export const playpenSans = Playpen_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -39,18 +46,26 @@ const pricingFeatures: PricingFeature[] = [
 ];
 
 function PricingSection() {
-  const handleGetNextnative = () => {
-    // Find the waitlist input element
-    const waitlistInput = document.getElementById("waitlist-input");
+  const handleGetNextnative = (paymentLink: string) => {
+    if (isWaitlist) {
+      // Find the waitlist input element
+      const waitlistInput = document.getElementById("waitlist-input");
 
-    if (waitlistInput) {
-      // Smooth scroll to the element
-      waitlistInput.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (waitlistInput) {
+        // Smooth scroll to the element
+        waitlistInput.scrollIntoView({ behavior: "smooth", block: "center" });
 
-      // Wait for scroll to complete before focusing
-      setTimeout(() => {
-        (waitlistInput as HTMLInputElement).focus();
-      }, 300);
+        // Wait for scroll to complete before focusing
+        setTimeout(() => {
+          (waitlistInput as HTMLInputElement).focus();
+        }, 300);
+      }
+    } else {
+      if (paymentLink) {
+        window.location.href = paymentLink;
+      } else {
+        console.error("DODO_PAYMENT_LINK is not set");
+      }
     }
   };
   return (
@@ -128,7 +143,7 @@ function PricingSection() {
 
               <div className="flex flex-col gap-2 mt-auto">
                 <Button
-                  onClick={handleGetNextnative}
+                  onClick={() => handleGetNextnative(dodoPaymentLinks.starter)}
                   variant="secondary"
                   className="w-full flex items-center justify-center gap-2 text-[18px] py-4 mt-7"
                 >
@@ -213,7 +228,9 @@ function PricingSection() {
                   svgClassName="top-[-5px] right-[-25px]"
                 >
                   <Button
-                    onClick={handleGetNextnative}
+                    onClick={() =>
+                      handleGetNextnative(dodoPaymentLinks.allAccess)
+                    }
                     variant="primary"
                     className="w-full flex items-center justify-center gap-2 text-[18px] py-4 mt-7"
                   >

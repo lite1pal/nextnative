@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const isWaitlist = false;
 
-const dodoPaymentLinks = {
+export const dodoPaymentLinks = {
   allAccess: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS || "",
   starter: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER || "",
 };

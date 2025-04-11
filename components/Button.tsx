@@ -22,7 +22,7 @@ function Button({
 
   const variantClasses = {
     primary:
-      "bg-primary text-white text-lg md:text-2xl px-8 md:px-16 py-2 md:py-5 hover:bg-white hover:text-primary border-2 border-primary",
+      "bg-primary text-white text-lg md:text-xl px-8 md:px-16 py-2 md:py-5 hover:bg-white hover:text-primary border-2 border-primary",
     secondary:
       "border-2 border-primary text-primary bg-transparent text-base md:text-lg px-6 md:px-8 py-2 hover:bg-primary hover:text-white",
   };

@@ -10,8 +10,7 @@ function HeroSection() {
           <div className="flex flex-col">
             <div className="text-sm sm:text-base flex gap-2 md:text-lg text-gray">
               <span className="text-foreground">👋</span>
-              {/*change text to align with this product*/}I bet you're a
-              creative person!
+              Build with web tools you love
             </div>
             <Heading />
           </div>

@@ -1,5 +1,6 @@
 import Button from "./Button";
 import JoinWaitlistForm from "./JoinWaitlistForm";
+import { dodoPaymentLinks } from "./PricingSection";
 import StarburstSign from "./StarburstSign";
 
 function CTA() {
@@ -10,11 +11,44 @@ function CTA() {
   }
 
   return (
-    <StarburstSign rotation={270} position="bottom-left">
-      <a href="#pricing" className="mx-auto">
-        <Button variant="primary">Build your app today</Button>
-      </a>
-    </StarburstSign>
+    <div className="flex flex-col gap-4">
+      {/* <StarburstSign rotation={270} position="bottom-left"> */}
+      <Button
+        onClick={() => (window.location.href = dodoPaymentLinks.allAccess)}
+        variant="primary"
+      >
+        Get NextNative now
+      </Button>
+      {/* </StarburstSign> */}
+
+      <div className="flex flex-col">
+        <p className="text-[#4CAF50] font-medium flex items-center gap-2">
+          <span className="text-xl">🎁</span>
+          <span>$100 off for the first 100 customers</span>
+        </p>
+
+        {/* <div className="mt-6 flex flex-col">
+          <div className="flex -space-x-2 mb-2">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div
+                key={i}
+                className="w-10 h-10 rounded-full bg-gray-300 border-2 border-background overflow-hidden"
+              />
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="flex">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <span key={i} className="text-yellow-400">
+                  ★
+                </span>
+              ))}
+            </div>
+            <span className="text-gray-200">6869 developers ship faster</span>
+          </div>
+        </div> */}
+      </div>
+    </div>
   );
 }
 

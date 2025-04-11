@@ -9,8 +9,12 @@ import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "NextNative",
-  description: "Build iOS & Android apps with Next.js and TailwindCSS",
+  description: "Launch mobile apps faster with Next.js",
   metadataBase: new URL("https://nextnative.dev"),
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const outfit = Outfit({

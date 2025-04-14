@@ -7,7 +7,7 @@ import Subheading from "./Subheading";
 import { Playpen_Sans } from "next/font/google";
 import Link from "next/link";
 
-const isWaitlist = false;
+const isWaitlist = true;
 
 export const dodoPaymentLinks = {
   allAccess: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS || "",

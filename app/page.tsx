@@ -35,10 +35,9 @@ export default function Home() {
       <div className="grid grid-cols-1 items-center lg:grid-cols-2 gap-8 sm:gap-16">
         <HeroSection />
 
-        {/* Add the TechStackShowcase component */}
-        <div className="relative max-w-xl mx-auto">
+        <div className="max-w-xl mx-auto">
           <Image
-            className="w-full h-full object-cover"
+            className="w-full h-full z-10 relative object-cover"
             src="/hero-section-tools.png"
             alt="Tools included in NextNative"
             priority

@@ -1,10 +1,9 @@
 import Button from "./Button";
 import JoinWaitlistForm from "./JoinWaitlistForm";
 import { dodoPaymentLinks } from "./PricingSection";
-import StarburstSign from "./StarburstSign";
 
 function CTA() {
-  const isWaitlist = false;
+  const isWaitlist = true;
 
   if (isWaitlist) {
     return <JoinWaitlistForm />;
@@ -22,7 +21,7 @@ function CTA() {
       {/* </StarburstSign> */}
 
       <div className="flex flex-col">
-        <p className="text-[#4CAF50] font-medium flex items-center gap-2">
+        <p className="font-medium text-gray-500 flex items-center gap-2">
           <span className="text-xl">🎁</span>
           <span>$100 off for the first 100 customers</span>
         </p>

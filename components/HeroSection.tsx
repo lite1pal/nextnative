@@ -5,7 +5,7 @@ import TechStackShowcase from "./TechStackShowcase";
 function HeroSection() {
   return (
     <div className="flex flex-col py-12 md:py-20 items-center max-w-[764px] mx-auto justify-center">
-      <div className="flex flex-col gap-8 md:gap-[60px]">
+      <div className="flex flex-col gap-8 md:gap-[45px]">
         <div className="flex flex-col gap-6 md:gap-[36px]">
           <div className="flex flex-col">
             <div className="text-sm sm:text-base flex gap-2 md:text-lg text-gray">

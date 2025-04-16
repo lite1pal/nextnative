@@ -7,7 +7,7 @@ import Subheading from "./Subheading";
 import { Playpen_Sans } from "next/font/google";
 import Link from "next/link";
 
-const isWaitlist = true;
+const isWaitlist = false;
 
 export const dodoPaymentLinks = {
   allAccess:
@@ -149,7 +149,7 @@ function PricingSection() {
 
               <div className="flex flex-col gap-2 mt-auto">
                 <Button
-                  onClick={() => handleGetNextnative(dodoPaymentLinks.starter)}
+                  // onClick={() => handleGetNextnative(dodoPaymentLinks.starter)}
                   variant="secondary"
                   className="w-full flex items-center justify-center gap-2 text-[18px] py-4 mt-7"
                 >

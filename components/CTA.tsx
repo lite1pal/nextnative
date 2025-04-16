@@ -3,7 +3,7 @@ import JoinWaitlistForm from "./JoinWaitlistForm";
 import { dodoPaymentLinks } from "./PricingSection";
 
 function CTA() {
-  const isWaitlist = true;
+  const isWaitlist = false;
 
   if (isWaitlist) {
     return <JoinWaitlistForm />;

@@ -10,8 +10,14 @@ import Link from "next/link";
 const isWaitlist = true;
 
 export const dodoPaymentLinks = {
-  allAccess: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS || "",
-  starter: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER || "",
+  allAccess:
+    process.env.NODE_ENV === "production"
+      ? process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS_PROD!
+      : process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS_TEST!,
+  starter:
+    process.env.NODE_ENV === "production"
+      ? process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER_PROD!
+      : process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER_TEST!,
 };
 
 export const playpenSans = Playpen_Sans({

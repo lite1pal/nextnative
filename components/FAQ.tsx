@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Subheading from "./Subheading";
+import { trackEvent } from "@/services/custom-analytics";
 
 const faqItems = [
   {
@@ -67,7 +68,13 @@ function FAQ() {
       <div className="ml-auto xl:max-w-1/2 w-full">
         <Accordion type="single" collapsible>
           {faqItems.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
+            <AccordionItem
+              onClick={() => {
+                trackEvent(`FAQ_${item.question}_clicked`);
+              }}
+              key={index}
+              value={`item-${index}`}
+            >
               <AccordionTrigger className="text-lg cursor-pointer sm:text-xl md:text-2xl font-[500] hover:no-underline">
                 {item.question}
               </AccordionTrigger>

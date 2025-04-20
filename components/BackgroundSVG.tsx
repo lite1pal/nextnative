@@ -11,7 +11,7 @@ function BackgroundSVG() {
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full row-span-4"
       >
-        <g clip-path="url(#clip0_158_153)">
+        <g clipPath="url(#clip0_158_153)">
           <path
             d="M1440.89 0.850258H0.885742V7683.85H1440.89V0.850258Z"
             fill="#F8DBAF"
@@ -54,8 +54,8 @@ function BackgroundSVG() {
             y2="7683.85"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="#C0F4B4" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="#C0F4B4" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_158_153"
@@ -65,8 +65,8 @@ function BackgroundSVG() {
             y2="7683.85"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="#C0F4B4" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="#C0F4B4" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_158_153"
@@ -76,8 +76,8 @@ function BackgroundSVG() {
             y2="7683.85"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="#B4F4C0" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="#B4F4C0" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_158_153"
@@ -87,8 +87,8 @@ function BackgroundSVG() {
             y2="7683.85"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="#DEFCDE" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="#DEFCDE" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_158_153"
@@ -98,8 +98,8 @@ function BackgroundSVG() {
             y2="7683.85"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="#E4FCDE" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="#E4FCDE" />
           </linearGradient>
           <linearGradient
             id="paint5_linear_158_153"
@@ -109,8 +109,8 @@ function BackgroundSVG() {
             y2="7683.85"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="#E4FCDE" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="#E4FCDE" />
           </linearGradient>
           <linearGradient
             id="paint6_linear_158_153"
@@ -120,8 +120,8 @@ function BackgroundSVG() {
             y2="7683.85"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="white" />
-            <stop offset="1" stop-color="#E4FCDE" />
+            <stop stopColor="white" />
+            <stop offset="1" stopColor="#E4FCDE" />
           </linearGradient>
           <clipPath id="clip0_158_153">
             <rect

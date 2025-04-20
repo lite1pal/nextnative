@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "./Logo";
-import { cn } from "@/lib/utils";
+import { trackEvent } from "@/services/custom-analytics";
 
 interface FooterLink {
   label: string;
@@ -34,6 +36,7 @@ function FooterLinkGroup({
           <Link
             key={link.label}
             href={link.href}
+            onClick={() => trackEvent(`Footer_${link.label}_clicked`)}
             className="text-gray hover:text-foreground transition-colors"
           >
             {link.label}
@@ -57,6 +60,7 @@ function Footer() {
             </p>
             <div className="flex gap-4">
               <a
+                onClick={() => trackEvent("Footer_X_clicked")}
                 href="https://x.com/lite_pal"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -71,6 +75,7 @@ function Footer() {
                 </svg>
               </a>
               <a
+                onClick={() => trackEvent("Footer_GitHub_clicked")}
                 href="https://github.com/lite1pal"
                 target="_blank"
                 rel="noopener noreferrer"

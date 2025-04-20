@@ -4,6 +4,7 @@ import Button from "./Button";
 import Logo from "./Logo";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { trackEvent } from "@/services/custom-analytics";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,6 +26,7 @@ function Navbar() {
   }, [isMenuOpen]);
 
   const handleSignIn = () => {
+    trackEvent("Navbar_SignIn_clicked");
     setIsMenuOpen(false);
     const waitlistInput = document.getElementById("waitlist-input");
 
@@ -98,7 +100,10 @@ function Navbar() {
       {isMenuOpen && (
         <div className="absolute top-16 left-0 right-0 bg-white shadow-lg p-4 flex flex-col gap-4 md:hidden z-50">
           <Link
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackEvent("Navbar_pricing clicked");
+            }}
             href="/#pricing"
             className="text-base hover:text-primary transition-colors"
           >
@@ -112,7 +117,10 @@ function Navbar() {
             Docs
           </Link> */}
           <Link
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackEvent("Navbar_components clicked");
+            }}
             href="/components"
             className="text-base hover:text-primary transition-colors"
           >

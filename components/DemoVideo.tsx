@@ -6,6 +6,7 @@ import { playpenSans } from "./PricingSection";
 import StarburstSign from "./StarburstSign";
 import Image from "next/image";
 import HighlightedSpan from "./HighlightedSpan";
+import { trackEvent } from "@/services/custom-analytics";
 
 function DemoVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -52,6 +53,7 @@ function DemoVideo() {
 
       <StarburstSign position="bottom-right" rotation={180}>
         <div
+          onClick={() => trackEvent("DemoVideo_clicked")}
           className={`w-full h-[300px] md:h-[800px] rounded-[20px] overflow-hidden relative shadow-lg border border-gray-100 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}

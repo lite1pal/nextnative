@@ -6,7 +6,7 @@ import StarburstSign from "./StarburstSign";
 import Subheading from "./Subheading";
 import { Playpen_Sans } from "next/font/google";
 import Link from "next/link";
-
+import { trackEvent } from "@/services/custom-analytics";
 const isWaitlist = false;
 
 export const dodoPaymentLinks = {
@@ -53,6 +53,8 @@ const pricingFeatures: PricingFeature[] = [
 
 function PricingSection() {
   const handleGetNextnative = (paymentLink: string) => {
+    trackEvent("PricingSection_GetNextNative_All-in_clicked");
+
     if (isWaitlist) {
       // Find the waitlist input element
       const waitlistInput = document.getElementById("waitlist-input");
@@ -149,7 +151,9 @@ function PricingSection() {
 
               <div className="flex flex-col gap-2 mt-auto">
                 <Button
-                  // onClick={() => handleGetNextnative(dodoPaymentLinks.starter)}
+                  onClick={() => {
+                    trackEvent("PricingSection_GetNextNative_Starter_clicked");
+                  }}
                   variant="secondary"
                   className="w-full flex items-center justify-center gap-2 text-[18px] py-4 mt-7"
                 >

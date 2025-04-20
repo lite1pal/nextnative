@@ -1,3 +1,4 @@
+import { trackEvent } from "@/services/custom-analytics";
 import Button from "./Button";
 import JoinWaitlistForm from "./JoinWaitlistForm";
 import { dodoPaymentLinks } from "./PricingSection";
@@ -13,7 +14,8 @@ function CTA() {
     <div className="flex flex-col gap-4">
       {/* <StarburstSign rotation={270} position="bottom-left"> */}
       <Button
-        onClick={() => (window.location.href = dodoPaymentLinks.allAccess)}
+        // onClick={() => (window.location.href = dodoPaymentLinks.allAccess)}
+        onClick={() => trackEvent("CTA_clicked")}
         variant="primary"
       >
         Get NextNative now

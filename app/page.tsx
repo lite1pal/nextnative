@@ -13,7 +13,7 @@ import SetupByDefault from "@/components/SetupByDefault";
 import Image from "next/image";
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Smartphone,
   Lock,
@@ -58,6 +58,7 @@ import {
   Coffee,
 } from "lucide-react";
 import Subheading from "@/components/Subheading";
+import { trackEvent } from "@/services/custom-analytics";
 
 const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
   ssr: false,
@@ -75,6 +76,9 @@ const ExpenseApp = dynamic(() => import("@/components/expenses/expense-app"), {
 });
 
 export default function Home() {
+  useEffect(() => {
+    trackEvent("Home_page_loaded");
+  }, []);
   return (
     <>
       <div className="grid grid-cols-1 items-center lg:grid-cols-2 gap-8 sm:gap-16">
@@ -94,19 +98,26 @@ export default function Home() {
       <div className="flex justify-center max-md:scale-[0.6] h-[500px] max-md:left-10 relative sm:h-full md:py-16 space-x-[-200px]">
         <div className="rotate-[-30deg]">
           <IPhoneMockup isDark={false}>
-            <NoteList />
+            <div onClick={() => trackEvent("NoteList_clicked")}>
+              <NoteList />
+            </div>
           </IPhoneMockup>
         </div>
         <div className="rotate-[0deg] z-20">
           <IPhoneMockup isDark={true}>
-            <div className="dark">
+            <div
+              className="dark"
+              onClick={() => trackEvent("PomodoroApp_clicked")}
+            >
               <PomodoroApp />
             </div>
           </IPhoneMockup>
         </div>
         <div className="rotate-[30deg]">
           <IPhoneMockup isDark={false}>
-            <ExpenseApp />
+            <div onClick={() => trackEvent("ExpenseApp_clicked")}>
+              <ExpenseApp />
+            </div>
           </IPhoneMockup>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import CTA from "./CTA";
 import Heading from "./Heading";
-import TechStackShowcase from "./TechStackShowcase";
 
 function HeroSection() {
   return (
@@ -22,20 +21,6 @@ function HeroSection() {
         </div>
 
         <CTA />
-
-        {/* {isWaitlist ? (
-          <JoinWaitlistForm />
-        ) : (
-          <StarburstSign
-            rotation={270}
-            position="bottom-left"
-            className="mx-auto"
-          >
-            <a href="#pricing" className="mx-auto">
-              <Button variant="primary">Build your app today</Button>
-            </a>
-          </StarburstSign>
-        )} */}
       </div>
     </div>
   );

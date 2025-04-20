@@ -38,7 +38,8 @@ export async function trackEvent(event: string) {
 
   // Format message for Telegram
   const formattedMessage = `
-🔔 Event Tracked: ${event}
+🔔 ${event}
+
 
 📅 ${new Date().toLocaleString()}
 

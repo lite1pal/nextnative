@@ -31,9 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased bg-background ${outfit.className}`}>
-        <main className="flex overflow-x-hidden flex-col min-h-screen">
+        <main className="flex relative overflow-x-hidden flex-col">
           <BackgroundSVG />
-
           <Container>
             <Navbar />
             {children}

@@ -14,8 +14,10 @@ function CTA() {
     <div className="flex flex-col gap-4">
       {/* <StarburstSign rotation={270} position="bottom-left"> */}
       <Button
-        // onClick={() => (window.location.href = dodoPaymentLinks.allAccess)}
-        onClick={() => trackEvent("CTA_clicked")}
+        onClick={() => {
+          trackEvent("CTA_clicked");
+          window.location.href = dodoPaymentLinks.allAccess;
+        }}
         variant="primary"
       >
         Get NextNative now

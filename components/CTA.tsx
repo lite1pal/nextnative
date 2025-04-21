@@ -2,8 +2,9 @@ import { trackEvent } from "@/services/custom-analytics";
 import Button from "./Button";
 import JoinWaitlistForm from "./JoinWaitlistForm";
 import { dodoPaymentLinks } from "./PricingSection";
+import { cn } from "@/lib/utils";
 
-function CTA() {
+function CTA({ className }: { className?: string }) {
   const isWaitlist = false;
 
   if (isWaitlist) {
@@ -11,7 +12,7 @@ function CTA() {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className={cn("flex flex-col gap-4", className)}>
       {/* <StarburstSign rotation={270} position="bottom-left"> */}
       <Button
         onClick={() => {

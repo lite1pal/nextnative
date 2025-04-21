@@ -98,7 +98,7 @@ function DemoVideo() {
   };
 
   return (
-    <div ref={videoRef} className="flex flex-col my-20 px-20">
+    <div ref={videoRef} className="flex flex-col my-20 sm:px-20">
       <div className="flex flex-col md:flex-row items-center justify-between gap-3 mb-2">
         {/* <h2 className="text-2xl md:text-3xl font-[500]">
           <HighlightedSpan>Watch NextNative in action</HighlightedSpan>

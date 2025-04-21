@@ -1,6 +1,4 @@
-import Button from "./Button";
 import CTA from "./CTA";
-import StarburstSign from "./StarburstSign";
 import Subheading from "./Subheading";
 
 interface CallToActionProps {
@@ -26,19 +24,7 @@ function CallToAction({
         className="items-center"
       />
       <div className="relative">
-        <CTA />
-
-        {/* <StarburstSign
-          size="small"
-          rotation={270}
-          position="bottom-left"
-          className="mx-auto"
-          svgClassName="bottom-[-30px] left-[-30px]"
-        >
-          <Button variant="primary" className="w-full">
-            {buttonText}
-          </Button>
-        </StarburstSign> */}
+        <CTA className="items-center" />
       </div>
     </div>
   );

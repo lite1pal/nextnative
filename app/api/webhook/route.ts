@@ -1,4 +1,5 @@
 import { prisma } from "@/prisma/client";
+import { trackEvent } from "@/services/custom-analytics";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -28,6 +29,7 @@ export async function POST(request: Request) {
     payload.type === "payment.succeeded" &&
     !payload.data.subscription_id
   ) {
+    trackEvent("💰 Payment_succeeded - " + payload.data.customer.email + " 🎉");
     console.log("Payment succeeded");
     await prisma.purchase.create({
       data: {

@@ -211,9 +211,6 @@ function AvatarList({
     <div className={cn("flex", className)}>
       {data.map((item) => (
         <div
-          onMouseEnter={() =>
-            trackEvent("hero_section_2_avatar_hover" + item.name)
-          }
           key={item.name}
           className="group relative -space-x-2 z-0 -ml-4 flex scale-100 items-center transition-all duration-200 ease-in-out hover:z-10 hover:scale-110"
         >

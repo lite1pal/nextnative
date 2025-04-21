@@ -23,12 +23,10 @@ import {
   Bell,
   UploadCloud,
   MoreHorizontal,
-  Mail,
   KeyRound,
   Component,
   MessageSquareWarning,
   UserX,
-  Zap,
   ArrowRight,
   LayoutGrid,
   Layers,
@@ -59,6 +57,8 @@ import {
 } from "lucide-react";
 import Subheading from "@/components/Subheading";
 import { trackEvent } from "@/services/custom-analytics";
+import HeroSection2 from "@/components/HeroSection2";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
   ssr: false,
@@ -79,9 +79,13 @@ export default function Home() {
   useEffect(() => {
     trackEvent("Home_page_loaded");
   }, []);
+
+  const { isDesktop } = useMediaQuery();
+
   return (
     <>
-      <div className="grid grid-cols-1 items-center lg:grid-cols-2 gap-8 sm:gap-16">
+      <HeroSection2 />
+      <div className="grid xl:hidden grid-cols-1 items-center lg:grid-cols-2 gap-8 sm:gap-16">
         <HeroSection />
 
         <div className="max-w-xl mx-auto">

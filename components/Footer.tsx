@@ -18,7 +18,7 @@ const productLinks: FooterLink[] = [
 const legalLinks: FooterLink[] = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
-  { label: "Refund", href: "/refund" },
+  // { label: "Refund", href: "/refund" },
 ];
 
 function FooterLinkGroup({
@@ -55,9 +55,7 @@ function Footer() {
           {/* Logo and social section */}
           <div className="col-span-1 md:col-span-4 flex flex-col gap-6">
             <Logo />
-            <p className="text-gray">
-              Build iOS and Android apps with Next.js & TailwindCSS
-            </p>
+            <p className="text-gray">Launch mobile apps faster with Next.js</p>
             <div className="flex gap-4">
               <a
                 onClick={() => trackEvent("Footer_X_clicked")}

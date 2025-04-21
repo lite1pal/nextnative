@@ -4,9 +4,6 @@
 @plugin "daisyui" {
   themes: false;
 }
-/*
-  ---break---
-*/
 @plugin "tailwindcss-animate";
 
 @theme {
@@ -26,6 +23,15 @@
     }
     to {
       height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes bg-position {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
     }
   }
 

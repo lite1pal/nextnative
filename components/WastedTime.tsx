@@ -40,6 +40,7 @@ function WastedTimeItem({
       <div
         className={`w-full md:w-[calc(50%-20px)] ml-10 md:ml-0 bg-white rounded-lg p-4 md:p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}
         style={{
+          boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)",
           transitionDelay: `${index * 5}ms`,
         }}
       >
@@ -154,6 +155,7 @@ function WastedTime() {
 
           {/* Summary card - minimalistic version */}
           <div
+            style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
             className={`w-full max-w-md relative z-10 mx-auto mt-12 md:mt-16 p-6 rounded-lg bg-white`}
           >
             <h3 className="text-xl md:text-2xl font-medium text-center">

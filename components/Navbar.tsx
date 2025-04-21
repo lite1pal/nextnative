@@ -62,6 +62,7 @@ function Navbar() {
       <div className="hidden md:flex items-center gap-8 lg:gap-14">
         <a
           onClick={() => {
+            trackEvent("Navbar_Pricing_clicked");
             const pricingSection = document.getElementById("pricing");
             if (pricingSection) {
               pricingSection.scrollIntoView({ behavior: "smooth" });
@@ -80,6 +81,9 @@ function Navbar() {
           Docs
         </Link> */}
         <Link
+          onClick={() => {
+            trackEvent("Navbar_Components_clicked");
+          }}
           href="/components"
           className="text-base md:text-lg hover:text-primary transition-colors"
         >

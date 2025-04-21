@@ -6,6 +6,7 @@ import { Outfit } from "next/font/google";
 import Footer from "@/components/Footer";
 import BackgroundSVG from "@/components/BackgroundSVG";
 import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "NextNative",
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased bg-background ${outfit.className}`}>
+        <Toaster />
         <main className="flex relative overflow-x-hidden flex-col">
           <BackgroundSVG />
           <Container>

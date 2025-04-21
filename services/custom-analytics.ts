@@ -5,6 +5,9 @@ import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
 
 export async function trackEvent(event: string) {
+  if (process.env.NODE_ENV !== "production") {
+    return;
+  }
   // Get user agent information
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "";
@@ -50,8 +53,6 @@ export async function trackEvent(event: string) {
 • OS: ${userInfo.os}
 • Device: ${userInfo.device}
 `;
-
-  console.log(formattedMessage);
 
   try {
     await sendMessageToTelegram(formattedMessage);

@@ -7,6 +7,7 @@ import Subheading from "./Subheading";
 import { Playpen_Sans } from "next/font/google";
 import Link from "next/link";
 import { trackEvent } from "@/services/custom-analytics";
+import toast from "react-hot-toast";
 const isWaitlist = false;
 
 export const dodoPaymentLinks = {
@@ -152,6 +153,54 @@ function PricingSection() {
               <div className="flex flex-col gap-2 mt-auto">
                 <Button
                   onClick={() => {
+                    toast.custom(
+                      (t) => (
+                        <div
+                          className={`${t.visible ? "animate-enter" : "animate-leave"} 
+        max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto 
+        flex ring-opacity-5 border-l-4 border-primary`}
+                        >
+                          <div className="flex-1 w-0 p-4">
+                            <div className="flex items-start">
+                              <div className="ml-3 flex-1">
+                                <p className="text-sm font-medium text-gray-900">
+                                  Coming soon!
+                                </p>
+                                <p className="mt-1 text-sm text-gray-500">
+                                  The starter plan is in progress, sorry 🎬
+                                </p>
+                                <p className="mt-5 text-sm text-gray-500">
+                                  Feel free to message me on{" "}
+                                  <a
+                                    href="https://x.com/lite_pal"
+                                    className="text-primary underline"
+                                  >
+                                    X
+                                  </a>{" "}
+                                  or{" "}
+                                  <a
+                                    href="mailto:deniskatarasenko6@gmail.com"
+                                    className="text-primary underline"
+                                  >
+                                    email me
+                                  </a>{" "}
+                                  for more details!
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex border-l border-gray-200">
+                            <button
+                              onClick={() => toast.dismiss(t.id)}
+                              className="w-full border cursor-pointer border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-primary hover:text-primary/80 focus:outline-none"
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      ),
+                      { duration: 6000 }
+                    );
                     trackEvent("PricingSection_GetNextNative_Starter_clicked");
                   }}
                   variant="secondary"

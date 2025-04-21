@@ -13,7 +13,7 @@ const faqItems = [
   {
     question: "What exactly am I getting here?",
     answer:
-      "You're getting a complete Next.js starter kit that turns into a mobile app. It comes with everything you need: payments already set up, database ready to go, authentication, push notifications, and a bunch of UI components. Basically, all the boring stuff is done for you!",
+      "You're getting a complete Next.js boilerplate optimized for cross-platform development with Capacitor. This allows you to build native iOS and Android apps using your web skills. The package includes pre-configured essential features: payment processing, database integration, user authentication, push notifications, and a comprehensive UI component library. We've handled all the complex technical setup so you can focus on building your app's unique features right away.",
   },
   {
     question: "Can I use my favorite UI libraries?",
@@ -23,22 +23,22 @@ const faqItems = [
   {
     question: "Is this TypeScript or JavaScript?",
     answer:
-      "It's all TypeScript! I believe it makes your life easier in the long run. But don't worry if you're new to TypeScript - the code is written in a way that's easy to understand and modify.",
+      "It's all TypeScript! We believe it makes your life easier in the long run. But don't worry if you're new to TypeScript - the code is written in a way that's easy to understand and modify.",
   },
   {
     question: "Do I need to deal with Xcode and Android Studio?",
     answer:
-      "Yeah, you'll need both to test on real devices. But don't stress - we've got clear guides to help you set everything up. Plus, you can do all of your development right in your browser!",
+      "Yeah, you'll need both to test on real devices. But don't stress - we've got clear guides to help you set everything up. Plus, you can do all of your development right in your browser, emulator, or even a physical device!",
   },
   {
     question: "How long until I can publish to the stores?",
     answer:
-      "The initial store setup and review process can take a few days. Apple and Google need to review your app, and they might have questions. But once you're set up, future updates and publishing are lightning fast! I've included detailed guides to help you through the process.",
+      "The initial store setup and review process can take a few days. Apple and Google need to review your app, and they might have questions. But once you're set up, future updates and publishing are lightning fast! We've included detailed guides to help you through the process.",
   },
   {
     question: "What if it's not what I expected?",
     answer:
-      "I don't offer refunds because you get immediate access to all the code. But I'm super responsive to questions and feedback. Just reach out if you need help! I want you to succeed with this.",
+      "We don't offer refunds because you get immediate access to all the code. But we're super responsive to questions and feedback. Just reach out if you need help! We want you to succeed with this.",
   },
   {
     question: "Can I use Next.js server actions?",
@@ -52,7 +52,7 @@ const faqItems = [
   {
     question: "Do I need to know mobile development?",
     answer:
-      "Nope! If you know React and Next.js, you're good to go. We handle all the mobile-specific stuff behind the scenes. You just write React code like you normally would!",
+      "Nope! If you know React and Next.js, you're good to go. Capacitor handles all the mobile-specific stuff behind the scenes. You just write React code like you normally would!",
   },
 ];
 

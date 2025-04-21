@@ -47,7 +47,7 @@ function DemoVideo() {
         <div
           className={`${t.visible ? "animate-enter" : "animate-leave"} 
         max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto 
-        flex ring-1 ring-black ring-opacity-5 border-l-4 border-primary`}
+        flex ring-opacity-5 border-l-4 border-primary`}
         >
           <div className="flex-1 w-0 p-4">
             <div className="flex items-start">
@@ -86,7 +86,7 @@ function DemoVideo() {
           <div className="flex border-l border-gray-200">
             <button
               onClick={() => toast.dismiss(t.id)}
-              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-primary hover:text-primary/80 focus:outline-none"
+              className="w-full border cursor-pointer border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-primary hover:text-primary/80 focus:outline-none"
             >
               Close
             </button>
@@ -98,11 +98,12 @@ function DemoVideo() {
   };
 
   return (
-    <div ref={videoRef} className="flex flex-col gap-4 my-20 px-4">
+    <div ref={videoRef} className="flex flex-col my-20 px-20">
       <div className="flex flex-col md:flex-row items-center justify-between gap-3 mb-2">
-        <h2 className="text-2xl md:text-3xl font-[500]">
+        {/* <h2 className="text-2xl md:text-3xl font-[500]">
           <HighlightedSpan>Watch NextNative in action</HighlightedSpan>
-        </h2>
+        </h2> */}
+        <div></div>
         <span
           className={`${playpenSans.className} text-sm sm:text-base font-[500] text-gray`}
         >
@@ -112,7 +113,7 @@ function DemoVideo() {
 
       <StarburstSign position="bottom-right" rotation={180}>
         <div
-          className={`w-full h-[300px] md:h-[800px] rounded-[20px] overflow-hidden relative shadow-lg border border-gray-100 transition-all duration-700 ${
+          className={`max-w-[962px] xl:max-w-[1260px] h-[300px] xl:h-[650px] rounded-[20px] overflow-hidden relative shadow-lg border border-gray-100 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >

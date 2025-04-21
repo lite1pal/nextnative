@@ -61,7 +61,7 @@ function HeroSection2() {
 
         <CTA />
 
-        <div className="flex gap-1">
+        <div className="flex gap-2">
           {/* <div className="-space-x-2 flex items-center">
             <div className="w-12 h-12 overflow-hidden rounded-full bg-gray-200">
               <Image
@@ -178,7 +178,7 @@ function RatingSvg() {
 const data = [
   {
     name: "Vlad",
-    position: "Java developer",
+    position: "Android developer",
     image: "/testimonials/vlad.jpg",
   },
   {

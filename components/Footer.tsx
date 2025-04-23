@@ -12,6 +12,7 @@ interface FooterLink {
 const productLinks: FooterLink[] = [
   { label: "Pricing", href: "/#pricing" },
   // { label: "Documentation", href: "/#docs" },
+  { label: "Docs", href: "https://docs.nextnative.dev" },
   { label: "Components", href: "/components" },
 ];
 

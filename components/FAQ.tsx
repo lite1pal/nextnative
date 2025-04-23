@@ -8,13 +8,15 @@ import {
 } from "@/components/ui/accordion";
 import Subheading from "./Subheading";
 import { trackEvent } from "@/services/custom-analytics";
+import Link from "next/link";
 
 const faqItems = [
   {
     question: "What exactly am I getting here?",
     answer:
-      "You're getting a complete Next.js boilerplate optimized for cross-platform development with Capacitor. This allows you to build native iOS and Android apps using your web skills. The package includes pre-configured essential features: payment processing, database integration, user authentication, push notifications, and a comprehensive UI component library. We've handled all the complex technical setup so you can focus on building your app's unique features right away.",
+      "You're getting a complete Next.js boilerplate optimized for cross-platform development with Capacitor. This allows you to build native iOS and Android apps using your web skills. The package includes pre-configured essential features: payment processing, database integration, user authentication, push notifications, and a comprehensive UI component library. I've handled all the complex technical setup so you can focus on building your app's unique features right away.",
   },
+
   {
     question: "Can I use my favorite UI libraries?",
     answer:
@@ -23,22 +25,42 @@ const faqItems = [
   {
     question: "Is this TypeScript or JavaScript?",
     answer:
-      "It's all TypeScript! We believe it makes your life easier in the long run. But don't worry if you're new to TypeScript - the code is written in a way that's easy to understand and modify.",
+      "It's all TypeScript! I believe it makes your life easier in the long run. But don't worry if you're new to TypeScript - the code is written in a way that's easy to understand and modify.",
   },
   {
     question: "Do I need to deal with Xcode and Android Studio?",
     answer:
-      "Yeah, you'll need both to test on real devices. But don't stress - we've got clear guides to help you set everything up. Plus, you can do all of your development right in your browser, emulator, or even a physical device!",
+      "Yeah, you'll need both to test on real devices. But don't stress - I've got clear guides to help you set everything up. Plus, you can do all of your development right in your browser, emulator, or even a physical device!",
   },
   {
     question: "How long until I can publish to the stores?",
     answer:
-      "The initial store setup and review process can take a few days. Apple and Google need to review your app, and they might have questions. But once you're set up, future updates and publishing are lightning fast! We've included detailed guides to help you through the process.",
+      "The initial store setup and review process can take a few days. Apple and Google need to review your app, and they might have questions. But once you're set up, future updates and publishing are lightning fast! I've included detailed guides to help you through the process.",
   },
   {
     question: "What if it's not what I expected?",
-    answer:
-      "We don't offer refunds because you get immediate access to all the code. But we're super responsive to questions and feedback. Just reach out if you need help! We want you to succeed with this.",
+    answer: (
+      <>
+        I don't offer refunds because you get immediate access to all the code.
+        But I'm super responsive to questions and feedback. Just{" "}
+        <Link
+          href="mailto:deniskatarasenko6@gmail.com"
+          className="text-primary underline"
+        >
+          reach out
+        </Link>{" "}
+        via email, or via{" "}
+        <Link
+          className="text-primary underline"
+          href="https://x.com/lite_pal"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          X
+        </Link>{" "}
+        if you need help! I want you to succeed with this.
+      </>
+    ),
   },
   {
     question: "Can I use Next.js server actions?",
@@ -47,12 +69,30 @@ const faqItems = [
   {
     question: "How long does it take to launch an app?",
     answer:
-      "With our starter, you can have a basic app running in 10 minutes! The real timeline depends on your app's complexity. Way faster than starting from scratch!",
+      "With NextNative, you can have a basic app running in 10 minutes! The real timeline depends on your app's complexity. Way faster than starting from scratch!",
   },
   {
     question: "Do I need to know mobile development?",
     answer:
       "Nope! If you know React and Next.js, you're good to go. Capacitor handles all the mobile-specific stuff behind the scenes. You just write React code like you normally would!",
+  },
+  {
+    question: "Can I see some apps built with this?",
+    answer: (
+      <>
+        Yes, check out the Lasting Habits app built with NextNative. You can
+        find it in the{" "}
+        <Link
+          href="https://apps.apple.com/ua/app/lasting-habits/id6736766976"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          App Store
+        </Link>
+        . It's coming soon to the Play Store.
+      </>
+    ),
   },
 ];
 
@@ -78,7 +118,7 @@ function FAQ() {
               <AccordionTrigger className="text-lg cursor-pointer sm:text-xl md:text-2xl font-[500] hover:no-underline">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-base sm:text-lg text-gray">
+              <AccordionContent className="text-base sm:text-lg text-gray-500 font-medium">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>

@@ -82,12 +82,12 @@ function Navbar() {
         </Link> */}
         <Link
           onClick={() => {
-            trackEvent("Navbar_Components_clicked");
+            trackEvent("Navbar_Docs_clicked");
           }}
-          href="/components"
+          href="https://docs.nextnative.dev"
           className="text-base md:text-lg hover:text-primary transition-colors"
         >
-          Components
+          Docs
         </Link>
         {/* <Link
           href="/templates/heroes"
@@ -123,12 +123,12 @@ function Navbar() {
           <Link
             onClick={() => {
               setIsMenuOpen(false);
-              trackEvent("Navbar_components clicked");
+              trackEvent("Navbar_Docs_clicked");
             }}
-            href="/components"
+            href="https://docs.nextnative.dev"
             className="text-base hover:text-primary transition-colors"
           >
-            Components
+            Docs
           </Link>
           {/* <Link
             onClick={() => setIsMenuOpen(false)}

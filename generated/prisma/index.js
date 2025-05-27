@@ -146,11 +146,12 @@ const config = {
     "db"
   ],
   "activeProvider": "mongodb",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mongodb+srv://deniskatarasenko6:QAcolOohodf9gVMF@nextnative.par90gn.mongodb.net/prisma?retryWrites=true&w=majority&appName=nextnative"
+        "value": null
       }
     }
   },

@@ -30,7 +30,6 @@ export async function trackEvent(event: string) {
   // Format user info
   const userInfo = {
     ip,
-    referer,
     browser: `${browser.name || "unknown"} ${browser.version || ""}`,
     os: `${os.name || "unknown"} ${os.version || ""}`,
     device: device.type
@@ -48,7 +47,6 @@ export async function trackEvent(event: string) {
 
 👤 User Info:
 • IP: ${userInfo.ip}
-• Referer: ${userInfo.referer}
 • Browser: ${userInfo.browser}
 • OS: ${userInfo.os}
 • Device: ${userInfo.device}

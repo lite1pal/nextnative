@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import ThankYouPage from "./form";
 import { prisma } from "@/prisma/client";
+import { trackEvent } from "@/services/custom-analytics";
 
 export default async function Page({
   searchParams,
@@ -28,13 +29,9 @@ export default async function Page({
   );
 
   if (!payment.ok) {
-    console.log(payment);
+    trackEvent("💰 Error on /thank-you page - " + paymentId + " 💔");
     notFound();
   }
-
-  // const paymentData = await client.payments.retrieve(paymentId);
-
-  // console.log(payment);
 
   const paymentData = await payment.json();
 

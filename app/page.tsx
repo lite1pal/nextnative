@@ -101,7 +101,10 @@ export default function Home() {
       </div>
       <DemoVideo />
 
-      <div className="flex justify-center max-md:scale-[0.6] h-[500px] max-md:left-10 relative sm:h-full md:py-16 space-x-[-200px]">
+      <div
+        id="interactive-demo"
+        className="flex justify-center max-md:scale-[0.6] h-[500px] max-md:left-10 relative sm:h-full md:py-16 space-x-[-200px]"
+      >
         <div className="rotate-[-30deg]">
           <IPhoneMockup isDark={false}>
             <div onClick={() => trackEvent("NoteList_clicked")}>

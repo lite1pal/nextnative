@@ -14,7 +14,7 @@ function DemoVideo() {
 
   // YouTube video ID and URLs
   const videoId = "9iDXsyiP134";
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&`;
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
   useEffect(() => {

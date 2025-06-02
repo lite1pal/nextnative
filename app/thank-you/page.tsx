@@ -18,14 +18,11 @@ export default async function Page({
     notFound();
   }
 
-  const payment = await fetch(
-    `${process.env.DODO_TEST_URL}/payments/${paymentId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.DODO_SECRET!}`,
-      },
-    }
-  );
+  const payment = await fetch(`${process.env.DODO_URL}/payments/${paymentId}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.DODO_SECRET!}`,
+    },
+  });
 
   const paymentData = await payment.json();
 

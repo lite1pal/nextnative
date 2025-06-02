@@ -4,7 +4,7 @@ import { sendMessageToTelegram } from "./telegram";
 import { headers } from "next/headers";
 import { UAParser } from "ua-parser-js";
 
-export async function trackEvent(event: string) {
+export async function trackEvent(event: string, botDetection: boolean = true) {
   if (process.env.NODE_ENV !== "production") {
     return;
   }
@@ -22,7 +22,7 @@ export async function trackEvent(event: string) {
 
   // Bot detection
   const isBotLikely = detectBot(userAgent, browser, referer);
-  if (isBotLikely) {
+  if (isBotLikely && botDetection) {
     console.log(`Bot detected, ignoring event: ${event}`);
     return;
   }

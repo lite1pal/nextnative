@@ -30,11 +30,15 @@ export default async function Page({
     notFound();
   }
 
+  console.log(paymentData);
+
   const purchase = await prisma.purchase.findFirst({
     where: {
       paymentId,
     },
   });
+
+  console.log(purchase);
 
   return <ThankYouPage isInvited={purchase?.isInvited ?? false} />;
 }

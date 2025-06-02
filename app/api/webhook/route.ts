@@ -5,44 +5,50 @@ import { NextResponse } from "next/server";
 
 import { Webhook } from "standardwebhooks";
 
-const webhook = new Webhook(process.env.DODOPAYMENTS_WEBHOOK_SECRET!); // Replace with your secret key generated from the Dodo Payments Dashboard
+const webhook = new Webhook(process.env.DODOPAYMENTS_WEBHOOK_SECRET!);
 
 export async function POST(request: Request) {
-  const headersList = await headers();
-  const rawBody = await request.text();
+  try {
+    const headersList = await headers();
+    const rawBody = await request.text();
 
-  const webhookHeaders = {
-    "webhook-id": headersList.get("webhook-id") || "",
-    "webhook-signature": headersList.get("webhook-signature") || "",
-    "webhook-timestamp": headersList.get("webhook-timestamp") || "",
-  };
+    const webhookHeaders = {
+      "webhook-id": headersList.get("webhook-id") || "",
+      "webhook-signature": headersList.get("webhook-signature") || "",
+      "webhook-timestamp": headersList.get("webhook-timestamp") || "",
+    };
 
-  await webhook.verify(rawBody, webhookHeaders);
-  const payload = JSON.parse(rawBody) as any;
+    await webhook.verify(rawBody, webhookHeaders);
+    const payload = JSON.parse(rawBody) as any;
 
-  if (!payload.data?.customer?.email) {
-    throw new Error("Missing customer email in payload");
+    if (!payload.data?.customer?.email) {
+      throw new Error("Missing customer email in payload");
+    }
+
+    if (
+      payload.data.payload_type === "Payment" &&
+      payload.type === "payment.succeeded" &&
+      !payload.data.subscription_id
+    ) {
+      trackEvent(
+        "💰 Payment_succeeded - " + payload.data.customer.email + " 🎉",
+        false
+      );
+      console.log("Payment succeeded");
+      await prisma.purchase.create({
+        data: {
+          paymentId: payload.data.payment_id,
+          email: payload.data.customer.email,
+        },
+      });
+
+      // await handleOneTimePayment(email, payload);
+    }
+
+    return NextResponse.json({ message: "Webhook received" }, { status: 200 });
+  } catch (err: any) {
+    console.error(err);
+    trackEvent("💰 Error on webhook - " + err.message + " 💔", false);
+    return NextResponse.json({ message: "Webhook received" }, { status: 200 });
   }
-
-  if (
-    payload.data.payload_type === "Payment" &&
-    payload.type === "payment.succeeded" &&
-    !payload.data.subscription_id
-  ) {
-    trackEvent(
-      "💰 Payment_succeeded - " + payload.data.customer.email + " 🎉",
-      false
-    );
-    console.log("Payment succeeded");
-    await prisma.purchase.create({
-      data: {
-        paymentId: payload.data.payment_id,
-        email: payload.data.customer.email,
-      },
-    });
-
-    // await handleOneTimePayment(email, payload);
-  }
-
-  return NextResponse.json({ message: "Webhook received" }, { status: 200 });
 }

@@ -18,11 +18,23 @@ export default async function Page({
     notFound();
   }
 
-  const payment = await fetch(`${process.env.DODO_URL}/payments/${paymentId}`, {
-    headers: {
-      Authorization: `Bearer ${process.env.DODO_SECRET!}`,
-    },
-  });
+  const payment = await fetch(
+    `https://live.dodopayments.com/payments/${paymentId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.DODO_SECRET!}`,
+      },
+    }
+  );
+
+  if (!payment.ok) {
+    console.log(payment);
+    notFound();
+  }
+
+  // const paymentData = await client.payments.retrieve(paymentId);
+
+  // console.log(payment);
 
   const paymentData = await payment.json();
 
@@ -30,15 +42,11 @@ export default async function Page({
     notFound();
   }
 
-  console.log(paymentData);
-
   const purchase = await prisma.purchase.findFirst({
     where: {
       paymentId,
     },
   });
-
-  console.log(purchase);
 
   return <ThankYouPage isInvited={purchase?.isInvited ?? false} />;
 }

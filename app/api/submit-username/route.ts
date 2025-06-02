@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Octokit } from "@octokit/rest";
 import { prisma } from "@/prisma/client";
+import { trackEvent } from "@/services/custom-analytics";
 
 export async function POST(request: Request) {
   try {
@@ -73,7 +74,8 @@ export async function POST(request: Request) {
       { message: "Invitation sent successfully" },
       { status: 200 }
     );
-  } catch (error) {
+  } catch (error: any) {
+    trackEvent("💰 Error on submit-username - " + error.message + " 💔", false);
     console.error("Error processing username:", error);
     return NextResponse.json(
       { error: "Failed to process username" },

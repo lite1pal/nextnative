@@ -20,8 +20,6 @@ export async function POST(request: Request) {
   await webhook.verify(rawBody, webhookHeaders);
   const payload = JSON.parse(rawBody) as any;
 
-  console.log("Payload: ", payload);
-
   if (!payload.data?.customer?.email) {
     throw new Error("Missing customer email in payload");
   }
@@ -38,7 +36,7 @@ export async function POST(request: Request) {
     console.log("Payment succeeded");
     await prisma.purchase.create({
       data: {
-        paymentId: payload.data.id,
+        paymentId: payload.data.payment_id,
         email: payload.data.customer.email,
       },
     });

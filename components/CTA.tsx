@@ -12,7 +12,7 @@ function CTA({ className }: { className?: string }) {
   }
 
   return (
-    <div className={cn("flex flex-col gap-4 items-center", className)}>
+    <div className={cn("flex flex-col gap-4 sm:items-center", className)}>
       {/* <StarburstSign rotation={270} position="bottom-left"> */}
       <Button
         onClick={() => {
@@ -28,7 +28,7 @@ function CTA({ className }: { className?: string }) {
       <div className="flex flex-col">
         <p className="font-medium text-gray-500 flex items-center gap-2">
           <span className="text-xl">🎁</span>
-          <span className="text-xl">
+          <span className="sm:text-xl">
             <span className="text-red-500">80% off</span> for the first 5
             customers, <span className="text-red-500">2 left</span>
           </span>

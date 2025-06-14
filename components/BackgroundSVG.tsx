@@ -134,7 +134,7 @@ function BackgroundSVG() {
         </defs>
       </svg>
 
-      <div className="w-full h-full bg-gradient-to-t from-[#E4FCDE] via-[#E4FCDE] to-[#E4FCDE] row-span-2"></div>
+      <div className="w-full h-full bg-gradient-to-b from-[#eafde5] via-[#eafde5] to-[#eafde5] row-span-2"></div>
 
       {/* <div className="bg-black h-full z-10 border-2 border-blue-500 w-full"></div> */}
     </div>

@@ -55,6 +55,29 @@ const pricingFeatures: PricingFeature[] = [
   { text: "Lifetime updates" },
 ];
 
+const pricingFeaturesStarter: PricingFeature[] = [
+  { text: "Next.js boilerplate" },
+  { text: "Auth" },
+  { text: "Push notifications" },
+  { text: "In-App purchases" },
+  { text: "Database" },
+  {
+    text: (
+      <div
+        onClick={() => {
+          trackEvent("PricingSection_Beautiful_UI_components_clicked");
+        }}
+        // href="/components"
+        className="text-primary group transition-colors relative"
+      >
+        1 production-ready template app
+        <span className="h-0.5 group-hover:w-full w-0 transition-all duration-300 absolute bottom-0 left-0 bg-primary rounded-full"></span>
+      </div>
+    ),
+  },
+  { text: "Lifetime updates" },
+];
+
 function PricingSection() {
   const handleGetNextnative = (paymentLink: string) => {
     trackEvent("PricingSection_GetNextNative_All-in_clicked");
@@ -95,7 +118,7 @@ function PricingSection() {
         {/* Starter Plan Card */}
         <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
           <span
-            className={`${playpenSans.className} text-sm opacity-0 pointer-events-none sm:text-base font-[500] text-gray ml-auto`}
+            className={`${playpenSans.className} text-sm opacity-0 pointer-events-none sm:text-xl font-[500] text-red-500 ml-auto`}
           >
             limited launch %40 discount
           </span>
@@ -118,7 +141,7 @@ function PricingSection() {
                 </span>
                 <div className="flex items-end gap-2">
                   <h3 className="text-3xl sm:text-4xl md:text-[54px] font-[500] leading-none">
-                    $99
+                    $28.5
                   </h3>
                   <span className="text-lg sm:text-xl md:text-2xl text-gray">
                     /forever
@@ -127,7 +150,7 @@ function PricingSection() {
               </div>
 
               <div className="flex flex-col font-[500] gap-3 md:gap-4 w-full flex-grow">
-                {pricingFeatures.slice(0, 5).map((feature, index) => (
+                {pricingFeaturesStarter.map((feature, index) => (
                   <div
                     key={index}
                     className="flex items-center gap-3 text-base sm:text-lg md:text-xl"
@@ -224,9 +247,10 @@ function PricingSection() {
         {/* All-in Card */}
         <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
           <span
-            className={`${playpenSans.className} text-sm sm:text-base font-[500] text-gray ml-auto`}
+            className={`${playpenSans.className} text-sm sm:text-xl font-[500] text-gray ml-auto`}
           >
-            limited launch %40 discount
+            limited launch discount{" "}
+            <span className="text-red-500">80% off, 2 left</span>{" "}
           </span>
 
           <div
@@ -247,7 +271,7 @@ function PricingSection() {
                 </span>
                 <div className="flex items-end gap-2">
                   <h3 className="text-3xl sm:text-4xl md:text-[54px] font-[500] leading-none">
-                    <HighlightedSpan>$149</HighlightedSpan>
+                    <HighlightedSpan>$47.5</HighlightedSpan>
                   </h3>
                   <span className="text-lg sm:text-xl md:text-2xl text-gray">
                     /forever

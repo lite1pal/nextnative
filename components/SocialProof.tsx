@@ -2,7 +2,7 @@ import Image from "next/image";
 import HorizontalLine from "./HorizontalLine";
 function SocialProof() {
   return (
-    <div className="flex md:items-center flex-col md:flex-row gap-12 py-6 md:py-20">
+    <div className="flex md:items-center flex-col md:flex-row gap-12 py-6 max-sm:mt-16 md:py-20">
       <div className="flex flex-col w-[200px] gap-4">
         <p className="text-[28px] font-[500]">Featured on</p>
         <HorizontalLine className="w-[94px]" />

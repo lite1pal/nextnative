@@ -45,7 +45,7 @@ function DemoVideo() {
   };
 
   return (
-    <div ref={videoRef} className="flex flex-col my-20 sm:px-20">
+    <div ref={videoRef} className="flex flex-col mt-20 sm:mb-20 sm:px-20">
       <div className="flex flex-col md:flex-row items-center justify-between gap-3 mb-2">
         <div></div>
         <span
@@ -57,7 +57,7 @@ function DemoVideo() {
 
       <StarburstSign position="bottom-right" rotation={180}>
         <div
-          className={`max-w-[962px] xl:max-w-[1260px] h-[300px] xl:h-[620px] rounded-[20px] overflow-hidden relative shadow-lg border border-gray-100 transition-all duration-700 ${
+          className={`max-w-[962px] xl:max-w-[1260px] h-full xl:h-[620px] rounded-[20px] overflow-hidden relative shadow-lg border border-gray-100 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >

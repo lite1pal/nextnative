@@ -86,7 +86,7 @@ export default function PomodoroApp() {
       minutes:
         prev.mode === "work" ? settings.workDuration : settings.breakDuration,
       seconds: 0,
-      isRunning: false,
+      isRunning: true,
     }));
   }, [settings.workDuration, settings.breakDuration]);
 

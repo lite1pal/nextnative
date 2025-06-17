@@ -9,7 +9,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
-  title: "NextNative | Launch mobile apps faster with Next.js",
+  title: "NextNative | Launch Mobile Apps Faster With Next.js",
   description:
     "Skip React Native. Use the web tools you already know, combined with Capacitor, to launch cross-platform apps in days.",
   metadataBase: new URL("https://nextnative.dev"),

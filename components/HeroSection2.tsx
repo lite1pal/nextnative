@@ -192,6 +192,11 @@ const data = [
     position: "Web developer",
     image: "/testimonials/denis.jpg",
   },
+  {
+    name: "Vilaliy",
+    position: "Senior .NET Developer",
+    image: "/testimonials/vitaliy.jpeg",
+  },
 ];
 
 function AvatarList({

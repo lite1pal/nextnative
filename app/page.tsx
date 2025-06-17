@@ -13,7 +13,7 @@ import SetupByDefault from "@/components/SetupByDefault";
 import Image from "next/image";
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import {
   Smartphone,
   Lock,
@@ -59,6 +59,7 @@ import Subheading from "@/components/Subheading";
 import { trackEvent } from "@/services/custom-analytics";
 import HeroSection2 from "@/components/HeroSection2";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import StarburstSign from "@/components/StarburstSign";
 
 const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
   ssr: false,
@@ -99,6 +100,37 @@ export default function Home() {
           />
         </div>
       </div>
+      <Testimonial
+        imgSrc={"/testimonials/vitaliy.jpeg"}
+        name="Vitalii Zabrodskyi"
+        description="Senior .NET Developer"
+        testimonial={
+          <div>
+            I’m really pumped about it! The setup seems super easy, and I{" "}
+            <span className="bg-primary p-1 rounded text-white font-[500]">
+              can’t wait to finally build my app!
+            </span>
+            <br /> <br />{" "}
+            <a
+              target="_blank"
+              href="https://x.com/nextnative"
+              className="text-blue-600"
+            >
+              @nextnative
+            </a>{" "}
+            by{" "}
+            <a
+              target="_blank"
+              href="https://x.com/lite_pal"
+              className="text-blue-600"
+            >
+              @lite_pal
+            </a>{" "}
+            is such a phenomenal tool!
+            <br /> <br /> Wow, just wow!
+          </div>
+        }
+      />
       <DemoVideo />
 
       <div
@@ -131,12 +163,68 @@ export default function Home() {
         </div>
       </div>
       <SocialProof />
-      <Testimonial />
+      <Testimonial
+        imgSrc={
+          "https://pbs.twimg.com/profile_images/1799370892855660544/sd7E-_7S_400x400.jpg"
+        }
+        name="Denis Tarasenko"
+        description="Founder of Lasting Habits"
+        testimonial={
+          <div>
+            So much value in this!{" "}
+            <span className="bg-primary p-1 rounded text-white font-[500]">
+              I was impressed
+            </span>{" "}
+            that building a mobile app is so easy! Amazing work 🙌
+          </div>
+        }
+      />
       <WastedTime />
+
       <SetupByDefault />
+
+      {/* <div className="flex flex-col gap-28 sm:gap-52 py-16 sm:py-32">
+        {features.map((feature, index) => (
+          <FeatureSection
+            key={index}
+            heading1={feature.heading1}
+            heading2={feature.heading2}
+            description={feature.description}
+            isImageLeft={feature.isImageLeft}
+          />
+        ))}
+      </div> */}
+      <Testimonial
+        name="Matthias Schaefer"
+        description="Developer"
+        testimonial={
+          <div>
+            Hi Denis,
+            <br />
+            <br />
+            Cool stuff! I saw{" "}
+            <a
+              target="_blank"
+              className="text-blue-600"
+              href="https://www.reddit.com/r/capacitor/comments/1lbhqv0/just_shipped_nextnative_which_lets_you_build/"
+            >
+              your post
+            </a>{" "}
+            on Reddit and grabbed a copy of your work!
+            <br />
+            <br />
+            I'll have a look at it a bit later -{" "}
+            <span className="bg-primary p-1 rounded text-white font-[500]">
+              it's what I'm looking for!
+            </span>
+          </div>
+        }
+      />
       {/* <FeaturesSection /> */}
       <Spend5Minutes />
       <PricingSection />
+
+      <div className=""></div>
       <CallToAction
         title="Start building in minutes."
         subtitle="Save weeks of work."
@@ -146,6 +234,101 @@ export default function Home() {
     </>
   );
 }
+
+const features = [
+  {
+    heading1: "Splash screen",
+    heading2: "",
+    description: `Super simple, yet powerful! <br /><br /> Swap in your logo, and you’re good to launch with a stunning first impression.`,
+    isImageLeft: false,
+  },
+  {
+    heading1: "Onboarding screen",
+    heading2: "",
+    description: `Hook users right away! <br /><br /> Deliver value from the start with a smooth, engaging onboarding experience.`,
+    isImageLeft: true,
+  },
+  {
+    heading1: "API routes",
+    heading2: "in the same codebase",
+    description: `Add and manage API routes right in the same codebase! <br /><br /> Keep everything unified and efficient with Next.js power.`,
+    isImageLeft: false,
+  },
+  {
+    heading1: "Payments",
+    heading2: "",
+    description: `Turn your app into a money-maker! <br /><br /> Easily set up subscriptions and in-app purchases with RevenueCat, and already designed pricing screens for you to get started with.`,
+    isImageLeft: true,
+  },
+  {
+    heading1: "Offline Storage Support",
+    heading2: "",
+    description: `Keep your app running anytime! <br /><br /> Move to offline database quickly at any point, ensuring users stay productive even without an internet connection.`,
+    isImageLeft: false,
+  },
+  {
+    heading1: "Authentication",
+    heading2: "",
+    description: (
+      <div>
+        Effortlessly authenticate your users. <br />
+        <br /> Let users log in with their favorite social accounts using
+        Firebase Auth, making onboarding a breeze.
+      </div>
+    ),
+    isImageLeft: true,
+  },
+  {
+    heading1: "Native-like",
+    heading2: "page transitions",
+    description: (
+      <div>
+        Deliver a polished, app-like experience! <br />
+        <br /> Add fluid, native-style page transitions with included components
+        that use Ionic underhood, keeping your users engaged and delighted.
+      </div>
+    ),
+    isImageLeft: false,
+  },
+];
+
+const FeatureSection = ({
+  heading1,
+  heading2,
+  description,
+  isImageLeft = false,
+}: {
+  heading1: string;
+  heading2: string;
+  description: ReactNode;
+  isImageLeft: boolean;
+}) => {
+  return (
+    <div className="grid md:grid-cols-2 gap-12 md:gap-36">
+      {isImageLeft ? (
+        <>
+          <div className="w-full md:w-[550px] h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-1"></div>
+          <div className="flex flex-col gap-10 order-1 md:order-2">
+            <Subheading heading1={heading1} heading2={heading2} />
+            <p className="text-base max-w-xl sm:text-lg md:text-2xl leading-relaxed">
+              {description}
+            </p>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex flex-col gap-10 order-1 md:order-1">
+            <Subheading heading1={heading1} heading2={heading2} />
+            <p className="text-base max-w-xl sm:text-lg md:text-2xl leading-relaxed">
+              {description}
+            </p>
+          </div>
+          <div className="w-full md:w-[550px] h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2"></div>
+        </>
+      )}
+    </div>
+  );
+};
 
 // Define feature data (outside the component for clarity)
 const featuresData = [

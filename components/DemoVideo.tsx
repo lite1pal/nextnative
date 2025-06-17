@@ -15,7 +15,8 @@ function DemoVideo() {
   // YouTube video ID and URLs
   const videoId = "9iDXsyiP134";
   const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&`;
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  // const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  const thumbnailUrl = "/thumbnail-4.png";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,7 +58,8 @@ function DemoVideo() {
 
       <StarburstSign position="bottom-right" rotation={180}>
         <div
-          className={`max-w-[962px] xl:max-w-[1260px] h-full xl:h-[620px] rounded-[20px] overflow-hidden relative shadow-lg border border-gray-100 transition-all duration-700 ${
+          style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
+          className={`max-w-[962px] xl:max-w-[1260px] h-full xl:h-[620px] rounded-[20px] overflow-hidden relative bg-white transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -74,13 +76,13 @@ function DemoVideo() {
               onClick={handleVideoClick}
               className="w-full group cursor-pointer h-full relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
+              <div className="absolute inset-0 z-10" />
               <Image
                 src={thumbnailUrl}
                 alt="NextNative demo - Build cross-platform mobile apps with web technologies"
                 width={1920}
                 height={1080}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
                 loading="lazy"
               />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">

@@ -17,15 +17,15 @@ function Spend5Minutes() {
 
       <div>
         <span className="text-foreground">
-          Skip the tedious configuration of{" "}
+          Skip the boring configuration of{" "}
         </span>
         authentication, database setup, API integration, and native mobile
         capabilities.
       </div>
 
       <div>
-        Transform{" "}
-        <span className="text-foreground">weeks of technical setup</span> into
+        Turn <span className="text-foreground">weeks of technical setup</span>{" "}
+        into
         <span className="text-foreground">
           {" "}
           minutes of productive development!

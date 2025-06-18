@@ -317,7 +317,7 @@ const features = [
       </>
     ),
     isImageLeft: true,
-    src: "/section-videos/signin-section.mp4",
+    src: "/section-videos/signin-section-optimized.mp4",
     alt: "Authentication demonstration",
   },
   {
@@ -331,7 +331,7 @@ const features = [
       </>
     ),
     isImageLeft: false,
-    src: "/section-videos/transitions-section.mp4",
+    src: "/section-videos/transitions-section-optimized.mp4",
     alt: "Native-like page transitions demonstration",
   },
 ];
@@ -405,7 +405,7 @@ function LazyVideo({ src, alt }: { src: string; alt: string }) {
   return (
     <div
       ref={ref}
-      className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2"
+      className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-[#4c1190] rounded-3xl order-2 md:order-2"
     >
       {
         isInView && (

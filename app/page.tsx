@@ -341,6 +341,7 @@ interface LazyVideoProps {
 function LazyVideo({ src, alt }: LazyVideoProps) {
   const [isInView, setIsInView] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showControls, setShowControls] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -370,6 +371,8 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
       className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-[#4c1190] rounded-3xl order-2 md:order-2"
       role="region"
       aria-label={alt}
+      onMouseEnter={() => setShowControls(true)}
+      onMouseLeave={() => setShowControls(false)}
     >
       {isInView && (
         <>
@@ -385,7 +388,7 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
             muted
             loop
             playsInline
-            controls
+            controls={showControls}
             preload="metadata"
             aria-label={alt}
             onCanPlay={() => setIsLoaded(true)}

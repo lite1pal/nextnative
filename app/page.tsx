@@ -59,7 +59,6 @@ import Subheading from "@/components/Subheading";
 import { trackEvent } from "@/services/custom-analytics";
 import HeroSection2 from "@/components/HeroSection2";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import StarburstSign from "@/components/StarburstSign";
 
 const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
   ssr: false,
@@ -183,7 +182,7 @@ export default function Home() {
 
       <SetupByDefault />
 
-      {/* <div className="flex flex-col gap-28 sm:gap-52 py-16 sm:py-32">
+      <div className="flex flex-col gap-28 sm:gap-52 py-16 sm:py-32">
         {features.map((feature, index) => (
           <FeatureSection
             key={index}
@@ -191,9 +190,11 @@ export default function Home() {
             heading2={feature.heading2}
             description={feature.description}
             isImageLeft={feature.isImageLeft}
+            src={feature.src}
+            alt={feature.alt}
           />
         ))}
-      </div> */}
+      </div>
       <Testimonial
         name="Matthias Schaefer"
         description="Developer"
@@ -239,56 +240,99 @@ const features = [
   {
     heading1: "Splash screen",
     heading2: "",
-    description: `Super simple, yet powerful! <br /><br /> Swap in your logo, and you’re good to launch with a stunning first impression.`,
+    description: (
+      <>
+        Super simple, yet powerful! <br />
+        <br /> Swap in your logo, and you’re good to launch with a stunning
+        first impression.
+      </>
+    ),
     isImageLeft: false,
+    src: "/section-videos/splash-section.mp4",
+    alt: "Splash screen demonstration",
   },
   {
     heading1: "Onboarding screen",
     heading2: "",
-    description: `Hook users right away! <br /><br /> Deliver value from the start with a smooth, engaging onboarding experience.`,
+    description: (
+      <>
+        Hook users right away! <br />
+        <br /> Deliver value from the start with a smooth, engaging onboarding
+        experience.
+      </>
+    ),
     isImageLeft: true,
+    src: "/section-videos/onboarding-section.mp4",
+    alt: "Onboarding process demonstration",
   },
   {
     heading1: "API routes",
     heading2: "in the same codebase",
-    description: `Add and manage API routes right in the same codebase! <br /><br /> Keep everything unified and efficient with Next.js power.`,
+    description: (
+      <>
+        Add and manage API routes right in the same codebase! <br />
+        <br /> Keep everything unified and efficient with Next.js power.
+      </>
+    ),
     isImageLeft: false,
+    src: "/section-videos/api-routes-section.mp4",
+    alt: "API routes demonstration",
   },
   {
     heading1: "Payments",
     heading2: "",
-    description: `Turn your app into a money-maker! <br /><br /> Easily set up subscriptions and in-app purchases with RevenueCat, and already designed pricing screens for you to get started with.`,
+    description: (
+      <>
+        Turn your app into a money-maker! <br />
+        <br /> Easily set up subscriptions and in-app purchases with RevenueCat,
+        and use already designed pricing screens for you to get started with.
+      </>
+    ),
     isImageLeft: true,
+    src: "/section-videos/payments-section.mp4",
+    alt: "Payments setup demonstration",
   },
   {
     heading1: "Offline Storage Support",
     heading2: "",
-    description: `Keep your app running anytime! <br /><br /> Move to offline database quickly at any point, ensuring users stay productive even without an internet connection.`,
+    description: (
+      <>
+        Keep your app running anytime! <br />
+        <br /> Move to offline database quickly at any point, ensuring users
+        stay productive even without an internet connection.
+      </>
+    ),
     isImageLeft: false,
+    src: "/section-videos/offline-storage-section.mp4",
+    alt: "Offline storage support demonstration",
   },
   {
     heading1: "Authentication",
     heading2: "",
     description: (
-      <div>
+      <>
         Effortlessly authenticate your users. <br />
         <br /> Let users log in with their favorite social accounts using
         Firebase Auth, making onboarding a breeze.
-      </div>
+      </>
     ),
     isImageLeft: true,
+    src: "/section-videos/signin-section.mp4",
+    alt: "Authentication demonstration",
   },
   {
     heading1: "Native-like",
     heading2: "page transitions",
     description: (
-      <div>
+      <>
         Deliver a polished, app-like experience! <br />
         <br /> Add fluid, native-style page transitions with included components
         that use Ionic underhood, keeping your users engaged and delighted.
-      </div>
+      </>
     ),
     isImageLeft: false,
+    src: "/section-videos/transitions-section.mp4",
+    alt: "Native-like page transitions demonstration",
   },
 ];
 
@@ -297,17 +341,33 @@ const FeatureSection = ({
   heading2,
   description,
   isImageLeft = false,
+  src = "/section-videos/onboarding-section.mp4",
+  alt = "Onboarding process demonstration",
 }: {
   heading1: string;
   heading2: string;
   description: ReactNode;
   isImageLeft: boolean;
+  src: string;
+  alt?: string;
 }) => {
   return (
     <div className="grid md:grid-cols-2 gap-12 md:gap-36">
       {isImageLeft ? (
         <>
-          <div className="w-full md:w-[550px] h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-1"></div>
+          <div className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2">
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src={src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              // controls
+              preload="metadata"
+              aria-label={alt}
+            />
+          </div>
           <div className="flex flex-col gap-10 order-1 md:order-2">
             <Subheading heading1={heading1} heading2={heading2} />
             <p className="text-base max-w-xl sm:text-lg md:text-2xl leading-relaxed">
@@ -323,7 +383,19 @@ const FeatureSection = ({
               {description}
             </p>
           </div>
-          <div className="w-full md:w-[550px] h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2"></div>
+          <div className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2">
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src={src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              // controls
+              preload="metadata"
+              aria-label={alt}
+            />
+          </div>
         </>
       )}
     </div>

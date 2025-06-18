@@ -31,6 +31,7 @@
     "dodopayments": "^1.30.0",
     "firebase": "^11.9.1",
     "framer-motion": "^12.4.7",
+    "hls": "^0.0.1",
     "lucide-react": "^0.476.0",
     "next": "15.1.6",
     "react": "^19.0.0",

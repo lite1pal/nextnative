@@ -265,19 +265,19 @@ const features = [
     src: "/section-videos/onboarding-section.mp4",
     alt: "Onboarding process demonstration",
   },
-  // {
-  //   heading1: "API routes",
-  //   heading2: "in the same codebase",
-  //   description: (
-  //     <>
-  //       Add and manage API routes right in the same codebase! <br />
-  //       <br /> Keep everything unified and efficient with Next.js power.
-  //     </>
-  //   ),
-  //   isImageLeft: false,
-  //   src: "/section-videos/api-routes-section.mp4",
-  //   alt: "API routes demonstration",
-  // },
+  {
+    heading1: "API routes",
+    heading2: "in the same codebase",
+    description: (
+      <>
+        Add and manage API routes right in the same codebase! <br />
+        <br /> Keep everything unified and efficient with Next.js power.
+      </>
+    ),
+    isImageLeft: false,
+    src: "/section-videos/api-section.mp4",
+    alt: "API routes demonstration",
+  },
   // {
   //   heading1: "Payments",
   //   heading2: "",
@@ -355,19 +355,7 @@ const FeatureSection = ({
     <div className="grid md:grid-cols-2 gap-12 md:gap-36">
       {isImageLeft ? (
         <>
-          <div className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2">
-            <video
-              className="absolute inset-0 w-full h-full object-cover"
-              src={src}
-              autoPlay
-              muted
-              loop
-              playsInline
-              // controls
-              preload="metadata"
-              aria-label={alt}
-            />
-          </div>
+          <VideoPlayer src={src} alt={src} />
           <div className="flex flex-col gap-10 order-1 md:order-2">
             <Subheading heading1={heading1} heading2={heading2} />
             <p className="text-base max-w-xl sm:text-lg md:text-2xl leading-relaxed">
@@ -383,24 +371,31 @@ const FeatureSection = ({
               {description}
             </p>
           </div>
-          <div className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2">
-            <video
-              className="absolute inset-0 w-full h-full object-cover"
-              src={src}
-              autoPlay
-              muted
-              loop
-              playsInline
-              // controls
-              preload="metadata"
-              aria-label={alt}
-            />
-          </div>
+          <VideoPlayer src={src} alt={src} />
         </>
       )}
     </div>
   );
 };
+
+function VideoPlayer({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2">
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        controls
+        controlsList=""
+        preload="metadata"
+        aria-label={alt}
+      />
+    </div>
+  );
+}
 
 // // Define feature data (outside the component for clarity)
 // const featuresData = [

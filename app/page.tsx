@@ -13,7 +13,7 @@ import SetupByDefault from "@/components/SetupByDefault";
 import Image from "next/image";
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
 import dynamic from "next/dynamic";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import {
   Smartphone,
   Lock,
@@ -355,7 +355,7 @@ const FeatureSection = ({
     <div className="grid md:grid-cols-2 gap-12 md:gap-36">
       {isImageLeft ? (
         <>
-          <VideoPlayer src={src} alt={src} />
+          <LazyVideo src={src} alt={src} />
           <div className="flex flex-col gap-10 order-1 md:order-2">
             <Subheading heading1={heading1} heading2={heading2} />
             <p className="text-base max-w-xl sm:text-lg md:text-2xl leading-relaxed">
@@ -371,28 +371,62 @@ const FeatureSection = ({
               {description}
             </p>
           </div>
-          <VideoPlayer src={src} alt={src} />
+          <LazyVideo src={src} alt={src} />
         </>
       )}
     </div>
   );
 };
 
-function VideoPlayer({ src, alt }: { src: string; alt: string }) {
+function LazyVideo({ src, alt }: { src: string; alt: string }) {
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // Stop observing after it's in view
+        }
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2">
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src={src}
-        autoPlay
-        muted
-        loop
-        playsInline
-        controls
-        controlsList=""
-        preload="metadata"
-        aria-label={alt}
-      />
+    <div
+      ref={ref}
+      className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-indigo-100 rounded-3xl order-2 md:order-2"
+    >
+      {
+        isInView && (
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src={src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            preload="metadata"
+            aria-label={alt}
+          />
+        )
+        // <img
+        //   src={"/section-videos/placeholder.png"}
+        //   alt={alt}
+        //   className="absolute inset-0 w-full h-full object-cover rounded-3xl"
+        // />
+      }
     </div>
   );
 }

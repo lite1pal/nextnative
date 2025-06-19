@@ -1,5 +1,6 @@
 import CTA from "./CTA";
 import Heading from "./Heading";
+import { AvatarList, RatingSvg } from "./HeroSection2";
 
 function HeroSection() {
   return (
@@ -21,6 +22,47 @@ function HeroSection() {
         </div>
 
         <CTA />
+
+        <div className="flex gap-2">
+          {/* <div className="-space-x-2 flex items-center">
+            <div className="w-12 h-12 overflow-hidden rounded-full bg-gray-200">
+              <Image
+                src="/testimonials/vlad.jpg"
+                alt="Vlad"
+                className="w-full h-full object-cover"
+                width={300}
+                height={300}
+              />
+            </div>
+            <div className="w-12 h-12 overflow-hidden rounded-full bg-gray-200">
+              <Image
+                src="/testimonials/bogdan.jpg"
+                alt="Bogdan"
+                className="w-full h-full object-cover"
+                width={300}
+                height={300}
+              />
+            </div>
+            <div className="w-12 h-12 overflow-hidden rounded-full bg-gray-200">
+              <Image
+                src="/testimonials/denis.jpg"
+                alt="Denis"
+                className="w-full h-full object-cover"
+                width={300}
+                height={300}
+              />
+            </div>
+          </div> */}
+          <div className="relative -top-1.5">
+            <AvatarList />
+          </div>
+          <div className="flex flex-col">
+            <RatingSvg />
+            <div className="font-medium text-gray-500 pl-2">
+              Loved by makers
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

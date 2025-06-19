@@ -5,9 +5,7 @@ import HighlightedSpan from "./HighlightedSpan";
 import StarburstSign from "./StarburstSign";
 import Subheading from "./Subheading";
 import { Playpen_Sans } from "next/font/google";
-import Link from "next/link";
 import { trackEvent } from "@/services/custom-analytics";
-import toast from "react-hot-toast";
 const isWaitlist = false;
 
 export const dodoPaymentLinks = {
@@ -302,7 +300,7 @@ function PricingSection() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                    <span>{feature.text}</span>
+                    <span className="text-start">{feature.text}</span>
                   </div>
                 ))}
               </div>

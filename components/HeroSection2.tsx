@@ -143,7 +143,7 @@ function ToolCard({ tool, bullets, img }: any) {
   );
 }
 
-function RatingSvg() {
+export function RatingSvg() {
   return (
     <svg
       width="109"
@@ -197,9 +197,10 @@ const data = [
     position: "Senior .NET Developer",
     image: "/testimonials/vitaliy.jpeg",
   },
+  // { name: "Syauqy", position: "Developer", image: "/testimonials/syauqy.jpeg" },
 ];
 
-function AvatarList({
+export function AvatarList({
   size = "md",
   className,
 }: {

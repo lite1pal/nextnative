@@ -137,9 +137,9 @@ function Navbar() {
           >
             Hero Templates
           </Link> */}
-          <Button onClick={handleSignIn} variant="secondary" className="w-full">
-            Sign in
-          </Button>
+          <a href="mailto:deniskatarasenko6@gmail.com">
+            <Button variant="secondary">Contact</Button>
+          </a>
         </div>
       )}
     </div>

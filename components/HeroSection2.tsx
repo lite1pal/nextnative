@@ -2,7 +2,6 @@ import Image from "next/image";
 import CTA from "./CTA";
 import HighlightedSpan from "./HighlightedSpan";
 import { cn } from "@/lib/utils";
-import { trackEvent } from "@/services/custom-analytics";
 
 function HeroSection2() {
   return (

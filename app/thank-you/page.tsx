@@ -17,7 +17,7 @@ export default async function Page({
   }
 
   if (status !== "succeeded") {
-    notFound();
+    return <FailedPage />;
   }
 
   const payment = await fetch(

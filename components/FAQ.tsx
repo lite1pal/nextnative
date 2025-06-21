@@ -52,7 +52,7 @@ const faqItems = [
         via email, or via{" "}
         <Link
           className="text-primary underline"
-          href="https://x.com/lite_pal"
+          href="https://x.com/shipwithdenis"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -60,7 +60,7 @@ function Footer() {
             <div className="flex gap-4">
               <a
                 onClick={() => trackEvent("Footer_X_clicked")}
-                href="https://x.com/lite_pal"
+                href="https://x.com/shipwithdenis"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray hover:text-foreground transition-colors"

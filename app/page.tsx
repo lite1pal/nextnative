@@ -76,10 +76,10 @@ export default function Home() {
             by{" "}
             <a
               target="_blank"
-              href="https://x.com/lite_pal"
+              href="https://x.com/shipwithdenis"
               className="text-blue-600"
             >
-              @lite_pal
+              @shipwithdenis
             </a>{" "}
             is such a phenomenal tool!
             <br /> <br /> Wow, just wow!

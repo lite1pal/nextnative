@@ -48,7 +48,7 @@ const pricingFeatures: PricingFeature[] = [
       </div>
     ),
   },
-  { text: "Guides on deploying to the stores (Coming soon)" },
+  { text: "Guides on deploying to the stores" },
   // { text: "GPT prompts for terms & privacy" },
   { text: "3 months email support" },
   { text: "Lifetime updates" },

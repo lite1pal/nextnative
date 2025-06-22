@@ -98,11 +98,15 @@ const faqItems = [
     question: "When do I get the App Store / Play Store guides?",
     answer: (
       <>
-        Within 3-7 days via email.
+        The App Store (iOS) guide is delivered immediately after purchase via
+        email.
         <br />
         <br />
-        They’re being finalized now based on real launch experience to make sure
-        they’re battle-tested and easy to follow.
+        The Play Store (Android) guide is coming in 3–7 days.
+        <br />
+        <br />
+        It’s being finalized based on real launch experience to make sure
+        they’re battle-tested, accurate, and easy to follow.
       </>
     ),
   },

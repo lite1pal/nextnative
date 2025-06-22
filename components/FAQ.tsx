@@ -106,39 +106,7 @@ const faqItems = [
       </>
     ),
   },
-  {
-    question: "What if it's not what I expected?",
-    answer: (
-      <>
-        I don't offer refunds because you get immediate access to all the code.
-        <br />
-        <br />
-        Please review the features and benefits to ensure it meets your needs
-        before purchasing.
-        <br />
-        <br /> But in any case, I'm super responsive to questions and feedback.
-        <br />
-        <br />
-        Just reach out via email{" "}
-        <a
-          className="text-primary underline"
-          href="mailto:deniskatarasenko6@gmail.com"
-        >
-          deniskatarasenko6@gmail.com
-        </a>
-        , or via Twitter/X{" "}
-        <a
-          target="_blank"
-          className="text-primary underline"
-          href="https://x.com/shipwithdenis"
-        >
-          @shipwithdenis
-        </a>{" "}
-        if you need help! <br />
-        <br />I want you to succeed with this.
-      </>
-    ),
-  },
+
   {
     question: "Can I use Next.js server actions?",
     answer: "Nope, but you can use Next.js Serverless API endpoints instead.",
@@ -171,6 +139,19 @@ const faqItems = [
     ),
   },
   {
+    question: "How often is NextNative updated?",
+    answer: (
+      <>
+        I ship a lot and use NextNative for my own apps (like Lasting Habits),
+        so it gets regular update.
+        <br />
+        <br />
+        <span className="text-primary">🔄 Last update: yesterday</span>
+      </>
+    ),
+  },
+
+  {
     question: "Can I see some apps built with NextNative?",
     answer: (
       <>
@@ -187,6 +168,39 @@ const faqItems = [
           App Store
         </Link>
         . It's coming soon to the Play Store.
+      </>
+    ),
+  },
+  {
+    question: "What if it's not what I expected?",
+    answer: (
+      <>
+        I don't offer refunds because you get immediate access to all the code.
+        <br />
+        <br />
+        Please review the features and benefits to ensure it meets your needs
+        before purchasing.
+        <br />
+        <br /> But in any case, I'm super responsive to questions and feedback.
+        <br />
+        <br />
+        Just reach out via email{" "}
+        <a
+          className="text-primary underline"
+          href="mailto:deniskatarasenko6@gmail.com"
+        >
+          deniskatarasenko6@gmail.com
+        </a>
+        , or via Twitter/X{" "}
+        <a
+          target="_blank"
+          className="text-primary underline"
+          href="https://x.com/shipwithdenis"
+        >
+          @shipwithdenis
+        </a>{" "}
+        if you need help! <br />
+        <br />I want you to succeed with this.
       </>
     ),
   },

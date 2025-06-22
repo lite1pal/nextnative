@@ -105,8 +105,8 @@ const faqItems = [
         The Play Store (Android) guide is coming in 3–7 days.
         <br />
         <br />
-        It’s being finalized based on real launch experience to make sure
-        they’re battle-tested, accurate, and easy to follow.
+        It’s being finalized based on real launch experience to make sure it's
+        battle-tested, accurate, and easy to follow.
       </>
     ),
   },

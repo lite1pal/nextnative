@@ -95,6 +95,18 @@ const faqItems = [
     ),
   },
   {
+    question: "When do I get the App Store / Play Store guides?",
+    answer: (
+      <>
+        Within 3-7 days via email.
+        <br />
+        <br />
+        They’re being finalized now based on real launch experience to make sure
+        they’re battle-tested and easy to follow.
+      </>
+    ),
+  },
+  {
     question: "What if it's not what I expected?",
     answer: (
       <>

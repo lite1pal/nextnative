@@ -13,52 +13,117 @@ import Link from "next/link";
 const faqItems = [
   {
     question: "What exactly am I getting here?",
-    answer:
-      "You're getting a complete Next.js boilerplate optimized for cross-platform development with Capacitor. This allows you to build native iOS and Android apps using your web skills. The package includes pre-configured essential features: payment processing, database integration, user authentication, push notifications, and a comprehensive UI component library. I've handled all the complex technical setup so you can focus on building your app's unique features right away.",
+    answer: (
+      <>
+        You're getting a complete Next.js boilerplate optimized for
+        cross-platform development with Capacitor. This allows you to build
+        native iOS and Android apps using your web skills.
+        <br />
+        <br /> The package includes pre-configured essential features: payment
+        processing, database integration, user authentication, push
+        notifications, and production-ready template apps you can start with.
+        <br />
+        <br />
+        I've handled all the complex technical setup so you can focus on
+        building your app's unique features right away.
+      </>
+    ),
   },
 
   {
     question: "Can I use my favorite UI libraries?",
-    answer:
-      "Absolutely! While the starter comes with TailwindCSS pre-configured, you can use any UI library you want - DaisyUI, ShadcnUI, you name it. The architecture is designed to be flexible, so you can make it your own.",
+    answer: (
+      <>
+        Absolutely!
+        <br />
+        <br /> While the starter comes with TailwindCSS pre-configured, you can
+        use any UI library you want - DaisyUI, ShadcnUI, you name it. <br />
+        <br />
+        The architecture is designed to be flexible, so you can make it your
+        own.
+      </>
+    ),
   },
   {
     question: "Is this TypeScript or JavaScript?",
-    answer:
-      "It's all TypeScript! I believe it makes your life easier in the long run. But don't worry if you're new to TypeScript - the code is written in a way that's easy to understand and modify.",
+    answer: (
+      <>
+        It's all TypeScript!
+        <br />
+        <br />I believe it makes your life easier in the long run. But don't
+        worry if you're new to TypeScript - the code is written in a way that's
+        easy to understand and modify.
+        <br />
+        <br />
+        If you prefer JavaScript, you can easily convert it. Just change the
+        file extensions and remove the type annotations. The core logic will
+        remain the same, and you'll still have all the features you need.
+      </>
+    ),
   },
   {
     question: "Do I need to deal with Xcode and Android Studio?",
-    answer:
-      "Yeah, you'll need both to test on real devices. But don't stress - I've got clear guides to help you set everything up. Plus, you can do all of your development right in your browser, emulator, or even a physical device!",
+    answer: (
+      <>
+        Yeah, you'll need both to test on real devices.
+        <br />
+        <br /> But don't stress - I've got{" "}
+        <a href="https://docs.nextnative.dev">clear guides</a> to help you set
+        everything up. <br />
+        <br />
+        Plus, you can do all of your development right in your browser,
+        emulator, or even a physical device!
+      </>
+    ),
   },
   {
     question: "How long until I can publish to the stores?",
-    answer:
-      "The initial store setup and review process can take a few days. Apple and Google need to review your app, and they might have questions. But once you're set up, future updates and publishing are lightning fast! I've included detailed guides to help you through the process.",
+    answer: (
+      <>
+        The initial store setup and review process can take a few days. <br />
+        <br />
+        Apple and Google need to review your app, and they might have questions.
+        <br />
+        <br />
+        But once you're set up, future updates and publishing are lightning
+        fast!
+        <br />
+        <br />
+        I've included detailed guides (coming soon) to help you through the
+        process.
+      </>
+    ),
   },
   {
     question: "What if it's not what I expected?",
     answer: (
       <>
         I don't offer refunds because you get immediate access to all the code.
-        But I'm super responsive to questions and feedback. Just{" "}
-        <Link
-          href="mailto:deniskatarasenko6@gmail.com"
+        <br />
+        <br />
+        Please review the features and benefits to ensure it meets your needs
+        before purchasing.
+        <br />
+        <br /> But in any case, I'm super responsive to questions and feedback.
+        <br />
+        <br />
+        Just reach out via email{" "}
+        <a
           className="text-primary underline"
+          href="mailto:deniskatarasenko6@gmail.com"
         >
-          reach out
-        </Link>{" "}
-        via email, or via{" "}
-        <Link
+          deniskatarasenko6@gmail.com
+        </a>
+        , or via Twitter/X{" "}
+        <a
+          target="_blank"
           className="text-primary underline"
           href="https://x.com/shipwithdenis"
-          target="_blank"
-          rel="noopener noreferrer"
         >
-          X
-        </Link>{" "}
-        if you need help! I want you to succeed with this.
+          @shipwithdenis
+        </a>{" "}
+        if you need help! <br />
+        <br />I want you to succeed with this.
       </>
     ),
   },
@@ -68,20 +133,39 @@ const faqItems = [
   },
   {
     question: "How long does it take to launch an app?",
-    answer:
-      "With NextNative, you can have a basic app running in 10 minutes! The real timeline depends on your app's complexity. Way faster than starting from scratch!",
+    answer: (
+      <>
+        With NextNative, you can have a basic app running in 5 minutes!
+        <br />
+        <br />
+        The real timeline depends on your app's complexity. <br />
+        <br />
+        Way faster than starting from scratch!
+      </>
+    ),
   },
   {
     question: "Do I need to know mobile development?",
-    answer:
-      "Nope! If you know React and Next.js, you're good to go. Capacitor handles all the mobile-specific stuff behind the scenes. You just write React code like you normally would!",
-  },
-  {
-    question: "Can I see some apps built with this?",
     answer: (
       <>
-        Yes, check out the Lasting Habits app built with NextNative. You can
-        find it in the{" "}
+        Nope! If you know React and Next.js, you're good to go.
+        <br />
+        <br />
+        Capacitor handles all the mobile-specific stuff behind the scenes.
+        <br />
+        <br />
+        You just write React code like you normally would!
+      </>
+    ),
+  },
+  {
+    question: "Can I see some apps built with NextNative?",
+    answer: (
+      <>
+        Yes, check out the Lasting Habits app built with NextNative.
+        <br />
+        <br />
+        You can find it on the{" "}
         <Link
           href="https://apps.apple.com/ua/app/lasting-habits/id6736766976"
           target="_blank"
@@ -101,7 +185,7 @@ function FAQ() {
     <div className="flex flex-col gap-10 py-12 md:py-20 mx-auto px-4 md:px-0">
       <Subheading
         heading1="Got a question?"
-        heading2="We got an answer!"
+        heading2="I got an answer!"
         className="items-center md:items-start text-center md:text-left"
       />
 
@@ -115,7 +199,7 @@ function FAQ() {
               key={index}
               value={`item-${index}`}
             >
-              <AccordionTrigger className="text-lg cursor-pointer sm:text-xl md:text-2xl font-[500] hover:no-underline">
+              <AccordionTrigger className="text-lg py-7 cursor-pointer sm:text-xl md:text-2xl font-[500] hover:no-underline">
                 {item.question}
               </AccordionTrigger>
               <AccordionContent className="text-base sm:text-lg text-gray-500 font-medium">

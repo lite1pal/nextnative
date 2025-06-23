@@ -1,11 +1,10 @@
 import HighlightedSpan from "@/components/HighlightedSpan";
 import Logo from "@/components/Logo";
 import { prisma } from "@/prisma/client";
-import { trackEvent } from "@/services/custom-analytics";
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import CTABlogButton from "./CTABlogButton";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -99,15 +98,7 @@ export default async function BlogPostPage({
             <p className="text-sm text-gray-600 mt-2">
               Skip native dev. Use Capacitor + Next.js to go live fast.
             </p>
-            <Link
-              onClick={() => {
-                trackEvent(`BlogPostCTA_${post.slug}_clicked`);
-              }}
-              href="/"
-              className="inline-block mt-4 bg-primary text-white px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition-colors font-medium border border-primary"
-            >
-              Get NextNative
-            </Link>
+            <CTABlogButton post={{ slug: post.slug }} />
             <p className="mt-3 text-xs text-pink-600 font-medium">
               🎁 70% off – 3 left
             </p>

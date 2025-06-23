@@ -1,4 +1,9 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 function BackgroundSVG() {
+  const pathName = usePathname();
   // return <div className="w-full h-full absolute bg-yellow-300"></div>;
   return (
     <div className="w-full h-full absolute grid grid-rows-6 top-0 left-0 z-[-1]">
@@ -9,7 +14,7 @@ function BackgroundSVG() {
         fill="none"
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full row-span-4"
+        className={`${pathName !== "/" ? "row-span-6" : "row-span-4"} w-full h-full`}
       >
         <g clipPath="url(#clip0_158_153)">
           <path
@@ -134,7 +139,9 @@ function BackgroundSVG() {
         </defs>
       </svg>
 
-      <div className="w-full h-full bg-gradient-to-b from-[#eafde5] via-[#eafde5] to-[#eafde5] row-span-2"></div>
+      {pathName === "/" && (
+        <div className="w-full h-full bg-gradient-to-b from-[#eafde5] via-[#eafde5] to-[#eafde5] row-span-2"></div>
+      )}
 
       {/* <div className="bg-black h-full z-10 border-2 border-blue-500 w-full"></div> */}
     </div>

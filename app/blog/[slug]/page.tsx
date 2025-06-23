@@ -1,6 +1,9 @@
+import HighlightedSpan from "@/components/HighlightedSpan";
+import Logo from "@/components/Logo";
 import { prisma } from "@/prisma/client";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -65,23 +68,55 @@ export default async function BlogPostPage({
   });
 
   return (
-    <main className="prose mx-auto px-4 py-8">
-      <h1>{post.title}</h1>
-      <p className="text-gray-500">{formattedDate}</p>
+    <main className="flex flex-col lg:flex-row gap-12 px-4 py-8 max-w-6xl mx-auto">
+      <article className="prose max-w-none flex-1">
+        <h1>{post.title}</h1>
+        <p className="text-gray-500">{formattedDate}</p>
 
-      {post.image && (
-        <Image
-          src={post.image}
-          alt={post.title}
-          width={800}
-          height={400}
-          className="rounded-lg my-6"
-        />
-      )}
+        {post.image && (
+          <Image
+            src={post.image}
+            alt={post.title}
+            width={800}
+            height={400}
+            className="rounded-lg my-6"
+          />
+        )}
 
-      <p className="text-gray-500">{post.description}</p>
+        <p className="text-gray-500">{post.description}</p>
 
-      <article dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+        <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+      </article>
+
+      <aside className="hidden lg:block w-full max-w-sm">
+        <div className="sticky top-20 border rounded-xl p-6 shadow-sm bg-white">
+          <div className="text-center items-center flex flex-col">
+            {/* <Image
+              src="/logo.svg"
+              alt="NextNative logo"
+              width={50}
+              height={50}
+              className="mx-auto mb-3"
+            /> */}
+            <Logo />
+            <h3 className="text-xl mt-7 font-semibold">
+              Launch mobile apps with <HighlightedSpan>Next.js</HighlightedSpan>
+            </h3>
+            <p className="text-sm text-gray-600 mt-2">
+              Skip native dev. Use Capacitor + Next.js to go live fast.
+            </p>
+            <Link
+              href="/"
+              className="inline-block mt-4 bg-primary text-white px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition-colors font-medium border border-primary"
+            >
+              Get NextNative
+            </Link>
+            <p className="mt-3 text-xs text-pink-600 font-medium">
+              🎁 70% off – 3 left
+            </p>
+          </div>
+        </div>
+      </aside>
     </main>
   );
 }

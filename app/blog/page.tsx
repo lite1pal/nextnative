@@ -5,16 +5,19 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "NextNative Blog",
-  description: "Insights, tutorials, and updates from NextNative.",
+  description:
+    "Guides, tutorials, and tips for building mobile apps with Next.js and Capacitor",
   openGraph: {
     title: "NextNative Blog",
-    description: "Insights, tutorials, and updates from NextNative.",
+    description:
+      "Guides, tutorials, and tips for building mobile apps with Next.js and Capacitor",
     url: "https://nextnative.dev/blog",
   },
   twitter: {
     card: "summary",
     title: "NextNative Blog",
-    description: "Insights, tutorials, and updates from NextNative.",
+    description:
+      "Guides, tutorials, and tips for building mobile apps with Next.js and Capacitor",
   },
 };
 
@@ -25,7 +28,11 @@ export default async function BlogListPage() {
 
   return (
     <div className="prose max-w-full mx-auto px-6 py-10">
-      <h1>Blog</h1>
+      <h1>Welcome to NextNative's Blog</h1>
+      <p className="text-gray-600">
+        Guides, tutorials, and tips for building mobile apps with Next.js and
+        Capacitor.
+      </p>
       <ul className="list-none space-y-10 grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map((post) => {
           const formattedDate = new Date(post.createdAt).toLocaleDateString(

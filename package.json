@@ -33,6 +33,7 @@
     "framer-motion": "^12.4.7",
     "hls": "^0.0.1",
     "lucide-react": "^0.476.0",
+    "mongodb": "^6.17.0",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -22,9 +22,19 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 60;
+
 export default async function BlogListPage() {
   const posts = await prisma.blogPost.findMany({
     orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      description: true,
+      image: true,
+      createdAt: true,
+    },
   });
 
   return (

@@ -88,6 +88,7 @@ export default async function BlogPostPage({
             alt={post.title}
             width={800}
             height={400}
+            style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
             className="rounded-lg my-6"
           />
         )}

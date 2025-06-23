@@ -24,9 +24,9 @@ export default async function BlogListPage() {
   });
 
   return (
-    <div className="prose mx-auto px-6 py-10">
+    <div className="prose max-w-full mx-auto px-6 py-10">
       <h1>Blog</h1>
-      <ul className="space-y-10">
+      <ul className="list-none space-y-10 grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map((post) => {
           const formattedDate = new Date(post.createdAt).toLocaleDateString(
             "en-US",

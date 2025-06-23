@@ -29,7 +29,9 @@ export async function POST(req: NextRequest) {
 
   // If not found OR the bearer token does NOT equal the CRON_SECRET
   if (!authToken || authToken != ACCESS_TOKEN) {
-    return unauthorizedResponse();
+    return new Response("Unauthorized 401", {
+      status: 401,
+    });
   }
 
   const body: OutrankWebhookPayload = await req.json();
@@ -59,7 +61,4 @@ export async function POST(req: NextRequest) {
   }
 
   return new Response("Blog posts saved", { status: 200 });
-}
-function unauthorizedResponse() {
-  throw new Error("Function not implemented.");
 }

@@ -1,6 +1,7 @@
 import HighlightedSpan from "@/components/HighlightedSpan";
 import Logo from "@/components/Logo";
 import { prisma } from "@/prisma/client";
+import { trackEvent } from "@/services/custom-analytics";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -91,13 +92,6 @@ export default async function BlogPostPage({
       <aside className="hidden lg:block w-full max-w-sm">
         <div className="sticky top-20 border rounded-xl p-6 shadow-sm bg-white">
           <div className="text-center items-center flex flex-col">
-            {/* <Image
-              src="/logo.svg"
-              alt="NextNative logo"
-              width={50}
-              height={50}
-              className="mx-auto mb-3"
-            /> */}
             <Logo />
             <h3 className="text-xl mt-7 font-semibold">
               Launch mobile apps with <HighlightedSpan>Next.js</HighlightedSpan>
@@ -106,6 +100,9 @@ export default async function BlogPostPage({
               Skip native dev. Use Capacitor + Next.js to go live fast.
             </p>
             <Link
+              onClick={() => {
+                trackEvent(`BlogPostCTA_${post.slug}_clicked`);
+              }}
               href="/"
               className="inline-block mt-4 bg-primary text-white px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition-colors font-medium border border-primary"
             >

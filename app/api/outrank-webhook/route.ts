@@ -13,6 +13,9 @@ export async function POST(req: NextRequest) {
     return unauthorizedResponse();
   }
 
+  const body = await req.json();
+  console.log("Received webhook:", body);
+
   return new Response("Webhook received and processed", { status: 200 });
 }
 function unauthorizedResponse() {

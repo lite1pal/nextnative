@@ -12,7 +12,7 @@ export function Breadcrumbs({ items }: Props) {
           <li key={idx} className="flex items-center">
             <Link
               href={item.href}
-              className="hover:underline text-gray-800 font-medium"
+              className="hover:underline text-gray-800 truncate font-medium"
             >
               {item.label}
             </Link>

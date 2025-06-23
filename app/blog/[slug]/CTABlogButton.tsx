@@ -1,3 +1,5 @@
+"use client";
+
 import { trackEvent } from "@/services/custom-analytics";
 import Link from "next/link";
 

@@ -69,7 +69,7 @@ export default async function BlogPostPage({
 
   return (
     <main className="flex flex-col lg:flex-row gap-12 px-4 py-8 max-w-6xl mx-auto">
-      <article className="prose max-w-none flex-1">
+      <article className="prose max-w-none flex-1 prose-a:text-primary prose-a:no-underline">
         <h1>{post.title}</h1>
         <p className="text-gray-500">{formattedDate}</p>
 

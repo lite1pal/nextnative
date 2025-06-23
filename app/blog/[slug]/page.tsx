@@ -70,7 +70,7 @@ export default async function BlogPostPage({
   });
 
   return (
-    <main className="grid grid-cols-1 overflow-hidden lg:grid-cols-[1fr_400px] w-full gap-10 sm:px-4 py-8 max-w-[962px] xl:max-w-[1260px] mx-auto">
+    <main className="grid grid-cols-1 max-xl:overflow-hidden lg:grid-cols-[1fr_400px] w-full gap-10 sm:px-4 py-8 max-w-[962px] xl:max-w-[1260px] mx-auto">
       <article className="prose sm:prose-p:text-lg sm:prose-p:leading-loose prose-li:marker:text-primary prose-td:border sm:prose-td:px-4 prose-th:border prose-tr:border max-w-3xl flex-1 min-h-screen prose-a:text-primary prose-a:no-underline">
         <Breadcrumbs
           items={[

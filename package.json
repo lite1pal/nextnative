@@ -29,6 +29,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "dodopayments": "^1.30.0",
+    "feed": "^5.1.0",
     "firebase": "^11.9.1",
     "framer-motion": "^12.4.7",
     "hls": "^0.0.1",

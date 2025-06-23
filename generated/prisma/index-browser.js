@@ -120,6 +120,19 @@ exports.Prisma.PurchaseScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.BlogPostScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  description: 'description',
+  contentMarkdown: 'contentMarkdown',
+  contentHtml: 'contentHtml',
+  image: 'image',
+  tags: 'tags',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -132,7 +145,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Purchase: 'Purchase'
+  Purchase: 'Purchase',
+  BlogPost: 'BlogPost'
 };
 
 /**

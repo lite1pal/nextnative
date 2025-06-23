@@ -1,19 +1,26 @@
+// app/sitemap.ts
+import { prisma } from "@/prisma/client";
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 86400; // 1 day in seconds
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await prisma.blogPost.findMany({
+    select: { slug: true, updatedAt: true },
+  });
+
   return [
     {
-      url: "https://nextnative.dev",
+      url: "https://nextnative.dev/",
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
     },
-
-    // {
-    //   url: "https://acme.com/blog",
-    //   lastModified: new Date(),
-    //   changeFrequency: "weekly",
-    //   priority: 0.5,
-    // },
+    {
+      url: "https://nextnative.dev/blog",
+      lastModified: new Date(),
+    },
+    ...posts.map((post) => ({
+      url: `https://nextnative.dev/blog/${post.slug}`,
+      lastModified: post.updatedAt,
+    })),
   ];
 }

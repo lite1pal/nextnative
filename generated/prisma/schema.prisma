@@ -23,3 +23,16 @@ model Purchase {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
+
+model BlogPost {
+  id              String   @id @default(uuid()) @map("_id")
+  slug            String   @unique
+  title           String
+  description     String
+  contentMarkdown String
+  contentHtml     String
+  image           String?
+  tags            String[] // stored as string array (PostgreSQL or MongoDB)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

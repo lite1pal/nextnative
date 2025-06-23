@@ -1,3 +1,4 @@
+import { prisma } from "@/prisma/client";
 import { NextRequest } from "next/server";
 
 const ACCESS_TOKEN = process.env.OUTRANK_ACCESS_TOKEN;
@@ -32,9 +33,32 @@ export async function POST(req: NextRequest) {
   }
 
   const body: OutrankWebhookPayload = await req.json();
-  console.log("Received webhook:", body);
+  for (const article of body.data.articles) {
+    await prisma.blogPost.upsert({
+      where: { slug: article.slug },
+      update: {
+        title: article.title,
+        description: article.meta_description,
+        contentMarkdown: article.content_markdown,
+        contentHtml: article.content_html,
+        image: article.image_url,
+        tags: article.tags,
+        createdAt: new Date(article.created_at),
+      },
+      create: {
+        slug: article.slug,
+        title: article.title,
+        description: article.meta_description,
+        contentMarkdown: article.content_markdown,
+        contentHtml: article.content_html,
+        image: article.image_url,
+        tags: article.tags,
+        createdAt: new Date(article.created_at),
+      },
+    });
+  }
 
-  return new Response("Webhook received and processed", { status: 200 });
+  return new Response("Blog posts saved", { status: 200 });
 }
 function unauthorizedResponse() {
   throw new Error("Function not implemented.");

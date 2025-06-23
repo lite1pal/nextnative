@@ -62,35 +62,6 @@ function HeroSection2() {
         <CTA />
 
         <div className="flex gap-2">
-          {/* <div className="-space-x-2 flex items-center">
-            <div className="w-12 h-12 overflow-hidden rounded-full bg-gray-200">
-              <Image
-                src="/testimonials/vlad.jpg"
-                alt="Vlad"
-                className="w-full h-full object-cover"
-                width={300}
-                height={300}
-              />
-            </div>
-            <div className="w-12 h-12 overflow-hidden rounded-full bg-gray-200">
-              <Image
-                src="/testimonials/bogdan.jpg"
-                alt="Bogdan"
-                className="w-full h-full object-cover"
-                width={300}
-                height={300}
-              />
-            </div>
-            <div className="w-12 h-12 overflow-hidden rounded-full bg-gray-200">
-              <Image
-                src="/testimonials/denis.jpg"
-                alt="Denis"
-                className="w-full h-full object-cover"
-                width={300}
-                height={300}
-              />
-            </div>
-          </div> */}
           <div className="relative -top-1.5">
             <AvatarList />
           </div>
@@ -214,7 +185,7 @@ export function AvatarList({
   const sizes: Record<"sm" | "md" | "lg", string> = {
     lg: "m-3 size-6",
     md: "m-2 size-12",
-    sm: "m-1 size-8",
+    sm: "m-2 size-8",
   };
 
   return (

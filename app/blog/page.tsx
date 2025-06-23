@@ -2,6 +2,7 @@ import { prisma } from "@/prisma/client";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
+import HighlightedSpan from "@/components/HighlightedSpan";
 
 export const metadata: Metadata = {
   title: "NextNative Blog",
@@ -27,12 +28,15 @@ export default async function BlogListPage() {
   });
 
   return (
-    <div className="prose max-w-full mx-auto px-6 py-10">
-      <h1>Welcome to NextNative's Blog</h1>
-      <p className="text-gray-600">
+    <div className="prose prose-h1:text-5xl max-w-full items-center flex flex-col mx-auto px-6 py-10">
+      <h1>
+        Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
+      </h1>
+      <p className="text-gray-600 prose-p:text-xl">
         Guides, tutorials, and tips for building mobile apps with Next.js and
         Capacitor.
       </p>
+
       <ul className="list-none space-y-10 grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map((post) => {
           const formattedDate = new Date(post.createdAt).toLocaleDateString(

@@ -84,6 +84,11 @@
   }
 }
 
+html,
+body {
+  height: 100%;
+}
+
 :root {
   --primary: #06b200;
   --gray: #868c98;

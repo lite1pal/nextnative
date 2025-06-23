@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased bg-background ${outfit.className}`}>
         <Toaster />
-        <main className="flex relative overflow-x-hidden flex-col">
+        <main className="flex relative flex-col">
           <BackgroundSVG />
           <Container>
             <Navbar />

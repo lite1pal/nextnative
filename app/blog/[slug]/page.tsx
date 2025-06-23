@@ -5,6 +5,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import CTABlogButton from "./CTABlogButton";
+import { Breadcrumbs } from "./Breadcrumbs";
+import { AvatarList, RatingSvg } from "@/components/HeroSection2";
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -68,8 +70,15 @@ export default async function BlogPostPage({
   });
 
   return (
-    <main className="flex flex-col lg:flex-row gap-12 px-4 py-8 max-w-6xl mx-auto">
-      <article className="prose max-w-none flex-1 prose-a:text-primary prose-a:no-underline">
+    <main className="grid grid-cols-1 lg:grid-cols-[1fr_400px] w-full gap-10 px-4 py-8 max-w-[962px] xl:max-w-[1260px] mx-auto">
+      <article className="prose max-w-3xl flex-1 min-h-screen prose-a:text-primary prose-a:no-underline">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+            { label: post.title, href: `/blog/${post.slug}` },
+          ]}
+        />
         <h1>{post.title}</h1>
         <p className="text-gray-500">{formattedDate}</p>
 
@@ -88,8 +97,11 @@ export default async function BlogPostPage({
         <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
       </article>
 
-      <aside className="hidden lg:block w-full max-w-sm">
-        <div className="sticky top-20 border rounded-xl p-6 shadow-sm bg-white">
+      <aside className="hidden relative lg:block w-full max-w-md">
+        <div
+          style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
+          className="sticky top-20 rounded-xl p-6 bg-white"
+        >
           <div className="text-center items-center flex flex-col">
             <Logo />
             <h3 className="text-xl mt-7 font-semibold">
@@ -102,6 +114,17 @@ export default async function BlogPostPage({
             <p className="mt-3 text-xs text-pink-600 font-medium">
               🎁 70% off – 3 left
             </p>
+            <div className="flex mt-5 gap-2 items-center">
+              <div className="relative">
+                <AvatarList size="sm" />
+              </div>
+              <div className="flex flex-col items-start">
+                <RatingSvg />
+                <div className="font-medium text-xs text-gray-500 pl-2">
+                  Loved by makers
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </aside>

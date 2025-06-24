@@ -34,10 +34,6 @@ const ExpenseApp = dynamic(() => import("@/components/expenses/expense-app"), {
 });
 
 export default function Home() {
-  useEffect(() => {
-    trackEvent("Home_page_loaded");
-  }, []);
-
   return (
     <>
       <HeroSection2 />

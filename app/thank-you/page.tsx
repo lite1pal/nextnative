@@ -46,7 +46,12 @@ export default async function Page({
     },
   });
 
-  return <ThankYouPage isInvited={purchase?.isInvited ?? false} />;
+  return (
+    <ThankYouPage
+      paymentData={paymentData}
+      isInvited={purchase?.isInvited ?? false}
+    />
+  );
 }
 
 function FailedPage() {

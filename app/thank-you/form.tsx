@@ -1,17 +1,80 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircleIcon, XCircleIcon } from "lucide-react";
 
-export default function ThankYouPage({ isInvited }: { isInvited: boolean }) {
+declare global {
+  interface Window {
+    fbq: (...args: any[]) => void;
+  }
+}
+
+const nextNativeAllInId = "pdt_oJrNhvmTecy5gmoEulOBk";
+
+// Utility to hash email with SHA-256 (used for advanced matching)
+async function hashEmail(email: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(email.trim().toLowerCase());
+  const hash = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hash))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+export default function ThankYouPage({
+  paymentData,
+  isInvited,
+}: {
+  paymentData: any;
+  isInvited: boolean;
+}) {
   const searchParams = useSearchParams();
   const paymentId = searchParams.get("payment_id");
   const [githubUsername, setGithubUsername] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const eventKey = `fb-purchase-${paymentId}`;
+    if (!paymentId || typeof window === "undefined") return;
+
+    const alreadyTracked = sessionStorage.getItem(eventKey);
+    if (alreadyTracked) return;
+
+    const track = async () => {
+      if (!window.fbq || !paymentData?.settlement_amount) return;
+
+      const amount = paymentData.settlement_amount / 100;
+
+      const product = paymentData.product_cart?.[0];
+      const productId = product?.product_id
+        ? product.product_id === nextNativeAllInId
+          ? "nextnative_all_in"
+          : "nextnative_starter"
+        : "unknown_product";
+      const quantity = product?.quantity ?? 1;
+
+      const hashedEmail = paymentData?.customer?.email
+        ? await hashEmail(paymentData.customer.email)
+        : undefined;
+
+      window.fbq("track", "Purchase", {
+        value: amount,
+        currency: "USD",
+        content_type: "product",
+        contents: [{ id: productId, quantity }],
+        ...(hashedEmail ? { em: hashedEmail } : {}),
+        eventID: paymentId,
+      });
+
+      sessionStorage.setItem(eventKey, "true");
+    };
+
+    track();
+  }, [paymentData, paymentId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

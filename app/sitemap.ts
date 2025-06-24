@@ -2,7 +2,7 @@
 import { prisma } from "@/prisma/client";
 import type { MetadataRoute } from "next";
 
-export const revalidate = 86400; // 1 day in seconds
+export const revalidate = 60; // 1 day in seconds
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await prisma.blogPost.findMany({
@@ -18,14 +18,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://nextnative.dev/blog",
       lastModified: new Date(),
     },
-    {
-      url: "https://docs.nextnative.dev",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://docs.nextnative.dev/tutorials/ship-in-5-minutes",
-      lastModified: new Date(),
-    },
+    // {
+    //   url: "https://docs.nextnative.dev",
+    //   lastModified: new Date(),
+    // },
+    // {
+    //   url: "https://docs.nextnative.dev/tutorials/ship-in-5-minutes",
+    //   lastModified: new Date(),
+    // },
 
     ...posts.map((post) => ({
       url: `https://nextnative.dev/blog/${post.slug}`,

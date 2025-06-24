@@ -103,7 +103,9 @@ export default function ThankYouPage({
   };
 
   if (isInvited) {
-    return <InvitedMessage />;
+    return (
+      <InvitedMessage productId={paymentData?.product_cart?.[0]?.product_id} />
+    );
   }
 
   return (
@@ -236,33 +238,72 @@ function SuccessMessage() {
 
 function GoToDocsButton() {
   return (
-    <div className="text-center">
-      <p>To get started building your app fast, please check the</p>
-      <a href="https://docs.nextnative.dev" className="text-blue-600 underline">
-        documentation
-      </a>
+    <div className="sm:text-center">
+      <p>
+        To start building your dream app, please check the{" "}
+        <a
+          href="https://docs.nextnative.dev"
+          className="text-blue-600 underline"
+        >
+          documentation
+        </a>
+      </p>
     </div>
   );
 }
 
-function InvitedMessage() {
+function InvitedMessage({ productId }: { productId?: string }) {
+  const isAllIn = productId === nextNativeAllInId;
+
   return (
-    <div className="h-[500px] flex-col mx-auto flex items-center justify-center p-4">
-      <h1 className="text-3xl font-bold text-gray-800 mb-4">
-        Thank you for your purchase!
-      </h1>
-      <p className="text-gray-600 mb-6">
-        You have been invited to the private repository.
+    <motion.div
+      key="success"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="text-center"
+    >
+      <CheckCircleIcon className="w-12 h-12 text-green-500 mx-auto mb-4" />
+      <p className="text-2xl text-gray-800 font-medium">
+        You're in! Your GitHub invite is on the way 🚀
       </p>
-      <GoToDocsButton />
+      <p className="text-gray-600 mt-2 text-xl">
+        Welcome to the fast lane of mobile development.
+      </p>
+
+      {isAllIn && (
+        <div className="mt-6 space-y-2 text-left text-gray-700 max-w-md mx-auto">
+          <p>
+            📱 Here's your{" "}
+            <a
+              href="https://docs.google.com/document/d/15AXCShQ8IuWN9tsQkeprxNbTGz6_HkdAiVCv7CrI3rE/edit?tab=t.0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+              iOS Publishing Guide
+            </a>
+            . Everything you need to get live on the App Store.
+          </p>
+          <p>
+            🤖 The Android version is almost ready. I'll email it to you very
+            soon!
+          </p>
+        </div>
+      )}
+
+      <div className="mt-6">
+        <GoToDocsButton />
+      </div>
+
       <GoToRepositoryButton />
-    </div>
+    </motion.div>
   );
 }
 
 function GoToRepositoryButton() {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 items-center">
       <a
         href="https://github.com/lite1pal/nextnative_boilerplate"
         className="mt-4 inline-block text-blue-600 hover:text-blue-800 underline"
@@ -273,7 +314,7 @@ function GoToRepositoryButton() {
           Go to the NextNative repository
         </button>
       </a>
-      <p className="text-gray-600 text-xs max-w-md text-center">
+      <p className="text-gray-600 text-xs max-w-md sm:text-center">
         If the page is not found, make sure that you're logged in Github account
         with the same username that you gave in the form.
       </p>

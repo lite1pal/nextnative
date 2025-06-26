@@ -1,5 +1,4 @@
 import HighlightedSpan from "@/components/HighlightedSpan";
-import dynamic from "next/dynamic";
 import Apps from "./apps";
 
 export const metadata = {

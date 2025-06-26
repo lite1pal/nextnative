@@ -1,9 +1,13 @@
 "use client";
 
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
-import NoteList from "@/components/note-taking/note-list";
 import { Wrench } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+
+const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
+  ssr: false,
+});
 
 const apps = [
   {

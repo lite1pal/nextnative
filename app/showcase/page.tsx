@@ -1,6 +1,9 @@
+import { NoteShowcase } from "@/components/component-showcase/components/note-taking/note-showcase";
 import HighlightedSpan from "@/components/HighlightedSpan";
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
+import NoteList from "@/components/note-taking/note-list";
 import { Wrench } from "lucide-react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 
 const apps = [
@@ -20,6 +23,17 @@ const apps = [
     name: "Pomodoro Timer",
     description: "A focused pomodoro timer app with work and break sessions.",
     image: "/showcase/pomodoro.png", // Add to your /public folder
+    storeLinks: {
+      appStore: "",
+      googlePlay: "",
+    },
+  },
+  {
+    logo: "/showcase/logo-thinknest.png",
+    name: "ThinkNestAI",
+    description: "A note-taking app powered by AI",
+    // image: "/showcase/pomodoro.png", // Add to your /public folder
+    realDemo: NoteList,
     storeLinks: {
       appStore: "",
       googlePlay: "",
@@ -55,11 +69,10 @@ export default function ShowcasePage() {
             Mobile apps built with <HighlightedSpan>NextNative</HighlightedSpan>
           </h1>
           <p className="text-gray text-lg">
-            Real mobile apps published to the App Store and Google Play — all
-            built using the NextNative starter.
+            Real mobile apps published to the App Store and Google Play.
           </p>
         </div>
-        <div className="grid bg-white rounded-xl xl:grid-cols-2 py-10">
+        <div className="grid bg-white gap-10 rounded-xl xl:grid-cols-2 py-10">
           {apps.map((app) => (
             <article
               key={app.name}
@@ -132,15 +145,19 @@ export default function ShowcasePage() {
 
               <div className="max-sm:left-12 max-sm:max-h-[770px] relative">
                 <IPhoneMockup isDark={false}>
-                  <div>
-                    <Image
-                      src={app.image}
-                      alt={app.name}
-                      width={400}
-                      height={800}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  </div>
+                  {app.realDemo ? (
+                    <app.realDemo />
+                  ) : (
+                    <div>
+                      <Image
+                        src={app.image}
+                        alt={app.name}
+                        width={400}
+                        height={800}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
                 </IPhoneMockup>
               </div>
             </article>

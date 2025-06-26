@@ -167,11 +167,18 @@ const faqItems = [
           href="https://apps.apple.com/ua/app/lasting-habits/id6736766976"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
+          className="text-primary hover:underline"
         >
           App Store
         </Link>
         . It's coming soon to the Play Store.
+        <br />
+        <br />
+        Visit{" "}
+        <Link className="text-primary" href="/showcase">
+          Showcase
+        </Link>{" "}
+        to see all apps built, or in progress, with NextNative.
       </>
     ),
   },

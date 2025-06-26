@@ -60,26 +60,33 @@ function Navbar() {
 
       {/* Desktop navigation */}
       <div className="hidden md:flex items-center gap-8 lg:gap-14">
-        <a
+        <Link
+          href="/showcase"
+          onClick={() => {
+            trackEvent("Navbar_Showcase_clicked");
+          }}
+          className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
+        >
+          Showcase
+        </Link>
+        <Link
+          href="/#pricing"
           onClick={() => {
             trackEvent("Navbar_Pricing_clicked");
-            const pricingSection = document.getElementById("pricing");
-            if (pricingSection) {
-              pricingSection.scrollIntoView({ behavior: "smooth" });
-            } else {
-              router.push("/#pricing");
-            }
           }}
           className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
         >
           Pricing
-        </a>
-        {/* <Link
-          href="/docs"
-          className="text-base md:text-lg hover:text-primary transition-colors"
+        </Link>
+        <Link
+          href="/blog"
+          onClick={() => {
+            trackEvent("Navbar_Blog_clicked");
+          }}
+          className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
         >
-          Docs
-        </Link> */}
+          Blog
+        </Link>
         <Link
           onClick={() => {
             trackEvent("Navbar_Docs_clicked");
@@ -89,12 +96,6 @@ function Navbar() {
         >
           Docs
         </Link>
-        {/* <Link
-          href="/templates/heroes"
-          className="text-base md:text-lg hover:text-primary transition-colors"
-        >
-          Hero Templates
-        </Link> */}
         <a href="mailto:deniskatarasenko6@gmail.com">
           <Button variant="secondary">Contact</Button>
         </a>
@@ -103,6 +104,16 @@ function Navbar() {
       {/* Mobile navigation */}
       {isMenuOpen && (
         <div className="absolute top-16 left-0 right-0 bg-white shadow-lg p-4 flex flex-col gap-4 md:hidden z-50">
+          <Link
+            href="/showcase"
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackEvent("Navbar_Showcase_clicked");
+            }}
+            className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
+          >
+            Showcase
+          </Link>
           <Link
             onClick={() => {
               setIsMenuOpen(false);
@@ -113,13 +124,16 @@ function Navbar() {
           >
             Pricing
           </Link>
-          {/* <Link
-            onClick={() => setIsMenuOpen(false)}
-            href="/docs"
-            className="text-base hover:text-primary transition-colors"
+          <Link
+            href="/blog"
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackEvent("Navbar_Blog_clicked");
+            }}
+            className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
           >
-            Docs
-          </Link> */}
+            Blog
+          </Link>
           <Link
             onClick={() => {
               setIsMenuOpen(false);
@@ -130,13 +144,6 @@ function Navbar() {
           >
             Docs
           </Link>
-          {/* <Link
-            onClick={() => setIsMenuOpen(false)}
-            href="/templates/heroes"
-            className="text-base hover:text-primary transition-colors"
-          >
-            Hero Templates
-          </Link> */}
           <a href="mailto:deniskatarasenko6@gmail.com">
             <Button variant="secondary">Contact</Button>
           </a>

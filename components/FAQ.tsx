@@ -212,12 +212,8 @@ const faqItems = [
 
 function FAQ() {
   return (
-    <div className="flex flex-col gap-10 py-12 md:py-20 mx-auto px-4 md:px-0">
-      <Subheading
-        heading1="Got a question?"
-        heading2="I got an answer!"
-        className="items-center md:items-start text-center md:text-left"
-      />
+    <div className="flex flex-col gap-10 py-12 md:py-20 mx-auto">
+      <Subheading heading1="Got a question?" heading2="I got an answer!" />
 
       <div className="ml-auto xl:max-w-1/2 w-full">
         <Accordion type="single" collapsible>
@@ -229,7 +225,7 @@ function FAQ() {
               key={index}
               value={`item-${index}`}
             >
-              <AccordionTrigger className="text-lg py-7 cursor-pointer sm:text-xl md:text-2xl font-[500] hover:no-underline">
+              <AccordionTrigger className="text-lg text-start md:py-7 cursor-pointer sm:text-xl md:text-2xl font-[500] hover:no-underline">
                 {item.question}
               </AccordionTrigger>
               <AccordionContent className="text-base sm:text-lg text-gray-500 font-medium">

@@ -15,7 +15,7 @@ function Subheading({
   return (
     <div className={cn("flex flex-col gap-6 md:gap-10", className)}>
       {withHorizontalLine && <HorizontalLine className="w-[94px]" />}
-      <h2 className="text-[44px] md:text-[54px] leading-[60px] md:leading-[71px] font-[500]">
+      <h2 className="text-[40px] md:text-[54px] leading-[52px] md:leading-[71px] font-[500]">
         {heading1} <br />
         <HighlightedSpan>{heading2}</HighlightedSpan>
       </h2>

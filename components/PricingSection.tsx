@@ -110,10 +110,10 @@ function PricingSection() {
       <Subheading
         heading1="One-time payment,"
         heading2="lifetime value"
-        className="items-center"
+        className="text-start md:text-center md:items-center"
       />
 
-      <div className="flex flex-col md:flex-row w-full gap-6 mt-6 md:mt-10 px-4">
+      <div className="flex flex-col md:flex-row w-full gap-6 mt-6 md:mt-10 md:px-4">
         {/* Starter Plan Card */}
         <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
           <span
@@ -170,7 +170,7 @@ function PricingSection() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                    <span>{feature.text}</span>
+                    <span className="text-start">{feature.text}</span>
                   </div>
                 ))}
               </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import NoteList from "./note-list";
 
 export default function IPhoneMockup({
   children,

@@ -46,11 +46,14 @@ function DemoVideo() {
   };
 
   return (
-    <div ref={videoRef} className="flex flex-col mt-20 sm:mb-20 sm:px-20">
+    <div
+      ref={videoRef}
+      className="flex flex-col mt-20 sm:mb-20 sm:px-20 md:py-20"
+    >
       <div className="flex flex-col md:flex-row items-center justify-between gap-3 mb-2">
         <div></div>
         <span
-          className={`${playpenSans.className} text-sm sm:text-base font-[500] text-gray`}
+          className={`${playpenSans.className} text-sm sm:text-xl font-[500] text-gray`}
         >
           Just 3 minutes to see how it works ⚡
         </span>
@@ -94,13 +97,13 @@ function DemoVideo() {
           )}
         </div>
       </StarburstSign>
-
+      {/* 
       <p className="text-gray text-center mt-4 max-w-2xl mx-auto">
         Hey web developers! 👋 Tired of learning new frameworks just to build
         mobile apps? NextNative lets you use your favorite web tools (Next.js,
         React, Tailwind) to create stunning iOS and Android apps in a fraction
         of the time. No native code required!
-      </p>
+      </p> */}
     </div>
   );
 }

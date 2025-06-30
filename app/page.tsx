@@ -17,6 +17,7 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import Subheading from "@/components/Subheading";
 import { trackEvent } from "@/services/custom-analytics";
 import HeroSection2 from "@/components/HeroSection2";
+import { useWeakDevice } from "@/hooks/use-weak-device";
 
 const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
   ssr: false,
@@ -34,6 +35,8 @@ const ExpenseApp = dynamic(() => import("@/components/expenses/expense-app"), {
 });
 
 export default function Home() {
+  const isWeakDevice = useWeakDevice();
+  console.log("isWeakDevice", isWeakDevice);
   return (
     <>
       <HeroSection2 />
@@ -84,35 +87,38 @@ export default function Home() {
       />
       <DemoVideo />
 
-      <div
-        id="interactive-demo"
-        className="flex justify-center  max-md:scale-[0.6] h-[500px] max-md:left-10 relative sm:h-full md:py-16 space-x-[-200px]"
-      >
-        <div className="rotate-[-30deg]">
-          <IPhoneMockup isDark={false}>
-            <div onClick={() => trackEvent("NoteList_clicked")}>
-              <NoteList />
-            </div>
-          </IPhoneMockup>
+      {!isWeakDevice && (
+        <div
+          id="interactive-demo"
+          className="flex justify-center  max-md:scale-[0.6] h-[500px] max-md:left-10 relative sm:h-full md:py-16 space-x-[-200px]"
+        >
+          <div className="rotate-[-30deg]">
+            <IPhoneMockup isDark={false}>
+              <div onClick={() => trackEvent("NoteList_clicked")}>
+                <NoteList />
+              </div>
+            </IPhoneMockup>
+          </div>
+          <div className="rotate-[0deg] z-20">
+            <IPhoneMockup isDark={true}>
+              <div
+                className="dark"
+                onClick={() => trackEvent("PomodoroApp_clicked")}
+              >
+                <PomodoroApp />
+              </div>
+            </IPhoneMockup>
+          </div>
+          <div className="rotate-[30deg]">
+            <IPhoneMockup isDark={false}>
+              <div onClick={() => trackEvent("ExpenseApp_clicked")}>
+                <ExpenseApp />
+              </div>
+            </IPhoneMockup>
+          </div>
         </div>
-        <div className="rotate-[0deg] z-20">
-          <IPhoneMockup isDark={true}>
-            <div
-              className="dark"
-              onClick={() => trackEvent("PomodoroApp_clicked")}
-            >
-              <PomodoroApp />
-            </div>
-          </IPhoneMockup>
-        </div>
-        <div className="rotate-[30deg]">
-          <IPhoneMockup isDark={false}>
-            <div onClick={() => trackEvent("ExpenseApp_clicked")}>
-              <ExpenseApp />
-            </div>
-          </IPhoneMockup>
-        </div>
-      </div>
+      )}
+
       <SocialProof />
       <Testimonial
         imgSrc={

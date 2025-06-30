@@ -38,7 +38,7 @@ export default async function BlogListPage() {
   });
 
   return (
-    <div className="prose prose-h1:text-5xl max-w-full items-center flex flex-col mx-auto px-6 py-10">
+    <div className="prose prose-h1:text-5xl max-w-full items-center flex flex-col mx-auto py-10">
       <h1>
         Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
       </h1>
@@ -47,7 +47,7 @@ export default async function BlogListPage() {
         Capacitor.
       </p>
 
-      <ul className="list-none space-y-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <ul className="list-none p-0 space-y-10 grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map((post) => {
           const formattedDate = new Date(post.createdAt).toLocaleDateString(
             "en-US",

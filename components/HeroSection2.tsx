@@ -172,6 +172,11 @@ const data = [
     position: "Senior .NET Developer",
     image: "/testimonials/vitaliy.jpeg",
   },
+  {
+    name: "Martin",
+    position: "Entrepreneur",
+    image: "/testimonials/martin.png",
+  },
   // { name: "Syauqy", position: "Developer", image: "/testimonials/syauqy.jpeg" },
 ];
 

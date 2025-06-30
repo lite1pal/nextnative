@@ -46,7 +46,7 @@ const apps = [
 
 function Apps() {
   return (
-    <div className="grid bg-white gap-10 rounded-xl xl:grid-cols-2 py-10">
+    <div className="xl:grid bg-white gap-10 rounded-xl xl:grid-cols-2 py-10">
       {apps.map((app) => (
         <article key={app.name} className="flex flex-col items-center gap-4">
           {/* Heading + description */}

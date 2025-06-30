@@ -12,31 +12,29 @@ import Testimonial from "@/components/Testimonial";
 import SetupByDefault from "@/components/SetupByDefault";
 import Image from "next/image";
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
-import dynamic from "next/dynamic";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Subheading from "@/components/Subheading";
-import { trackEvent } from "@/services/custom-analytics";
 import HeroSection2 from "@/components/HeroSection2";
 import { useWeakDevice } from "@/hooks/use-weak-device";
+import { trackEvent } from "@/services/custom-analytics";
+import Link from "next/link";
 
-const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
-  ssr: false,
-});
+// const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
+//   ssr: false,
+// });
 
-const PomodoroApp = dynamic(
-  () => import("@/components/pomodoro/pomodoro-app"),
-  {
-    ssr: false,
-  }
-);
+// const PomodoroApp = dynamic(
+//   () => import("@/components/pomodoro/pomodoro-app"),
+//   {
+//     ssr: false,
+//   }
+// );
 
-const ExpenseApp = dynamic(() => import("@/components/expenses/expense-app"), {
-  ssr: false,
-});
+// const ExpenseApp = dynamic(() => import("@/components/expenses/expense-app"), {
+//   ssr: false,
+// });
 
 export default function Home() {
-  const isWeakDevice = useWeakDevice();
-  console.log("isWeakDevice", isWeakDevice);
   return (
     <>
       <HeroSection2 />
@@ -87,37 +85,66 @@ export default function Home() {
       />
       <DemoVideo />
 
-      {!isWeakDevice && (
-        <div
-          id="interactive-demo"
-          className="flex justify-center  max-md:scale-[0.6] h-[500px] max-md:left-10 relative sm:h-full md:py-16 space-x-[-200px]"
-        >
-          <div className="rotate-[-30deg]">
-            <IPhoneMockup isDark={false}>
-              <div onClick={() => trackEvent("NoteList_clicked")}>
+      <Link
+        href="/showcase"
+        onClick={() => {
+          trackEvent("Demo_Apps_Showcase_clicked");
+        }}
+        id="interactive-demo"
+        className="flex justify-center max-md:scale-[0.6] h-[500px] max-md:left-10 relative sm:h-full md:py-16 space-x-[-200px]"
+      >
+        <div className="rotate-[-30deg]">
+          <IPhoneMockup isDark={false}>
+            {/* <div onClick={() => trackEvent("NoteList_clicked")}>
                 <NoteList />
-              </div>
-            </IPhoneMockup>
-          </div>
-          <div className="rotate-[0deg] z-20">
-            <IPhoneMockup isDark={true}>
-              <div
+              </div> */}
+            <div>
+              <Image
+                src={"/showcase/lastinghabits.png"}
+                alt={"Note-taking app screenshot"}
+                width={400}
+                height={800}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </IPhoneMockup>
+        </div>
+        <div className="rotate-[0deg] z-20">
+          <IPhoneMockup isDark={true}>
+            {/* <div
                 className="dark"
                 onClick={() => trackEvent("PomodoroApp_clicked")}
               >
                 <PomodoroApp />
-              </div>
-            </IPhoneMockup>
-          </div>
-          <div className="rotate-[30deg]">
-            <IPhoneMockup isDark={false}>
-              <div onClick={() => trackEvent("ExpenseApp_clicked")}>
-                <ExpenseApp />
-              </div>
-            </IPhoneMockup>
-          </div>
+              </div> */}
+            <div>
+              <Image
+                src={"/showcase/pomodoro-dark.png"}
+                alt={"Note-taking app screenshot"}
+                width={400}
+                height={800}
+                className="absolute pb-10 inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </IPhoneMockup>
         </div>
-      )}
+        <div className="rotate-[30deg]">
+          <IPhoneMockup isDark={false}>
+            {/* <div onClick={() => trackEvent("ExpenseApp_clicked")}>
+                <ExpenseApp />
+              </div> */}
+            <div>
+              <Image
+                src={"/showcase/expenses.png"}
+                alt={"Note-taking app screenshot"}
+                width={400}
+                height={800}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </IPhoneMockup>
+        </div>
+      </Link>
 
       <SocialProof />
       <Testimonial

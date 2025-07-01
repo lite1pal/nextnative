@@ -33,7 +33,7 @@ const tools: Tool[] = [
     src: "/tools/firebase.svg",
     alt: "Firebase Auth",
     isRectangular: false,
-    description: "Social login and push notifications with zero setup",
+    description: "Google/Apple logins and push notifications with zero setup",
   },
   {
     src: "/tools/revenuecat.svg",

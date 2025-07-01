@@ -85,6 +85,18 @@ export default function Home() {
       />
       <DemoVideo />
 
+      <div className="text-center mb-16">
+        <Subheading
+          heading1="See what"
+          heading2="you can build"
+          className="text-start md:text-center md:items-center"
+        />
+
+        <p className="mt-6 text-lg max-w-2xl mx-auto">
+          Real apps. Real features. Fully cross-platform.
+        </p>
+      </div>
+
       <Link
         href="/showcase"
         onClick={() => {

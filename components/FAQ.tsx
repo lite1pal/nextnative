@@ -29,6 +29,46 @@ const faqItems = [
       </>
     ),
   },
+  {
+    question: "What is Capacitor?",
+    answer: (
+      <>
+        Capacitor is an open-source native runtime developed by the Ionic team.
+        <br />
+        <br />
+        It lets you run modern web apps (like those built with Next.js or React)
+        as native apps on iOS and Android, with full access to native features
+        like the camera, GPS, offline storage, haptics, and more.
+        <br />
+        <br />
+        Unlike React Native, you write standard web code (HTML, CSS, and
+        JavaScript), and Capacitor wraps it in a native shell that can access
+        platform APIs.
+      </>
+    ),
+  },
+  {
+    question: "Capacitor vs React Native?",
+    answer: (
+      <>
+        Great question!
+        <br />
+        <br />
+        React Native uses a custom renderer and its own component system, so
+        you're not really writing web code, you're learning a parallel mobile
+        ecosystem.
+        <br />
+        <br />
+        Capacitor, on the other hand, lets you use your existing web stack
+        (Next.js, Tailwind, etc.) and runs it in a WebView, giving you direct
+        access to native APIs via plugins.
+        <br />
+        <br />
+        TL;DR: If you're a web dev who wants to ship on mobile fast, Capacitor
+        is simpler and more familiar.
+      </>
+    ),
+  },
 
   {
     question: "Can I use my favorite UI libraries?",

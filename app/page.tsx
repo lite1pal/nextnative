@@ -15,7 +15,6 @@ import IPhoneMockup from "@/components/note-taking/iphone-mockup";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Subheading from "@/components/Subheading";
 import HeroSection2 from "@/components/HeroSection2";
-import { useWeakDevice } from "@/hooks/use-weak-device";
 import { trackEvent } from "@/services/custom-analytics";
 import Link from "next/link";
 

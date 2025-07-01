@@ -70,6 +70,15 @@ function Navbar() {
           Showcase
         </Link>
         <Link
+          onClick={() => {
+            trackEvent("Navbar_Docs_clicked");
+          }}
+          href="https://docs.nextnative.dev"
+          className="text-base md:text-lg hover:text-primary transition-colors"
+        >
+          Docs
+        </Link>
+        <Link
           href="/#pricing"
           onClick={() => {
             trackEvent("Navbar_Pricing_clicked");
@@ -87,15 +96,7 @@ function Navbar() {
         >
           Blog
         </Link>
-        <Link
-          onClick={() => {
-            trackEvent("Navbar_Docs_clicked");
-          }}
-          href="https://docs.nextnative.dev"
-          className="text-base md:text-lg hover:text-primary transition-colors"
-        >
-          Docs
-        </Link>
+
         <a href="mailto:deniskatarasenko6@gmail.com">
           <Button variant="secondary">Contact</Button>
         </a>
@@ -117,6 +118,16 @@ function Navbar() {
           <Link
             onClick={() => {
               setIsMenuOpen(false);
+              trackEvent("Navbar_Docs_clicked");
+            }}
+            href="https://docs.nextnative.dev"
+            className="text-base hover:text-primary transition-colors"
+          >
+            Docs
+          </Link>
+          <Link
+            onClick={() => {
+              setIsMenuOpen(false);
               trackEvent("Navbar_pricing clicked");
             }}
             href="/#pricing"
@@ -134,16 +145,7 @@ function Navbar() {
           >
             Blog
           </Link>
-          <Link
-            onClick={() => {
-              setIsMenuOpen(false);
-              trackEvent("Navbar_Docs_clicked");
-            }}
-            href="https://docs.nextnative.dev"
-            className="text-base hover:text-primary transition-colors"
-          >
-            Docs
-          </Link>
+
           <a href="mailto:deniskatarasenko6@gmail.com">
             <Button variant="secondary">Contact</Button>
           </a>

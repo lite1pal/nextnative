@@ -34,20 +34,20 @@ const pricingFeatures: PricingFeature[] = [
   { text: "Push notifications" },
   { text: "In-App purchases" },
   { text: "Database" },
-  {
-    text: (
-      <div
-        onClick={() => {
-          trackEvent("PricingSection_Beautiful_UI_components_clicked");
-        }}
-        // href="/components"
-        className="text-primary group transition-colors relative"
-      >
-        2 production-ready apps included
-        <span className="h-0.5 group-hover:w-full w-0 transition-all duration-300 absolute bottom-0 left-0 bg-primary rounded-full"></span>
-      </div>
-    ),
-  },
+  // {
+  //   text: (
+  //     <div
+  //       onClick={() => {
+  //         trackEvent("PricingSection_Beautiful_UI_components_clicked");
+  //       }}
+  //       // href="/components"
+  //       className="text-primary group transition-colors relative"
+  //     >
+  //       2 production-ready apps included
+  //       <span className="h-0.5 group-hover:w-full w-0 transition-all duration-300 absolute bottom-0 left-0 bg-primary rounded-full"></span>
+  //     </div>
+  //   ),
+  // },
   { text: "Guides on deploying to the stores" },
   // { text: "GPT prompts for terms & privacy" },
   { text: "3 months email support" },

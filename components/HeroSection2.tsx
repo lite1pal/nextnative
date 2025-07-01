@@ -41,7 +41,7 @@ function HeroSection2() {
       </div>
 
       <div className="flex flex-col max-w-[946.5px] w-full xl:items-center xl:text-center gap-8 md:gap-[45px]">
-        <div className="flex flex-col items-center xl:text-center gap-6 md:gap-[36px]">
+        <div className="flex flex-col xl:items-center xl:text-center gap-6 md:gap-[36px]">
           <div className="flex flex-col items-center">
             {/* <div className="text-sm sm:text-base flex gap-2 md:text-lg text-gray">
               <span className="text-foreground">👋</span>
@@ -198,10 +198,10 @@ export function AvatarList({
       {data.map((item) => (
         <div
           key={item.name}
-          className="group relative -space-x-4 z-0 -ml-4 flex scale-100 items-center transition-all duration-200 ease-in-out hover:z-10 hover:scale-110"
+          className="group relative -space-x-4 z-0 -ml-4 flex scale-100 items-center transition-all duration-200 ease-in-out xl:hover:z-10 xl:hover:scale-110"
         >
           <div className="relative overflow-hidden rounded-full">
-            <div className="bg-size pointer-events-none absolute h-full w-full animate-bg-position from-violet-500 from-30% via-cyan-400 via-50% to-pink-500 to-80% bg-[length:300%_auto] opacity-15 group-hover:bg-gradient-to-r" />
+            <div className="bg-size pointer-events-none absolute h-full w-full animate-bg-position from-violet-500 from-30% via-cyan-400 via-50% to-pink-500 to-80% bg-[length:300%_auto] opacity-15 xl:group-hover:bg-gradient-to-r" />
             <div className="z-1 blur-lg" />
             <Image
               src={item.image}
@@ -214,7 +214,7 @@ export function AvatarList({
               )}
             />
           </div>
-          <div className="absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 transform whitespace-nowrap rounded bg-slate-900 p-2 text-white opacity-0 transition-all duration-300 ease-in-out group-hover:-translate-y-2 group-hover:opacity-100 dark:bg-slate-100 dark:text-slate-900">
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 transform whitespace-nowrap rounded bg-slate-900 p-2 text-white opacity-0 transition-all duration-300 ease-in-out xl:group-hover:-translate-y-2 xl:group-hover:opacity-100 dark:bg-slate-100 dark:text-slate-900">
             <div className="text-sm font-semibold">{item.name}</div>
             <div className="text-sm">{item.position}</div>
           </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import HeroSection from "@/components/HeroSection";
 import SocialProof from "@/components/SocialProof";
 import PricingSection from "@/components/PricingSection";
 import WastedTime from "@/components/WastedTime";
@@ -23,12 +22,11 @@ export default function Home() {
     <>
       <HeroSection2 />
       <div className="grid xl:hidden grid-cols-1 items-center lg:grid-cols-2 gap-8 sm:gap-16">
-        <div className="max-w-xl mx-auto max-h-[180px] overflow-hidden">
+        <div className="max-w-xl mx-auto">
           <Image
             className="w-full h-full z-10 relative object-cover"
             src="/hero-section-tools.png"
             alt="Tools included in NextNative"
-            priority
             width={600}
             height={600}
           />

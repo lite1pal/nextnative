@@ -27,8 +27,10 @@ export default function Home() {
             className="w-full h-full z-10 relative object-cover"
             src="/hero-section-tools.png"
             alt="Tools included in NextNative"
+            priority
             width={600}
             height={600}
+            quality={25}
           />
         </div>
       </div>

@@ -38,7 +38,7 @@ function WastedTimeItem({
 
       {/* Content card */}
       <div
-        className={`w-full md:w-[calc(50%-20px)] ml-10 md:ml-0 bg-white rounded-lg p-4 md:p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}
+        className={`w-[90%] md:w-[calc(50%-20px)] ml-10 md:ml-0 bg-white rounded-lg p-4 md:p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}
         style={{
           boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)",
           transitionDelay: `${index * 5}ms`,

@@ -23,9 +23,7 @@ export default function Home() {
     <>
       <HeroSection2 />
       <div className="grid xl:hidden grid-cols-1 items-center lg:grid-cols-2 gap-8 sm:gap-16">
-        <HeroSection />
-
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-xl mx-auto max-h-[180px] overflow-hidden">
           <Image
             className="w-full h-full z-10 relative object-cover"
             src="/hero-section-tools.png"
@@ -69,14 +67,14 @@ export default function Home() {
       />
       <DemoVideo />
 
-      <div className="text-center mb-16">
+      <div className="text-center md:mb-16 max-md:mt-24">
         <Subheading
           heading1="See what"
           heading2="you can build"
           className="text-start md:text-center md:items-center"
         />
 
-        <p className="mt-6 text-lg max-w-2xl mx-auto">
+        <p className="mt-6 text-lg max-w-2xl self-start w-fit md:mx-auto">
           Real apps. Real features. Fully cross-platform.
         </p>
       </div>

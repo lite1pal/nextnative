@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 
 function HeroSection2() {
   return (
-    <div className="hidden xl:flex flex-col relative py-12 md:py-20 md:pt-16 items-center mx-auto justify-center">
-      <div className="flex justify-between pb-10 w-full items-center">
+    <div className="flex flex-col relative py-12 md:py-20 md:pt-16 items-center mx-auto justify-center">
+      <div className="hidden xl:flex justify-between pb-10 w-full items-center">
         <div className="rotate-[-7deg]">
           <ToolCard
             tool="Next.js"
@@ -23,7 +23,7 @@ function HeroSection2() {
         </div>
       </div>
 
-      <div className="flex absolute bottom-14 pointer-events-none justify-between w-full items-center">
+      <div className="hidden xl:flex absolute bottom-14 pointer-events-none justify-between w-full items-center">
         <div className="rotate-[-15deg] relative -left-16 pb-10">
           <ToolCard
             tool="Tailwind"
@@ -40,8 +40,8 @@ function HeroSection2() {
         </div>
       </div>
 
-      <div className="flex flex-col max-w-[946.5px] w-full items-center text-center gap-8 md:gap-[45px]">
-        <div className="flex flex-col items-center text-center gap-6 md:gap-[36px]">
+      <div className="flex flex-col max-w-[946.5px] w-full xl:items-center xl:text-center gap-8 md:gap-[45px]">
+        <div className="flex flex-col items-center xl:text-center gap-6 md:gap-[36px]">
           <div className="flex flex-col items-center">
             {/* <div className="text-sm sm:text-base flex gap-2 md:text-lg text-gray">
               <span className="text-foreground">👋</span>

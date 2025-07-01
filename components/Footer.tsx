@@ -59,6 +59,7 @@ function Footer() {
             <p className="text-gray">Launch mobile apps faster with Next.js</p>
             <div className="flex gap-4">
               <a
+                aria-label="Visit Denis on X"
                 onClick={() => trackEvent("Footer_X_clicked")}
                 href="https://x.com/shipwithdenis"
                 target="_blank"
@@ -74,6 +75,7 @@ function Footer() {
                 </svg>
               </a>
               <a
+                aria-label="View GitHub profile"
                 onClick={() => trackEvent("Footer_GitHub_clicked")}
                 href="https://github.com/lite1pal"
                 target="_blank"

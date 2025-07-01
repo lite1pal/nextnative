@@ -45,7 +45,11 @@ function Navbar() {
       </div>
 
       {/* Mobile menu button */}
-      <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <button
+        className="md:hidden"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+      >
         <svg
           width="24"
           height="24"

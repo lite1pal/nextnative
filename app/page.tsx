@@ -18,21 +18,6 @@ import HeroSection2 from "@/components/HeroSection2";
 import { trackEvent } from "@/services/custom-analytics";
 import Link from "next/link";
 
-// const NoteList = dynamic(() => import("@/components/note-taking/note-list"), {
-//   ssr: false,
-// });
-
-// const PomodoroApp = dynamic(
-//   () => import("@/components/pomodoro/pomodoro-app"),
-//   {
-//     ssr: false,
-//   }
-// );
-
-// const ExpenseApp = dynamic(() => import("@/components/expenses/expense-app"), {
-//   ssr: false,
-// });
-
 export default function Home() {
   return (
     <>
@@ -106,9 +91,6 @@ export default function Home() {
       >
         <div className="rotate-[-30deg]">
           <IPhoneMockup isDark={false}>
-            {/* <div onClick={() => trackEvent("NoteList_clicked")}>
-                <NoteList />
-              </div> */}
             <div>
               <Image
                 src={"/showcase/lastinghabits.png"}
@@ -122,12 +104,6 @@ export default function Home() {
         </div>
         <div className="rotate-[0deg] z-20">
           <IPhoneMockup isDark={true}>
-            {/* <div
-                className="dark"
-                onClick={() => trackEvent("PomodoroApp_clicked")}
-              >
-                <PomodoroApp />
-              </div> */}
             <div>
               <Image
                 src={"/showcase/pomodoro-dark.png"}
@@ -141,9 +117,6 @@ export default function Home() {
         </div>
         <div className="rotate-[30deg]">
           <IPhoneMockup isDark={false}>
-            {/* <div onClick={() => trackEvent("ExpenseApp_clicked")}>
-                <ExpenseApp />
-              </div> */}
             <div>
               <Image
                 src={"/showcase/expenses.png"}

@@ -91,7 +91,7 @@ const faqItems = [
         It's all TypeScript!
         <br />
         <br />I believe it makes your life easier in the long run. But don't
-        worry if you're new to TypeScript - the code is written in a way that's
+        worry if you're new to TypeScript, the code is written in a way that's
         easy to understand and modify.
         <br />
         <br />
@@ -190,7 +190,7 @@ const faqItems = [
         so it gets regular update.
         <br />
         <br />
-        <span className="text-primary">🔄 Last update: yesterday</span>
+        <span className="text-primary">🔄 Last update: today</span>
       </>
     ),
   },
@@ -231,6 +231,9 @@ const faqItems = [
         <br />
         Please review the features and benefits to ensure it meets your needs
         before purchasing.
+        <br />
+        <br /> NextNative gets better with every update, so you'll always have
+        access to the latest features and improvements.
         <br />
         <br /> But in any case, I'm super responsive to questions and feedback.
         <br />

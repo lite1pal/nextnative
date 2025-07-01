@@ -22,6 +22,8 @@ export async function generateMetadata({
 
   if (!post) return {};
 
+  const publishedAt = post.createdAt.toISOString();
+
   return {
     title: post.title,
     description: post.description,
@@ -31,12 +33,17 @@ export async function generateMetadata({
       type: "article",
       url: `https://nextnative.dev/blog/${post.slug}`,
       images: post.image ? [{ url: post.image }] : [],
+      publishedTime: publishedAt,
+      authors: ["https://nextnative.dev"],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
       images: post.image ? [post.image] : [],
+    },
+    alternates: {
+      canonical: `https://nextnative.dev/blog/${post.slug}`,
     },
   };
 }
@@ -96,6 +103,33 @@ export default async function BlogPostPage({
         <p>{post.description}</p>
 
         <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: post.title,
+              description: post.description,
+              image: post.image,
+              author: {
+                "@type": "Person",
+                name: "Denis Tarasenko",
+              },
+              publisher: {
+                "@type": "Organization",
+                name: "NextNative.dev",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://nextnative.dev/nextnative-logo.png",
+                },
+              },
+              datePublished: post.createdAt,
+              mainEntityOfPage: `https://nextnative.dev/blog/${post.slug}`,
+            }),
+          }}
+        />
       </article>
 
       <aside className="hidden relative lg:block w-full max-w-md">

@@ -10,79 +10,54 @@ interface Tool {
   isRectangular: boolean;
   description: string;
 }
-
 const tools: Tool[] = [
   {
-    src: "/tools/auth.png",
-    alt: "Firebase Auth",
-    isRectangular: false,
-    description: "User authentication with social logins",
-  },
-  {
-    src: "/tools/inapppurchases.png",
-    alt: "In-App Purchases",
-    isRectangular: true,
-    description: "Monetize your app with subscriptions",
-  },
-  {
-    src: "/tools/mongo.png",
-    alt: "Mongo Database",
-    isRectangular: false,
-    description: "Flexible data storage for your app",
-  },
-  {
     src: "/tools/nextjs.png",
-    alt: "Serverless API",
+    alt: "Next.js Serverless API",
     isRectangular: true,
-    description: "Backend functions without the hassle",
+    description: "Build fullstack apps with API routes in the same codebase",
   },
   {
-    src: "/tools/tailwind.png",
-    alt: "TailwindCSS",
-    isRectangular: false,
-    description: "Utility-first CSS framework",
-  },
-  {
-    src: "/tools/auth.png",
-    alt: "Push Notifications",
-    isRectangular: false,
-    description: "Engage users with timely alerts",
-  },
-  {
-    src: "/tools/i18n.png",
-    alt: "Internationalization",
-    isRectangular: true,
-    description: "Reach global audiences with translations",
-  },
-  {
-    src: "/tools/daisyui.png",
-    alt: "Any UI Library",
-    isRectangular: true,
-    description: "Beautiful components out of the box",
-  },
-  {
-    src: "/tools/prisma.png",
-    alt: "Prisma ORM",
-    isRectangular: false,
-    description: "Type-safe database access",
-  },
-  {
-    src: "/tools/cap.png",
+    src: "/tools/capacitor.png",
     alt: "Capacitor",
     isRectangular: true,
-    description: "Native device features for your app",
+    description: "Access native features like camera, GPS, and offline storage",
   },
   {
-    src: "/tools/ts.png",
+    src: "/tools/tailwind.svg",
+    alt: "TailwindCSS",
+    isRectangular: false,
+    description: "Craft responsive UIs fast with utility-first styling",
+  },
+  {
+    src: "/tools/firebase.svg",
+    alt: "Firebase Auth",
+    isRectangular: false,
+    description: "Social login and push notifications with zero setup",
+  },
+  {
+    src: "/tools/revenuecat.svg",
+    alt: "In-App Purchases",
+    isRectangular: true,
+    description: "Monetize with subscriptions and one-time payments",
+  },
+  {
+    src: "/tools/supabase.svg",
+    alt: "Supabase",
+    isRectangular: true,
+    description: "Postgres-backed storage, auth, and realtime — all in one",
+  },
+  {
+    src: "/tools/daisyui.svg",
+    alt: "Any UI Library",
+    isRectangular: true,
+    description: "Drop-in component library styled with Tailwind",
+  },
+  {
+    src: "/tools/ts.svg",
     alt: "TypeScript",
     isRectangular: false,
-    description: "Type safety for your codebase",
-  },
-  {
-    src: "/tools/ionic.png",
-    alt: "Ionic",
-    isRectangular: false,
-    description: "Cross-platform UI components",
+    description: "Catch bugs early and ship with confidence",
   },
 ];
 
@@ -106,18 +81,15 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
   return (
     <div className="group">
       <div
-        style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
-        className={`bg-white rounded-3xl p-6 h-full hover:shadow-xl transition-shadow duration-300 flex flex-col`}
+        // style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
+        className={`rounded-3xl p-6 h-full transition-shadow duration-300 flex flex-col`}
       >
-        <h3 className="text-xl font-[500] mb-4">{tool.alt}</h3>
+        {/* <h3 className="text-xl font-[500] mb-4">{tool.alt}</h3> */}
         <div
-          className={`bg-gradient-to-br ${gradientColor}  rounded-2xl p-6 mb-4 flex items-center justify-center group-hover:scale-[0.98] transition-transform duration-300`}
+          style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
+          className={`rounded-2xl bg-white p-6 mb-4 flex items-center justify-center group-hover:scale-[0.98] transition-transform duration-300`}
         >
-          <div
-            className={`relative ${
-              tool.isRectangular ? "w-[120px] h-[80px]" : "w-[80px] h-[80px]"
-            }`}
-          >
+          <div className={`relative w-full h-36`}>
             <Image
               src={tool.src}
               alt={tool.alt}
@@ -126,7 +98,7 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
             />
           </div>
         </div>
-        <p className="text-gray font-[500]">{tool.description}</p>
+        <p className="text-lg text-gray-500 font-[500]">{tool.description}</p>
       </div>
     </div>
   );

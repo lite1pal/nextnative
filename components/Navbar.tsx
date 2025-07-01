@@ -80,10 +80,18 @@ function Navbar() {
         </Link>
         <Link
           href="/#pricing"
-          onClick={() => {
-            trackEvent("Navbar_Pricing_clicked");
+          onClick={(e) => {
+            e.preventDefault();
+            trackEvent("Navbar_pricing clicked");
+
+            const el = document.getElementById("pricing");
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+            } else {
+              window.location.href = "/#pricing";
+            }
           }}
-          className="text-base cursor-pointer md:text-lg hover:text-primary transition-colors"
+          className="text-base md:text-lg hover:text-primary transition-colors"
         >
           Pricing
         </Link>
@@ -126,11 +134,20 @@ function Navbar() {
             Docs
           </Link>
           <Link
-            onClick={() => {
+            href="/#pricing"
+            onClick={(e) => {
+              e.preventDefault();
               setIsMenuOpen(false);
               trackEvent("Navbar_pricing clicked");
+
+              const el = document.getElementById("pricing");
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+              } else {
+                // fallback: go to home with hash if not already on /
+                window.location.href = "/#pricing";
+              }
             }}
-            href="/#pricing"
             className="text-base hover:text-primary transition-colors"
           >
             Pricing

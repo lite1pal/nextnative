@@ -17,7 +17,11 @@ function CTA({ className }: { className?: string }) {
       <Button
         onClick={() => {
           trackEvent("CTA_clicked");
-          window.location.href = dodoPaymentLinks.allAccess;
+          // window.location.href = dodoPaymentLinks.allAccess;
+          const el = document.getElementById("pricing");
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
         }}
         variant="primary"
       >

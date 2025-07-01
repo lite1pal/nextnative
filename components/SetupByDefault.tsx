@@ -27,7 +27,7 @@ const tools: Tool[] = [
     src: "/tools/tailwind.svg",
     alt: "TailwindCSS",
     isRectangular: false,
-    description: "Craft responsive UIs fast with utility-first styling",
+    description: "Create responsive UIs fast with utility-first styling",
   },
   {
     src: "/tools/firebase.svg",

@@ -45,7 +45,7 @@ const tools: Tool[] = [
     src: "/tools/supabase.svg",
     alt: "Supabase",
     isRectangular: true,
-    description: "Postgres-backed storage, auth, and realtime — all in one",
+    description: "Postgres-backed storage. Use as a database or file storage",
   },
   {
     src: "/tools/daisyui.svg",

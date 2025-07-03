@@ -116,12 +116,6 @@ function PricingSection() {
       <div className="flex flex-col md:flex-row w-full gap-6 mt-6 md:mt-10 md:px-4">
         {/* Starter Plan Card */}
         <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
-          <span
-            className={`${playpenSans.className} text-sm opacity-0 pointer-events-none sm:text-xl font-[500] text-red-500 ml-auto`}
-          >
-            limited launch %40 discount
-          </span>
-
           <div
             style={{
               boxShadow:
@@ -140,7 +134,7 @@ function PricingSection() {
                 </span>
                 <div className="flex items-end gap-2">
                   <h3 className="text-3xl sm:text-4xl md:text-[54px] font-[500] leading-none">
-                    $45
+                    $79.99
                   </h3>
                   <span className="text-lg sm:text-xl md:text-2xl text-gray">
                     /forever
@@ -201,7 +195,7 @@ function PricingSection() {
             className={`${playpenSans.className} text-sm sm:text-xl font-[500] text-gray ml-auto`}
           >
             Limited launch discount{" "}
-            <span className="text-red-500">70% off, 1 left</span>{" "}
+            <span className="text-red-500">60% off, 10 left</span>{" "}
           </span>
 
           <div
@@ -222,7 +216,7 @@ function PricingSection() {
                 </span>
                 <div className="flex items-end gap-2">
                   <h3 className="text-3xl sm:text-4xl md:text-[54px] font-[500] leading-none">
-                    <HighlightedSpan>$75</HighlightedSpan>
+                    <HighlightedSpan>$99.99</HighlightedSpan>
                   </h3>
                   <span className="text-lg sm:text-xl md:text-2xl text-gray">
                     /forever

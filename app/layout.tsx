@@ -8,6 +8,7 @@ import BackgroundSVG from "@/components/BackgroundSVG";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "NextNative | Launch Mobile Apps Faster With Next.js",
@@ -78,6 +79,7 @@ export default function RootLayout({
         </main>
         <Analytics />
       </body>
+      <GoogleAnalytics gaId="G-QJT70XZBP7" />
     </html>
   );
 }

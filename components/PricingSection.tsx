@@ -134,7 +134,7 @@ function PricingSection() {
                 </span>
                 <div className="flex items-end gap-2">
                   <h3 className="text-3xl sm:text-4xl md:text-[54px] font-[500] leading-none">
-                    $58.5
+                    $78
                   </h3>
                   <span className="text-lg sm:text-xl md:text-2xl text-gray">
                     /forever

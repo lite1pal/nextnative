@@ -116,6 +116,11 @@ function PricingSection() {
       <div className="flex flex-col md:flex-row w-full gap-6 mt-6 md:mt-10 md:px-4">
         {/* Starter Plan Card */}
         <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
+          <span
+            className={`${playpenSans.className} text-sm opacity-0 pointer-events-none sm:text-xl font-[500] text-red-500 ml-auto`}
+          >
+            limited launch %60 discount
+          </span>
           <div
             style={{
               boxShadow:

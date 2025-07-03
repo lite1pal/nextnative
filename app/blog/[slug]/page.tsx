@@ -147,7 +147,7 @@ export default async function BlogPostPage({
             </p>
             <CTABlogButton post={{ slug: post.slug }} />
             <p className="mt-3 text-xs text-pink-600 font-medium">
-              🎁 70% off – 1 left
+              🎁 60% off – 10 left
             </p>
             <div className="flex mt-5 gap-2 items-center">
               <div className="relative">

@@ -35,6 +35,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* DataFast */}
+        <Script
+          data-website-id="68665e138b39cc32bf5cf8ad"
+          data-domain="nextnative.dev"
+          src="https://datafa.st/js/script.js"
+          strategy="afterInteractive"
+        />
         {/* Meta Pixel base code */}
         <Script id="fb-pixel" strategy="afterInteractive">
           {`

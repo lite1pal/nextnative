@@ -25,18 +25,18 @@ function Navbar() {
     };
   }, [isMenuOpen]);
 
-  const handleSignIn = () => {
-    trackEvent("Navbar_SignIn_clicked");
-    setIsMenuOpen(false);
-    const waitlistInput = document.getElementById("waitlist-input");
+  // const handleSignIn = () => {
+  //   trackEvent("Navbar_SignIn_clicked");
+  //   setIsMenuOpen(false);
+  //   const waitlistInput = document.getElementById("waitlist-input");
 
-    if (waitlistInput) {
-      waitlistInput.scrollIntoView({ behavior: "smooth", block: "center" });
-      (waitlistInput as HTMLInputElement).focus();
-    } else {
-      router.push("/#waitlist");
-    }
-  };
+  //   if (waitlistInput) {
+  //     waitlistInput.scrollIntoView({ behavior: "smooth", block: "center" });
+  //     (waitlistInput as HTMLInputElement).focus();
+  //   } else {
+  //     router.push("/#waitlist");
+  //   }
+  // };
 
   return (
     <div className="flex py-4 md:py-5 items-center justify-between navbar">
@@ -109,9 +109,14 @@ function Navbar() {
           Blog
         </Link>
 
-        <a href="mailto:deniskatarasenko6@gmail.com">
+        <Link
+          href="/contact"
+          onClick={() => {
+            trackEvent("Navbar_Contact_clicked");
+          }}
+        >
           <Button variant="secondary">Contact</Button>
-        </a>
+        </Link>
       </div>
 
       {/* Mobile navigation */}
@@ -167,9 +172,15 @@ function Navbar() {
             Blog
           </Link>
 
-          <a href="mailto:deniskatarasenko6@gmail.com">
+          <Link
+            href="/contact"
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackEvent("Navbar_Contact_clicked");
+            }}
+          >
             <Button variant="secondary">Contact</Button>
-          </a>
+          </Link>
         </div>
       )}
     </div>

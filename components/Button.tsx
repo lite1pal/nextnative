@@ -8,6 +8,7 @@ type ButtonProps = {
   className?: string;
   onClick?: () => void;
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 };
 
 function Button({
@@ -16,6 +17,7 @@ function Button({
   className,
   onClick,
   disabled,
+  type = "button",
 }: ButtonProps) {
   const defaultClasses =
     "w-fit rounded-[16px] cursor-pointer font-[500] transition-all duration-300";
@@ -31,6 +33,7 @@ function Button({
       className={cn(defaultClasses, variantClasses[variant], className)}
       onClick={onClick}
       disabled={disabled}
+      type={type}
     >
       {children}
     </button>

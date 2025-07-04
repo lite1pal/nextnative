@@ -2,7 +2,7 @@
 import { prisma } from "@/prisma/client";
 import type { MetadataRoute } from "next";
 
-export const revalidate = 60; // 1 day in seconds
+export const revalidate = 600; // 10 minutes in seconds
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await prisma.blogPost.findMany({

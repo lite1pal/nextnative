@@ -8,7 +8,7 @@ import CTABlogButton from "./CTABlogButton";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { AvatarList, RatingSvg } from "@/components/HeroSection2";
 
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 600; // Revalidate every 10 minutes
 
 export async function generateMetadata({
   params,

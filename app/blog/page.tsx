@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 60;
+export const revalidate = 600;
 
 export default async function BlogListPage() {
   const posts = await prisma.blogPost.findMany({
@@ -42,7 +42,7 @@ export default async function BlogListPage() {
       <h1>
         Welcome to <HighlightedSpan>NextNative</HighlightedSpan>'s Blog
       </h1>
-      <p className="text-gray-600 prose-p:text-xl">
+      <p className="text-gray prose-p:text-xl">
         Guides, tutorials, and tips for building mobile apps with Next.js and
         Capacitor.
       </p>
@@ -69,10 +69,12 @@ export default async function BlogListPage() {
                       width={800}
                       height={400}
                       className="rounded-lg mb-3"
+                      quality={50}
+                      sizes={"(max-width: 1200px) 60vw, 15vw"}
                     />
                   )}
                   <h2>{post.title}</h2>
-                  <p className="text-gray-500 text-sm">{formattedDate}</p>
+                  <p className="text-gray text-sm">{formattedDate}</p>
                   <p>{post.description}</p>
                 </div>
               </Link>

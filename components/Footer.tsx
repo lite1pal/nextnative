@@ -19,6 +19,7 @@ const productLinks: FooterLink[] = [
 const legalLinks: FooterLink[] = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
+  { label: "Disclaimer", href: "/disclaimer" },
   // { label: "Refund", href: "/refund" },
 ];
 

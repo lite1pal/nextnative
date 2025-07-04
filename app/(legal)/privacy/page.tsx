@@ -1,6 +1,7 @@
 export default function Privacy() {
   return (
     <div className="prose dark:prose-invert max-w-xl mx-auto">
+      <h1>Privacy Policy for NextNative</h1>
       <p>
         Our Privacy Policy was last updated on <strong>07/04/2025</strong>.
       </p>

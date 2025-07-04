@@ -1,6 +1,7 @@
 export default function Disclaimer() {
   return (
     <div className="prose dark:prose-invert max-w-xl mx-auto">
+      <h1>Disclaimer for NextNative</h1>
       <p>
         This Disclaimer was last updated on <strong>07/04/2025</strong>.
       </p>

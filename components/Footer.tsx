@@ -20,6 +20,7 @@ const legalLinks: FooterLink[] = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
   { label: "Disclaimer", href: "/disclaimer" },
+  { label: "License", href: "/license" },
   // { label: "Refund", href: "/refund" },
 ];
 

@@ -207,7 +207,6 @@ const faqItems = [
           href="https://apps.apple.com/ua/app/lasting-habits/id6736766976"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary hover:underline"
         >
           App Store
         </Link>
@@ -229,8 +228,14 @@ const faqItems = [
         I don't offer refunds because you get immediate access to all the code.
         <br />
         <br />
-        Please review the features and benefits to ensure it meets your needs
-        before purchasing.
+        Please review{" "}
+        <a
+          className="text-primary underline"
+          href="https://docs.nextnative.dev"
+        >
+          the features and benefits
+        </a>{" "}
+        to ensure it meets your needs before purchasing.
         <br />
         <br /> NextNative gets better with every update, so you'll always have
         access to the latest features and improvements.

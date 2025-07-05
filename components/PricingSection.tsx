@@ -4,8 +4,8 @@ import Button from "./Button";
 import HighlightedSpan from "./HighlightedSpan";
 import StarburstSign from "./StarburstSign";
 import Subheading from "./Subheading";
-import { Playpen_Sans } from "next/font/google";
 import { trackEvent } from "@/services/custom-analytics";
+
 const isWaitlist = false;
 
 export const dodoPaymentLinks = {
@@ -18,11 +18,6 @@ export const dodoPaymentLinks = {
       ? process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER_PROD!
       : process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER_TEST!,
 };
-
-export const playpenSans = Playpen_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 interface PricingFeature {
   text: string | React.ReactNode;
@@ -116,7 +111,7 @@ function PricingSection() {
         {/* Starter Plan Card */}
         <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
           <span
-            className={`${playpenSans.className} text-sm opacity-0 pointer-events-none sm:text-xl font-[500] text-red-500 ml-auto`}
+            className={`text-sm opacity-0 pointer-events-none sm:text-xl font-[500] text-red-500 ml-auto`}
           >
             limited launch %60 discount
           </span>
@@ -195,10 +190,8 @@ function PricingSection() {
 
         {/* All-in Card */}
         <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
-          <span
-            className={`${playpenSans.className} text-sm sm:text-xl font-[500] text-gray ml-auto`}
-          >
-            Limited launch discount{" "}
+          <span className={`text-sm sm:text-xl font-[500] text-gray ml-auto`}>
+            limited launch discount{" "}
             <span className="text-red-500">60% off, 8 left</span>{" "}
           </span>
 

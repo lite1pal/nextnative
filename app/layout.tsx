@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Container from "@/components/Container";
 import Navbar from "@/components/Navbar";
-import { Outfit } from "next/font/google";
 import Footer from "@/components/Footer";
 import BackgroundSVG from "@/components/BackgroundSVG";
 import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { outfit } from "./fonts";
 
 export const metadata: Metadata = {
   title: "NextNative | Launch Mobile Apps Faster With Next.js",
@@ -20,12 +20,6 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  weight: ["400", "500", "600", "700"],
-});
 
 export default function RootLayout({
   children,
@@ -50,7 +44,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         {/* Meta Pixel base code */}
-        <Script id="fb-pixel" strategy="afterInteractive">
+        <Script id="fb-pixel" strategy="lazyOnload">
           {`
             !function(f,b,e,v,n,t,s){
               if(f.fbq) return;

@@ -2,7 +2,6 @@
 
 import { Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { playpenSans } from "./PricingSection";
 import StarburstSign from "./StarburstSign";
 import Image from "next/image";
 import { trackEvent } from "@/services/custom-analytics";
@@ -52,9 +51,7 @@ function DemoVideo() {
     >
       <div className="flex flex-col md:flex-row items-center justify-between gap-3 mb-2">
         <div></div>
-        <span
-          className={`${playpenSans.className} text-sm sm:text-xl font-[500] text-gray`}
-        >
+        <span className={`text-sm sm:text-xl font-[500] text-gray`}>
           Just 3 minutes to see how it works ⚡
         </span>
       </div>

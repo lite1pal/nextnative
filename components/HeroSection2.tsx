@@ -92,8 +92,8 @@ function ToolCard({ tool, bullets, img }: any) {
             width={300}
             height={300}
             className="object-cover w-full h-full"
-            priority
             alt={tool}
+            sizes={"(max-width: 1279px) 1vw, 80vw"}
           />
         </div>
 
@@ -217,6 +217,7 @@ export function AvatarList({
                 "rounded-full object-cover",
                 sizes[size] ?? sizes.md
               )}
+              sizes="(max-width: 1279px) 50vw, 25vw"
             />
           </div>
           <div className="absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 transform whitespace-nowrap rounded bg-slate-900 p-2 text-white opacity-0 transition-all duration-300 ease-in-out xl:group-hover:-translate-y-2 xl:group-hover:opacity-100 dark:bg-slate-100 dark:text-slate-900">

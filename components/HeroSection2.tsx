@@ -173,6 +173,11 @@ const data = [
     image: "/testimonials/vitaliy.jpeg",
   },
   {
+    name: "Ryan",
+    position: "Front-End Web Developer",
+    image: "/testimonials/ryan.png",
+  },
+  {
     name: "Martin",
     position: "Entrepreneur",
     image: "/testimonials/martin.png",

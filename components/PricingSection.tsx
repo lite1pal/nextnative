@@ -79,8 +79,6 @@ const pricingFeaturesStarter: PricingFeature[] = [
 
 function PricingSection() {
   const handleGetNextnative = (paymentLink: string) => {
-    trackEvent("PricingSection_GetNextNative_All-in_clicked");
-
     if (isWaitlist) {
       // Find the waitlist input element
       const waitlistInput = document.getElementById("waitlist-input");
@@ -96,7 +94,8 @@ function PricingSection() {
       }
     } else {
       if (paymentLink) {
-        window.location.href = paymentLink;
+        window.location.href =
+          paymentLink + `&metadata_affonso_referral=${window.affonso_referral}`;
       } else {
         console.error("DODO_PAYMENT_LINK is not set");
       }
@@ -265,9 +264,10 @@ function PricingSection() {
                   svgClassName="top-[-5px] right-[-25px]"
                 >
                   <Button
-                    onClick={() =>
-                      handleGetNextnative(dodoPaymentLinks.allAccess)
-                    }
+                    onClick={() => {
+                      trackEvent("PricingSection_GetNextNative_All-in_clicked");
+                      handleGetNextnative(dodoPaymentLinks.allAccess);
+                    }}
                     variant="primary"
                     className="w-full flex items-center justify-center gap-2 text-[18px] py-4 mt-7"
                   >

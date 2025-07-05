@@ -200,7 +200,7 @@ function PricingSection() {
             className={`${playpenSans.className} text-sm sm:text-xl font-[500] text-gray ml-auto`}
           >
             Limited launch discount{" "}
-            <span className="text-red-500">60% off, 10 left</span>{" "}
+            <span className="text-red-500">60% off, 8 left</span>{" "}
           </span>
 
           <div

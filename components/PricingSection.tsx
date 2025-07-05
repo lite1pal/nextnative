@@ -192,7 +192,7 @@ function PricingSection() {
         <div className="flex mx-auto flex-col w-full max-w-[500px] gap-1">
           <span className={`text-sm sm:text-xl font-[500] text-gray ml-auto`}>
             limited launch discount{" "}
-            <span className="text-red-500">60% off, 8 left</span>{" "}
+            <span className="text-red-500">60% off, 7 left</span>{" "}
           </span>
 
           <div

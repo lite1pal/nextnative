@@ -34,7 +34,7 @@ function CTA({ className }: { className?: string }) {
           <span className="text-xl">🎁</span>
           <span className="sm:text-xl">
             <span className="text-red-500">60% off</span> for the first 20
-            customers, <span className="text-red-500">8 left</span>
+            customers, <span className="text-red-500">7 left</span>
           </span>
         </p>
 

@@ -78,7 +78,7 @@ export default function ThankYouPage({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!githubUsername) {
+    if (!githubUsername || !paymentId) {
       setError("GitHub username is required");
       return;
     }

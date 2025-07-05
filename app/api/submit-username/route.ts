@@ -13,6 +13,31 @@ export async function POST(request: Request) {
       );
     }
 
+    const payment = await fetch(
+      `https://live.dodopayments.com/payments/${paymentId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.DODO_SECRET!}`,
+        },
+      }
+    );
+
+    if (!payment.ok) {
+      return NextResponse.json(
+        { error: "Invalid or unsuccessful payment" },
+        { status: 403 }
+      );
+    }
+
+    const paymentData = await payment.json();
+
+    if (paymentData.status !== "succeeded") {
+      return NextResponse.json(
+        { error: "Invalid or unsuccessful payment" },
+        { status: 403 }
+      );
+    }
+
     // Check if the GitHub token is available
     if (!process.env.GITHUB_TOKEN) {
       return NextResponse.json(
@@ -25,24 +50,6 @@ export async function POST(request: Request) {
     const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
     const owner = "lite1pal";
     const repo = "nextnative_boilerplate";
-
-    // Check if the user is already a collaborator
-    // try {
-    //   await octokit.repos.getCollaboratorPermissionLevel({
-    //     owner,
-    //     repo,
-    //     username: githubUsername,
-    //   });
-    //   return NextResponse.json(
-    //     { error: "User is already a collaborator" },
-    //     { status: 409 }
-    //   );
-    // } catch (err) {
-    //   if (err instanceof Error && err.message !== "Not Found") {
-    //     // If the error is not a 404, it means something else went wrong
-    //     throw err;
-    //   }
-    // }
 
     await octokit.repos.addCollaborator({
       owner,

@@ -8,8 +8,8 @@ const sections = [
   },
   {
     title: "Screens",
-    href: "/components/screens",
-    description: "Full mobile screens and layouts (onboarding, pricing, etc.).",
+    href: "/components/screens/pricing-screens",
+    description: "Copy-paste pricing sections with previews and code.",
   },
   // add more: Inputs, Modals, Tabs...
 ];

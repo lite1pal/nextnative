@@ -8,7 +8,7 @@ import { outfit } from "./fonts";
 import LayoutWrapper from "./layout-wrapper";
 
 export const metadata: Metadata = {
-  title: "NextNative | Launch Mobile Apps Faster With Next.js",
+  title: "Launch Mobile Apps Faster With Next.js | NextNative",
   description:
     "Skip React Native. Use the web tools you already know, combined with Capacitor, to launch cross-platform apps in days.",
   metadataBase: new URL("https://nextnative.dev"),

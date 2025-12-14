@@ -103,7 +103,7 @@ function Navbar() {
       <MobileMenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
       {/* Desktop navigation */}
-      <div className="hidden items-center gap-8 md:flex lg:gap-14">
+      <div className="hidden items-center gap-8 lg:flex lg:gap-14">
         {navbarItems.map((item) => (
           <NavbarItem
             key={item.label}
@@ -117,7 +117,7 @@ function Navbar() {
 
       {/* Mobile navigation */}
       {isMenuOpen && (
-        <div className="absolute top-16 right-0 left-0 z-50 flex flex-col gap-4 bg-white p-4 shadow-lg md:hidden">
+        <div className="absolute top-16 right-0 left-0 z-50 flex flex-col gap-4 bg-white p-4 shadow-lg lg:hidden">
           {navbarItems.map((item) => (
             <NavbarItem
               key={item.label}
@@ -167,7 +167,7 @@ function MobileMenuButton({
 }) {
   return (
     <button
-      className="md:hidden"
+      className="lg:hidden"
       onClick={() => setIsMenuOpen(!isMenuOpen)}
       aria-label={isMenuOpen ? "Close menu" : "Open menu"}
     >

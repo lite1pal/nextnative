@@ -2,20 +2,20 @@
 
 import { motion } from "framer-motion";
 
+type IPhoneMockupProps = {
+  children: React.ReactNode;
+  isDark?: boolean;
+  animate?: boolean;
+};
+
 export default function IPhoneMockup({
   children,
   isDark = false,
-}: {
-  children: React.ReactNode;
-  isDark?: boolean;
-}) {
+  animate = false,
+}: IPhoneMockupProps) {
   return (
     <div className="sm:p-5">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mx-auto max-w-md"
-      >
+      <AnimatedWrapper animate={animate}>
         {/* iPhone mockup using DaisyUI with custom styling */}
         <div className="mockup-phone max-sm:relative max-sm:-top-24 max-sm:-left-[50px] max-sm:scale-75">
           <div className="mockup-phone-camera"></div>
@@ -75,7 +75,26 @@ export default function IPhoneMockup({
             </div>
           </div>
         </div>
-      </motion.div>
+      </AnimatedWrapper>
     </div>
+  );
+}
+
+type AnimatedWrapperProps = {
+  children: React.ReactNode;
+  animate?: boolean;
+};
+
+function AnimatedWrapper({ children, animate = false }: AnimatedWrapperProps) {
+  if (!animate) return <div className="mx-auto max-w-md">{children}</div>;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="mx-auto max-w-md"
+    >
+      {children}
+    </motion.div>
   );
 }

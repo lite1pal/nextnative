@@ -3,13 +3,13 @@
 import { cn } from "@/lib/utils";
 import {
   Check,
-  Crown,
-  Sparkles,
-  Zap,
   X,
-  Star,
   Shield,
   Infinity,
+  Crown,
+  Zap,
+  Star,
+  Sparkles,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -228,11 +228,9 @@ export function TieredPricingScreen() {
 
   return (
     <div className="relative flex min-h-[850px] flex-col overflow-hidden rounded-3xl bg-gradient-to-b from-slate-950 to-slate-900 px-4 pt-16 pb-10 text-white">
-      {/* soft glow */}
       <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
 
-      {/* Header */}
       <div className="relative text-center">
         <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15">
           <Zap className="size-7 text-white/90" />
@@ -244,9 +242,7 @@ export function TieredPricingScreen() {
         </p>
       </div>
 
-      {/* Main card */}
       <div className="relative mt-6 rounded-2xl bg-white/10 p-4 ring-1 ring-white/15">
-        {/* Tier switcher (segmented cards) */}
         <div className="grid grid-cols-3 gap-2">
           {tiers.map((t, i) => {
             const active = selectedTier === i;
@@ -297,7 +293,6 @@ export function TieredPricingScreen() {
           })}
         </div>
 
-        {/* Selected tier summary */}
         <div className="mt-6 text-center">
           <div className="flex items-end justify-center gap-1">
             <span className="text-5xl font-semibold tracking-tight">
@@ -311,7 +306,6 @@ export function TieredPricingScreen() {
           <p className="mt-2 text-xs text-white/70">{tier.description}</p>
         </div>
 
-        {/* Features */}
         <div className="mt-6 rounded-2xl bg-black/10 p-4 ring-1 ring-white/10">
           <div className="space-y-3">
             {tier.features.map((f, i) => (
@@ -359,7 +353,6 @@ export function TieredPricingScreen() {
         </div>
       </div>
 
-      {/* CTA */}
       <div className="relative mt-auto pt-6">
         <button
           className={cn(
@@ -420,13 +413,11 @@ export function PaywallScreen() {
 
   return (
     <div className="relative flex min-h-[850px] flex-col overflow-hidden rounded-3xl bg-white p-6 text-slate-950">
-      {/* subtle background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-slate-200/70 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-emerald-200/60 blur-3xl" />
       </div>
 
-      {/* Close */}
       <button
         className="absolute top-4 right-4 z-10 rounded-xl border border-slate-200 bg-white p-2 text-slate-700 hover:bg-slate-50"
         aria-label="Close"
@@ -435,7 +426,6 @@ export function PaywallScreen() {
         <X className="size-5" />
       </button>
 
-      {/* Header */}
       <div className="relative mt-10">
         <div className="flex items-center gap-3">
           <div className="flex size-12 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-sm">
@@ -452,7 +442,6 @@ export function PaywallScreen() {
         </div>
       </div>
 
-      {/* Plan picker */}
       <div className="relative mt-6 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
         <div className="grid grid-cols-2 gap-2">
           <button
@@ -508,7 +497,6 @@ export function PaywallScreen() {
         </div>
       </div>
 
-      {/* Features */}
       <div className="relative mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
         <div className="flex items-center justify-between">
           <div className="text-sm font-semibold text-slate-900">
@@ -532,7 +520,6 @@ export function PaywallScreen() {
           ))}
         </div>
       </div>
-      {/* trust row */}
       <div className="mx-auto mt-3 flex flex-wrap items-center gap-4 text-xs text-slate-500">
         <div className="flex items-center gap-1.5">
           <Shield className="size-4" />
@@ -543,7 +530,6 @@ export function PaywallScreen() {
           <span>Cancel anytime</span>
         </div>
       </div>
-      {/* CTA footer */}
       <div className="relative mt-auto pt-6">
         <button
           className="w-full rounded-2xl bg-slate-950 py-4 text-base font-semibold text-white shadow-lg shadow-slate-950/10 transition active:scale-[0.99]"

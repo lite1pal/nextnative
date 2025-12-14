@@ -17,22 +17,19 @@ const productLinks: FooterLink[] = [
   //   target: "_blank",
   // },
   { label: "Pricing", href: "/pricing" },
-  { label: "Blog", href: "/blog" },
   { label: "Docs", href: "https://nextnative.dev/docs" },
   { label: "Showcase", href: "/showcase" },
   { label: "Contact", href: "/contact" },
-  {
-    label: "Free Tools",
-    href: "/free-tools",
-  },
   { label: "Comparisons", href: "/comparisons" },
   { label: "Tutorials", href: "/tutorials" },
   { label: "Alternatives", href: "/alternatives" },
   { label: "Use Cases", href: "/use-cases" },
+
   {
     label: "MVP Agency",
     href: "/mvp-app-development",
   },
+  { label: "Blog", href: "/blog" },
 ];
 
 const freeToolsLinks: FooterLink[] = [
@@ -50,10 +47,10 @@ const freeToolsLinks: FooterLink[] = [
     label: "App Store Fees Calculator",
     href: "/free-tools/app-store-fees",
   },
-  {
-    label: "App Store Keyword Research",
-    href: "/free-tools/app-store-keyword-research",
-  },
+  // {
+  //   label: "App Store Keyword Research",
+  //   href: "/free-tools/app-store-keyword-research",
+  // },
   {
     label: "App Store Metadata Generator",
     href: "/free-tools/app-store-metadata-generator",
@@ -66,18 +63,18 @@ const freeToolsLinks: FooterLink[] = [
     label: "App Store Screenshot Sizes",
     href: "/free-tools/app-store-screenshot-sizes",
   },
-  {
-    label: "Capacitor Config Generator",
-    href: "/free-tools/capacitor-config-generator",
-  },
-  {
-    label: "Create Android Keystore",
-    href: "/free-tools/create-android-keystore",
-  },
-  {
-    label: "iOS Bundle ID Generator",
-    href: "/free-tools/ios-bundle-id-generator",
-  },
+  // {
+  //   label: "Capacitor Config Generator",
+  //   href: "/free-tools/capacitor-config-generator",
+  // },
+  // {
+  //   label: "Create Android Keystore",
+  //   href: "/free-tools/create-android-keystore",
+  // },
+  // {
+  //   label: "iOS Bundle ID Generator",
+  //   href: "/free-tools/ios-bundle-id-generator",
+  // },
   {
     label: "Play Store Privacy Policy",
     href: "/free-tools/play-store-privacy-policy",
@@ -170,6 +167,10 @@ const legalLinks: FooterLink[] = [
   { label: "Terms", href: "/terms" },
   { label: "Disclaimer", href: "/disclaimer" },
   { label: "License", href: "/license" },
+];
+const freeComponentsLinks: FooterLink[] = [
+  { label: "Buttons", href: "/components/buttons" },
+  { label: "Pricing Screens", href: "/components/screens/pricing-screens" },
 ];
 
 function FooterLinkGroup({
@@ -297,6 +298,11 @@ function Footer() {
               <FooterLinkGroup title="Legal" links={legalLinks} />
 
               <FooterLinkGroup title="Cost Guides" links={costGuideLinks} />
+              <FooterLinkGroup
+                title="Free Components"
+                titleLink="/components"
+                links={freeComponentsLinks}
+              />
             </div>
           </div>
 

@@ -56,6 +56,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "https://nextnative.dev/free-tools/app-store-fees",
   ];
 
+  const freeComponents = [
+    "https://nextnative.dev/components",
+    "https://nextnative.dev/components/buttons",
+    "https://nextnative.dev/components/screens/pricing-screens",
+  ];
+
   const costPages = [
     "https://nextnative.dev/cost/how-much-does-it-cost-to-build-an-app",
     "https://nextnative.dev/cost/app-development-cost-calculator",
@@ -159,6 +165,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Free Tools
     ...freeTools.map((freeTool) => ({
       url: freeTool,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
+
+    // Free Tools
+    ...freeComponents.map((freeComponent) => ({
+      url: freeComponent,
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
       priority: 0.8,

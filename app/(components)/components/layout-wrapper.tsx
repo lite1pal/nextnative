@@ -12,8 +12,13 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { label: "Buttons", href: "/components/buttons" },
-  { label: "Screens", href: "/components/screens", badge: "New" },
+  { label: "Buttons", href: "/components/buttons", badge: "New" },
+  // { label: "Screens", href: "/components/screens" },
+  {
+    label: "Pricing Screens",
+    href: "/components/screens/pricing-screens",
+    badge: "New",
+  },
   // scale: just add items here
 ];
 
@@ -154,10 +159,8 @@ export default function NavLayoutClient({
                         {item.badge ? (
                           <span
                             className={cx(
-                              "rounded-full px-2 py-0.5 text-[11px] font-semibold",
-                              active
-                                ? "bg-white/15 text-white"
-                                : "bg-gray-200 text-gray-800",
+                              "rounded-full px-2 py-0.5 text-[11px] font-semibold text-gray-800",
+                              active ? "bg-white" : "bg-gray-200",
                             )}
                           >
                             {item.badge}

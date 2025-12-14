@@ -52,12 +52,8 @@ export default function ComponentWrapper({
           <div
             className={`${!fullMockup && "max-h-[450px]"} relative overflow-hidden`}
           >
-            <IPhoneMockup isDark={isDark}>
-              <div
-                className={`${!isDark ? "bg-white text-black" : "text-white"} h-full min-h-[810px] px-4`}
-              >
-                {children}
-              </div>
+            <IPhoneMockup showStatusBar={false} showHomeIndicator>
+              <div className={`h-full min-h-[850px] bg-white`}>{children}</div>
             </IPhoneMockup>
 
             {!fullMockup && (
@@ -67,7 +63,7 @@ export default function ComponentWrapper({
         </div>
 
         {/* Code panel MUST be SSR-visible */}
-        <div id="code-panel" className="relative mt-3">
+        <div className="relative mt-3">
           <pre className="overflow-x-auto rounded-xl border border-gray-200 bg-white p-4 text-xs leading-6 text-slate-950">
             <code>{codeExample}</code>
           </pre>

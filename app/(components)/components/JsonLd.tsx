@@ -25,3 +25,29 @@ export function ButtonsJsonLd({ items }: { items: UiItem[] }) {
     />
   );
 }
+
+export function ScreensJsonLd({ items }: { items: UiItem[] }) {
+  const baseUrl = "https://nextnative.dev/components/screens";
+
+  const graph = items.map((it) => ({
+    "@type": "SoftwareSourceCode",
+    name: it.title,
+    description: it.description,
+    programmingLanguage: "TypeScript",
+    codeRepository: "https://nextnative.dev",
+    url: `${baseUrl}#${it.id}`,
+    text: it.code,
+  }));
+
+  const json = {
+    "@context": "https://schema.org",
+    "@graph": graph,
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    />
+  );
+}

@@ -593,7 +593,7 @@ const pricingScreens: UiItem[] = [
     id: "subscription-pricing",
     title: "Subscription Pricing Screen",
     description:
-      "A premium subscription pricing screen with monthly/yearly toggle, feature list with checkmarks, and prominent CTA—perfect for SaaS apps, premium memberships, and freemium upsells.",
+      "Purple gradient subscription screen with monthly/yearly toggle, Crown icon, and feature checklist.",
     tags: [
       "pricing",
       "subscription",
@@ -609,7 +609,7 @@ const pricingScreens: UiItem[] = [
     id: "tiered-pricing",
     title: "Tiered Pricing Screen",
     description:
-      "A horizontal scrolling tiered pricing screen with Basic/Pro/Team plans, feature comparison, and highlighted popular option—ideal for SaaS products and multi-tier subscriptions.",
+      "Dark slate pricing with Basic/Pro/Team tabs, feature comparison, and trust badges.",
     tags: ["pricing", "tiers", "saas", "plans", "comparison", "freemium"],
     code: tieredPricingCode,
     Preview: TieredPricingPreview,
@@ -618,13 +618,13 @@ const pricingScreens: UiItem[] = [
     id: "paywall",
     title: "App Paywall Screen",
     description:
-      "A dark-themed app paywall with premium features showcase, annual/monthly pricing options, and free trial emphasis—great for content apps, utilities, and premium mobile apps.",
+      "Clean white paywall with yearly/monthly toggle, feature list, and restore purchases.",
     tags: [
       "paywall",
       "pricing",
       "premium",
       "subscription",
-      "dark-theme",
+      "light-theme",
       "trial",
     ],
     code: paywallCode,

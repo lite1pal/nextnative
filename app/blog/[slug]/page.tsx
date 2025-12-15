@@ -248,7 +248,7 @@ function insertAfterFirstParagraph(html: string, insertHtml: string) {
 
 type FooterLink = { href: string; label: string };
 
-export function postFooterLinksFor(slug: string): FooterLink[] {
+function postFooterLinksFor(slug: string): FooterLink[] {
   const map: Record<string, FooterLink[]> = {
     "capacitor-vs-react-native": [
       {

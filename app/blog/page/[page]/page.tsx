@@ -1,9 +1,6 @@
 import { prisma } from "@/prisma/client";
-import Link from "next/link";
-import Image from "next/image";
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
-import HighlightedSpan from "@/components/HighlightedSpan";
+import { permanentRedirect, redirect } from "next/navigation";
 import { BlogPagination } from "@/components/BlogPagination";
 import { calculatePagination } from "@/lib/pagination";
 import PostsGrid from "../../posts-grid";
@@ -48,6 +45,10 @@ export async function generateMetadata(
       title,
       description,
     },
+    robots:
+      page >= 2
+        ? { index: false, follow: true }
+        : { index: true, follow: true },
   };
 }
 
@@ -60,6 +61,8 @@ export default async function BlogListPage(props: BlogListPageProps) {
   if (pageParam && (isNaN(page) || page < 1)) {
     redirect("/blog");
   }
+
+  if (pageParam === "1") permanentRedirect("/blog");
 
   const postsPerPage = 6;
 

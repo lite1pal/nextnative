@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import BlogCategoryView from "./view";
-import { prisma } from "@/prisma/client";
 import { Suspense } from "react";
 
 interface BlogTagPageProps {
@@ -33,6 +32,10 @@ export async function generateMetadata(
       card: "summary",
       title: baseTitle,
       description: baseDescription,
+    },
+    robots: {
+      index: false,
+      follow: true,
     },
   };
 }

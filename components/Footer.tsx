@@ -11,11 +11,6 @@ interface FooterLink {
 }
 
 const productLinks: FooterLink[] = [
-  // {
-  //   label: "Affiliates - Earn 30%",
-  //   href: "https://nextnative.affonso.io/auth",
-  //   target: "_blank",
-  // },
   { label: "Pricing", href: "/pricing" },
   { label: "Docs", href: "https://nextnative.dev/docs" },
   { label: "Showcase", href: "/showcase" },
@@ -24,11 +19,6 @@ const productLinks: FooterLink[] = [
   { label: "Tutorials", href: "/tutorials" },
   { label: "Alternatives", href: "/alternatives" },
   { label: "Use Cases", href: "/use-cases" },
-
-  {
-    label: "MVP Agency",
-    href: "/mvp-app-development",
-  },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -47,10 +37,6 @@ const freeToolsLinks: FooterLink[] = [
     label: "App Store Fees Calculator",
     href: "/free-tools/app-store-fees",
   },
-  // {
-  //   label: "App Store Keyword Research",
-  //   href: "/free-tools/app-store-keyword-research",
-  // },
   {
     label: "App Store Metadata Generator",
     href: "/free-tools/app-store-metadata-generator",
@@ -63,18 +49,6 @@ const freeToolsLinks: FooterLink[] = [
     label: "App Store Screenshot Sizes",
     href: "/free-tools/app-store-screenshot-sizes",
   },
-  // {
-  //   label: "Capacitor Config Generator",
-  //   href: "/free-tools/capacitor-config-generator",
-  // },
-  // {
-  //   label: "Create Android Keystore",
-  //   href: "/free-tools/create-android-keystore",
-  // },
-  // {
-  //   label: "iOS Bundle ID Generator",
-  //   href: "/free-tools/ios-bundle-id-generator",
-  // },
   {
     label: "Play Store Privacy Policy",
     href: "/free-tools/play-store-privacy-policy",
@@ -227,7 +201,6 @@ function Footer() {
     <footer className="border-gray/20 mt-20 border-t">
       <div className="mx-auto px-4 py-16 md:px-0">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
-          {/* Logo and social section */}
           <div className="col-span-1 flex flex-col gap-6 md:col-span-4">
             <Logo />
             <p className="text-gray">Launch mobile apps faster with Next.js</p>

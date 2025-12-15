@@ -13,8 +13,8 @@ function normalizeUrl(input: string) {
 }
 
 export default function ConvertWebsiteToAppPage() {
-  const [urlInput, setUrlInput] = useState("https://nextnative.dev");
-  const [url, setUrl] = useState("https://nextnative.dev");
+  const [urlInput, setUrlInput] = useState("https://hotwire.dev");
+  const [url, setUrl] = useState("https://hotwire.dev");
 
   const valid = useMemo(() => !!normalizeUrl(urlInput), [urlInput]);
 
@@ -29,12 +29,10 @@ export default function ConvertWebsiteToAppPage() {
       {/* HERO */}
       <section className="flex flex-col gap-6 text-center">
         <h1 className="mb-3 text-4xl font-bold text-gray-900 md:text-5xl">
-          Website-to-App Preview Tool
+          Website-to-App Preview
         </h1>
         <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-          Preview any website inside a mobile frame. If you’re using Next.js and
-          want a real iOS & Android app (with store-ready setup), follow our
-          step-by-step tutorial below.
+          Preview any website inside a mobile frame.
         </p>
 
         <form
@@ -206,18 +204,16 @@ function NextNativeUpsellCard() {
         </p>
 
         <CTABlogButton post={{ slug: "converter" }} />
-
-        <div className="mt-5 flex items-center gap-2">
-          <div className="relative">
-            <AvatarList />
-          </div>
-          <div className="flex flex-col items-start">
-            <RatingSvg />
-            <div className="pl-2 text-sm font-medium text-gray-500">
-              Loved by <strong>45+</strong> teams/devs
-            </div>
-          </div>
-        </div>
+        <p className="mt-3 flex flex-col gap-1.5 text-gray-600">
+          Want the exact steps?{" "}
+          <Link
+            href="/tutorials/convert-nextjs-to-mobile-app"
+            className="font-semibold text-gray-900 underline decoration-gray-300 underline-offset-4 hover:decoration-gray-900"
+          >
+            Convert your Next.js app to iOS & Android with Capacitor (full
+            guide)
+          </Link>
+        </p>
       </div>
     </div>
   );

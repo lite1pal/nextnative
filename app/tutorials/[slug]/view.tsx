@@ -26,6 +26,7 @@ export default function TutorialPageView({
     name: tutorial.title,
     description: tutorial.summary,
     totalTime: `PT${tutorial.timeToComplete.replace(/\s/g, "")}`,
+    timeToCompleteISO: "PT30M",
     step: tutorial.steps.map((step, index) => ({
       "@type": "HowToStep",
       position: index + 1,

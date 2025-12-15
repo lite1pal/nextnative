@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  async redirects() {
+    return [
+      {
+        source: "/mvp-app-development",
+        destination: "/convert-website-to-app",
+        permanent: true,
+      },
+    ];
+  },
+
   eslint: {
     ignoreDuringBuilds: true,
   },

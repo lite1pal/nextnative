@@ -115,7 +115,12 @@ export default async function BlogPostPage({
     day: "numeric",
   });
 
-  const contentWithAnchors = await addAnchorsToHeadings(post.contentHtml);
+  const injected = insertAfterFirstParagraph(
+    post.contentHtml,
+    internalLinkBlurbFor(slug),
+  );
+
+  const contentWithAnchors = await addAnchorsToHeadings(injected);
 
   const headings = extractHeadings(contentWithAnchors);
 
@@ -152,7 +157,10 @@ export default async function BlogPostPage({
             dangerouslySetInnerHTML={{ __html: contentWithAnchors }}
           />
 
-          <PostInternalLinks />
+          <PostInternalLinks
+            links={postFooterLinksFor(slug)}
+            title="Next steps"
+          />
 
           <script
             type="application/ld+json"
@@ -175,7 +183,9 @@ export default async function BlogPostPage({
                     url: "https://nextnative.dev/nextnative-logo.png",
                   },
                 },
-                datePublished: post.createdAt,
+                datePublished: post.createdAt.toISOString(),
+                dateModified: post.updatedAt.toISOString(),
+
                 mainEntityOfPage: `https://nextnative.dev/blog/${post.slug}`,
               }),
             }}
@@ -196,4 +206,221 @@ export default async function BlogPostPage({
       </MobileCTAClient>
     </main>
   );
+}
+
+function internalLinkBlurbFor(slug: string) {
+  // keep it short + intent-matched (avoid cannibalization)
+  const map: Record<string, string> = {
+    "capacitor-vs-react-native": `
+      <p class="rounded-2xl border border-gray-200 bg-gray-100 p-5">
+        Using <strong>Next.js</strong>? Here’s the fastest path:
+        <a href="/tutorials/convert-nextjs-to-mobile-app">convert your Next.js app to iOS &amp; Android step-by-step</a>.
+      </p>
+    `,
+    "best-cross-platform-frameworks": `
+      <p class="rounded-2xl border border-gray-200 bg-gray-100 p-5">
+        If you already use <strong>Next.js</strong>, follow our
+        <a href="/tutorials/convert-nextjs-to-mobile-app">Next.js → iOS &amp; Android tutorial</a>
+        to ship with Capacitor (no rewrite).
+      </p>
+    `,
+    "convert-web-app-to-mobile-app": `
+      <p class="rounded-2xl border border-gray-200 bg-gray-100 p-5">
+        Want the “do it” version (not theory)? Start here:
+        <a href="/tutorials/convert-nextjs-to-mobile-app">Convert Next.js to iOS &amp; Android</a>.
+      </p>
+    `,
+  };
+
+  // default: don’t inject everywhere (avoid sitewide boilerplate)
+  return map[slug] ?? "";
+}
+
+function insertAfterFirstParagraph(html: string, insertHtml: string) {
+  if (!insertHtml) return html;
+
+  // Insert right after the first </p>. If no <p>, prepend.
+  const i = html.indexOf("</p>");
+  if (i === -1) return insertHtml + html;
+
+  return html.slice(0, i + 4) + insertHtml + html.slice(i + 4);
+}
+
+type FooterLink = { href: string; label: string };
+
+export function postFooterLinksFor(slug: string): FooterLink[] {
+  const map: Record<string, FooterLink[]> = {
+    "capacitor-vs-react-native": [
+      {
+        href: "/tutorials/convert-nextjs-to-mobile-app",
+        label: "Convert Next.js to iOS & Android (step-by-step)",
+      },
+      { href: "/pricing", label: "Pricing: get NextNative" },
+      { href: "/blog/capacitor-vs-cordova", label: "Capacitor vs Cordova" },
+      {
+        href: "/blog/capacitor-mobile-app",
+        label: "What is a Capacitor mobile app?",
+      },
+      { href: "/comparisons", label: "Compare mobile frameworks" },
+      { href: "/showcase", label: "See real apps built with NextNative" },
+      {
+        href: "/free-tools/app-icon-splash-generator",
+        label: "Splash Screen Generator",
+      },
+    ],
+
+    "best-cross-platform-frameworks": [
+      {
+        href: "/tutorials/convert-nextjs-to-mobile-app",
+        label: "Convert Next.js to iOS & Android (step-by-step)",
+      },
+      { href: "/pricing", label: "Pricing: get NextNative" },
+      {
+        href: "/blog/cross-platform-app-development-tools",
+        label: "Cross-platform app development tools",
+      },
+      {
+        href: "/blog/native-vs-hybrid-app-development",
+        label: "Native vs hybrid apps",
+      },
+      { href: "/comparisons", label: "Compare mobile frameworks" },
+      { href: "/use-cases", label: "App examples you can build" },
+      { href: "/free-tools/app-idea-generator", label: "App Idea Generator" },
+    ],
+
+    "typescript-mobile-app-development": [
+      {
+        href: "/tutorials/convert-nextjs-to-mobile-app",
+        label: "Ship a Next.js + TypeScript app to iOS & Android",
+      },
+      { href: "/pricing", label: "Pricing: get NextNative" },
+      {
+        href: "/blog/mobile-app-architecture-best-practices",
+        label: "Mobile app architecture best practices",
+      },
+      {
+        href: "/blog/improve-mobile-app-performance",
+        label: "Improve mobile app performance",
+      },
+      {
+        href: "/cost/app-development-cost-calculator",
+        label: "App development cost calculator",
+      },
+      {
+        href: "/free-tools/pwa-manifest-generator",
+        label: "PWA Manifest Generator",
+      },
+      { href: "/docs", label: "Docs: features & setup" },
+    ],
+
+    "android-ssl-certificate-pinning": [
+      {
+        href: "/tutorials/convert-nextjs-to-mobile-app",
+        label: "Convert Next.js to iOS & Android (foundation setup)",
+      },
+      { href: "/blog/what-is-ssl-pinning", label: "What is SSL pinning?" },
+      {
+        href: "/blog/mobile-app-security-best-practices",
+        label: "Mobile app security best practices",
+      },
+      {
+        href: "/blog/mobile-authentication-best-practices",
+        label: "Mobile authentication best practices",
+      },
+      { href: "/docs", label: "Docs: security & native features" },
+      { href: "/pricing", label: "Pricing: get NextNative" },
+    ],
+
+    "convert-web-app-to-mobile-app": [
+      {
+        href: "/tutorials/convert-nextjs-to-mobile-app",
+        label: "Convert Next.js to iOS & Android (step-by-step)",
+      },
+      {
+        href: "/blog/web-to-mobile-app",
+        label: "Web to mobile app: options explained",
+      },
+      {
+        href: "/blog/native-vs-hybrid-app-development",
+        label: "Native vs hybrid apps",
+      },
+      { href: "/comparisons", label: "Compare mobile frameworks" },
+      {
+        href: "/free-tools/app-icon-splash-generator",
+        label: "Generate icons & splash screens",
+      },
+      { href: "/pricing", label: "Pricing: get NextNative" },
+    ],
+
+    "capacitor-push-notifications": [
+      {
+        href: "/tutorials/convert-nextjs-to-mobile-app",
+        label: "Set up Next.js + Capacitor the right way first",
+      },
+      {
+        href: "/docs/features/push-notifications",
+        label: "Docs: Push notifications",
+      },
+      {
+        href: "/blog/ionic-push-notifications",
+        label: "Ionic push notifications",
+      },
+      {
+        href: "/blog/push-notifications-ionic",
+        label: "Push notifications in Ionic",
+      },
+      {
+        href: "/blog/mobile-app-release-checklist",
+        label: "Mobile app release checklist",
+      },
+      { href: "/pricing", label: "Pricing: get NextNative" },
+    ],
+
+    "improve-mobile-app-performance": [
+      {
+        href: "/tutorials/convert-nextjs-to-mobile-app",
+        label: "Convert Next.js to iOS & Android (clean setup)",
+      },
+      {
+        href: "/blog/mobile-app-architecture-best-practices",
+        label: "Mobile app architecture best practices",
+      },
+      {
+        href: "/blog/mobile-app-development-challenges",
+        label: "Mobile app development challenges",
+      },
+      {
+        href: "/blog/mobile-app-quality-assurance",
+        label: "Mobile QA basics",
+      },
+      { href: "/pricing", label: "Pricing: get NextNative" },
+      { href: "/showcase", label: "See real apps & features" },
+    ],
+
+    "app-store-review-guidelines": [
+      {
+        href: "/tutorials/convert-nextjs-to-mobile-app",
+        label: "Next.js → iOS & Android setup (submission-friendly)",
+      },
+      {
+        href: "/blog/mobile-app-release-checklist",
+        label: "Mobile app release checklist",
+      },
+      {
+        href: "/blog/how-to-publish-app-on-google-play",
+        label: "How to publish on Google Play",
+      },
+      {
+        href: "/free-tools/app-store-screenshot-generator",
+        label: "App Store Screenshot Generator",
+      },
+      {
+        href: "/free-tools/app-store-metadata-generator",
+        label: "App Store Metadata Generator",
+      },
+      { href: "/pricing", label: "Pricing: get NextNative" },
+    ],
+  };
+
+  return map[slug] ?? [];
 }

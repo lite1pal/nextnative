@@ -21,6 +21,11 @@ const nextConfig: NextConfig = {
         destination: "/convert-website-to-app",
         permanent: true,
       },
+      {
+        source: "/blog/web-to-mobile-app",
+        destination: "/blog/convert-web-app-to-mobile-app",
+        permanent: true,
+      },
     ];
   },
 

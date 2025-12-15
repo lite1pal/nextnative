@@ -16,7 +16,7 @@ type Props = {
 
 export default function PostInternalLinks({
   title = "Explore more",
-  includeIndividualPages = true,
+  includeIndividualPages = false,
   links,
 }: Props) {
   // Add individual comparison and tutorial pages if enabled
@@ -36,6 +36,8 @@ export default function PostInternalLinks({
     : [];
 
   const allLinks = links || [...individualPages];
+
+  if (allLinks.length === 0) return null;
 
   return (
     <section className="mt-10 border-t pt-6">

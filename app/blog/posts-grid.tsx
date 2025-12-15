@@ -1,12 +1,25 @@
+import { prisma } from "@/prisma/client";
 import PostItem from "./post-grid";
 import { PostGrid } from "./types";
 
 export default async function PostsGrid() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/all-posts`);
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/all-posts`);
 
-  if (!res.ok) throw new Error("Error fetching blog posts");
+  // if (!res.ok) throw new Error("Error fetching blog posts");
 
-  const posts: PostGrid[] = await res.json();
+  // const posts: PostGrid[] = await res.json();
+  const posts = await prisma.blogPost.findMany({
+    orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      description: true,
+      image: true,
+      createdAt: true,
+    },
+  });
+
   return (
     <div className="prose prose-h1:text-5xl prose-h2:mt-7 mx-auto flex max-w-full flex-col items-center pt-5 pb-10">
       {posts.length > 0 ? (

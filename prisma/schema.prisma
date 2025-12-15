@@ -15,32 +15,33 @@ datasource db {
 }
 
 model Purchase {
-  id String @id @default(uuid()) @map("_id")
-  paymentId String
+  id             String   @id @default(uuid()) @map("_id")
+  paymentId      String
   githubUsername String?
-  isInvited Boolean @default(false)
-  email String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  isInvited      Boolean  @default(false)
+  email          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model BlogPost {
-  id String @id @default(uuid()) @map("_id")
+  id              String   @id @default(uuid()) @map("_id")
   slug            String   @unique
   title           String
   description     String
   contentMarkdown String
   contentHtml     String
   image           String?
-  tags            String[] // stored as string array (PostgreSQL or MongoDB)
+  tags            String[]
+  indexed         Boolean?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
 
 model GlobalNumber {
-  id String @id @default(uuid()) @map("_id")
-  title String
-  value Int
+  id        String   @id @default(uuid()) @map("_id")
+  title     String
+  value     Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

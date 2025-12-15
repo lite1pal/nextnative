@@ -1964,6 +1964,7 @@ export namespace Prisma {
     contentMarkdown: string | null
     contentHtml: string | null
     image: string | null
+    indexed: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1976,6 +1977,7 @@ export namespace Prisma {
     contentMarkdown: string | null
     contentHtml: string | null
     image: string | null
+    indexed: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1989,6 +1991,7 @@ export namespace Prisma {
     contentHtml: number
     image: number
     tags: number
+    indexed: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2003,6 +2006,7 @@ export namespace Prisma {
     contentMarkdown?: true
     contentHtml?: true
     image?: true
+    indexed?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2015,6 +2019,7 @@ export namespace Prisma {
     contentMarkdown?: true
     contentHtml?: true
     image?: true
+    indexed?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2028,6 +2033,7 @@ export namespace Prisma {
     contentHtml?: true
     image?: true
     tags?: true
+    indexed?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2114,6 +2120,7 @@ export namespace Prisma {
     contentHtml: string
     image: string | null
     tags: string[]
+    indexed: boolean | null
     createdAt: Date
     updatedAt: Date
     _count: BlogPostCountAggregateOutputType | null
@@ -2144,6 +2151,7 @@ export namespace Prisma {
     contentHtml?: boolean
     image?: boolean
     tags?: boolean
+    indexed?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["blogPost"]>
@@ -2159,11 +2167,12 @@ export namespace Prisma {
     contentHtml?: boolean
     image?: boolean
     tags?: boolean
+    indexed?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BlogPostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "description" | "contentMarkdown" | "contentHtml" | "image" | "tags" | "createdAt" | "updatedAt", ExtArgs["result"]["blogPost"]>
+  export type BlogPostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "description" | "contentMarkdown" | "contentHtml" | "image" | "tags" | "indexed" | "createdAt" | "updatedAt", ExtArgs["result"]["blogPost"]>
 
   export type $BlogPostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "BlogPost"
@@ -2177,6 +2186,7 @@ export namespace Prisma {
       contentHtml: string
       image: string | null
       tags: string[]
+      indexed: boolean | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["blogPost"]>
@@ -2579,6 +2589,7 @@ export namespace Prisma {
     readonly contentHtml: FieldRef<"BlogPost", 'String'>
     readonly image: FieldRef<"BlogPost", 'String'>
     readonly tags: FieldRef<"BlogPost", 'String[]'>
+    readonly indexed: FieldRef<"BlogPost", 'Boolean'>
     readonly createdAt: FieldRef<"BlogPost", 'DateTime'>
     readonly updatedAt: FieldRef<"BlogPost", 'DateTime'>
   }
@@ -3921,6 +3932,7 @@ export namespace Prisma {
     contentHtml: 'contentHtml',
     image: 'image',
     tags: 'tags',
+    indexed: 'indexed',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -4100,6 +4112,7 @@ export namespace Prisma {
     contentHtml?: StringFilter<"BlogPost"> | string
     image?: StringNullableFilter<"BlogPost"> | string | null
     tags?: StringNullableListFilter<"BlogPost">
+    indexed?: BoolNullableFilter<"BlogPost"> | boolean | null
     createdAt?: DateTimeFilter<"BlogPost"> | Date | string
     updatedAt?: DateTimeFilter<"BlogPost"> | Date | string
   }
@@ -4113,6 +4126,7 @@ export namespace Prisma {
     contentHtml?: SortOrder
     image?: SortOrder
     tags?: SortOrder
+    indexed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4129,6 +4143,7 @@ export namespace Prisma {
     contentHtml?: StringFilter<"BlogPost"> | string
     image?: StringNullableFilter<"BlogPost"> | string | null
     tags?: StringNullableListFilter<"BlogPost">
+    indexed?: BoolNullableFilter<"BlogPost"> | boolean | null
     createdAt?: DateTimeFilter<"BlogPost"> | Date | string
     updatedAt?: DateTimeFilter<"BlogPost"> | Date | string
   }, "id" | "slug">
@@ -4142,6 +4157,7 @@ export namespace Prisma {
     contentHtml?: SortOrder
     image?: SortOrder
     tags?: SortOrder
+    indexed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BlogPostCountOrderByAggregateInput
@@ -4161,6 +4177,7 @@ export namespace Prisma {
     contentHtml?: StringWithAggregatesFilter<"BlogPost"> | string
     image?: StringNullableWithAggregatesFilter<"BlogPost"> | string | null
     tags?: StringNullableListFilter<"BlogPost">
+    indexed?: BoolNullableWithAggregatesFilter<"BlogPost"> | boolean | null
     createdAt?: DateTimeWithAggregatesFilter<"BlogPost"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"BlogPost"> | Date | string
   }
@@ -4294,6 +4311,7 @@ export namespace Prisma {
     contentHtml: string
     image?: string | null
     tags?: BlogPostCreatetagsInput | string[]
+    indexed?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4307,6 +4325,7 @@ export namespace Prisma {
     contentHtml: string
     image?: string | null
     tags?: BlogPostCreatetagsInput | string[]
+    indexed?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4319,6 +4338,7 @@ export namespace Prisma {
     contentHtml?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: BlogPostUpdatetagsInput | string[]
+    indexed?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4331,6 +4351,7 @@ export namespace Prisma {
     contentHtml?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: BlogPostUpdatetagsInput | string[]
+    indexed?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4344,6 +4365,7 @@ export namespace Prisma {
     contentHtml: string
     image?: string | null
     tags?: BlogPostCreatetagsInput | string[]
+    indexed?: boolean | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4356,6 +4378,7 @@ export namespace Prisma {
     contentHtml?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: BlogPostUpdatetagsInput | string[]
+    indexed?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4368,6 +4391,7 @@ export namespace Prisma {
     contentHtml?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: BlogPostUpdatetagsInput | string[]
+    indexed?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4568,6 +4592,12 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+    isSet?: boolean
+  }
+
   export type BlogPostCountOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
@@ -4577,6 +4607,7 @@ export namespace Prisma {
     contentHtml?: SortOrder
     image?: SortOrder
     tags?: SortOrder
+    indexed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4589,6 +4620,7 @@ export namespace Prisma {
     contentMarkdown?: SortOrder
     contentHtml?: SortOrder
     image?: SortOrder
+    indexed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4601,8 +4633,18 @@ export namespace Prisma {
     contentMarkdown?: SortOrder
     contentHtml?: SortOrder
     image?: SortOrder
+    indexed?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+    isSet?: boolean
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4688,6 +4730,11 @@ export namespace Prisma {
   export type BlogPostUpdatetagsInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+    unset?: boolean
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -4821,6 +4868,21 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+    isSet?: boolean
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+    isSet?: boolean
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {

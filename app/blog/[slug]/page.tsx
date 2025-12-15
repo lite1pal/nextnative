@@ -84,6 +84,10 @@ export async function generateMetadata({
     alternates: {
       canonical: `https://nextnative.dev/blog/${post.slug}`,
     },
+    robots: {
+      index: post.indexed ?? true,
+      follow: true,
+    },
   };
 }
 

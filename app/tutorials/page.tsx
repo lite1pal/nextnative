@@ -2,9 +2,7 @@ import Link from "next/link";
 import { tutorials } from "./[slug]/tutorials-data";
 import type { Metadata } from "next";
 import { Clock, ChevronRight, BookOpen } from "lucide-react";
-import { Suspense } from "react";
-import CTASkeleton from "@/components/CTASkeleton";
-import CTA from "@/components/CTA";
+import CTABlogButton from "../blog/[slug]/CTABlogButton";
 
 export const metadata: Metadata = {
   title: "NextNative Tutorials - Learn to Build Mobile Apps with Next.js",
@@ -182,9 +180,7 @@ export default function TutorialsPage() {
           app in minutes.
         </p>
 
-        <Link href="/">
-          <CTA />
-        </Link>
+        <CTABlogButton post={{ slug: "tutorials-hub" }} />
       </div>
     </div>
   );

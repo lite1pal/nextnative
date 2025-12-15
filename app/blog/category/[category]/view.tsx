@@ -1,5 +1,5 @@
 import { prisma } from "@/prisma/client";
-import { redirect, notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import LoadMorePosts from "@/components/LoadMorePosts";
 import BlogHeading from "../../blog-heading";
 import TagFilter from "../../tag-filter";

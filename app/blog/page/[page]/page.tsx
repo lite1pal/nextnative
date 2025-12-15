@@ -109,7 +109,7 @@ export default async function BlogListPage(props: BlogListPageProps) {
         </div>
       )}
 
-      <PostsGrid posts={posts} />
+      <PostsGrid />
 
       <BlogPagination
         currentPage={paginationInfo.currentPage}

@@ -226,7 +226,7 @@ function internalLinkBlurbFor(slug: string) {
     `,
     "convert-web-app-to-mobile-app": `
       <p class="rounded-2xl border border-gray-200 bg-gray-100 p-5">
-        Want the “do it” version (not theory)? Start here:
+        Want the “do it” version (not theory)?<br/><br/>Start here:
         <a href="/tutorials/convert-nextjs-to-mobile-app">Convert Next.js to iOS &amp; Android</a>.
       </p>
     `,

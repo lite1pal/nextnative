@@ -54,6 +54,22 @@
   }
 }
 
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+/* Firefox */
+::-moz-selection {
+  background: #000;
+  color: #fff;
+}
+
+.prose {
+  font-family: var(--font-body);
+}
+
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still

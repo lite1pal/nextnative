@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { outfit } from "./fonts";
+import { inter, outfit } from "./fonts";
 import LayoutWrapper from "./layout-wrapper";
 
 export const metadata: Metadata = {
@@ -68,7 +68,9 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`bg-background antialiased ${outfit.className}`}>
+      <body
+        className={`bg-background antialiased ${outfit.className} ${inter.variable}`}
+      >
         <noscript>
           <img
             height="1"

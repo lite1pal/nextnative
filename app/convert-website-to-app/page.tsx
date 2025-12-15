@@ -29,12 +29,32 @@ export default function ConvertWebsiteToAppPage() {
       {/* HERO */}
       <section className="flex flex-col gap-6 text-center">
         <h1 className="mb-3 text-4xl font-bold text-gray-900 md:text-5xl">
-          Convert Your Website into a Mobile App
+          Website-to-App Preview Tool
         </h1>
         <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-          Turn any Next.js or web app into real iOS & Android apps using
-          Capacitor. No rewrites, no native headaches. Try the preview below.
+          Preview any website inside a mobile frame. If you’re using Next.js and
+          want a real iOS & Android app (with store-ready setup), follow our
+          step-by-step tutorial below.
         </p>
+        <div className="mx-auto mb-8 flex max-w-2xl flex-col items-center gap-3 rounded-2xl border border-gray-200 bg-white p-4 text-left sm:flex-row sm:items-start">
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-gray-900">
+              Using Next.js?
+            </p>
+            <p className="mt-1 text-sm text-gray-600">
+              Skip guesswork. Follow our conversion-driven guide with shortcuts,
+              tooling, and the fastest path to App Store + Google Play.
+            </p>
+          </div>
+
+          <Link
+            href="/tutorials/convert-nextjs-to-mobile-app"
+            className="w-full rounded-xl bg-gray-900 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-gray-800 sm:w-auto"
+          >
+            Convert Next.js → Mobile App
+          </Link>
+        </div>
+
         <form
           onSubmit={handlePreview}
           className="mx-auto mb-10 flex w-full max-w-2xl flex-col gap-3 sm:flex-row"
@@ -73,41 +93,6 @@ export default function ConvertWebsiteToAppPage() {
               That’s OK — it will still work inside a native WebView.
             </p>
           </IPhoneMockup>
-
-          {/* <div className="mt-6 rounded-xl bg-gradient-to-br from-green-50 via-green-100/60 to-transparent p-5">
-            <h4 className="mb-2 text-lg font-semibold text-green-800">
-              🚀 You’re 1 step away from launching a real mobile app
-            </h4>
-            <p className="mb-4 text-sm text-gray-700">
-              Your site already meets 80% of App Store requirements. <br />
-              <span className="font-medium text-green-700">
-                NextNative
-              </span>{" "}
-              handles the remaining 20% — icons, splash screens, native APIs,
-              store configs, and build pipeline.
-            </p>
-
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              <Link
-                href="/#pricing"
-                className="rounded-xl border border-green-600 bg-white px-4 py-3 text-center font-semibold text-green-700 shadow-sm transition hover:scale-[1.01] hover:bg-green-50"
-              >
-                💚 Get NextNative Kit
-              </Link>
-              <Link
-                href="/docs/tutorials/ship-in-5-minutes"
-                className="rounded-xl bg-green-600 px-4 py-3 text-center font-semibold text-white shadow-sm transition hover:scale-[1.01] hover:bg-green-700"
-              >
-                ⚡ Ship in 5 Minutes
-              </Link>
-            </div>
-
-            <div className="mt-5 flex items-center justify-center gap-3 text-xs text-gray-500">
-              <span>Trusted by indie devs & startups</span>
-              <span className="h-1 w-1 rounded-full bg-gray-400"></span>
-              <span>Lifetime license • No subscriptions</span>
-            </div>
-          </div> */}
 
           <NextNativeUpsellCard />
         </div>
@@ -211,7 +196,6 @@ import LogoSymbol from "@/components/LogoSymbol";
 import { AvatarList } from "@/components/AvatarList";
 import RatingSvg from "@/components/RatingSvg";
 import IPhoneMockup from "@/components/note-taking/iphone-mockup";
-import CTA from "@/components/CTA";
 import CTABlogButton from "../blog/[slug]/CTABlogButton";
 
 function NextNativeUpsellCard() {

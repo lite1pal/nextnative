@@ -12,6 +12,7 @@ type PostItemProps = {
     description: string;
     image?: string | null;
     createdAt: string | Date;
+    updatedAt: string | Date;
   };
 };
 
@@ -31,7 +32,7 @@ export default function PostItem({ post }: PostItemProps) {
     threshold: 0.01,
   });
 
-  const date = formatDate(post.createdAt);
+  const date = formatDate(post?.updatedAt ?? post.createdAt);
 
   return (
     <li ref={ref} className="min-h-[360px]">

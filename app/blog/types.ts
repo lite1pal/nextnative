@@ -5,4 +5,5 @@ export type PostGrid = {
   description: string;
   image: string;
   createdAt: Date;
+  updatedAt: Date;
 };

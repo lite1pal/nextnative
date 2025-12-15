@@ -1,5 +1,5 @@
+import HighlightedSpan2 from "./HighlightedSpan2";
 import HorizontalLine from "./HorizontalLine";
-import HighlightedSpan from "./HighlightedSpan";
 import { cn } from "@/lib/utils";
 
 function Subheading({
@@ -18,7 +18,7 @@ function Subheading({
       {withHorizontalLine && <HorizontalLine className="w-[94px]" />}
       <h2 className="text-[40px] leading-[52px] font-[500] md:text-[54px] md:leading-[71px]">
         {heading1} <br />
-        <HighlightedSpan>{heading2}</HighlightedSpan>
+        <HighlightedSpan2>{heading2}</HighlightedSpan2>
       </h2>
     </div>
   );

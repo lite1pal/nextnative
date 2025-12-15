@@ -19,7 +19,9 @@ export default function LayoutWrapper({
   return (
     <main className={mainClass}>
       {!isBlogPostPage && <BackgroundSVG />}
-      <Container>
+      <Container
+        className={isBlogPostPage ? "md:max-w-[1360px] xl:max-w-[1360px]" : ""}
+      >
         <Navbar />
         {children}
         <Footer />

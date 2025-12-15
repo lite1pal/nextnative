@@ -55,8 +55,7 @@ const navbarItems: NavbarItem[] = [
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-  const isBlog = pathname.startsWith("/blog");
+  const isBlog = false;
 
   useEffect(() => {
     const handleOutsideClick = (event: any) => {
@@ -88,8 +87,8 @@ function Navbar() {
   return (
     <div
       className={cn(
-        "navbar sticky top-0 z-50 flex items-center justify-between py-4 md:py-5",
-        isBlog && "transition-all duration-300",
+        "navbar flex items-center justify-between py-4 md:py-5",
+        isBlog && "sticky top-0 z-50 transition-all duration-300",
         scrolled && isBlog
           ? "top-3 mx-auto rounded-full bg-white px-8 shadow-xl md:py-4"
           : "bg-transparent",

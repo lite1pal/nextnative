@@ -14,6 +14,7 @@ export async function GET() {
         description: true,
         image: true,
         createdAt: true,
+        updatedAt: true,
       },
     });
     return NextResponse.json(posts);

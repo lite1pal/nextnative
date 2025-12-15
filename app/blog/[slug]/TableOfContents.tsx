@@ -34,20 +34,11 @@ export default function TableOfContents({
 
   return (
     <nav className="rounded-x mt-8 p-5">
-      <div className="mb-5 flex items-center gap-2 text-lg font-medium uppercase">
-        {/* <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg> */}
+      <div className="mb-5 flex items-center gap-2 font-medium uppercase">
         <span>Table of Contents</span>
       </div>
-      <ul className="space-y-5">
-        {headings.slice(0, 4).map((h) => (
+      <ul className="space-y-2 text-base">
+        {headings.map((h) => (
           <li key={h.id} className={h.level === "h3" ? "ml-4" : ""}>
             <a
               href={`#${h.id}`}

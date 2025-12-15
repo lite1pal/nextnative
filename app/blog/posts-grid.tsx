@@ -1,4 +1,3 @@
-import { prisma } from "@/prisma/client";
 import PostItem from "./post-grid";
 import { PostGrid } from "./types";
 

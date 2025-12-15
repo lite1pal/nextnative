@@ -9,7 +9,7 @@
     "start": "next start",
     "serve": "next build && npx serve@latest out",
     "lint": "next lint",
-    "test:prod": "npm run build && playwright test",
+    "test:prod": "playwright test",
     "acommit": "npm run test:prod && node scripts/acommit-simple.js"
   },
   "dependencies": {

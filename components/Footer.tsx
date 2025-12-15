@@ -23,51 +23,21 @@ const productLinks: FooterLink[] = [
 ];
 
 const freeToolsLinks: FooterLink[] = [
-  { label: "App Idea Generator", href: "/free-tools/app-idea-generator" },
-  { label: "App Name Generator", href: "/free-tools/app-name-generator" },
+  {
+    label: "Splash Screen Generator",
+    href: "/free-tools/app-icon-splash-generator",
+  },
   {
     label: "App Revenue Calculator",
     href: "/free-tools/app-revenue-calculator",
-  },
-  {
-    label: "App Store Connect API Setup",
-    href: "/free-tools/app-store-connect-api",
-  },
-  {
-    label: "App Store Fees Calculator",
-    href: "/free-tools/app-store-fees",
-  },
-  {
-    label: "App Store Metadata Generator",
-    href: "/free-tools/app-store-metadata-generator",
   },
   {
     label: "App Store Screenshot Generator",
     href: "/free-tools/app-store-screenshot-generator",
   },
   {
-    label: "App Store Screenshot Sizes",
-    href: "/free-tools/app-store-screenshot-sizes",
-  },
-  {
-    label: "Play Store Privacy Policy",
-    href: "/free-tools/play-store-privacy-policy",
-  },
-  {
-    label: "Privacy Policy Generator",
-    href: "/free-tools/app-privacy-policy-generator",
-  },
-  {
-    label: "Preview Website on Mobile Device",
-    href: "/convert-website-to-app",
-  },
-  {
     label: "PWA Manifest Generator",
     href: "/free-tools/pwa-manifest-generator",
-  },
-  {
-    label: "Splash Screen Generator",
-    href: "/free-tools/app-icon-splash-generator",
   },
 ];
 

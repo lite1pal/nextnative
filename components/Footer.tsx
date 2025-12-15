@@ -8,17 +8,25 @@ interface FooterLink {
   label: string;
   href: string;
   target?: string;
+  prefetch?: boolean;
 }
 
-const productLinks: FooterLink[] = [
-  { label: "Pricing", href: "/pricing" },
-  { label: "Docs", href: "https://nextnative.dev/docs" },
+const startHereLinks: FooterLink[] = [
+  {
+    label: "Pricing",
+    href: "/pricing",
+  },
+  {
+    label: "Convert Next.js to iOS & Android",
+    href: "/tutorials/convert-nextjs-to-mobile-app",
+  },
+  {
+    label: "Build an iOS App with Next.js",
+    href: "/tutorials/build-ios-app-with-nextjs",
+  },
+  { label: "Docs", href: "/docs", prefetch: false },
   { label: "Showcase", href: "/showcase" },
-  { label: "Contact", href: "/contact" },
-  { label: "Comparisons", href: "/comparisons" },
   { label: "Tutorials", href: "/tutorials" },
-  { label: "Alternatives", href: "/alternatives" },
-  { label: "Use Cases", href: "/use-cases" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -26,18 +34,22 @@ const freeToolsLinks: FooterLink[] = [
   {
     label: "Splash Screen Generator",
     href: "/free-tools/app-icon-splash-generator",
+    prefetch: false,
   },
   {
     label: "App Revenue Calculator",
     href: "/free-tools/app-revenue-calculator",
+    prefetch: false,
   },
   {
     label: "App Store Screenshot Generator",
     href: "/free-tools/app-store-screenshot-generator",
+    prefetch: false,
   },
   {
     label: "PWA Manifest Generator",
     href: "/free-tools/pwa-manifest-generator",
+    prefetch: false,
   },
 ];
 
@@ -111,6 +123,7 @@ const legalLinks: FooterLink[] = [
   { label: "Terms", href: "/terms" },
   { label: "Disclaimer", href: "/disclaimer" },
   { label: "License", href: "/license" },
+  { label: "Contact", href: "/contact" },
 ];
 const freeComponentsLinks: FooterLink[] = [
   { label: "Buttons", href: "/components/buttons" },
@@ -126,13 +139,10 @@ function FooterLinkGroup({
   links: FooterLink[];
   titleLink?: string;
 }) {
-  const isLegal = title.toLowerCase().includes("legal");
-
   const header = titleLink ? (
     <h3 className="text-lg font-[500]">
       <Link
         onClick={() => trackEvent(`Footer_${title}_clicked`)}
-        prefetch={false}
         href={titleLink}
         className="hover:underline"
       >
@@ -145,16 +155,15 @@ function FooterLinkGroup({
 
   return (
     <div className="flex flex-col gap-4">
-      {/* <h3 className="text-lg font-[500]">{title}</h3> */}
       {header}
       <div className="flex flex-col gap-3">
         {links.map((link) => (
           <Link
-            prefetch={false}
             key={link.label}
             href={link.href}
+            prefetch={link.prefetch ?? true}
             target={link.target || "_self"}
-            rel={isLegal ? "nofollow noopener" : undefined}
+            rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
             onClick={() => trackEvent(`Footer_${link.label}_clicked`)}
             className="text-gray hover:text-primary"
           >
@@ -240,7 +249,6 @@ function Footer() {
             <div className="mt-5 hidden flex-col gap-y-16 md:flex">
               <FooterLinkGroup title="Legal" links={legalLinks} />
 
-              <FooterLinkGroup title="Cost Guides" links={costGuideLinks} />
               <FooterLinkGroup
                 title="Free Components"
                 titleLink="/components"
@@ -252,17 +260,13 @@ function Footer() {
           {/* Links sections */}
           <div className="col-span-1 md:col-span-8 md:ml-auto">
             <div className="grid grid-cols-1 gap-12 gap-y-16 md:grid-cols-2">
-              <FooterLinkGroup title="Product" links={productLinks} />
+              <FooterLinkGroup title="Start Here" links={startHereLinks} />
               <FooterLinkGroup
                 title="Free Tools"
                 titleLink="/free-tools"
                 links={freeToolsLinks}
               />
-              <FooterLinkGroup
-                title="Tutorials"
-                titleLink="/docs"
-                links={tutorialsLinks}
-              />
+              <FooterLinkGroup title="Cost Guides" links={costGuideLinks} />
               <FooterLinkGroup
                 title="App Examples"
                 titleLink="/use-cases"

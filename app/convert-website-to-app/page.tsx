@@ -36,24 +36,6 @@ export default function ConvertWebsiteToAppPage() {
           want a real iOS & Android app (with store-ready setup), follow our
           step-by-step tutorial below.
         </p>
-        <div className="mx-auto mb-8 flex max-w-2xl flex-col items-center gap-3 rounded-2xl border border-gray-200 bg-white p-4 text-left sm:flex-row sm:items-start">
-          <div className="flex-1">
-            <p className="text-sm font-semibold text-gray-900">
-              Using Next.js?
-            </p>
-            <p className="mt-1 text-sm text-gray-600">
-              Skip guesswork. Follow our conversion-driven guide with shortcuts,
-              tooling, and the fastest path to App Store + Google Play.
-            </p>
-          </div>
-
-          <Link
-            href="/tutorials/convert-nextjs-to-mobile-app"
-            className="w-full rounded-xl bg-gray-900 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-gray-800 sm:w-auto"
-          >
-            Convert Next.js → Mobile App
-          </Link>
-        </div>
 
         <form
           onSubmit={handlePreview}

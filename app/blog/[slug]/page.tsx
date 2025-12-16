@@ -160,7 +160,7 @@ export default async function BlogPostPage({
 
   return (
     <main className="mx-auto flex w-full max-w-[962px] flex-col gap-5 py-8 max-xl:overflow-hidden sm:px-4 md:max-w-[1360px] md:flex-row">
-      <article className="prose prose-pre:rounded-xl prose-pre:bg-gradient-to-br prose-pre:from-indigo-800 prose-pre:to-indigo-950 prose-pre:font-[600] prose-pre:text-white prose-pre:p-10 prose-pre:font-mono prose-pre:text-base prose-hr:opacity-10 prose-img:rounded-2xl sm:prose-p:text-base sm:prose-li:text-base sm:prose-li:leading-[26px] xl:prose-h2:pt-16 xl:prose-h3:pt-8 sm:prose-p:leading-[26px] prose-li:marker:text-primary prose-td:border-2 sm:prose-td:px-4 xl:prose-h1:text-5xl sm:prose-h2:text-xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border-2 prose-tr:border-2 prose-a:text-primary prose-a:no-underline min-h-screen max-w-full flex-1 xl:mx-auto">
+      <article className="prose prose-pre:rounded-xl prose-section:py-10 prose-pre:bg-gradient-to-br prose-pre:from-indigo-800 prose-pre:to-indigo-950 prose-pre:font-[600] prose-pre:text-white prose-pre:p-10 prose-pre:font-mono prose-pre:text-base prose-hr:opacity-10 prose-img:rounded-2xl sm:prose-p:text-base sm:prose-li:text-base sm:prose-li:leading-[26px] xl:prose-h2:pt-16 xl:prose-h3:pt-8 sm:prose-p:leading-[26px] prose-li:marker:text-primary prose-td:border-2 sm:prose-td:px-4 xl:prose-h1:text-5xl sm:prose-h2:text-xl sm:prose-h3:text-2xl xl:prose-h1:leading-tight prose-th:border-2 prose-tr:border-2 prose-a:text-primary prose-a:no-underline min-h-screen max-w-full flex-1 xl:mx-auto">
         <div className="lg:px-16 xl:px-0">
           <Breadcrumbs
             items={[

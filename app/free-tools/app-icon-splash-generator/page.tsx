@@ -988,10 +988,9 @@ export default function AppIconSplashGenerator() {
             </p>
           </div>
 
-          {/* Related Tools */}
           <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
             <h3 className="mb-3 text-xl font-semibold text-gray-900">
-              🛠️ Related Free Tools
+              🛠️ Next Steps
             </h3>
             <ul className="space-y-2 text-base text-gray-700">
               <li>
@@ -1000,46 +999,9 @@ export default function AppIconSplashGenerator() {
                   href="/free-tools/app-store-screenshot-sizes"
                   className="font-semibold text-green-600 underline"
                 >
-                  App Store Screenshot Sizes
+                  Convert Next.js to iOS/Android app.
                 </a>{" "}
-                for required dimensions
-              </li>
-              <li>
-                • Generate{" "}
-                <a
-                  href="/free-tools/app-store-screenshot-generator"
-                  className="font-semibold text-green-600 underline"
-                >
-                  App Store Screenshots
-                </a>{" "}
-                with device frames
-              </li>
-              <li>
-                • Optimize your listing with{" "}
-                <a
-                  href="/free-tools/app-store-keyword-research"
-                  className="font-semibold text-green-600 underline"
-                >
-                  ASO Keyword Research
-                </a>
-              </li>
-              <li>
-                • Create metadata with{" "}
-                <a
-                  href="/free-tools/app-store-metadata-generator"
-                  className="font-semibold text-green-600 underline"
-                >
-                  Metadata Generator
-                </a>
-              </li>
-              <li>
-                • Calculate fees with{" "}
-                <a
-                  href="/free-tools/app-store-fees"
-                  className="font-semibold text-green-600 underline"
-                >
-                  App Store Fees Calculator
-                </a>
+                Step-by-step guide.
               </li>
             </ul>
           </div>

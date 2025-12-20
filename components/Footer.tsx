@@ -9,6 +9,7 @@ interface FooterLink {
   href: string;
   target?: string;
   prefetch?: boolean;
+  rel?: string;
 }
 
 const startHereLinks: FooterLink[] = [
@@ -28,6 +29,7 @@ const startHereLinks: FooterLink[] = [
   { label: "Showcase", href: "/showcase" },
   { label: "Tutorials", href: "/tutorials" },
   { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const freeToolsLinks: FooterLink[] = [
@@ -99,31 +101,16 @@ const costGuideLinks: FooterLink[] = [
   },
 ];
 
-const tutorialsLinks: FooterLink[] = [
-  {
-    label: "API Routes & Fetching from a Next.js Mobile App",
-    href: "/docs/features/nextjs-api",
-  },
-  {
-    label: "Connect Supabase in a Next.js Mobile App",
-    href: "/docs/features/database",
-  },
-  {
-    label: "Firebase Authentication Setup for iOS & Android",
-    href: "/docs/features/authorization",
-  },
-  {
-    label: "Set Up In-App Purchases & Subscriptions with RevenueCat",
-    href: "/docs/features/in-app-purchases",
-  },
-];
-
 const legalLinks: FooterLink[] = [
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-  { label: "Disclaimer", href: "/disclaimer" },
-  { label: "License", href: "/license" },
-  { label: "Contact", href: "/contact" },
+  { label: "Privacy", href: "/privacy", rel: "nofollow", prefetch: false },
+  { label: "Terms", href: "/terms", rel: "nofollow", prefetch: false },
+  {
+    label: "Disclaimer",
+    href: "/disclaimer",
+    rel: "nofollow",
+    prefetch: false,
+  },
+  { label: "License", href: "/license", rel: "nofollow", prefetch: false },
 ];
 const freeComponentsLinks: FooterLink[] = [
   { label: "Buttons", href: "/components/buttons" },
@@ -163,7 +150,14 @@ function FooterLinkGroup({
             href={link.href}
             prefetch={link.prefetch ?? true}
             target={link.target || "_self"}
-            rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
+            rel={
+              [
+                link.target === "_blank" ? "noopener noreferrer" : null,
+                link.rel ?? null,
+              ]
+                .filter(Boolean)
+                .join(" ") || undefined
+            }
             onClick={() => trackEvent(`Footer_${link.label}_clicked`)}
             className="text-gray hover:text-primary"
           >

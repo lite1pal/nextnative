@@ -1546,7 +1546,7 @@ export function useOrder() {
         icon: "📸",
         title: "Camera Integration",
         description: (
-          <div>
+          <p>
             Capture plant photos with device camera or upload from gallery using{" "}
             <Link
               href="/comparisons/capacitor-vs-ionic"
@@ -1555,7 +1555,7 @@ export function useOrder() {
               Capacitor
             </Link>{" "}
             Camera API with base64 data URLs for persistence.
-          </div>
+          </p>
         ),
       },
       {

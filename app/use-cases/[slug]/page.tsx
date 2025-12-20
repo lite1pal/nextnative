@@ -255,9 +255,9 @@ export default async function UseCasePage({
               <h3 className="mb-3 text-2xl font-semibold text-gray-900">
                 {feature.title}
               </h3>
-              <p className="text-lg leading-relaxed text-gray-600">
+              <div className="text-lg leading-relaxed text-gray-600">
                 {feature.description}
-              </p>
+              </div>
             </div>
           ))}
         </div>

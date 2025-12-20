@@ -261,11 +261,11 @@ function Footer() {
                 links={freeToolsLinks}
               />
               <FooterLinkGroup title="Cost Guides" links={costGuideLinks} />
-              <FooterLinkGroup
+              {/* <FooterLinkGroup
                 title="App Examples"
                 titleLink="/use-cases"
                 links={examplesLinks}
-              />
+              /> */}
               <div className="block md:hidden">
                 <FooterLinkGroup title="Legal" links={legalLinks} />
               </div>

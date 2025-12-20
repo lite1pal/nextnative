@@ -527,41 +527,6 @@ export default async function UseCasePage({
           </div>
         </section>
       )}
-
-      {/* Documentation Links */}
-      <section className="rounded-3xl">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
-          📖 Learn More
-        </h2>
-        <p className="mb-8 text-lg leading-relaxed text-gray-600 md:text-xl">
-          Explore our documentation to learn everything about building mobile
-          apps with NextNative.
-        </p>
-        <div className="grid gap-6 md:grid-cols-2">
-          <Link
-            href="https://nextnative.dev/docs"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-lg"
-          >
-            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
-              📚 Full Documentation
-            </h3>
-            <p className="text-base leading-relaxed text-gray-600">
-              Complete guides and API references for NextNative.
-            </p>
-          </Link>
-          <Link
-            href="https://nextnative.dev/docs/tutorials/ship-in-5-minutes"
-            className="group hover:border-primary rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-lg"
-          >
-            <h3 className="group-hover:text-primary mb-2 text-xl font-semibold text-gray-900">
-              🚀 Quick Start
-            </h3>
-            <p className="text-base leading-relaxed text-gray-600">
-              Get your app running in just 5 minutes.
-            </p>
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

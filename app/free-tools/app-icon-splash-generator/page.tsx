@@ -785,9 +785,9 @@ export default function AppIconSplashGenerator() {
             Upload your image now
           </ButtonNextNative> */}
 
-          {/* <div className="mx-auto mt-10 max-w-xl">
+          <div className="mx-auto mt-10 max-w-xl">
             <NextNativeCard post={{ slug: "free-tool" }} />
-          </div> */}
+          </div>
         </div>
 
         {/* Main Content */}

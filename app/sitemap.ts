@@ -15,6 +15,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "types-of-open-source-software-licenses",
   ];
 
+  const topFreeTools = new Set([
+    "/free-tools/app-icon-splash-generator",
+    "/free-tools/app-store-screenshot-generator",
+    "/free-tools/pwa-manifest-generator",
+  ]);
+
+  const topBlogSlugs = new Set([
+    "capacitor-vs-react-native",
+    "best-cross-platform-frameworks",
+    "typescript-mobile-app-development",
+    "android-ssl-certificate-pinning",
+    "capacitor-push-notifications",
+  ]);
+
   const posts = await prisma.blogPost.findMany({
     select: { slug: true, updatedAt: true },
     where: {
@@ -46,7 +60,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const freeTools = [
-    "https://nextnative.dev/free-tools",
     "https://nextnative.dev/free-tools/app-icon-splash-generator",
     "https://nextnative.dev/free-tools/app-revenue-calculator",
     "https://nextnative.dev/free-tools/app-privacy-policy-generator",
@@ -103,6 +116,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1.0,
     },
     {
+      url: `${baseUrl}/free-tools`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified: currentDate,
       changeFrequency: "daily" as const,
@@ -118,13 +137,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/showcase`,
       lastModified: staticPagesLastModified,
       changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: 0.5,
     },
     {
       url: `${baseUrl}/contact`,
       lastModified: staticPagesLastModified,
       changeFrequency: "yearly" as const,
-      priority: 0.4,
+      priority: 0.3,
     },
     {
       url: `${baseUrl}/pricing`,
@@ -136,25 +155,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/comparisons`,
       lastModified: staticPagesLastModified,
       changeFrequency: "monthly" as const,
-      priority: 0.9,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/tutorials`,
       lastModified: staticPagesLastModified,
       changeFrequency: "monthly" as const,
-      priority: 0.9,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/alternatives`,
       lastModified: staticPagesLastModified,
       changeFrequency: "monthly" as const,
-      priority: 0.9,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/use-cases`,
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
-      priority: 0.9,
+      priority: 0.85,
     },
 
     // Blog Posts
@@ -162,7 +181,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: post.updatedAt,
       changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: topBlogSlugs.has(post.slug) ? 0.8 : 0.65,
     })),
 
     // Free Tools
@@ -170,15 +189,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: freeTool,
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
-      priority: 0.8,
+      priority: topFreeTools.has(new URL(freeTool).pathname) ? 0.95 : 0.85,
     })),
 
-    // Free Tools
+    // Free Components
     ...freeComponents.map((freeComponent) => ({
       url: freeComponent,
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
-      priority: 0.8,
+      priority: 0.65,
     })),
 
     // Cost Pages
@@ -186,7 +205,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: costPage,
       lastModified: currentDate,
       changeFrequency: "monthly" as const,
-      priority: 0.9,
+      priority: 0.85,
     })),
 
     // Documentation
@@ -194,15 +213,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: doc,
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
-      priority: 0.9,
-    })),
-
-    // Comparisons
-    ...comparisonUrls.map((url) => ({
-      url,
-      lastModified: staticPagesLastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
+      priority: doc === `${baseUrl}/docs` ? 0.95 : 0.8,
     })),
 
     // Tutorials
@@ -213,12 +224,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     })),
 
-    // Alternatives
-    ...alternativeUrls.map((url) => ({
+    // Comparisons
+    ...comparisonUrls.map((url) => ({
       url,
       lastModified: staticPagesLastModified,
       changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: 0.75,
     })),
 
     // Use Cases
@@ -226,7 +237,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url,
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
-      priority: 0.8,
+      priority: 0.75,
+    })),
+
+    // Alternatives
+    ...alternativeUrls.map((url) => ({
+      url,
+      lastModified: staticPagesLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
   ];
 }

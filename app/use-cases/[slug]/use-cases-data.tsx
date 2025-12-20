@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export interface Feature {
   icon: string;
   title: string;
@@ -1546,12 +1548,12 @@ export function useOrder() {
         description: (
           <div>
             Capture plant photos with device camera or upload from gallery using{" "}
-            <a
-              href="https://nextnative.dev/comparisons/capacitor-vs-ionic"
+            <Link
+              href="/comparisons/capacitor-vs-ionic"
               className="text-primary"
             >
               Capacitor
-            </a>{" "}
+            </Link>{" "}
             Camera API with base64 data URLs for persistence.
           </div>
         ),

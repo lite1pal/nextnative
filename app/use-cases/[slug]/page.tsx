@@ -16,6 +16,7 @@ import CTAButton from "@/components/CTAButton";
 import CTAButtonSecondary from "@/components/CTASecondary";
 import PurchaseButton from "./purchase-button";
 import HighlightedSpan from "@/components/HighlightedSpan";
+import CTABlogButton from "@/app/blog/[slug]/CTABlogButton";
 
 // Generate static params for all use cases
 export async function generateStaticParams() {
@@ -379,7 +380,7 @@ export default async function UseCasePage({
 
       {/* CTA */}
       <section className="mb-16 rounded-3xl p-10 md:p-16">
-        <div className="mb-12 text-center">
+        <div className="mb-6 text-center">
           <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
             Ready to Build Your{" "}
             {useCase.title.replace("Build a ", "").replace("Build an ", "")}?
@@ -389,79 +390,8 @@ export default async function UseCasePage({
           </p>
         </div>
 
-        {/* {useCase.forSale ? (
-          <div className="grid gap-8 md:grid-cols-2">
-            {useCase.forSale && (
-              <div className="border-primary rounded-2xl border-2 bg-white p-8 shadow-lg">
-                <div className="mb-6 text-center">
-                  <h3 className="mb-2 text-2xl font-bold text-gray-900">
-                    Buy This Template
-                  </h3>
-                  <p className="text-base text-gray-600">
-                    React code only • You handle Capacitor setup
-                  </p>
-                </div>
-                <div className="mb-6 text-center">
-                  <div className="mb-2 flex items-center justify-center gap-2">
-                    <span className="text-xl text-gray-500 line-through">
-                      ${useCase.pricing.originalPrice}
-                    </span>
-                  </div>
-                  <div className="text-primary text-5xl font-bold">
-                    ${useCase.pricing.price}
-                  </div>
-                  <p className="mt-2 text-sm text-gray-600">
-                    One-time payment
-                  </p>
-                </div>
-                <div className="flex justify-center">
-                  <PurchaseButton link={useCase.pricing.link!} />
-                </div>
-              </div>
-            )}
-
-            <div className="rounded-2xl border-2 border-gray-300 bg-white p-8 shadow-lg">
-              <div className="mb-6 text-center">
-                <h3 className="mb-2 text-2xl font-bold text-gray-900">
-                  Get Full NextNative
-                </h3>
-                <p className="text-base text-gray-600">
-                  All templates + framework & features
-                </p>
-              </div>
-              <div className="mb-6 text-center">
-                <div className="mb-2">
-                  <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-700">
-                    Best Value
-                  </span>
-                </div>
-
-                <p className="mt-2 text-sm text-gray-600">
-                  Includes all templates
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center gap-3">
-                <Link href="/#pricing">
-                  <CTAButton />
-                </Link>
-                <CTAButtonSecondary />
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="flex flex-col justify-center gap-3 md:flex-row">
-            <Link href="/#pricing">
-              <CTAButton />
-            </Link>
-            <CTAButtonSecondary />
-          </div>
-        )} */}
         <div className="flex flex-col justify-center gap-3 md:flex-row">
-          <Link href="/#pricing">
-            <CTAButton />
-          </Link>
-          <CTAButtonSecondary />
+          <CTABlogButton post={{ slug: "use-cases" }} />
         </div>
       </section>
 

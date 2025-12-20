@@ -9,8 +9,17 @@ import { useCases } from "./use-cases/[slug]/use-cases-data";
 export const revalidate = 600; // 10 minutes in seconds
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const noindexSlugs = [
+    "software-deployment-best-practices",
+    "code-review-best-practices",
+    "types-of-open-source-software-licenses",
+  ];
+
   const posts = await prisma.blogPost.findMany({
     select: { slug: true, updatedAt: true },
+    where: {
+      slug: { notIn: noindexSlugs },
+    },
   });
 
   const baseUrl = "https://nextnative.dev";

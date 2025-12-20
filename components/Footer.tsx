@@ -23,7 +23,7 @@ const startHereLinks: FooterLink[] = [
   },
   {
     label: "Build an iOS App with Next.js",
-    href: "/tutorials/build-ios-app-with-nextjs",
+    href: "/tutorials/build-ios-app-nextjs",
   },
   { label: "Docs", href: "/docs", prefetch: false },
   { label: "Showcase", href: "/showcase" },

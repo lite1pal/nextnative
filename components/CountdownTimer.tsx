@@ -58,10 +58,10 @@ export default function CountdownTimer({
 
   return (
     <div className="flex flex-col items-center gap-3 max-sm:self-start lg:flex-row">
-      <div className="flex items-center gap-2 rounded-full bg-black px-4 py-2 text-white shadow-lg">
-        <span className="text-2xl">🔥</span>
+      <div className="flex items-center gap-2 rounded-full bg-blue-400 px-4 py-2 text-white shadow-lg">
+        <span className="text-4xl">🎄</span>
         <span className="text-base sm:text-lg">
-          Use code <span className="font-bold">BLACKFRIDAY20</span> for{" "}
+          Use code <span className="font-bold">HAPPYNEWYEAR20</span> for{" "}
           <span className="font-bold">20%</span> off
         </span>
       </div>
@@ -70,7 +70,8 @@ export default function CountdownTimer({
         className={`rounded-full bg-white p-2 px-8 text-xl text-black ${className}`}
       >
         <span className="font-medium">
-          Ends in {two(hours)}:{two(minutes)}:{two(seconds)}
+          Ends in {two(days)} days and {two(hours)}:{two(minutes)}:
+          {two(seconds)}
         </span>
       </div>
     </div>

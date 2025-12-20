@@ -1,6 +1,12 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+};
+
 export default function License() {
   return (
-    <div className="prose dark:prose-invert max-w-xl mx-auto">
+    <div className="prose dark:prose-invert mx-auto max-w-xl">
       <h1>NextNative.dev License Agreement</h1>
       <p>
         <strong>NextNative.dev License Agreement</strong>

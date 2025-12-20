@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+};
+
 export default function Privacy() {
   return (
     <div className="prose dark:prose-invert mx-auto max-w-xl">

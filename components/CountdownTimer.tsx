@@ -58,10 +58,10 @@ export default function CountdownTimer({
 
   return (
     <div className="flex flex-col items-center gap-3 max-sm:self-start lg:flex-row">
-      <div className="flex items-center gap-2 rounded-full bg-blue-400 px-4 py-2 text-white shadow-lg">
+      <div className="flex items-center gap-2 rounded-full bg-blue-500 px-4 py-2 text-white shadow-lg">
         <span className="text-4xl">🎄</span>
-        <span className="text-base sm:text-lg">
-          Use code <span className="font-bold">HAPPYNEWYEAR20</span> for{" "}
+        <span className="text-base font-semibold sm:text-lg">
+          Use code <span className="font-extrabold">HAPPYNEWYEAR20</span> for{" "}
           <span className="font-bold">20%</span> off
         </span>
       </div>

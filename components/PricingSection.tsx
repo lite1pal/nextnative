@@ -131,11 +131,11 @@ function PricingSection() {
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {/* Starter Plan Card */}
         <div className="order-2 mx-auto flex w-full max-w-[500px] flex-col gap-1 sm:order-1">
-          {/* <span
+          <span
             className={`pointer-events-none ml-auto text-sm font-[500] text-red-500 opacity-0 sm:text-xl`}
           >
             limited launch 50% discount
-          </span> */}
+          </span>
           <div
             style={{
               boxShadow:
@@ -213,12 +213,12 @@ function PricingSection() {
 
         {/* All-in Card */}
         <div className="order-1 mx-auto flex w-full max-w-[500px] flex-col gap-1 sm:order-2">
-          {/* <span className={`text-gray ml-auto text-sm font-[500] sm:text-xl`}>
+          <span className={`text-gray ml-auto text-sm font-[500] sm:text-xl`}>
             limited launch discount{" "}
             <span className="text-red-500">
               50% off, {discountLimit - customersCount} left
             </span>{" "}
-          </span> */}
+          </span>
 
           <div
             style={{

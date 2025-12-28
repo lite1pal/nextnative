@@ -1,7 +1,5 @@
 import NextNativeCard from "@/app/blog/[slug]/NextNativeCard";
-import NextNativeCardSkeleton from "@/app/blog/[slug]/NextNativeCardSkeleton";
 import type { Metadata } from "next";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Free App Revenue Calculator | Estimate App Store Profit Instantly",

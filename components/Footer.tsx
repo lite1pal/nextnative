@@ -55,33 +55,6 @@ const freeToolsLinks: FooterLink[] = [
   },
 ];
 
-const examplesLinks: FooterLink[] = [
-  {
-    label: "Pomodoro Timer & Focus App",
-    href: "/use-cases/pomodoro-timer-app",
-  },
-  {
-    label: "Expense Tracker & Budget Manager App",
-    href: "/use-cases/expense-tracker-app",
-  },
-  {
-    label: "Flashcard & Spaced Repetition Learning App",
-    href: "/use-cases/flashcard-learning-app",
-  },
-  {
-    label: "AI Plant Identification App",
-    href: "/use-cases/ai-plant-identifier-app",
-  },
-  {
-    label: "Food Delivery & Restaurant App",
-    href: "/use-cases/food-delivery-app",
-  },
-  {
-    label: "Fitness & Workout Tracking App",
-    href: "/use-cases/fitness-app",
-  },
-];
-
 const costGuideLinks: FooterLink[] = [
   {
     label: "How Much Does It Cost to Build an App?",
@@ -261,11 +234,7 @@ function Footer() {
                 links={freeToolsLinks}
               />
               <FooterLinkGroup title="Cost Guides" links={costGuideLinks} />
-              {/* <FooterLinkGroup
-                title="App Examples"
-                titleLink="/use-cases"
-                links={examplesLinks}
-              /> */}
+
               <div className="block md:hidden">
                 <FooterLinkGroup title="Legal" links={legalLinks} />
               </div>

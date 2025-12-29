@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import { useCases } from "./[slug]/use-cases-data";
-import { ChevronRight, Clock, DollarSign } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import CTAButtonSecondary from "@/components/CTASecondary";
-import { trackEvent } from "@/services/custom-analytics";
 
 const categories = [
   {
@@ -156,65 +155,6 @@ function UseCasesView() {
                       </div>
                     )}
 
-                    {/* Time & Cost Savings */}
-                    {/* <div className="mb-6 grid grid-cols-2 gap-4 rounded-2xl bg-gray-50 p-4 ">
-                      <div>
-                        <div className="mb-1 flex items-center gap-2 text-sm text-gray-600">
-                          <Clock className="h-4 w-4" />
-                          <span>Save Time</span>
-                        </div>
-                        <div className="text-lg font-semibold text-gray-900">
-                          {useCase.timeSavings}
-                        </div>
-                      </div>
-                      <div>
-                        <div className="mb-1 flex items-center gap-2 text-sm text-gray-600">
-                          <DollarSign className="h-4 w-4" />
-                          <span>Save Cost</span>
-                        </div>
-                        <div className="text-lg font-semibold text-gray-900">
-                          {useCase.costSavings}
-                        </div>
-                      </div>
-                    </div> */}
-
-                    {/* Pricing & Purchase Button */}
-                    {/* <div className="border-primary/20 from-primary/5 to-primary/10 mb-6 flex items-center justify-between rounded-2xl border-2 bg-gradient-to-r p-4">
-                      <div>
-                        <div className="mb-1 flex items-center gap-2">
-                          <span className="font-medium text-gray-500 line-through">
-                            ${useCase.pricing.originalPrice}
-                          </span>
-                          
-                        </div>
-                        <div className="text-primary text-4xl font-semibold">
-                          ${useCase.pricing.price}
-                        </div>
-                      </div>
-
-                      {useCase.forSale ? (
-                        <a
-                          href={useCase.pricing.link}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            window?.datafast("purchase_clicked_from_use_cases");
-                            trackEvent("CTA Template - " + useCase.title);
-                            // Purchase logic will be added here
-                          }}
-                          className="bg-primary hover:bg-primary/90 rounded-full px-6 py-3 text-base font-semibold text-white hover:shadow-lg"
-                        >
-                          Purchase
-                        </a>
-                      ) : (
-                        <div className="text-lg">
-                          Soon for sale <br />
-                          <span className="text-gray-500">
-                            (but already included in NextNative)
-                          </span>
-                        </div>
-                      )}
-                    </div> */}
-
                     {/* View Details Link */}
                     <div className="group-hover:text-primary flex items-center gap-2 text-base font-medium text-gray-900">
                       View Full Details
@@ -227,24 +167,6 @@ function UseCasesView() {
           );
         })}
       </div>
-
-      {/* CTA Section */}
-      {/* <div className="bg-primary/10 mt-24 rounded-3xl p-12 text-center">
-        <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
-          Ready to Build Your App?
-        </h2>
-        <p className="mx-auto mb-10 max-w-2xl text-xl text-gray-600 md:text-2xl">
-          Get NextNative and start building your mobile app today. All use cases
-          included with code examples and best practices.
-        </p>
-        <Link
-          href="/#pricing"
-          className="bg-primary hover:bg-primary/90 inline-flex items-center gap-2 rounded-full px-10 py-5 text-xl font-semibold text-white"
-        >
-          Get Started
-          <ChevronRight className="h-6 w-6" />
-        </Link>
-      </div> */}
 
       {/* Bottom CTA */}
       <div className="mt-16 flex flex-col items-center gap-5 rounded-2xl bg-white p-16 text-center">

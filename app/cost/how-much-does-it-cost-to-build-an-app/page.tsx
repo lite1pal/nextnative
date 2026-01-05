@@ -100,7 +100,7 @@ export default function AppDevelopmentCostPage() {
           <div className="mb-4 flex items-center gap-3">
             <span className="text-3xl">⚡</span>
             <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-              Skip expensive agencies. Build for $149
+              Skip expensive agencies. Build for $299
             </h2>
           </div>
           <p className="mb-6 text-lg text-gray-700 md:text-xl">
@@ -568,10 +568,10 @@ export default function AppDevelopmentCostPage() {
                   href="/#pricing"
                   className="rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold text-white hover:bg-green-700"
                 >
-                  Get NextNative - 50% Off →
+                  Get NextNative →
                 </Link>
                 <p className="text-base text-gray-600">
-                  $149 (was $299) · Unlimited apps · 14-day money-back guarantee
+                  $299 · Unlimited apps · 14-day money-back guarantee
                 </p>
               </div>
 
@@ -636,7 +636,7 @@ export default function AppDevelopmentCostPage() {
                 </h3>
                 <p className="text-gray-700">
                   Convert your existing website to an app using Capacitor or
-                  similar tools. NextNative offers templates starting at $149
+                  similar tools. NextNative offers templates starting at $299
                   (50% off) that include all necessary features for launching on
                   app stores.
                 </p>

@@ -42,7 +42,7 @@ export const alternatives: AlternativeData[] = [
     metaTitle:
       "React Native Alternative: Build Mobile Apps with Next.js + Capacitor",
     metaDescription:
-      "Skip React Native. Build iOS & Android with Next.js + Capacitor. 100% code sharing, 3x faster dev. From $149. 10,000+ developers switched. Learn why →",
+      "Skip React Native. Build iOS & Android with Next.js + Capacitor. 100% code sharing, 3x faster dev. From $299. 10,000+ developers switched. Learn why →",
     lastUpdated: "October 2025",
     alternativeName: "React Native",
     alternativeTagline: "Native mobile framework",
@@ -209,7 +209,7 @@ export const alternatives: AlternativeData[] = [
     metaTitle:
       "Flutter Alternative: Build Mobile Apps with Next.js + Capacitor",
     metaDescription:
-      "Skip Dart & Flutter. Build iOS & Android with JavaScript. 100% code sharing, hire web devs easily. From $149. No new language needed →",
+      "Skip Dart & Flutter. Build iOS & Android with JavaScript. 100% code sharing, hire web devs easily. From $299. No new language needed →",
     lastUpdated: "October 2025",
     alternativeName: "Flutter",
     alternativeTagline: "Google's mobile framework",
@@ -375,7 +375,7 @@ export const alternatives: AlternativeData[] = [
     title: "Expo Alternative",
     metaTitle: "Expo Alternative: Build Mobile Apps with Next.js + Capacitor",
     metaDescription:
-      "Expo alternative with web supremacy. Build iOS, Android & Web from 1 codebase. Next.js + Capacitor. From $149. 10,000+ developers switched. Start →",
+      "Expo alternative with web supremacy. Build iOS, Android & Web from 1 codebase. Next.js + Capacitor. From $299. 10,000+ developers switched. Start →",
     lastUpdated: "October 2025",
     alternativeName: "Expo",
     alternativeTagline: "Managed React Native",
@@ -541,7 +541,7 @@ export const alternatives: AlternativeData[] = [
     title: "Ionic Alternative",
     metaTitle: "Ionic Alternative: Build Mobile Apps with Next.js + Capacitor",
     metaDescription:
-      "Capacitor without Ionic's UI. Use Next.js + Tailwind CSS. Design freedom + native features. From $149. 10,000+ developers prefer it. Try now →",
+      "Capacitor without Ionic's UI. Use Next.js + Tailwind CSS. Design freedom + native features. From $299. 10,000+ developers prefer it. Try now →",
     lastUpdated: "October 2025",
     alternativeName: "Ionic",
     alternativeTagline: "Hybrid mobile framework",

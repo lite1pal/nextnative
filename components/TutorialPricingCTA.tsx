@@ -102,7 +102,7 @@ export default function TutorialPricingCTA() {
         {/* Value Prop */}
         <div className="mb-8 rounded-2xl bg-white p-6 text-center">
           <p className="mb-2 text-xl font-semibold text-gray-900 md:text-2xl">
-            One-time payment: <span className="text-primary">$149</span>
+            One-time payment: <span className="text-primary">$299</span>
             <span className="ml-2 text-lg text-gray-500 line-through">
               $299
             </span>
@@ -127,7 +127,7 @@ export default function TutorialPricingCTA() {
             }}
             variant="primary"
           >
-            Get NextNative - $149 →
+            Get NextNative - $299 →
           </Button>
           <Button
             onClick={() => {

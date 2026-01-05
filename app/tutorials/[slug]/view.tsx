@@ -144,7 +144,7 @@ export default function TutorialPageView({
                 }
                 variant="primary"
               >
-                Get NextNative - $149 →
+                Get NextNative - $299 →
               </Button>
             </Link>
             <Link href="/">
@@ -320,8 +320,7 @@ export default function TutorialPageView({
               </Button>
             </Link>
             <p className="text-base text-gray-600">
-              $149 (normally $299) · Unlimited apps · 14-day money-back
-              guarantee
+              $299 · Unlimited apps · 14-day money-back guarantee
             </p>
           </div>
 

@@ -347,7 +347,7 @@ export default function AppDevelopmentCostCalculatorPage() {
                 Get everything you need to launch: Next.js + Capacitor
                 boilerplate, authentication & onboarding flow, in-app purchases
                 & subscriptions, push notifications, secure backend & database,
-                and 7 premium template apps. For just $149.
+                and 7 premium template apps. For just $299.
               </p>
 
               <div className="mb-10 flex flex-col items-center gap-4">
@@ -355,10 +355,10 @@ export default function AppDevelopmentCostCalculatorPage() {
                   href="/#pricing"
                   className="rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold text-white hover:bg-green-700"
                 >
-                  Get NextNative - 50% Off →
+                  Get NextNative →
                 </Link>
                 <p className="text-base text-gray-600">
-                  $149 (was $299) · Unlimited apps · 14-day money-back guarantee
+                  $299 · Unlimited apps · 14-day money-back guarantee
                 </p>
               </div>
 
@@ -413,9 +413,9 @@ export default function AppDevelopmentCostCalculatorPage() {
                 </h3>
                 <p className="text-gray-700">
                   Yes, with no-code/low-code platforms like NextNative, you can
-                  convert your existing website into mobile apps for $149 (50%
-                  off). This works best if you already have a web app built with
-                  Next.js or React.
+                  convert your existing website into mobile apps for $299. This
+                  works best if you already have a web app built with Next.js or
+                  React.
                 </p>
               </div>
             </div>

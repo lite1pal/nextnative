@@ -70,14 +70,14 @@ export default function ReactNativeDeveloperSalaryPage() {
           <div className="mb-4 flex items-center gap-3">
             <span className="text-3xl">💡</span>
             <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-              Skip hiring. Build yourself for $149
+              Skip hiring. Build yourself for $299
             </h2>
           </div>
           <p className="mb-6 text-lg text-gray-700 md:text-xl">
             A junior developer costs $60K/year. A mid-level costs $115K. Get
             NextNative with Next.js + Capacitor boilerplate, authentication,
             in-app purchases, push notifications, database, 7 premium templates,
-            and 3 months support for just $149 - that's 99.8% savings.
+            and 3 months support for just $299 - that's 99.8% savings.
           </p>
           <div className="mb-6 grid gap-4 py-6 md:grid-cols-3">
             <div className="flex items-start gap-3">
@@ -123,7 +123,7 @@ export default function ReactNativeDeveloperSalaryPage() {
             </Link>
           </div>
           <p className="mt-4 text-center text-sm text-gray-600 sm:text-left">
-            One-time $149 (was $299) vs $115K/year salary · Save 99.8%
+            One-time $299 vs $115K/year salary · Save 99.8%
           </p>
         </div>
 
@@ -419,7 +419,7 @@ export default function ReactNativeDeveloperSalaryPage() {
               </div>
               <p className="mb-10 text-xl text-gray-700 md:text-2xl">
                 Why pay $115K/year for a developer when you can get a complete,
-                production-ready codebase for $149? NextNative includes Next.js
+                production-ready codebase for $299? NextNative includes Next.js
                 + Capacitor boilerplate, authentication & onboarding, in-app
                 purchases & subscriptions, push notifications, secure backend &
                 database, 7 premium templates, launch guides, and 3 months
@@ -434,7 +434,7 @@ export default function ReactNativeDeveloperSalaryPage() {
                   Get NextNative - 50% Off →
                 </Link>
                 <p className="text-base text-gray-600">
-                  $149 (was $299) · Save $115K+ · 14-day money-back guarantee
+                  $299 · Save $115K+ · 14-day money-back guarantee
                 </p>
               </div>
 
@@ -487,7 +487,7 @@ export default function ReactNativeDeveloperSalaryPage() {
                 </h3>
                 <p className="text-gray-700">
                   If you already have a web app, no-code tools like NextNative
-                  ($149) are 99% cheaper than hiring a developer ($115K/year).
+                  ($299) are 99% cheaper than hiring a developer ($115K/year).
                   For complex custom apps, hiring makes sense.
                 </p>
               </div>

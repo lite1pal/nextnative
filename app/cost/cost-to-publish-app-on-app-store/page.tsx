@@ -117,12 +117,11 @@ export default function CostToPublishAppPage() {
               href="/#pricing"
               className="rounded-xl bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700"
             >
-              Get NextNative - 50% Off →
+              Get NextNative →
             </Link>
           </div>
           <p className="mt-4 text-center text-sm text-gray-600 sm:text-left">
-            $149 (was $299) · Launch guides included · 14-day money-back
-            guarantee
+            $299 · Launch guides included · 14-day money-back guarantee
           </p>
         </div>
 
@@ -516,11 +515,10 @@ export default function CostToPublishAppPage() {
                   href="/#pricing"
                   className="rounded-xl bg-green-600 px-8 py-4 text-lg font-semibold text-white hover:bg-green-700"
                 >
-                  Get NextNative - 50% Off →
+                  Get NextNative →
                 </Link>
                 <p className="text-base text-gray-600">
-                  $149 (was $299) · Launch guides included · 14-day money-back
-                  guarantee
+                  $299 · Launch guides included · 14-day money-back guarantee
                 </p>
               </div>
 

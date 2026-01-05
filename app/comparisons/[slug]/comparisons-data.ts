@@ -56,7 +56,7 @@ export const comparisons: ComparisonData[] = [
     title: "Next.js vs React Native",
     metaTitle: "Next.js vs React Native: Which Should You Choose in 2025?",
     metaDescription:
-      "Next.js + Capacitor vs React Native 2025: Share 100% code, build 3x faster. From $149. See why 10,000+ developers choose web-first. Compare now →",
+      "Next.js + Capacitor vs React Native 2025: Share 100% code, build 3x faster. From $299. See why 10,000+ developers choose web-first. Compare now →",
     lastUpdated: "October 2025",
     option1: {
       name: "Next.js + Capacitor",
@@ -260,7 +260,7 @@ export const comparisons: ComparisonData[] = [
     title: "Capacitor vs React Native",
     metaTitle: "Capacitor vs React Native: Complete Comparison 2025",
     metaDescription:
-      "Capacitor vs React Native 2025: Use web skills, no React Native learning curve. Build 3x faster. From $149. See why developers prefer Capacitor →",
+      "Capacitor vs React Native 2025: Use web skills, no React Native learning curve. Build 3x faster. From $299. See why developers prefer Capacitor →",
     lastUpdated: "October 2025",
     option1: {
       name: "Capacitor",
@@ -453,7 +453,7 @@ export const comparisons: ComparisonData[] = [
     metaTitle:
       "Capacitor vs Flutter: Which Cross-Platform Framework to Choose?",
     metaDescription:
-      "Capacitor vs Flutter 2025: Skip Dart, use JavaScript/TypeScript. Share 100% code with web. From $149. 10,000+ developers choose web-first. Compare →",
+      "Capacitor vs Flutter 2025: Skip Dart, use JavaScript/TypeScript. Share 100% code with web. From $299. 10,000+ developers choose web-first. Compare →",
     lastUpdated: "October 2025",
     option1: {
       name: "Capacitor",
@@ -828,7 +828,7 @@ export const comparisons: ComparisonData[] = [
     title: "Next.js vs Expo",
     metaTitle: "Next.js + Capacitor vs Expo: Which Should You Choose?",
     metaDescription:
-      "Next.js + Capacitor vs Expo 2025: Share code with web, 100% code reuse. Build iOS, Android & Web. From $149. See why devs choose Next.js →",
+      "Next.js + Capacitor vs Expo 2025: Share code with web, 100% code reuse. Build iOS, Android & Web. From $299. See why devs choose Next.js →",
     lastUpdated: "October 2025",
     option1: {
       name: "Next.js + Capacitor",
@@ -1022,7 +1022,7 @@ export const comparisons: ComparisonData[] = [
     title: "PWA vs Native App",
     metaTitle: "PWA vs Native App: Which Should You Build in 2025?",
     metaDescription:
-      "PWA vs Native App 2025: Get both with Capacitor. Build once, deploy as PWA + native app. From $149. Best of both worlds. Compare now →",
+      "PWA vs Native App 2025: Get both with Capacitor. Build once, deploy as PWA + native app. From $299. Best of both worlds. Compare now →",
     lastUpdated: "October 2025",
     option1: {
       name: "Progressive Web App (PWA)",

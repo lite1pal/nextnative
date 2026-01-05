@@ -6,17 +6,17 @@ import Button from "./Button";
 function CTAButtonSecondary() {
   return (
     <a
-      href="https://nextnative.dev/playground"
+      href="https://nextnative.dev/docs"
       onClick={() => {
-        trackEvent("CTA_try_for_free_clicked");
-        window?.datafast("try_for_free_clicked_from_herosection");
+        trackEvent("CTA_see_guides_clicked");
+        window?.datafast("see_guides_clicked_from_herosection");
       }}
     >
       <Button
         variant="primary"
         className="hover:bg-primary border-primary text-primary border-2 bg-transparent px-4 hover:text-white md:px-10"
       >
-        Try for free
+        See guides
       </Button>
     </a>
   );

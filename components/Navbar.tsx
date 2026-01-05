@@ -6,7 +6,6 @@ import Logo from "./Logo";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { trackEvent } from "@/services/custom-analytics";
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
 
 type NavbarItem = {
   label: string;
@@ -111,7 +110,20 @@ function Navbar() {
           />
         ))}
 
-        <TryForFreeButton setIsMenuOpen={setIsMenuOpen} />
+        <a
+          href="https://nextnative.dev/docs"
+          onClick={() => {
+            setIsMenuOpen(false);
+            trackEvent("Navbar_SeeGuides_clicked");
+
+            // safe guard
+            if (typeof (window as any)?.datafast === "function") {
+              (window as any).datafast("see_guides_clicked_from_navbar");
+            }
+          }}
+        >
+          <Button variant="secondary">See guides</Button>
+        </a>
       </div>
 
       {/* Mobile navigation */}
@@ -125,7 +137,20 @@ function Navbar() {
             />
           ))}
 
-          <TryForFreeButton setIsMenuOpen={setIsMenuOpen} />
+          <a
+            href="https://nextnative.dev/docs"
+            onClick={() => {
+              setIsMenuOpen(false);
+              trackEvent("Navbar_SeeGuides_clicked");
+
+              // safe guard
+              if (typeof (window as any)?.datafast === "function") {
+                (window as any).datafast("see_guides_clicked_from_navbar");
+              }
+            }}
+          >
+            <Button variant="secondary">See guides</Button>
+          </a>
         </div>
       )}
     </div>

@@ -26,13 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Affonso */}
-        {/* <Script
-          src="https://affonso.io/js/pixel.min.js"
-          strategy="afterInteractive"
-          data-affonso="cmcqau5fq001b6df1lxjk00up"
-          data-cookie_duration="30"
-        /> */}
         <script
           defer
           src="https://analytics.denistarasenko.com/script.js"

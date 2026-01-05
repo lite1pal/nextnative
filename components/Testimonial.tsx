@@ -83,7 +83,7 @@ function Testimonial({
         )}
       </div>
 
-      <blockquote className="leading-9 sm:leading-10">{testimonial}</blockquote>
+      <blockquote className="leading-9 sm:leading-9">{testimonial}</blockquote>
 
       <time className="text-gray text-base">{time}</time>
     </div>

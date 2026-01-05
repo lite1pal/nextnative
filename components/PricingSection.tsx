@@ -211,8 +211,11 @@ function PricingSection() {
               boxShadow:
                 "0px 288px 115px rgba(0, 0, 0, 0.01), 0px 162px 97px rgba(0, 0, 0, 0.02), 0px 72px 72px rgba(0, 0, 0, 0.03), 0px 18px 40px rgba(0, 0, 0, 0.04)",
             }}
-            className="border-primary h-full w-full rounded-[32px] border-2 bg-white p-6 md:p-10"
+            className="border-primary relative h-full w-full rounded-[32px] border-2 bg-white p-6 md:p-10"
           >
+            <span className="bg-primary text-background absolute top-0 right-6 -translate-y-1/2 rounded-full px-3 py-1 text-lg font-[600]">
+              Most popular
+            </span>
             <div className="flex h-full flex-col gap-6 md:gap-8">
               <h3 className="w-fit text-xl font-[500] sm:text-2xl md:text-[32px]">
                 All-in

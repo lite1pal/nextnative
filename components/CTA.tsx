@@ -3,8 +3,6 @@ import CTAButton from "./CTAButton";
 import CTAButtonSecondary from "./CTASecondary";
 
 export default function CTA({ className }: { className?: string }) {
-  const message = { discount: "50% off", text: "limited launch discount" };
-
   return (
     <div className={cn("flex flex-col gap-4 xl:items-center", className)}>
       <div className="flex flex-col gap-3 md:flex-row">

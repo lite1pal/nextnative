@@ -118,11 +118,11 @@ function PricingSection() {
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {/* Starter Plan Card */}
         <div className="order-2 mx-auto flex w-full max-w-[500px] flex-col gap-1 sm:order-1">
-          <span
+          {/* <span
             className={`pointer-events-none ml-auto text-sm font-[500] text-red-500 opacity-0 sm:text-xl`}
           >
             limited launch 50% discount
-          </span>
+          </span> */}
           <div
             style={{
               boxShadow:
@@ -136,12 +136,12 @@ function PricingSection() {
               </h3>
 
               <div className="flex gap-1">
-                <span className="text-gray text-lg line-through sm:text-xl md:text-2xl">
+                {/* <span className="text-gray text-lg line-through sm:text-xl md:text-2xl">
                   $249
-                </span>
+                </span> */}
                 <div className="flex items-end gap-2">
                   <h3 className="text-3xl leading-none font-[500] sm:text-4xl md:text-[54px]">
-                    $125
+                    $249
                   </h3>
                   <span className="text-gray text-lg sm:text-xl md:text-2xl">
                     /forever
@@ -200,14 +200,11 @@ function PricingSection() {
 
         {/* All-in Card */}
         <div className="order-1 mx-auto flex w-full max-w-[500px] flex-col gap-1 sm:order-2">
-          <span className={`text-gray ml-auto text-sm font-[500] sm:text-xl`}>
+          {/* <span className={`text-gray ml-auto text-sm font-[500] sm:text-xl`}>
             <span className="text-xl">🎁</span>{" "}
             <span className="text-red-500">50% off</span> limited launch
             discount{" "}
-            {/* <span className="text-red-500">
-              50% off, {discountLimit - customersCount} left
-            </span>{" "} */}
-          </span>
+          </span> */}
 
           <div
             style={{
@@ -222,12 +219,12 @@ function PricingSection() {
               </h3>
 
               <div className="flex gap-1">
-                <span className="text-gray text-lg line-through sm:text-xl md:text-2xl">
+                {/* <span className="text-gray text-lg line-through sm:text-xl md:text-2xl">
                   $299
-                </span>
+                </span> */}
                 <div className="flex items-end gap-2">
                   <h3 className="text-3xl leading-none font-[500] sm:text-4xl md:text-[54px]">
-                    <HighlightedSpan>$149</HighlightedSpan>
+                    <HighlightedSpan>$299</HighlightedSpan>
                   </h3>
                   <span className="text-gray text-lg sm:text-xl md:text-2xl">
                     /forever

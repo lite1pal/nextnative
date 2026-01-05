@@ -12,12 +12,11 @@ export default function CTA({ className }: { className?: string }) {
         <CTAButtonSecondary />
       </div>
 
-      <p className="flex items-center gap-2 font-medium text-gray-500">
-        <span className="text-xl">🎁</span>
-        <span className="sm:text-xl">
-          <span className="text-red-500">{message.discount}</span>{" "}
-          {message.text}
+      <p className="flex items-center gap-2 font-medium text-gray-500 sm:text-xl">
+        <span className="text-red-500">
+          <span className="text-xl">🎁</span> Lifetime access,
         </span>
+        build unlimited apps!
       </p>
     </div>
   );

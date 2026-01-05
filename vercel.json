@@ -1,9 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/docs", "destination": "https://nextnative-docs.vercel.app" },
-    { "source": "/docs/_next/:path*", "destination": "https://nextnative-docs.vercel.app/_next/:path*" },
-    { "source": "/docs/:path*", "destination": "https://nextnative-docs.vercel.app/:path*" },
-    { "source": "/playground", "destination": "https://nextnative-playground.vercel.app" },
-    { "source": "/assets/:path*", "destination": "https://nextnative-playground.vercel.app/assets/:path*" }
-  ]
-}

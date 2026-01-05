@@ -208,10 +208,12 @@ function PricingSection() {
         {/* All-in Card */}
         <div className="order-1 mx-auto flex w-full max-w-[500px] flex-col gap-1 sm:order-2">
           <span className={`text-gray ml-auto text-sm font-[500] sm:text-xl`}>
-            limited launch discount{" "}
-            <span className="text-red-500">
+            <span className="text-xl">🎁</span>{" "}
+            <span className="text-red-500">50% off</span> limited launch
+            discount{" "}
+            {/* <span className="text-red-500">
               50% off, {discountLimit - customersCount} left
-            </span>{" "}
+            </span>{" "} */}
           </span>
 
           <div

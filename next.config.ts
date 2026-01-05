@@ -11,6 +11,29 @@ const nextConfig: NextConfig = {
         source: "/api/events",
         destination: "https://datafa.st/api/events",
       },
+      // Docs
+      {
+        source: "/docs",
+        destination: "https://testdocs.nextnative.dev",
+      },
+      {
+        source: "/docs/_next/:path*",
+        destination: "https://testdocs.nextnative.dev/_next/:path*",
+      },
+      {
+        source: "/docs/:path*",
+        destination: "https://testdocs.nextnative.dev/:path*",
+      },
+
+      // Playground
+      {
+        source: "/playground",
+        destination: "https://testplayground.nextnative.dev",
+      },
+      {
+        source: "/assets/:path*",
+        destination: "https://testplayground.nextnative.dev/assets/:path*",
+      },
     ];
   },
 

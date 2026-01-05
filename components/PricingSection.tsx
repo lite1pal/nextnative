@@ -12,14 +12,8 @@ import CountdownTimer from "./CountdownTimer";
 const isWaitlist = false;
 
 export const dodoPaymentLinks = {
-  allAccess:
-    process.env.NODE_ENV === "production"
-      ? process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS_PROD!
-      : process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS_TEST!,
-  starter:
-    process.env.NODE_ENV === "production"
-      ? process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER_PROD!
-      : process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER_TEST!,
+  allAccess: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS_PROD!,
+  starter: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER_PROD!,
 };
 
 interface PricingFeature {

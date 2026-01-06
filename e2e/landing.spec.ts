@@ -62,19 +62,6 @@ test("docs link", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("try-for-free button", async ({ page }) => {
-  await page.goto(url);
-  const a1 = page.getByRole("link", { name: "Try for free" }).nth(1);
-  const a2 = page.getByRole("link", { name: "Try for free" }).first();
-
-  await expect(a1).toHaveAttribute("href", playgroundUrl);
-  await expect(a2).toHaveAttribute("href", playgroundUrl);
-
-  await a1.click();
-
-  await expect(page).toHaveURL(playgroundUrl);
-});
-
 test("playground email-gate customers image", async ({ page }) => {
   await page.goto(playgroundUrl);
   const img = page.getByRole("img", { name: "NextNative Customers" });

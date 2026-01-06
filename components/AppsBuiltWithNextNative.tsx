@@ -22,11 +22,8 @@ function AppsBuiltWithNextNative() {
 
         <div className="flex flex-col items-center gap-10 rounded-xl sm:bg-white sm:py-10">
           <Apps maxApps={2} />
-          <TrackEventWrapper
-            eventName="SeeMoreApps_clicked"
-            className="w-full max-w-sm max-sm:-mt-24"
-          >
-            <Link href="/showcase">
+          <TrackEventWrapper eventName="SeeMoreApps_clicked">
+            <Link href="/showcase" className="w-full max-w-sm max-sm:-mt-24">
               <Button className="w-full py-4" variant="secondary">
                 See more apps
               </Button>

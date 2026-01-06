@@ -1,29 +1,20 @@
 "use client";
 
 import { trackEvent } from "@/services/custom-analytics";
-import { ReactNode } from "react";
+import { cloneElement } from "react";
 
 type TrackEventWrapperProps = {
-  children: ReactNode;
+  children: React.ReactElement<{ onClick?: (e: React.MouseEvent) => void }>;
   eventName?: string;
-  className?: string;
 };
 
-function TrackEventWrapper({
-  children,
-  eventName,
-  className,
-}: TrackEventWrapperProps) {
-  return (
-    <div
-      className={className}
-      onClick={() => {
-        if (eventName) trackEvent(eventName);
-      }}
-    >
-      {children}
-    </div>
-  );
+function TrackEventWrapper({ children, eventName }: TrackEventWrapperProps) {
+  const handleClick = (e: React.MouseEvent) => {
+    if (eventName) trackEvent(eventName);
+    children.props.onClick?.(e);
+  };
+
+  return cloneElement(children, { onClick: handleClick });
 }
 
 export default TrackEventWrapper;

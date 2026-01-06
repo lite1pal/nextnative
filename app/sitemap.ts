@@ -1,4 +1,3 @@
-// app/sitemap.ts
 import { prisma } from "@/prisma/client";
 import type { MetadataRoute } from "next";
 import { comparisons } from "./comparisons/[slug]/comparisons-data";
@@ -6,7 +5,7 @@ import { tutorials } from "./tutorials/[slug]/tutorials-data";
 import { alternatives } from "./alternatives/[slug]/alternatives-data";
 import { useCases } from "./use-cases/[slug]/use-cases-data";
 
-export const revalidate = 600; // 10 minutes in seconds
+export const revalidate = 600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const noindexSlugs = [

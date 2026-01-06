@@ -9,12 +9,9 @@ import { trackEvent } from "@/services/custom-analytics";
 function DemoVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
-  // const [isVisible, setIsVisible] = useState(false);
 
-  // YouTube video ID and URLs
   const videoId = "9iDXsyiP134";
   const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&`;
-  // const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   const thumbnailUrl = "/thumbnail-4.png";
 
   const handleVideoClick = () => {

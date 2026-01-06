@@ -1,10 +1,8 @@
-"use client";
-
 import Apps from "@/app/showcase/apps";
 import Subheading from "./Subheading";
 import Button from "./Button";
 import Link from "next/link";
-import { trackEvent } from "@/services/custom-analytics";
+import TrackEventWrapper from "./TrackEventWrapper";
 
 function AppsBuiltWithNextNative() {
   return (
@@ -19,21 +17,21 @@ function AppsBuiltWithNextNative() {
           <p className="mt-6 w-fit max-w-2xl self-start text-start text-lg md:mx-auto md:text-center">
             These mobile apps were created using the exact same starter and
             deployed with ease.
-            {/* <span className="hidden">Based on real submissions.</span> */}
           </p>
         </div>
 
         <div className="flex flex-col items-center gap-10 rounded-xl sm:bg-white sm:py-10">
           <Apps maxApps={2} />
-          <Link
-            onClick={() => trackEvent("SeeMoreApps_clicked")}
-            href="/showcase"
+          <TrackEventWrapper
+            eventName="SeeMoreApps_clicked"
             className="w-full max-w-sm max-sm:-mt-24"
           >
-            <Button className="w-full py-4" variant="secondary">
-              See more apps
-            </Button>
-          </Link>
+            <Link href="/showcase">
+              <Button className="w-full py-4" variant="secondary">
+                See more apps
+              </Button>
+            </Link>
+          </TrackEventWrapper>
         </div>
 
         <div></div>

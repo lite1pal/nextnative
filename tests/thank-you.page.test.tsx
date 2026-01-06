@@ -30,9 +30,13 @@ const hoisted = vi.hoisted(() => {
     return undefined;
   });
 
-  const fetchMock = vi.fn<
-    (input: RequestInfo | URL, init?: RequestInit) => Promise<MockFetchResponse>
-  >();
+  const fetchMock =
+    vi.fn<
+      (
+        input: RequestInfo | URL,
+        init?: RequestInit,
+      ) => Promise<MockFetchResponse>
+    >();
 
   return {
     notFoundError,
@@ -112,7 +116,9 @@ describe("/thank-you page", () => {
     const { default: Page } = await loadPageModule();
 
     await expect(
-      Page({ searchParams: Promise.resolve({ payment_id: "", status: "succeeded" }) } as any),
+      Page({
+        searchParams: Promise.resolve({ payment_id: "", status: "succeeded" }),
+      } as any),
     ).rejects.toBe(hoisted.notFoundError);
 
     expect(hoisted.notFoundMock).toHaveBeenCalledTimes(1);
@@ -122,7 +128,9 @@ describe("/thank-you page", () => {
     const { default: Page } = await loadPageModule();
 
     await expect(
-      Page({ searchParams: Promise.resolve({ payment_id: "pay_1", status: "" }) } as any),
+      Page({
+        searchParams: Promise.resolve({ payment_id: "pay_1", status: "" }),
+      } as any),
     ).rejects.toBe(hoisted.notFoundError);
 
     expect(hoisted.notFoundMock).toHaveBeenCalledTimes(1);
@@ -149,7 +157,10 @@ describe("/thank-you page", () => {
     hoisted.fetchMock.mockResolvedValueOnce(notOkPayment(403));
 
     const el = await Page({
-      searchParams: Promise.resolve({ payment_id: "pay_1", status: "succeeded" }),
+      searchParams: Promise.resolve({
+        payment_id: "pay_1",
+        status: "succeeded",
+      }),
     } as any);
 
     const html = renderToStaticMarkup(el as any);
@@ -168,7 +179,10 @@ describe("/thank-you page", () => {
     hoisted.fetchMock.mockResolvedValueOnce(okPayment({ status: "pending" }));
 
     const el = await Page({
-      searchParams: Promise.resolve({ payment_id: "pay_1", status: "succeeded" }),
+      searchParams: Promise.resolve({
+        payment_id: "pay_1",
+        status: "succeeded",
+      }),
     } as any);
 
     const html = renderToStaticMarkup(el as any);
@@ -181,11 +195,16 @@ describe("/thank-you page", () => {
   it("returns ThankYouPage with isInvited=false when no purchase exists", async () => {
     const { default: Page } = await loadPageModule();
 
-    hoisted.fetchMock.mockResolvedValueOnce(okPayment({ status: "succeeded", foo: 1 }));
+    hoisted.fetchMock.mockResolvedValueOnce(
+      okPayment({ status: "succeeded", foo: 1 }),
+    );
     hoisted.prismaMock.purchase.findFirst.mockResolvedValueOnce(null);
 
     const el: any = await Page({
-      searchParams: Promise.resolve({ payment_id: "pay_1", status: "succeeded" }),
+      searchParams: Promise.resolve({
+        payment_id: "pay_1",
+        status: "succeeded",
+      }),
     } as any);
 
     expect(hoisted.fetchMock).toHaveBeenCalledWith(
@@ -207,10 +226,15 @@ describe("/thank-you page", () => {
     const { default: Page } = await loadPageModule();
 
     hoisted.fetchMock.mockResolvedValueOnce(okPayment({ status: "succeeded" }));
-    hoisted.prismaMock.purchase.findFirst.mockResolvedValueOnce({ isInvited: true });
+    hoisted.prismaMock.purchase.findFirst.mockResolvedValueOnce({
+      isInvited: true,
+    });
 
     const el: any = await Page({
-      searchParams: Promise.resolve({ payment_id: "pay_1", status: "succeeded" }),
+      searchParams: Promise.resolve({
+        payment_id: "pay_1",
+        status: "succeeded",
+      }),
     } as any);
 
     expect(el.props.isInvited).toBe(true);

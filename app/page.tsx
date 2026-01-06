@@ -21,12 +21,9 @@ import TestimonialsSection, {
 import AppsBuiltWithNextNative from "@/components/AppsBuiltWithNextNative";
 import VideoTestimonial from "@/components/VideoTestimonial";
 import type { Metadata } from "next";
-import Script from "next/script";
-import HighlightedSpan from "@/components/HighlightedSpan";
 import HeroSection from "@/components/HeroSection";
-import ToolCard from "@/components/ToolCard";
-import CTA from "@/components/CTA";
 import CTAWithSocialProof from "@/components/CTAWithSocialProof";
+import JsonLD from "./json-ld";
 
 export const dynamic = "force-static";
 
@@ -42,55 +39,9 @@ export default function Home() {
   );
   return (
     <div>
-      <Script id="structured-data" type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          name: "NextNative",
-          url: "https://nextnative.dev",
-          description:
-            "NextNative helps developers launch iOS and Android apps using the same codebase they use for web. Built on Next.js + Capacitor.",
-        })}
-      </Script>
+      <JsonLD />
 
-      <HeroSection
-        heading={
-          <>
-            Launch mobile apps <span className="sm:hidden">10x</span> faster
-            with <HighlightedSpan>Next.js</HighlightedSpan>
-          </>
-        }
-        paragraph="Skip React Native. Use the web tools you already know, combined with Capacitor, to launch cross-platform apps in days."
-        leftTop={
-          <ToolCard
-            tool="Next.js"
-            bullets={["API Routes", "A single codebase"]}
-            img="/tools/nextjs-dark.webp"
-          />
-        }
-        rightTop={
-          <ToolCard
-            tool="Capacitor"
-            bullets={["Native functionality", "Cross-platform support"]}
-            img="/tools/cap-small.webp"
-          />
-        }
-        leftBottom={
-          <ToolCard
-            tool="Tailwind"
-            bullets={["Utility classes", "Responsive design"]}
-            img="/tools/tailwind.webp"
-          />
-        }
-        rightBottom={
-          <ToolCard
-            tool="RevenueCat"
-            bullets={["One-time payments", "Subscriptions"]}
-            img="/tools/revenuecat-small.webp"
-          />
-        }
-        ctaButton={<CTA />}
-      />
+      <HeroSection />
 
       <Testimonial
         imgSrc={"/testimonials/vitaliy.webp"}

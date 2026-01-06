@@ -20,6 +20,16 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // ✅ Protect by origin
+  const origin = request.headers.get("origin");
+  const allowedOrigins = ["https://nextnative.dev"];
+
+  console.log(origin);
+
+  if (!allowedOrigins.includes(origin || "")) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   try {
     const { email } = await request.json();
 

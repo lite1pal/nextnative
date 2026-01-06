@@ -16,7 +16,7 @@ import {
   Check,
   Lock,
 } from "lucide-react";
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 import { LeaderboardScreen } from "./duolingo/leaderboard";
@@ -241,7 +241,7 @@ function Duolingo({
     }
   }, [userState, onStateChange]);
 
-  const handleLessonClick = (clickedLesson: Lesson, index: number) => {
+  const handleLessonClick = (clickedLesson: Lesson) => {
     if (clickedLesson.status === "current") {
       // Find lesson data by label (or use a better id if available)
       const lesson = sampleLessonData.find((l) => l.id === clickedLesson.label);

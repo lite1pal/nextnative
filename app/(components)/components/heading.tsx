@@ -1,4 +1,3 @@
-import HorizontalLine from "@/components/HorizontalLine";
 import { cn } from "@/lib/utils";
 
 function Heading({

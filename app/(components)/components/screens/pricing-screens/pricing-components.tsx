@@ -135,7 +135,7 @@ export function SubscriptionPricingScreen() {
         {/* Features */}
         <div className="mt-6 rounded-2xl bg-black/10 p-4 ring-1 ring-white/10">
           <div className="space-y-3">
-            {features.map((text, i) => (
+            {features.map((text) => (
               <div key={text} className="flex items-center gap-3">
                 <div className="flex size-6 items-center justify-center rounded-full bg-emerald-400/90">
                   <Check className="size-4 text-emerald-950" />
@@ -308,7 +308,7 @@ export function TieredPricingScreen() {
 
         <div className="mt-6 rounded-2xl bg-black/10 p-4 ring-1 ring-white/10">
           <div className="space-y-3">
-            {tier.features.map((f, i) => (
+            {tier.features.map((f) => (
               <div key={f.text} className="flex items-center gap-3">
                 <div
                   className={cn(
@@ -510,7 +510,7 @@ export function PaywallScreen() {
         </div>
 
         <div className="mt-3 space-y-2.5">
-          {features.map((text, i) => (
+          {features.map((text) => (
             <div key={text} className="flex items-center gap-3">
               <div className="flex size-6 items-center justify-center rounded-full bg-emerald-500">
                 <Check className="size-4 text-white" />

@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "serve": "next build && npx serve@latest out",
-    "lint": "next lint",
+    "lint": "next lint --quiet",
     "typecheck": "tsc --noEmit",
     "test": "vitest ./tests",
     "e2e": "playwright test"

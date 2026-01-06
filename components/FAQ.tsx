@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Accordion,
   AccordionContent,
@@ -7,8 +5,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Subheading from "./Subheading";
-import { trackEvent } from "@/services/custom-analytics";
 import Link from "next/link";
+import TrackEventWrapper from "./TrackEventWrapper";
 
 const faqItems = [
   {
@@ -183,20 +181,6 @@ const faqItems = [
     question: "Can I see some apps built with NextNative?",
     answer: (
       <>
-        {/* Yes, check out the Lasting Habits app built with NextNative.
-        <br />
-        <br />
-        You can find it on the{" "}
-        <Link
-          href="https://apps.apple.com/ua/app/lasting-habits/id6736766976"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          App Store
-        </Link>
-        . It's coming soon to the Play Store.
-        <br />
-        <br /> */}
         Yes! <br /> <br /> Visit{" "}
         <Link className="text-primary" href="/showcase">
           Showcase
@@ -365,20 +349,19 @@ function FAQ() {
       <div className="ml-auto w-full xl:max-w-1/2">
         <Accordion type="single" collapsible>
           {faqItems.map((item, index) => (
-            <AccordionItem
-              onClick={() => {
-                trackEvent(`FAQ_${item.question}_clicked`);
-              }}
+            <TrackEventWrapper
               key={index}
-              value={`item-${index}`}
+              eventName={`FAQ_${item.question}_clicked`}
             >
-              <AccordionTrigger className="cursor-pointer text-start text-lg font-[500] hover:no-underline sm:text-xl md:py-7 md:text-2xl">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-base font-medium text-gray-500 sm:text-lg">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
+              <AccordionItem value={`item-${index}`}>
+                <AccordionTrigger className="cursor-pointer text-start text-lg font-[500] hover:no-underline sm:text-xl md:py-7 md:text-2xl">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-base font-medium text-gray-500 sm:text-lg">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </TrackEventWrapper>
           ))}
         </Accordion>
       </div>

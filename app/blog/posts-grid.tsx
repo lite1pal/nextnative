@@ -2,11 +2,17 @@ import PostItem from "./post-grid";
 import { PostGrid } from "./types";
 
 export default async function PostsGrid() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/all-posts`);
+  let posts: PostGrid[] = [];
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/blog/all-posts`,
+    );
 
-  if (!res.ok) throw new Error("Error fetching blog posts");
-
-  const posts: PostGrid[] = await res.json();
+    if (!res.ok) throw new Error("Error fetching blog posts");
+    posts = await res.json();
+  } catch (err) {
+    console.error(err);
+  }
 
   return (
     <div className="prose prose-h1:text-5xl prose-h2:mt-7 mx-auto flex max-w-full flex-col items-center pt-5 pb-10">

@@ -15,8 +15,6 @@ const TEMPLATE_CATALOG: Record<string, { name: string; link: string }> = {
     name: "Pomodoro App Template",
     link: process.env.POMODORO_TEMPLATE_DOWNLOAD_LINK!,
   },
-  // add more as you ship them
-  // "pdt_XXXX": { name: "Expense Tracker Template", link: process.env.EXPENSE_TEMPLATE_LINK! },
 };
 
 // ⚡ NextNative products

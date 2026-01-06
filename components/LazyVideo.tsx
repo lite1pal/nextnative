@@ -20,7 +20,7 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
       {
         threshold: 0.05,
         rootMargin: "50px",
-      }
+      },
     );
 
     if (ref.current) {
@@ -33,7 +33,7 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
   return (
     <div
       ref={ref}
-      className="w-full relative md:w-[550px] overflow-hidden h-[350px] bg-[#4c1190] rounded-3xl order-2 md:order-2"
+      className="relative order-2 h-[350px] w-full overflow-hidden rounded-3xl bg-[#4c1190] md:order-2 md:w-[550px]"
       role="region"
       aria-label={alt}
       onMouseEnter={() => setShowControls(true)}
@@ -43,7 +43,6 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
         <Image
           src="/section-videos/placeholder.webp"
           alt={alt}
-          layout="fill"
           objectFit="cover"
           sizes="33vw"
           quality={25}
@@ -53,11 +52,11 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
         <>
           {!isLoaded && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="animate-spin h-8 w-8 border-4 border-white border-t-transparent rounded-full" />
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-white border-t-transparent" />
             </div>
           )}
           <video
-            className={`${src.includes("iap-section") && "px-24 sm:px-44"} absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`${src.includes("iap-section") && "px-24 sm:px-44"} absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
             src={src}
             autoPlay
             muted

@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Subheading from "./Subheading";
-import { trackEvent } from "@/services/custom-analytics";
 
 function QuickStart() {
   const steps = [
@@ -52,22 +49,14 @@ function QuickStart() {
                     {step.code}
                   </code>
                 </div>
-                {/* <p className="text-gray-600 text-sm mt-2">{step.description}</p> */}
               </div>
             </div>
           ))}
         </div>
 
-        {/* <HighlightedSpan>
-          <div className="flex items-center text-3xl mt-16 justify-center gap-2 md:gap-3">
-            That's it! Now it's time to ship viral apps!
-          </div>
-        </HighlightedSpan> */}
-
         <a
           href="https://apps.apple.com/ua/app/sproutly-ai-plant-identifier/id6748902696"
           target="_blank"
-          onClick={() => trackEvent("Launched_in_2_days_clicked")}
         >
           <Image
             src="/launch-in-2-days-optimized.webp"

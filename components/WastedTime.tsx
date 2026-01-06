@@ -1,22 +1,14 @@
 import { ArrowDown } from "lucide-react";
 import HighlightedSpan from "./HighlightedSpan";
 
-interface TimeItem {
+type TimeItem = {
   emoji: string;
   time: string;
   description: string;
   comment: string;
-}
+};
 
-function WastedTimeItem({
-  item,
-  index,
-  totalItems,
-}: {
-  item: TimeItem;
-  index: number;
-  totalItems: number;
-}) {
+function WastedTimeItem({ item, index }: { item: TimeItem; index: number }) {
   const isEven = index % 2 === 0;
 
   return (
@@ -136,22 +128,15 @@ function WastedTime() {
         </h2>
 
         <div className="relative">
-          {/* Timeline vertical line - hidden on mobile */}
           <div
             className={`bg-primary absolute left-1/2 hidden h-full w-[3px] -translate-x-1/2 md:block`}
             style={{ transformOrigin: "top" }}
           ></div>
 
           {wastedTimeItems.map((item, index) => (
-            <WastedTimeItem
-              key={index}
-              item={item}
-              index={index}
-              totalItems={wastedTimeItems.length}
-            />
+            <WastedTimeItem key={index} item={item} index={index} />
           ))}
 
-          {/* Summary card - minimalistic version */}
           <div
             style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
             className={`relative z-10 mx-auto mt-12 w-full max-w-md rounded-lg bg-white p-6 md:mt-16`}

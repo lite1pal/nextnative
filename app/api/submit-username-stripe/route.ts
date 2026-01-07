@@ -107,8 +107,6 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    revalidatePath("/thank-you-stripe");
-
     return NextResponse.json(
       { message: "Invitation sent successfully" },
       { status: 200 },

@@ -149,6 +149,8 @@ export default function ThankYouPageStripe({
           </button>
         </motion.form>
       </AnimatePresence>
+
+      <Guides productId={paymentData?.product_cart?.[0]?.product_id} />
     </motion.div>
   );
 }
@@ -169,9 +171,7 @@ function GoToDocsButton() {
   );
 }
 
-function InvitedMessage({ productId }: { productId?: string }) {
-  const isAllIn = productId === nextNativeAllInId;
-
+function InvitedMessage({ productId }: { productId: string }) {
   return (
     <motion.div
       key="success"
@@ -188,34 +188,7 @@ function InvitedMessage({ productId }: { productId?: string }) {
         Welcome to the fast lane of mobile development.
       </p>
 
-      {isAllIn && (
-        <div className="mx-auto mt-6 max-w-md space-y-2 text-left text-gray-700">
-          <p>
-            📱 Here's your{" "}
-            <a
-              href={process.env.NEXT_PUBLIC_IOS_PUBLISHING_GUIDE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 underline"
-            >
-              iOS Publishing Guide
-            </a>
-            . Everything you need to get live on the App Store.
-          </p>
-          <p>
-            🤖 Here's your{" "}
-            <a
-              href={process.env.NEXT_PUBLIC_ANDROID_PUBLISHING_GUIDE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 underline"
-            >
-              Android Publishing Guide
-            </a>
-            . Everything you need to get live on Google Play.
-          </p>
-        </div>
-      )}
+      <Guides productId={productId} />
 
       <div className="mt-6">
         <GoToDocsButton />
@@ -223,6 +196,41 @@ function InvitedMessage({ productId }: { productId?: string }) {
 
       <GoToRepositoryButton />
     </motion.div>
+  );
+}
+
+function Guides({ productId }: { productId: string }) {
+  const isAllIn = productId === nextNativeAllInId;
+
+  if (!isAllIn) return null;
+
+  return (
+    <div className="mx-auto mt-6 max-w-md space-y-2 text-left text-gray-700">
+      <p>
+        📱 Here's your{" "}
+        <a
+          href={process.env.NEXT_PUBLIC_IOS_PUBLISHING_GUIDE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          iOS Publishing Guide
+        </a>
+        . Everything you need to get live on the App Store.
+      </p>
+      <p>
+        🤖 Here's your{" "}
+        <a
+          href={process.env.NEXT_PUBLIC_ANDROID_PUBLISHING_GUIDE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          Android Publishing Guide
+        </a>
+        . Everything you need to get live on Google Play.
+      </p>
+    </div>
   );
 }
 

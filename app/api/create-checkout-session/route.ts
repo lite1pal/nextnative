@@ -7,12 +7,12 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 const PRICE_IDS: Record<string, string> = {
-  starter: process.env.STRIPE_PRICE_STARTER!,
+  starter: process.env.NEXT_PUBLIC_STRIPE_NEXTNATIVE_STARTER_PRICE_ID!,
   "all-in": process.env.NEXT_PUBLIC_STRIPE_NEXTNATIVE_ALL_IN_PRICE_ID!,
 };
 
 const PRODUCT_IDS: Record<string, string> = {
-  starter: process.env.STRIPE_PRICE_STARTER!,
+  starter: process.env.NEXT_PUBLIC_STRIPE_NEXTNATIVE_STARTER_PRODUCT_ID!,
   "all-in": process.env.NEXT_PUBLIC_STRIPE_NEXTNATIVE_ALL_IN_PRODUCT_ID!,
 };
 
@@ -33,9 +33,10 @@ export async function POST(req: Request) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
+      invoice_creation: { enabled: false },
       payment_method_types: ["card"],
-      success_url: `http://localhost:3000/thank-you-stripe?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `http://localhost:3000`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/thank-you-stripe?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: process.env.NEXT_PUBLIC_APP_URL,
       metadata: { productId },
     });
 

@@ -133,23 +133,6 @@ describe("PricingSection", () => {
     expect(screen.getAllByTestId("starburst")).toHaveLength(1);
   });
 
-  it("links checkout buttons to the configured Dodo payment links", async () => {
-    const { default: PricingSection } = await loadComponent();
-
-    render(<PricingSection />);
-
-    const buttons = screen.getAllByRole("link", { name: "Get NextNative" });
-    expect(buttons).toHaveLength(2);
-
-    const hrefs = buttons.map((a) =>
-      (a as HTMLAnchorElement).getAttribute("href"),
-    );
-    expect(hrefs).toEqual([
-      "https://pay.example/starter",
-      "https://pay.example/all-access",
-    ]);
-  });
-
   it("tracks expected events for checkout buttons and apps-included link", async () => {
     const { default: PricingSection } = await loadComponent();
 

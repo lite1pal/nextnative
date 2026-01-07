@@ -9,7 +9,6 @@ function CTAButton() {
       onClick={() => {
         trackEvent("CTA_clicked");
         window?.datafast("cta_clicked");
-        // window.location.href = dodoPaymentLinks.allAccess;
         const el = document.getElementById("pricing");
         if (el) {
           el.scrollIntoView();

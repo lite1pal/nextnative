@@ -48,6 +48,7 @@ export async function POST(req: Request) {
     const session = event.data.object as Stripe.Checkout.Session;
 
     if (session.payment_status !== "paid") {
+      await trackEvent("💰 Payment failed!", false);
       return NextResponse.json({ ok: true, ignored: true }, { status: 200 });
     }
 
@@ -56,16 +57,12 @@ export async function POST(req: Request) {
       throw new Error("Missing customer email in session");
     }
 
-    // ⚡ Assume your Stripe products are in session.line_items
-    // (You may need to expand 'line_items' when creating the session on server)
     const productId = (session.metadata?.productId as string) || undefined;
 
     if (!productId) {
       await trackEvent("💰 Missing productId in Stripe session 💔", false);
       throw new Error("Missing productId in Stripe session metadata");
     }
-
-    console.log("productId", productId);
 
     const productName =
       productId === process.env.NEXT_PUBLIC_STRIPE_NEXTNATIVE_ALL_IN_PRODUCT_ID
@@ -86,10 +83,6 @@ export async function POST(req: Request) {
       where: { paymentId: session.id },
     });
     if (!existing) {
-      console.log("prisma.purchase create", {
-        paymentId: session.id,
-        email: customerEmail,
-      });
       await prisma.purchase.create({
         data: {
           paymentId: session.id,
@@ -98,34 +91,33 @@ export async function POST(req: Request) {
       });
 
       // Update customer count
-      console.log("prisma.globalNumber.update");
-      // await prisma.globalNumber.update({
-      //   where: { id: "99c3a4be-4565-451b-813e-82bf381568d7" },
-      //   data: { value: { increment: 1 } },
-      // });
+      await prisma.globalNumber.update({
+        where: { id: "99c3a4be-4565-451b-813e-82bf381568d7" },
+        data: { value: { increment: 1 } },
+      });
 
       // Send welcome email
-      //   try {
-      //     const emailResult = await sendWelcomeEmail({
-      //       email: customerEmail,
-      //       link: `https://nextnative.dev/thank-you?paymentId=${session.id}&status=succeeded`,
-      //     });
+      try {
+        const emailResult = await sendWelcomeEmail({
+          email: customerEmail,
+          link: `https://nextnative.dev/thank-you-stripe?paymentId=${session.id}`,
+        });
 
-      //     if (emailResult.success) {
-      //       trackEvent("📧 Welcome email sent - " + customerEmail + " ✉️", false);
-      //     } else {
-      //       trackEvent(
-      //         "📧 Welcome email failed - " + customerEmail + " ❌",
-      //         false,
-      //       );
-      //       console.error("Failed to send welcome email:", emailResult.message);
-      //     }
-      //   } catch (emailError) {
-      //     trackEvent("📧 Welcome email error - " + customerEmail + " 💥", false);
-      //     console.error("Welcome email error:", emailError);
-      //   }
+        if (emailResult.success) {
+          trackEvent("📧 Welcome email sent - " + customerEmail + " ✉️", false);
+        } else {
+          trackEvent(
+            "📧 Welcome email failed - " + customerEmail + " ❌",
+            false,
+          );
+          console.error("Failed to send welcome email:", emailResult.message);
+        }
+      } catch (emailError) {
+        trackEvent("📧 Welcome email error - " + customerEmail + " 💥", false);
+        console.error("Welcome email error:", emailError);
+      }
 
-      //   revalidatePath("/api/customers-count");
+      revalidatePath("/api/customers-count");
     }
 
     return NextResponse.json({ message: "Webhook processed" }, { status: 200 });

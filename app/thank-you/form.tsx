@@ -1,49 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircleIcon, XCircleIcon } from "lucide-react";
 
-declare global {
-  interface Window {
-    fbq: (...args: any[]) => void;
-  }
-}
-
 const nextNativeAllInId = process.env.NEXT_PUBLIC_NEXTNATIVE_ALL_IN_ID;
 
-// Utility to hash email with SHA-256 (used for advanced matching)
-async function hashEmail(email: string): Promise<string> {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(email.trim().toLowerCase());
-  const hash = await crypto.subtle.digest("SHA-256", data);
-  return Array.from(new Uint8Array(hash))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-}
+type PaymentData = {
+  settlement_amount: number;
+  product_cart: [{ product_id: string }];
+};
 
 export default function ThankYouPage({
   paymentData,
   isInvited,
 }: {
-  paymentData: any;
+  paymentData: PaymentData;
   isInvited: boolean;
 }) {
   const searchParams = useSearchParams();
   const paymentId = searchParams.get("payment_id");
   const [githubUsername, setGithubUsername] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    window.fbq("track", "Purchase", {
-      value: paymentData.settlement_amount / 100,
-      currency: "USD",
-      eventID: paymentData.payment_id,
-    });
-  }, [paymentData]);
+  const [isInvitedGithub, setIsInvitedGithub] = useState(isInvited ?? false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,7 +47,8 @@ export default function ThankYouPage({
       });
 
       if (!response.ok) throw new Error("Failed to submit username");
-      setSuccess(true);
+
+      setIsInvitedGithub(true);
     } catch (err) {
       console.log(err);
       setError("Something went wrong. Please try again.");
@@ -75,7 +57,7 @@ export default function ThankYouPage({
     }
   };
 
-  if (isInvited) {
+  if (isInvitedGithub) {
     return (
       <InvitedMessage productId={paymentData?.product_cart?.[0]?.product_id} />
     );
@@ -96,115 +78,83 @@ export default function ThankYouPage({
       </p>
 
       <AnimatePresence>
-        {success ? (
-          <SuccessMessage />
-        ) : (
-          <motion.form
-            key="form"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onSubmit={handleSubmit}
-            className="space-y-5"
-          >
-            <div>
-              <label
-                htmlFor="githubUsername"
-                className="mb-1 block text-sm font-medium text-gray-700"
-              >
-                GitHub Username
-              </label>
-              <input
-                type="text"
-                id="githubUsername"
-                value={githubUsername}
-                onChange={(e) => setGithubUsername(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
-                placeholder="e.g., johndoe"
-                required
-                aria-describedby="githubUsername-error"
-              />
-            </div>
-
-            {error && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="flex items-center gap-1 text-sm text-red-500"
-                id="githubUsername-error"
-              >
-                <XCircleIcon className="h-4 w-4" />
-                {error}
-              </motion.p>
-            )}
-            <button
-              type="submit"
-              disabled={isLoading}
-              className={`w-full cursor-pointer rounded-lg px-4 py-2 font-medium text-white transition-colors ${
-                isLoading
-                  ? "cursor-not-allowed bg-blue-400"
-                  : "bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              }`}
+        <motion.form
+          key="form"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onSubmit={handleSubmit}
+          className="space-y-5"
+        >
+          <div>
+            <label
+              htmlFor="githubUsername"
+              className="mb-1 block text-sm font-medium text-gray-700"
             >
-              {isLoading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <svg
-                    className="h-5 w-5 animate-spin text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                    />
-                  </svg>
-                  Submitting...
-                </span>
-              ) : (
-                "Submit"
-              )}
-            </button>
-          </motion.form>
-        )}
+              GitHub Username
+            </label>
+            <input
+              type="text"
+              id="githubUsername"
+              value={githubUsername}
+              onChange={(e) => setGithubUsername(e.target.value)}
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 shadow-sm transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+              placeholder="e.g., johndoe"
+              required
+              aria-describedby="githubUsername-error"
+            />
+          </div>
+
+          {error && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex items-center gap-1 text-sm text-red-500"
+              id="githubUsername-error"
+            >
+              <XCircleIcon className="h-4 w-4" />
+              {error}
+            </motion.p>
+          )}
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`w-full cursor-pointer rounded-lg px-4 py-2 font-medium text-white transition-colors ${
+              isLoading
+                ? "cursor-not-allowed bg-blue-400"
+                : "bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            }`}
+          >
+            {isLoading ? (
+              <span className="flex items-center justify-center gap-2">
+                <svg
+                  className="h-5 w-5 animate-spin text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
+                </svg>
+                Submitting...
+              </span>
+            ) : (
+              "Submit"
+            )}
+          </button>
+        </motion.form>
       </AnimatePresence>
-    </motion.div>
-  );
-}
-
-function SuccessMessage() {
-  return (
-    <motion.div
-      key="success"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="text-center"
-    >
-      <CheckCircleIcon className="mx-auto mb-4 h-12 w-12 text-green-500" />
-      <p className="text-lg text-gray-800">
-        Username submitted successfully and you have been invited to the
-        NextNative repository!
-      </p>
-      <GoToDocsButton />
-
-      <div className="mt-5 flex items-center justify-center">
-        <img
-          src="/how-to-accept-invite.gif"
-          className="rounded-xl"
-          alt="GitHub invitation"
-        />
-      </div>
-      <GoToRepositoryButton />
     </motion.div>
   );
 }

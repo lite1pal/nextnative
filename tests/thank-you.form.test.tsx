@@ -82,25 +82,6 @@ describe("/thank-you form", () => {
     hoisted.fetchMock.mockReset();
   });
 
-  it("tracks Purchase via fbq on mount", async () => {
-    const { default: ThankYouPage } = await loadComponent();
-
-    render(
-      <ThankYouPage
-        paymentData={{ settlement_amount: 12300, payment_id: "pay_1" }}
-        isInvited={false}
-      />,
-    );
-
-    await waitFor(() => {
-      expect((window as any).fbq).toHaveBeenCalledWith("track", "Purchase", {
-        value: 123,
-        currency: "USD",
-        eventID: "pay_1",
-      });
-    });
-  });
-
   it("renders invited message when isInvited=true", async () => {
     const { default: ThankYouPage } = await loadComponent();
 
@@ -214,17 +195,12 @@ describe("/thank-you form", () => {
     });
 
     expect(
-      await screen.findByText(
-        "Username submitted successfully and you have been invited to the NextNative repository!",
-      ),
+      await screen.findByText("You're in! Your GitHub invite is on the way 🚀"),
     ).toBeTruthy();
 
     expect(
       screen.getByText("documentation").closest("a")?.getAttribute("href"),
     ).toBe("https://nextnative.dev/docs");
-
-    const img = screen.getByAltText("GitHub invitation") as HTMLImageElement;
-    expect(img.getAttribute("src")).toBe("/how-to-accept-invite.gif");
 
     expect(screen.getByText("Go to the NextNative repository")).toBeTruthy();
   });
@@ -260,9 +236,7 @@ describe("/thank-you form", () => {
 
     resolveFetch({ ok: true });
 
-    await screen.findByText(
-      "Username submitted successfully and you have been invited to the NextNative repository!",
-    );
+    await screen.findByText("You're in! Your GitHub invite is on the way 🚀");
   });
 
   it("shows error message when submit API returns non-ok", async () => {

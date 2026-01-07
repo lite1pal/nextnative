@@ -297,7 +297,7 @@ describe("/api/stripe-webhook POST", () => {
 
     expect(hoisted.sendWelcomeEmailMock).toHaveBeenCalledWith({
       email: "buyer@example.com",
-      link: "https://nextnative.dev/thank-you-stripe?paymentId=cs_paid_1",
+      link: "https://nextnative.dev/thank-you-stripe?session_id=cs_paid_1",
     });
 
     expect(hoisted.revalidatePathMock).toHaveBeenCalledWith(

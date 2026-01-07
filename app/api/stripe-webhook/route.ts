@@ -100,7 +100,7 @@ export async function POST(req: Request) {
       try {
         const emailResult = await sendWelcomeEmail({
           email: customerEmail,
-          link: `https://nextnative.dev/thank-you-stripe?paymentId=${session.id}`,
+          link: `https://nextnative.dev/thank-you-stripe?session_id=${session.id}`,
         });
 
         if (emailResult.success) {

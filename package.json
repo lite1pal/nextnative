@@ -96,5 +96,8 @@
   "overrides": {
     "motion-dom": "12.4.5",
     "motion-utils": "12.0.0"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   }
 }

@@ -101,7 +101,6 @@ export default function ScreensPage() {
                   codeExample={item.code}
                   description={item.description}
                   id={item.id}
-                  isDark={item.id === "apple-podcasts"}
                   fullMockup
                 >
                   <item.Preview />

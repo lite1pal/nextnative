@@ -7,7 +7,6 @@ import {
   Shield,
   Star,
   Trophy,
-  User,
   Settings,
   UserPlus,
 } from "lucide-react";

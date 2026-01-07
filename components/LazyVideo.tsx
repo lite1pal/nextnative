@@ -43,6 +43,8 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
         <Image
           src="/section-videos/placeholder.webp"
           alt={alt}
+          width={100}
+          height={100}
           objectFit="cover"
           sizes="33vw"
           quality={25}

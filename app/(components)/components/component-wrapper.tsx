@@ -10,7 +10,6 @@ export default function ComponentWrapper({
   codeExample,
   heading = "Component Example",
   paid = false,
-  isDark = false,
   fullMockup = false,
   id,
   description,
@@ -20,7 +19,6 @@ export default function ComponentWrapper({
   codeExample: string;
   heading?: string;
   paid?: boolean;
-  isDark?: boolean;
   fullMockup?: boolean;
   description?: string; // optional SEO text under heading
 }) {

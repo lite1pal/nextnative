@@ -4,12 +4,7 @@ import StarburstSign from "./StarburstSign";
 import Subheading from "./Subheading";
 import Link from "next/link";
 import TrackEventWrapper from "./TrackEventWrapper";
-import { cn } from "@/lib/utils";
-
-export const dodoPaymentLinks = {
-  allAccess: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS_PROD!,
-  starter: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER_PROD!,
-};
+import CheckoutButton from "./CheckoutButton";
 
 function PricingSection() {
   const plans: PricingPlan[] = [
@@ -18,7 +13,6 @@ function PricingSection() {
       title: "Starter",
       price: "$249",
       buttonVariant: "secondary",
-      checkoutHref: dodoPaymentLinks.starter,
       checkoutEventName: "PricingSection_GetNextNative_Starter_clicked",
       features: baseFeatures,
     },
@@ -29,7 +23,6 @@ function PricingSection() {
       highlightPrice: true,
       mostPopular: true,
       buttonVariant: "primary",
-      checkoutHref: dodoPaymentLinks.allAccess,
       checkoutEventName: "PricingSection_GetNextNative_All-in_clicked",
       buttonWrapper: (button) => (
         <StarburstSign
@@ -156,47 +149,11 @@ type PricingPlan = {
   price: ReactNode;
   highlightPrice?: boolean;
   mostPopular?: boolean;
-  checkoutHref: string;
   checkoutEventName: string;
   buttonVariant: "primary" | "secondary";
   buttonWrapper?: (button: ReactNode) => ReactNode;
   features: PricingFeature[];
 };
-
-const CHECKOUT_BUTTON_BASE =
-  "w-fit rounded-[12px] sm:rounded-[16px] cursor-pointer font-[500]";
-
-const CHECKOUT_BUTTON_VARIANT_CLASSES = {
-  primary:
-    "bg-primary text-white text-lg md:text-xl px-8 md:px-16 py-2 md:py-5 hover:bg-white hover:text-primary border-2 border-primary",
-  secondary:
-    "border-2 border-primary text-primary bg-transparent text-base md:text-xl px-6 md:px-8 py-2 hover:bg-primary hover:text-white",
-} as const;
-
-function CheckoutLinkButton({
-  href,
-  variant,
-  className,
-  children,
-}: {
-  href: string;
-  variant: "primary" | "secondary";
-  className?: string;
-  children: ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className={cn(
-        CHECKOUT_BUTTON_BASE,
-        CHECKOUT_BUTTON_VARIANT_CLASSES[variant],
-        className,
-      )}
-    >
-      {children}
-    </Link>
-  );
-}
 
 function PricingPlanCard({ plan }: { plan: PricingPlan }) {
   const featuresAreDimmed = plan.key === "starter";
@@ -262,32 +219,12 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
             {plan.buttonWrapper ? (
               plan.buttonWrapper(
                 <TrackEventWrapper eventName={plan.checkoutEventName}>
-                  <CheckoutLinkButton
-                    href={plan.checkoutHref}
-                    variant={plan.buttonVariant}
-                    className={
-                      plan.key === "all-in"
-                        ? "flex w-full items-center justify-center gap-2 py-4 text-[18px]"
-                        : "flex w-full items-center justify-center gap-2 py-5 text-[18px]"
-                    }
-                  >
-                    Get NextNative
-                  </CheckoutLinkButton>
+                  <CheckoutButton plan={plan.key} />
                 </TrackEventWrapper>,
               )
             ) : (
               <TrackEventWrapper eventName={plan.checkoutEventName}>
-                <CheckoutLinkButton
-                  href={plan.checkoutHref}
-                  variant={plan.buttonVariant}
-                  className={
-                    plan.key === "all-in"
-                      ? "flex w-full items-center justify-center gap-2 py-4 text-[18px]"
-                      : "flex w-full items-center justify-center gap-2 py-5 text-[18px]"
-                  }
-                >
-                  Get NextNative
-                </CheckoutLinkButton>
+                <CheckoutButton plan={plan.key} />
               </TrackEventWrapper>
             )}
 

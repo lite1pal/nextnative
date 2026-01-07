@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import ComponentWrapper from "../component-wrapper";
 import { buttonItems } from "./buttons";
 import { ButtonsJsonLd } from "../JsonLd";
-import { SeoCopy } from "../seo-copy";
-import { TocPills } from "../toc-pills";
 import Link from "next/link";
 
 const URL = "https://nextnative.dev/components/buttons";

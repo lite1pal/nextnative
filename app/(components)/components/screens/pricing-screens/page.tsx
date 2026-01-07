@@ -700,9 +700,6 @@ export default function PricingScreensPage() {
                   codeExample={item.code}
                   description={item.description}
                   id={item.id}
-                  isDark={
-                    item.id === "paywall" || item.id === "subscription-pricing"
-                  }
                   fullMockup
                 >
                   <item.Preview />

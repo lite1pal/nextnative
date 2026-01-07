@@ -34,6 +34,7 @@ export async function POST(req: Request) {
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
       invoice_creation: { enabled: false },
+      automatic_tax: { enabled: true },
       payment_method_types: ["card"],
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/thank-you-stripe?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: process.env.NEXT_PUBLIC_APP_URL,

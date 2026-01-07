@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactNode } from "react";
 import HighlightedSpan from "./HighlightedSpan";
 import StarburstSign from "./StarburstSign";
@@ -5,9 +7,10 @@ import Subheading from "./Subheading";
 import Link from "next/link";
 import TrackEventWrapper from "./TrackEventWrapper";
 import { cn } from "@/lib/utils";
+import Button from "./Button";
 
 export const dodoPaymentLinks = {
-  allAccess: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_ALL_ACCESS_PROD!,
+  allAccess: "https://buy.stripe.com/test_4gM3cp5D05ID6ISdIYawo00",
   starter: process.env.NEXT_PUBLIC_DODO_PAYMENT_LINK_STARTER_PROD!,
 };
 
@@ -201,6 +204,29 @@ function CheckoutLinkButton({
 function PricingPlanCard({ plan }: { plan: PricingPlan }) {
   const featuresAreDimmed = plan.key === "starter";
 
+  async function handleBuy(plan: "starter" | "all-in") {
+    try {
+      const res = await fetch(
+        "http://localhost:3000/api/create-checkout-session",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ plan }),
+        },
+      );
+
+      const data = await res.json();
+
+      if (data.url) {
+        window.location.href = data.url; // Redirect to Stripe Checkout
+      } else {
+        console.error("Failed to create checkout session:", data.error);
+      }
+    } catch (err) {
+      console.error("Error creating checkout session:", err);
+    }
+  }
+
   return (
     <div
       className={
@@ -262,7 +288,17 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
             {plan.buttonWrapper ? (
               plan.buttonWrapper(
                 <TrackEventWrapper eventName={plan.checkoutEventName}>
-                  <CheckoutLinkButton
+                  <Button
+                    onClick={() => handleBuy(plan.key)}
+                    variant={plan.key === "all-in" ? "primary" : "secondary"}
+                    // className={cn(
+                    //   CHECKOUT_BUTTON_BASE,
+                    //   CHECKOUT_BUTTON_VARIANT_CLASSES[variant],
+                    // )}
+                  >
+                    Get NextNative
+                  </Button>
+                  {/* <CheckoutLinkButton
                     href={plan.checkoutHref}
                     variant={plan.buttonVariant}
                     className={
@@ -272,7 +308,7 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
                     }
                   >
                     Get NextNative
-                  </CheckoutLinkButton>
+                  </CheckoutLinkButton> */}
                 </TrackEventWrapper>,
               )
             ) : (

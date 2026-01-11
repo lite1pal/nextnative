@@ -6,7 +6,7 @@ import Button from "./Button";
 function CTAButtonSecondary() {
   return (
     <a
-      href="https://nextnative.dev/docs"
+      href="https://nextnative.dev/playground"
       onClick={() => {
         trackEvent("CTA_see_guides_clicked");
         window?.datafast("see_guides_clicked_from_herosection");
@@ -16,7 +16,7 @@ function CTAButtonSecondary() {
         variant="primary"
         className="hover:bg-primary border-primary text-primary border-2 bg-transparent px-4 hover:text-white md:px-10"
       >
-        See guides
+        Try for free
       </Button>
     </a>
   );

@@ -50,6 +50,41 @@ function PricingSection() {
         className="text-start md:items-center md:text-center"
       />
 
+      {/* Promotional Banner */}
+      <div className="relative my-3">
+        <div className="bg-primary relative overflow-hidden rounded-2xl px-8 py-4 shadow-lg md:px-12 md:py-6">
+          {/* Decorative background elements */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 h-full w-1/2 bg-white blur-3xl" />
+            <div className="absolute right-0 bottom-0 h-full w-1/2 bg-black blur-3xl" />
+          </div>
+
+          {/* Content */}
+          <div className="relative flex flex-col items-center gap-2">
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-[600] tracking-wider text-white uppercase md:text-base">
+                Limited Time Offer
+              </span>
+              <span className="bg-background text-primary rounded-full px-3 py-1 text-xs font-[700] md:text-sm">
+                🎉 New Year
+              </span>
+            </div>
+            <div className="flex items-baseline gap-2 pt-1 pb-2">
+              <span className="text-background text-4xl leading-none font-[700] md:text-5xl">
+                50% OFF
+              </span>
+            </div>
+            <span className="text-sm font-[500] text-white md:text-base">
+              Use code{" "}
+              <span className="text-primary mx-1 rounded bg-white px-2 py-1 font-[700]">
+                JANUARY50
+              </span>{" "}
+              at checkout
+            </span>
+          </div>
+        </div>
+      </div>
+
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {plans.map((plan) => (
           <PricingPlanCard key={plan.key} plan={plan} />

@@ -110,20 +110,7 @@ function Navbar() {
           />
         ))}
 
-        <a
-          href="https://nextnative.dev/docs"
-          onClick={() => {
-            setIsMenuOpen(false);
-            trackEvent("Navbar_SeeGuides_clicked");
-
-            // safe guard
-            if (typeof (window as any)?.datafast === "function") {
-              (window as any).datafast("see_guides_clicked_from_navbar");
-            }
-          }}
-        >
-          <Button variant="secondary">See guides</Button>
-        </a>
+        <TryForFreeButton setIsMenuOpen={setIsMenuOpen} />
       </div>
 
       {/* Mobile navigation */}
@@ -137,20 +124,7 @@ function Navbar() {
             />
           ))}
 
-          <a
-            href="https://nextnative.dev/docs"
-            onClick={() => {
-              setIsMenuOpen(false);
-              trackEvent("Navbar_SeeGuides_clicked");
-
-              // safe guard
-              if (typeof (window as any)?.datafast === "function") {
-                (window as any).datafast("see_guides_clicked_from_navbar");
-              }
-            }}
-          >
-            <Button variant="secondary">See guides</Button>
-          </a>
+          <TryForFreeButton setIsMenuOpen={setIsMenuOpen} />
         </div>
       )}
     </div>

@@ -65,9 +65,6 @@ function PricingSection() {
               <span className="text-sm font-[600] tracking-wider text-white uppercase md:text-base">
                 Limited Time Offer
               </span>
-              <span className="bg-background text-primary rounded-full px-3 py-1 text-xs font-[700] md:text-sm">
-                🎉 New Year
-              </span>
             </div>
             <div className="flex items-baseline gap-2 pt-1 pb-2">
               <span className="text-background text-4xl leading-none font-[700] md:text-5xl">

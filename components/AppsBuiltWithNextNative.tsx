@@ -6,7 +6,7 @@ import TrackEventWrapper from "./TrackEventWrapper";
 
 function AppsBuiltWithNextNative() {
   return (
-    <div className="relative overflow-hidden pt-20 pb-0">
+    <div id="showcase" className="relative overflow-hidden pt-20 pb-0">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <Subheading

@@ -24,7 +24,12 @@ function scrollToId(id: string) {
 }
 
 const navbarItems: NavbarItem[] = [
-  { label: "Showcase", href: "/showcase", event: "Navbar_Showcase_clicked" },
+  {
+    label: "Showcase",
+    href: "/#showcase",
+    event: "Navbar_Showcase_clicked",
+    scrollFunction: () => scrollToId("showcase"),
+  },
 
   {
     label: "Pricing",

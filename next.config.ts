@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
         destination: "https://datafa.st/api/events",
       },
 
+      {
+        source: "/docs/:path*",
+        destination: "/docs/index.html",
+      },
+
       // Playground
       {
         source: "/playground",
@@ -52,6 +57,15 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
+      {
+        source: "/docs/_next/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
       {
         source: "/api/:path*",
         headers: [

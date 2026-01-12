@@ -12,9 +12,18 @@ const nextConfig: NextConfig = {
         destination: "https://datafa.st/api/events",
       },
 
+      // Docs
+      {
+        source: "/docs",
+        destination: "https://testdocs.nextnative.dev",
+      },
+      {
+        source: "/docs/_next/:path*",
+        destination: "https://testdocs.nextnative.dev/_next/:path*",
+      },
       {
         source: "/docs/:path*",
-        destination: "/docs/index.html",
+        destination: "https://testdocs.nextnative.dev/:path*",
       },
 
       // Playground

@@ -14,14 +14,6 @@ const nextConfig: NextConfig = {
 
       // Docs
       {
-        source: "/docs",
-        destination: "https://testdocs.nextnative.dev",
-      },
-      {
-        source: "/docs/_next/:path*",
-        destination: "https://testdocs.nextnative.dev/_next/:path*",
-      },
-      {
         source: "/docs/:path*",
         destination: "https://testdocs.nextnative.dev/:path*",
       },

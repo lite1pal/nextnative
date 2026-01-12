@@ -8,8 +8,8 @@ function CTAButtonSecondary() {
     <a
       href="https://nextnative.dev/playground"
       onClick={() => {
-        trackEvent("CTA_see_guides_clicked");
-        window?.datafast("see_guides_clicked_from_herosection");
+        trackEvent("CTA_try_for_free_clicked");
+        window?.datafast("try_for_free_clicked_from_herosection");
       }}
     >
       <Button

@@ -1,5 +1,6 @@
 "use client";
 
+import { trackEvent } from "@/services/custom-analytics";
 import Button from "./Button";
 
 type CheckoutButtonProps = {
@@ -8,6 +9,10 @@ type CheckoutButtonProps = {
 
 export default function CheckoutButton({ plan }: CheckoutButtonProps) {
   async function handleBuy(plan: "starter" | "all-in") {
+    try {
+      await trackEvent(`PricingSection_GetNextNative_${plan}_clicked`);
+    } catch {}
+
     try {
       const res = await fetch("/api/create-checkout-session", {
         method: "POST",

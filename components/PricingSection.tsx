@@ -249,15 +249,9 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
             </span>
 
             {plan.buttonWrapper ? (
-              plan.buttonWrapper(
-                <TrackEventWrapper eventName={plan.checkoutEventName}>
-                  <CheckoutButton plan={plan.key} />
-                </TrackEventWrapper>,
-              )
+              plan.buttonWrapper(<CheckoutButton plan={plan.key} />)
             ) : (
-              <TrackEventWrapper eventName={plan.checkoutEventName}>
-                <CheckoutButton plan={plan.key} />
-              </TrackEventWrapper>
+              <CheckoutButton plan={plan.key} />
             )}
 
             <span className="text-gray font-[500]">

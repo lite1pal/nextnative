@@ -59,28 +59,6 @@ function Testimonial({
             <RatingSvg />
           </div>
         )}
-
-        {url && (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener"
-            className="text-gray ml-auto hidden sm:block"
-            aria-label="Visit external link"
-          >
-            <img
-              src="/external-link.svg"
-              width={20}
-              height={20}
-              alt="MicroLaunch"
-              loading="lazy"
-              decoding="async"
-              fetchPriority="low"
-              className="opacity-50"
-              style={{ display: "inline-block" }}
-            />
-          </a>
-        )}
       </div>
 
       <blockquote className="leading-9 sm:leading-10">{testimonial}</blockquote>

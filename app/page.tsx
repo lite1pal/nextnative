@@ -57,11 +57,9 @@ export default function Home() {
 
       <CTAWithSocialProof className="mt-10" />
 
-      <DemoVideo />
+      {/* <DemoVideo /> */}
 
       <FeaturesSection />
-
-      <CTAWithSocialProof className="sm:mt-10" />
 
       <DagobertTestimonial />
 

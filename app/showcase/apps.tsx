@@ -10,7 +10,7 @@ const apps = [
     name: "Bill Organizer - Matcharge",
     description:
       "Track subscriptions in a calm, visual way to avoid surprise charges and understand your spending habits.",
-    image: "/showcase/bill-organizer/screen-3-2.png", // Add to your /public folder
+    image: "/showcase/bill-organizer/screen-3-2.png",
     storeLinks: {
       appStore:
         "https://apps.apple.com/us/app/bill-organizer-matcharge/id6752604627",
@@ -23,7 +23,7 @@ const apps = [
     name: "Sproutly: AI Plant Identifier",
     description:
       "An AI-powered plant identification app. Snap a photo and get instant plant care tips.",
-    image: "/showcase/sproutly-premium-screen.jpg", // Add to your /public folder
+    image: "/showcase/sproutly-premium-screen.jpg",
     storeLinks: {
       appStore:
         "https://apps.apple.com/ua/app/sproutly-ai-plant-identifier/id6748902696",
@@ -32,15 +32,28 @@ const apps = [
     },
   },
   {
-    logo: "/showcase/logo-lastinghabits.png", // Add to your /public folder
+    logo: "/showcase/logo-lastinghabits.png",
     name: "Lasting Habits: A Habit Tracker",
     description:
       "Build habits that last. A minimal tracker with daily streaks and reminders.",
-    image: "/showcase/lastinghabits.png", // Add to your /public folder
+    image: "/showcase/lastinghabits.png",
     storeLinks: {
       appStore: "https://apps.apple.com/ua/app/lasting-habits/id6736766976",
       googlePlay: "soon",
       website: "https://lasting-habits.vercel.app",
+    },
+  },
+  {
+    logo: "/showcase/get-pippin/logo.webp",
+    name: "Pippin - Overthinking Journal",
+    description:
+      "Pippin is a private space to brain dump stress, and keep a personal diary without pressure, judgment, or noise.",
+    image: "/showcase/get-pippin/pippin_mockup_1-1.webp",
+    storeLinks: {
+      appStore:
+        "https://apps.apple.com/us/app/pippin-overthinking-journal/id6755423327",
+      googlePlay: "soon",
+      website: "https://getpippin.app/",
     },
   },
 ];

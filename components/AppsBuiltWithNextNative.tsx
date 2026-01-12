@@ -3,6 +3,7 @@ import Subheading from "./Subheading";
 import Button from "./Button";
 import Link from "next/link";
 import TrackEventWrapper from "./TrackEventWrapper";
+import HighlightedSpan2 from "./HighlightedSpan2";
 
 function AppsBuiltWithNextNative() {
   return (
@@ -10,7 +11,12 @@ function AppsBuiltWithNextNative() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center">
           <Subheading
-            heading1="Mobile apps built and published"
+            heading1={
+              <span>
+                <HighlightedSpan2>4</HighlightedSpan2>
+                <br className="sm:hidden" /> Mobile apps built and published
+              </span>
+            }
             heading2="with NextNative"
             className="text-start md:items-center md:text-center"
           />

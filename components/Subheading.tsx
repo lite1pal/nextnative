@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import HighlightedSpan from "./HighlightedSpan";
 import HorizontalLine from "./HorizontalLine";
 import { cn } from "@/lib/utils";
@@ -8,7 +9,7 @@ function Subheading({
   withHorizontalLine = true,
   className,
 }: {
-  heading1: string;
+  heading1: string | ReactNode;
   heading2: string;
   withHorizontalLine?: boolean;
   className?: string;

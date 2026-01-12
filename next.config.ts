@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       // Docs
       {
         source: "/docs/:path*",
-        destination: "https://testdocs.nextnative.dev/:path*",
+        destination: "https://testdocs.nextnative.dev/docs/:path*",
       },
 
       // Playground

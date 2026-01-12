@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Subheading from "./Subheading";
+import HighlightedSpan2 from "./HighlightedSpan2";
 
 interface Tool {
   src: string;
@@ -44,18 +45,24 @@ const tools: Tool[] = [
     isRectangular: true,
     description: "Postgres-backed storage. Use as a database or file storage",
   },
-  {
-    src: "/tools/daisyui.svg",
-    alt: "Any UI Library",
-    isRectangular: true,
-    description: "Drop-in component library styled with Tailwind",
-  },
+  // {
+  //   src: "/tools/daisyui.svg",
+  //   alt: "Any UI Library",
+  //   isRectangular: true,
+  //   description: "Drop-in component library styled with Tailwind",
+  // },
   {
     src: "/tools/ts.svg",
     alt: "TypeScript",
     isRectangular: false,
     description: "Catch bugs early and ship with confidence",
   },
+  // {
+  //   src: "/tools/no-lockin.svg",
+  //   alt: "No Vendor Lock-In",
+  //   isRectangular: true,
+  //   description: "No vendor lock-in. Swap to any UI library or infrastructure",
+  // },
 ];
 
 function ToolCard({ tool }: { tool: Tool }) {
@@ -98,10 +105,21 @@ function SetupByDefault() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {tools.map((tool, index) => (
             <ToolCard key={tool.alt} tool={tool} />
           ))}
+
+          <p className="mt-18 text-center font-[500] text-gray-500">
+            <HighlightedSpan2>
+              <span className="text-3xl">No vendor lock-in</span>
+            </HighlightedSpan2>
+            <br />
+            <br />
+            <span className="text-lg">
+              Swap to any UI library or infrastructure
+            </span>
+          </p>
         </div>
       </div>
     </div>

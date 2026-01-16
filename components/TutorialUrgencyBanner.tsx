@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import usePurchaseStats from "@/hooks/use-purchase-stats";
 import { trackEvent } from "@/services/custom-analytics";
-import Button from "./Button";
 
 export default function TutorialUrgencyBanner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -50,8 +49,8 @@ export default function TutorialUrgencyBanner() {
           <div className="flex flex-1 flex-col gap-1 text-white md:flex-row md:items-center md:gap-3">
             <p className="text-base font-bold md:text-lg">50% Off NextNative</p>
             <p className="text-sm md:text-base">
-              <span className="font-bold">{spotsLeft} spots left</span> · $299
-              (was $299)
+              <span className="font-bold">{spotsLeft} spots left</span> · $125
+              (was $249)
             </p>
           </div>
 

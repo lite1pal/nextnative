@@ -3,13 +3,9 @@
 import { useEffect, useState } from "react";
 
 function usePurchaseStats() {
-  const [customersCount, setCustomersCount] = useState(20);
-  const [discountLimit, setDiscountLimit] = useState(25);
-  const [discount, setDiscount] = useState(50);
-  const [pricing, setPricing] = useState({
-    starter: 98,
-    allIn: 125,
-  });
+  const [customersCount, setCustomersCount] = useState(59);
+  const [discountLimit, setDiscountLimit] = useState(60);
+
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -40,8 +36,6 @@ function usePurchaseStats() {
   return {
     customersCount,
     discountLimit,
-    discount,
-    pricing,
     isError,
     isLoading,
   };

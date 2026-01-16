@@ -35,9 +35,9 @@ export default function ModernSaasTemplate() {
   const { scrollYProgress } = useScroll();
 
   return (
-    <div className="flex min-h-screen bg-white items-center justify-center z-50 absolute top-0 left-0 right-0 w-screen flex-col">
+    <div className="absolute top-0 right-0 left-0 z-50 flex min-h-screen w-screen flex-col items-center justify-center bg-white">
       {/* Code Copy Button - Fixed to screen */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed right-6 bottom-6 z-50">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ export default function ModernSaasTemplate() {
       </div>
 
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-indigo-600 origin-left z-50"
+        className="fixed top-0 right-0 left-0 z-50 h-1 origin-left bg-indigo-600"
         style={{ scaleX: scrollYProgress }}
       />
 
@@ -65,13 +65,13 @@ export default function ModernSaasTemplate() {
       <Header />
 
       {/* Main Content */}
-      <main className="flex-grow w-full">
+      <main className="w-full flex-grow">
         {/* Hero Section */}
         <section
           id="hero"
-          className="bg-gradient-to-b from-slate-50/50 to-white relative overflow-hidden"
+          className="relative overflow-hidden bg-gradient-to-b from-slate-50/50 to-white"
         >
-          <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
+          <div className="bg-grid-slate-100 absolute inset-0 -z-10 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
           <ProductHero
             title="Build Better SaaS Products, Faster"
             description="Launch your SaaS with our proven template. Streamline development and focus on what matters most - delivering value to your customers."
@@ -82,31 +82,31 @@ export default function ModernSaasTemplate() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-24 bg-white">
-          <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="features" className="bg-white py-24">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <FeatureCards.component />
           </div>
         </section>
 
         {/* Pricing Section */}
-        <section id="pricing" className="py-24 relative overflow-hidden">
+        <section id="pricing" className="relative overflow-hidden py-24">
           <motion.div
-            className="max-w-7xl mx-auto"
+            className="mx-auto max-w-7xl"
             initial="hidden"
             animate="visible"
           >
-            <motion.div className="text-center mb-16">
-              <span className="text-primary font-medium mb-4 block">
+            <motion.div className="mb-16 text-center">
+              <span className="text-primary mb-4 block font-medium">
                 Pricing Plans
               </span>
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              <h2 className="mb-6 text-4xl font-bold sm:text-5xl">
                 Choose the plan that's right for you
                 <br />
                 and start building today
               </h2>
               <div className="flex items-center justify-center gap-2 text-lg">
                 <svg
-                  className="w-5 h-5 text-green-400"
+                  className="h-5 w-5 text-green-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -123,19 +123,19 @@ export default function ModernSaasTemplate() {
               </div>
             </motion.div>
 
-            <motion.div className="grid text-white md:grid-cols-3 gap-8">
+            <motion.div className="grid gap-8 text-white md:grid-cols-3">
               {/* Starter Plan */}
-              <motion.div className="bg-[#1a1a1a] rounded-2xl p-8">
-                <div className="flex items-baseline gap-1 mb-6">
+              <motion.div className="rounded-2xl bg-[#1a1a1a] p-8">
+                <div className="mb-6 flex items-baseline gap-1">
                   <span className="text-gray-500 line-through">$299</span>
                   <span className="text-4xl font-bold">$199</span>
                   <span className="text-gray-400">USD</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-6">Starter</h3>
-                <ul className="space-y-4 mb-8">
+                <h3 className="mb-6 text-xl font-semibold">Starter</h3>
+                <ul className="mb-8 space-y-4">
                   <li className="flex items-center gap-3">
                     <svg
-                      className="w-5 h-5 text-green-400 shrink-0"
+                      className="h-5 w-5 shrink-0 text-green-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -151,7 +151,7 @@ export default function ModernSaasTemplate() {
                   </li>
                   <li className="flex items-center gap-3">
                     <svg
-                      className="w-5 h-5 text-green-400 shrink-0"
+                      className="h-5 w-5 shrink-0 text-green-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -165,32 +165,32 @@ export default function ModernSaasTemplate() {
                     </svg>
                     <div className="flex items-center gap-2">
                       <span>Regular updates</span>
-                      <span className="px-2 py-0.5 text-xs bg-green-400/20 text-green-400 rounded-full">
+                      <span className="rounded-full bg-green-400/20 px-2 py-0.5 text-xs text-green-400">
                         Updated weekly
                       </span>
                     </div>
                   </li>
                 </ul>
-                <button className="w-full py-4 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors">
+                <button className="bg-primary hover:bg-primary/90 w-full rounded-lg py-4 font-medium text-white transition-colors">
                   Get Started Now
                 </button>
-                <p className="text-gray-500 text-sm text-center mt-4">
+                <p className="mt-4 text-center text-sm text-gray-500">
                   30-day money-back guarantee
                 </p>
               </motion.div>
 
               {/* All-in Plan */}
-              <motion.div className="bg-[#1a1a1a] rounded-2xl p-8">
-                <div className="flex items-baseline gap-1 mb-6">
+              <motion.div className="rounded-2xl bg-[#1a1a1a] p-8">
+                <div className="mb-6 flex items-baseline gap-1">
                   <span className="text-gray-500 line-through">$349</span>
                   <span className="text-4xl font-bold">$249</span>
                   <span className="text-gray-400">/year</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-6">Professional</h3>
-                <ul className="space-y-4 mb-8">
+                <h3 className="mb-6 text-xl font-semibold">Professional</h3>
+                <ul className="mb-8 space-y-4">
                   <li className="flex items-center gap-3">
                     <svg
-                      className="w-5 h-5 text-green-400 shrink-0"
+                      className="h-5 w-5 shrink-0 text-green-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -206,7 +206,7 @@ export default function ModernSaasTemplate() {
                   </li>
                   <li className="flex items-center gap-3">
                     <svg
-                      className="w-5 h-5 text-green-400 shrink-0"
+                      className="h-5 w-5 shrink-0 text-green-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -222,7 +222,7 @@ export default function ModernSaasTemplate() {
                   </li>
                   <li className="flex items-center gap-3">
                     <svg
-                      className="w-5 h-5 text-green-400 shrink-0"
+                      className="h-5 w-5 shrink-0 text-green-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -238,7 +238,7 @@ export default function ModernSaasTemplate() {
                   </li>
                   <li className="flex items-center gap-3">
                     <svg
-                      className="w-5 h-5 text-green-400 shrink-0"
+                      className="h-5 w-5 shrink-0 text-green-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -252,38 +252,38 @@ export default function ModernSaasTemplate() {
                     </svg>
                     <div className="flex items-center gap-2">
                       <span>Premium Support</span>
-                      <span className="px-2 py-0.5 text-xs bg-green-400/20 text-green-400 rounded-full">
+                      <span className="rounded-full bg-green-400/20 px-2 py-0.5 text-xs text-green-400">
                         24/7 Available
                       </span>
                     </div>
                   </li>
                 </ul>
-                <button className="w-full py-4 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors">
+                <button className="bg-primary hover:bg-primary/90 w-full rounded-lg py-4 font-medium text-white transition-colors">
                   Start Professional Plan
                 </button>
-                <p className="text-gray-500 text-sm text-center mt-4">
+                <p className="mt-4 text-center text-sm text-gray-500">
                   Includes 30-day satisfaction guarantee
                 </p>
               </motion.div>
 
               {/* Bundle Plan */}
-              <motion.div className="relative bg-[#1a1a1a] rounded-2xl p-8 ring-4 ring-green-400">
-                <div className="absolute -top-3 right-6 px-3 py-1 bg-green-400 text-black text-sm font-medium rounded-full">
+              <motion.div className="relative rounded-2xl bg-[#1a1a1a] p-8 ring-4 ring-green-400">
+                <div className="absolute -top-3 right-6 rounded-full bg-green-400 px-3 py-1 text-sm font-medium text-black">
                   BEST VALUE
                 </div>
-                <div className="flex items-baseline gap-1 mb-6">
+                <div className="mb-6 flex items-baseline gap-1">
                   <span className="text-gray-500 line-through">$599</span>
                   <span className="text-4xl font-bold">$399</span>
                   <span className="text-gray-400">/year</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-1">Enterprise</h3>
-                <p className="text-gray-400 mb-6">
+                <h3 className="mb-1 text-xl font-semibold">Enterprise</h3>
+                <p className="mb-6 text-gray-400">
                   Everything in Professional, plus...
                 </p>
-                <div className="bg-black/30 rounded-xl p-4 mb-8">
-                  <div className="flex items-center gap-2 mb-2">
+                <div className="mb-8 rounded-xl bg-black/30 p-4">
+                  <div className="mb-2 flex items-center gap-2">
                     <svg
-                      className="w-5 h-5 text-green-400"
+                      className="h-5 w-5 text-green-400"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -301,10 +301,10 @@ export default function ModernSaasTemplate() {
                     <li>• Advanced Security Features</li>
                   </ul>
                 </div>
-                <button className="w-full py-4 bg-green-400 text-black font-medium rounded-lg hover:bg-green-500 transition-colors">
+                <button className="w-full rounded-lg bg-green-400 py-4 font-medium text-black transition-colors hover:bg-green-500">
                   Contact Sales
                 </button>
-                <p className="text-gray-500 text-sm text-center mt-4">
+                <p className="mt-4 text-center text-sm text-gray-500">
                   Custom pricing for enterprise needs
                 </p>
               </motion.div>
@@ -313,8 +313,8 @@ export default function ModernSaasTemplate() {
         </section>
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="py-24 bg-white">
-          <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="testimonials" className="bg-white py-24">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeader
               accentText="Testimonials"
               title="What Our Customers Say"
@@ -327,17 +327,17 @@ export default function ModernSaasTemplate() {
         {/* Contact Section */}
         <section
           id="contact"
-          className="py-24 bg-gradient-to-b from-slate-50/50 to-white relative overflow-hidden"
+          className="relative overflow-hidden bg-gradient-to-b from-slate-50/50 to-white py-24"
         >
-          <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
-          <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-grid-slate-100 absolute inset-0 -z-10 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeader
               accentText="Contact Us"
               title="Get in Touch"
               subtitle="Have questions? Our team is here to help you get started with our platform."
             />
-            <div className="max-w-3xl mx-auto">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl p-8 border border-slate-200/60">
+            <div className="mx-auto max-w-3xl">
+              <div className="rounded-xl border border-slate-200/60 bg-white/80 p-8 shadow-xl backdrop-blur-sm">
                 <ContactForm />
               </div>
             </div>
@@ -371,13 +371,13 @@ function ContactForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="text-center py-8"
+        className="py-8 text-center"
       >
-        <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-6">
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
           <Check className="h-8 w-8 text-green-600" />
         </div>
-        <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-        <p className="text-slate-600 mb-6">
+        <h3 className="mb-2 text-2xl font-bold">Message Sent!</h3>
+        <p className="mb-6 text-slate-600">
           Thank you for reaching out! We'll get back to you within 24 hours.
         </p>
         <Button onClick={() => setIsSubmitted(false)}>
@@ -389,7 +389,7 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <label htmlFor="name" className="text-sm font-medium">
             Full Name
@@ -475,7 +475,7 @@ function ContactForm() {
       >
         {isSubmitting ? (
           <div className="flex items-center gap-2">
-            <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
             Sending...
           </div>
         ) : (
@@ -554,15 +554,15 @@ function FeatureGrid() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
     >
       {features.map((feature, index) => (
         <motion.div
           key={index}
           variants={itemVariants}
-          className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-slate-100"
+          className="rounded-xl border border-slate-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
         >
-          <div className="h-12 w-12 rounded-lg bg-indigo-100 flex items-center justify-center mb-4">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-100">
             {feature.imageSrc ? (
               <Image
                 src={feature.imageSrc}
@@ -577,7 +577,7 @@ function FeatureGrid() {
               // <feature.icon className="h-6 w-6 text-indigo-600" />
             )}
           </div>
-          <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+          <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
           <p className="text-slate-600">{feature.description}</p>
         </motion.div>
       ))}
@@ -587,13 +587,13 @@ function FeatureGrid() {
 
 function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-200 w-full">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="w-full bg-slate-900 text-slate-200">
+      <div className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-md bg-gradient-to-r from-violet-600 to-indigo-600"></div>
-              <span className="font-bold text-xl text-white">SaasTemplate</span>
+              <span className="text-xl font-bold text-white">SaasTemplate</span>
             </div>
             <p className="text-slate-400">
               Build better SaaS products, faster with our versatile template.
@@ -601,35 +601,35 @@ function Footer() {
             <div className="flex gap-4">
               <Link
                 href="#"
-                className="text-slate-400 hover:text-white transition-colors"
+                className="text-slate-400 transition-colors hover:text-white"
               >
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
               </Link>
               <Link
                 href="#"
-                className="text-slate-400 hover:text-white transition-colors"
+                className="text-slate-400 transition-colors hover:text-white"
               >
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
               <Link
                 href="#"
-                className="text-slate-400 hover:text-white transition-colors"
+                className="text-slate-400 transition-colors hover:text-white"
               >
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link
                 href="#"
-                className="text-slate-400 hover:text-white transition-colors"
+                className="text-slate-400 transition-colors hover:text-white"
               >
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
               <Link
                 href="#"
-                className="text-slate-400 hover:text-white transition-colors"
+                className="text-slate-400 transition-colors hover:text-white"
               >
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
@@ -638,12 +638,12 @@ function Footer() {
           </div>
 
           <div>
-            <h3 className="font-medium text-white mb-4">Product</h3>
+            <h3 className="mb-4 font-medium text-white">Product</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   Features
                 </Link>
@@ -651,7 +651,7 @@ function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   Pricing
                 </Link>
@@ -659,7 +659,7 @@ function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   Integrations
                 </Link>
@@ -667,7 +667,7 @@ function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   Changelog
                 </Link>
@@ -675,7 +675,7 @@ function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   Documentation
                 </Link>
@@ -684,12 +684,12 @@ function Footer() {
           </div>
 
           <div>
-            <h3 className="font-medium text-white mb-4">Company</h3>
+            <h3 className="mb-4 font-medium text-white">Company</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   About
                 </Link>
@@ -697,7 +697,7 @@ function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   Blog
                 </Link>
@@ -705,7 +705,7 @@ function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   Careers
                 </Link>
@@ -713,7 +713,7 @@ function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   Customers
                 </Link>
@@ -721,7 +721,7 @@ function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-400 transition-colors hover:text-white"
                 >
                   Contact
                 </Link>
@@ -730,15 +730,15 @@ function Footer() {
           </div>
 
           <div>
-            <h3 className="font-medium text-white mb-4">Subscribe</h3>
-            <p className="text-slate-400 mb-4">
+            <h3 className="mb-4 font-medium text-white">Subscribe</h3>
+            <p className="mb-4 text-slate-400">
               Get the latest updates and news straight to your inbox.
             </p>
             <div className="flex gap-2">
               <Input
                 type="email"
                 placeholder="Email address"
-                className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500"
+                className="border-slate-700 bg-slate-800 text-white placeholder:text-slate-500"
               />
               <Button className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700">
                 Subscribe
@@ -747,26 +747,26 @@ function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 mt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-400 text-sm">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 md:flex-row">
+          <p className="text-sm text-slate-400">
             © {new Date().getFullYear()} SaasTemplate. All rights reserved.
           </p>
           <div className="flex gap-4 text-sm">
             <Link
               href="#"
-              className="text-slate-400 hover:text-white transition-colors"
+              className="text-slate-400 transition-colors hover:text-white"
             >
               Terms
             </Link>
             <Link
               href="#"
-              className="text-slate-400 hover:text-white transition-colors"
+              className="text-slate-400 transition-colors hover:text-white"
             >
               Privacy
             </Link>
             <Link
               href="#"
-              className="text-slate-400 hover:text-white transition-colors"
+              className="text-slate-400 transition-colors hover:text-white"
             >
               Cookies
             </Link>
@@ -781,43 +781,43 @@ function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-slate-200/80">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/" className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-md bg-gradient-to-r from-violet-600 to-indigo-600"></div>
-              <span className="font-bold text-xl">SaasTemplate</span>
+              <span className="text-xl font-bold">SaasTemplate</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden items-center gap-6 md:flex">
             <Link
               href="#features"
-              className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-indigo-600"
             >
               Features
             </Link>
             <Link
               href="#pricing"
-              className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-indigo-600"
             >
               Pricing
             </Link>
             <Link
               href="#testimonials"
-              className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-indigo-600"
             >
               Testimonials
             </Link>
             <Link
               href="#contact"
-              className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+              className="text-sm font-medium text-gray-700 transition-colors hover:text-indigo-600"
             >
               Contact
             </Link>
-            <div className="pl-6 flex items-center gap-2">
+            <div className="flex items-center gap-2 pl-6">
               <Button variant="outline">Log in</Button>
               <Button className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700">
                 Sign up
@@ -851,36 +851,36 @@ function Header() {
           exit={{ opacity: 0, height: 0 }}
           className="md:hidden"
         >
-          <div className="container py-4 flex flex-col gap-4">
+          <div className="container flex flex-col gap-4 py-4">
             <Link
               href="#features"
-              className="px-2 py-1 text-lg font-medium hover:text-indigo-600 transition-colors"
+              className="px-2 py-1 text-lg font-medium transition-colors hover:text-indigo-600"
               onClick={() => setMobileMenuOpen(false)}
             >
               Features
             </Link>
             <Link
               href="#pricing"
-              className="px-2 py-1 text-lg font-medium hover:text-indigo-600 transition-colors"
+              className="px-2 py-1 text-lg font-medium transition-colors hover:text-indigo-600"
               onClick={() => setMobileMenuOpen(false)}
             >
               Pricing
             </Link>
             <Link
               href="#testimonials"
-              className="px-2 py-1 text-lg font-medium hover:text-indigo-600 transition-colors"
+              className="px-2 py-1 text-lg font-medium transition-colors hover:text-indigo-600"
               onClick={() => setMobileMenuOpen(false)}
             >
               Testimonials
             </Link>
             <Link
               href="#contact"
-              className="px-2 py-1 text-lg font-medium hover:text-indigo-600 transition-colors"
+              className="px-2 py-1 text-lg font-medium transition-colors hover:text-indigo-600"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
             </Link>
-            <div className="pt-2 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 pt-2">
               <Button variant="outline" className="w-full justify-center">
                 Log in
               </Button>
@@ -911,19 +911,19 @@ function ProductHero({
   imageSrc,
 }: ProductHeroProps) {
   return (
-    <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8 lg:py-32">
+      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           className="space-y-6"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+          <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <p className="text-xl text-slate-600 max-w-md">{description}</p>
-          <div className="flex flex-col sm:flex-row gap-3">
+          <p className="max-w-md text-xl text-slate-600">{description}</p>
+          <div className="flex flex-col gap-3 sm:flex-row">
             <Button
               size="lg"
               className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
@@ -944,14 +944,14 @@ function ProductHero({
           transition={{ duration: 0.5, delay: 0.2 }}
           className="relative"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-indigo-600/20 rounded-2xl transform rotate-3"></div>
-          <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+          <div className="absolute inset-0 rotate-3 transform rounded-2xl bg-gradient-to-r from-violet-600/20 to-indigo-600/20"></div>
+          <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
             <Image
               src={imageSrc || "/placeholder.svg"}
               alt="Product screenshot"
               width={500}
               height={500}
-              className="w-full h-auto"
+              className="h-auto w-full"
             />
           </div>
         </motion.div>
@@ -1020,12 +1020,12 @@ function SimplePricing() {
   const [annual, setAnnual] = useState(false);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-center mb-8">
-        <div className="bg-slate-100 p-1 rounded-lg inline-flex items-center">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mb-8 flex justify-center">
+        <div className="inline-flex items-center rounded-lg bg-slate-100 p-1">
           <button
             onClick={() => setAnnual(false)}
-            className={`px-4 py-2 rounded-md ${
+            className={`rounded-md px-4 py-2 ${
               !annual
                 ? "bg-white shadow-sm"
                 : "text-slate-600 hover:text-slate-900"
@@ -1035,21 +1035,21 @@ function SimplePricing() {
           </button>
           <button
             onClick={() => setAnnual(true)}
-            className={`px-4 py-2 rounded-md ${
+            className={`rounded-md px-4 py-2 ${
               annual
                 ? "bg-white shadow-sm"
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >
             Annual{" "}
-            <span className="text-xs text-emerald-600 font-medium">
+            <span className="text-xs font-medium text-emerald-600">
               Save 15%
             </span>
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {plans.map((plan, index) => (
           <motion.div
             key={index}
@@ -1057,33 +1057,33 @@ function SimplePricing() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className={`rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border ${
+            className={`overflow-hidden rounded-xl border shadow-sm transition-shadow hover:shadow-md ${
               plan.isPopular
                 ? "border-indigo-200 ring-1 ring-indigo-600"
                 : "border-slate-200"
             }`}
           >
             {plan.isPopular && (
-              <div className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-center py-1.5 text-sm font-medium">
+              <div className="bg-gradient-to-r from-violet-600 to-indigo-600 py-1.5 text-center text-sm font-medium text-white">
                 Most Popular
               </div>
             )}
 
             <div className="p-6">
-              <h3 className="text-xl font-bold mb-1">{plan.name}</h3>
-              <p className="text-slate-600 mb-4">{plan.description}</p>
+              <h3 className="mb-1 text-xl font-bold">{plan.name}</h3>
+              <p className="mb-4 text-slate-600">{plan.description}</p>
 
-              <div className="flex items-baseline mb-6">
+              <div className="mb-6 flex items-baseline">
                 <span className="text-4xl font-bold">
                   ${annual ? plan.annualPrice : plan.monthlyPrice}
                 </span>
-                <span className="text-slate-600 ml-2">
+                <span className="ml-2 text-slate-600">
                   /{annual ? "year" : "month"}
                 </span>
               </div>
 
               <Button
-                className={`w-full mb-6 ${
+                className={`mb-6 w-full ${
                   plan.isPopular
                     ? "bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
                     : ""
@@ -1096,7 +1096,7 @@ function SimplePricing() {
               <ul className="space-y-3">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start">
-                    <Check className="h-5 w-5 text-emerald-500 mr-2 shrink-0" />
+                    <Check className="mr-2 h-5 w-5 shrink-0 text-emerald-500" />
                     <span className="text-slate-700">{feature}</span>
                   </li>
                 ))}
@@ -1141,7 +1141,7 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
       {testimonials.map((testimonial, index) => (
         <motion.div
           key={index}
@@ -1149,7 +1149,7 @@ function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
           viewport={{ once: true }}
-          className="bg-white p-6 rounded-xl shadow border border-slate-100 flex flex-col"
+          className="flex flex-col rounded-xl border border-slate-100 bg-white p-6 shadow"
         >
           <div className="mb-4 flex">
             {[...Array(5)].map((_, i) => (
@@ -1157,14 +1157,14 @@ function Testimonials() {
                 key={i}
                 className={`h-5 w-5 ${
                   i < testimonial.stars
-                    ? "text-yellow-400 fill-yellow-400"
+                    ? "fill-yellow-400 text-yellow-400"
                     : "text-slate-200"
                 }`}
               />
             ))}
           </div>
 
-          <blockquote className="flex-1 mb-6">
+          <blockquote className="mb-6 flex-1">
             <p className="text-slate-700 italic">"{testimonial.quote}"</p>
           </blockquote>
 
@@ -1204,15 +1204,15 @@ function SectionHeader({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="text-center mb-16"
+      className="mb-16 text-center"
     >
       {accentText && (
-        <span className="text-indigo-600 font-medium mb-4 block">
+        <span className="mb-4 block font-medium text-indigo-600">
           {accentText}
         </span>
       )}
-      <h2 className="text-4xl sm:text-5xl font-[500] mb-6">{title}</h2>
-      <p className="text-gray-600 text-xl max-w-3xl mx-auto">{subtitle}</p>
+      <h2 className="mb-6 text-4xl font-[500] sm:text-5xl">{title}</h2>
+      <p className="mx-auto max-w-3xl text-xl text-gray-600">{subtitle}</p>
     </motion.div>
   );
 }

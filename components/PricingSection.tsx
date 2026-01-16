@@ -5,6 +5,7 @@ import Subheading from "./Subheading";
 import Link from "next/link";
 import TrackEventWrapper from "./TrackEventWrapper";
 import CheckoutButton from "./CheckoutButton";
+import UrgencyText from "./UrgencyText";
 
 function PricingSection() {
   const plans: PricingPlan[] = [
@@ -51,6 +52,8 @@ function PricingSection() {
         heading2="lifetime value"
         className="text-start md:items-center md:text-center"
       />
+
+      <UrgencyText />
 
       {/* Promotional Banner */}
       {/* <div className="relative my-3">

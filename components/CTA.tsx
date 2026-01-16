@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import CTAButton from "./CTAButton";
 import CTAButtonSecondary from "./CTASecondary";
+import UrgencyText from "./UrgencyText";
 
 export default function CTA({ className }: { className?: string }) {
   return (
@@ -10,10 +11,7 @@ export default function CTA({ className }: { className?: string }) {
         <CTAButtonSecondary />
       </div>
 
-      <p className="font-medium text-gray-500 sm:text-xl">
-        <span className="text-red-500">🎁 Lifetime access, </span> build
-        unlimited apps!
-      </p>
+      <UrgencyText />
     </div>
   );
 }

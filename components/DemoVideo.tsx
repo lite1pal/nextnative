@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import StarburstSign from "./StarburstSign";
 import Image from "next/image";
 import { trackEvent } from "@/services/custom-analytics";
+import Subheading from "./Subheading";
 
 function DemoVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -21,15 +22,20 @@ function DemoVideo() {
 
   return (
     <div
+      id="demo"
       ref={videoRef}
       className="mt-16 mb-10 flex flex-col sm:mt-10 sm:mb-20 sm:px-20 md:py-20"
     >
-      <div className="mb-2 flex flex-col justify-between gap-3 sm:items-center md:flex-row">
-        <div></div>
-        <span className={`text-gray text-base font-[500] sm:text-xl`}>
-          See how to build & run a real iOS/Android app in minutes, using your
-          existing Next.js skills ⚡
-        </span>
+      <div className="mb-16 text-center">
+        <Subheading
+          heading1="Watch NextNative"
+          heading2="Demo"
+          className="text-start md:items-center md:text-center"
+        />
+        <p className="mt-6 w-fit max-w-2xl self-start text-start text-lg md:mx-auto md:text-center">
+          I explain in 3 minutes how you can get started building mobile apps
+          with Next.js
+        </p>
       </div>
 
       <StarburstSign position="bottom-right" rotation={180}>

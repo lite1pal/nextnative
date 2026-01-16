@@ -115,7 +115,7 @@ function Navbar() {
           />
         ))}
 
-        <TryForFreeButton setIsMenuOpen={setIsMenuOpen} />
+        <WatchDemoButton setIsMenuOpen={setIsMenuOpen} />
       </div>
 
       {/* Mobile navigation */}
@@ -129,7 +129,7 @@ function Navbar() {
             />
           ))}
 
-          <TryForFreeButton setIsMenuOpen={setIsMenuOpen} />
+          <WatchDemoButton setIsMenuOpen={setIsMenuOpen} />
         </div>
       )}
     </div>
@@ -207,6 +207,29 @@ function TryForFreeButton({
       }}
     >
       <Button variant="secondary">Try for free</Button>
+    </a>
+  );
+}
+
+function WatchDemoButton({
+  setIsMenuOpen,
+}: {
+  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+}) {
+  return (
+    <a
+      href="/#demo"
+      onClick={() => {
+        setIsMenuOpen(false);
+        trackEvent("Navbar_watch_demo_clicked");
+
+        // safe guard
+        if (typeof (window as any)?.datafast === "function") {
+          (window as any).datafast("watch_demo_clicked_from_navbar");
+        }
+      }}
+    >
+      <Button variant="secondary">Watch demo</Button>
     </a>
   );
 }

@@ -36,6 +36,7 @@ export async function POST(req: Request) {
       invoice_creation: { enabled: false },
       automatic_tax: { enabled: false },
       payment_method_types: ["card"],
+      discounts: [{ promotion_code: "promo_1SoTDX6sY86LU5ivK1MDNJKN" }],
       allow_promotion_codes: true,
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/thank-you-stripe?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: process.env.NEXT_PUBLIC_APP_URL,

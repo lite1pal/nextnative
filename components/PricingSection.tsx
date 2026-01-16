@@ -12,6 +12,7 @@ function PricingSection() {
       key: "starter",
       title: "Starter",
       price: "$249",
+      discountedPrice: "$125",
       buttonVariant: "secondary",
       checkoutEventName: "PricingSection_GetNextNative_Starter_clicked",
       features: baseFeatures,
@@ -20,6 +21,7 @@ function PricingSection() {
       key: "all-in",
       title: "All-in",
       price: "$299",
+      discountedPrice: "$149",
       highlightPrice: true,
       mostPopular: true,
       buttonVariant: "primary",
@@ -51,15 +53,13 @@ function PricingSection() {
       />
 
       {/* Promotional Banner */}
-      <div className="relative my-3">
+      {/* <div className="relative my-3">
         <div className="bg-primary relative overflow-hidden rounded-2xl px-8 py-4 shadow-lg md:px-12 md:py-6">
-          {/* Decorative background elements */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 h-full w-1/2 bg-white blur-3xl" />
             <div className="absolute right-0 bottom-0 h-full w-1/2 bg-black blur-3xl" />
           </div>
 
-          {/* Content */}
           <div className="relative flex flex-col items-center gap-2">
             <div className="flex items-center gap-3">
               <span className="text-sm font-[600] tracking-wider text-white uppercase md:text-base">
@@ -80,7 +80,7 @@ function PricingSection() {
             </span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {plans.map((plan) => (
@@ -179,6 +179,7 @@ type PricingPlan = {
   key: "starter" | "all-in";
   title: string;
   price: ReactNode;
+  discountedPrice: ReactNode;
   highlightPrice?: boolean;
   mostPopular?: boolean;
   checkoutEventName: string;
@@ -218,6 +219,24 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
           </h3>
 
           <div className="flex gap-1">
+            <span className="text-gray text-lg line-through sm:text-xl md:text-2xl">
+              {plan.price}
+            </span>
+            <div className="flex items-end gap-2">
+              <h3 className="text-3xl leading-none font-[500] sm:text-4xl md:text-[54px]">
+                {plan.highlightPrice ? (
+                  <HighlightedSpan>{plan.discountedPrice}</HighlightedSpan>
+                ) : (
+                  plan.discountedPrice
+                )}
+              </h3>
+              <span className="text-gray text-lg sm:text-xl md:text-2xl">
+                /forever
+              </span>
+            </div>
+          </div>
+
+          {/* <div className="flex gap-1">
             <div className="flex items-end gap-2">
               <h3 className="text-3xl leading-none font-[500] sm:text-4xl md:text-[54px]">
                 {plan.highlightPrice ? (
@@ -230,7 +249,7 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
                 /forever
               </span>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex w-full flex-grow flex-col gap-3 font-[500] md:gap-4">
             {plan.features.map((feature) => (

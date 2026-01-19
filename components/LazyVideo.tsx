@@ -9,25 +9,50 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
   const [showControls, setShowControls] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: 0.05,
-        rootMargin: "50px",
-      },
-    );
+    if (!isInView) return;
+    const v = videoRef.current;
+    if (!v) return;
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    // Make autoplay more reliable on iOS Safari
+    v.muted = true;
+    v.playsInline = true;
+
+    const p = v.play();
+    if (p && typeof p.catch === "function") {
+      p.catch(() => {
+        // ignore — Safari may block until gesture, but we tried
+      });
     }
+  }, [isInView]);
 
-    return () => observer.disconnect();
+  useEffect(() => {
+    if (!isInView) return;
+    const v = videoRef.current;
+    if (!v) return;
+
+    v.muted = true;
+    v.playsInline = true;
+
+    const p = v.play();
+    if (p && typeof (p as Promise<void>).catch === "function") {
+      (p as Promise<void>).catch(() => {});
+    }
+  }, [isInView]);
+
+  // optional iOS IO fallback
+  useEffect(() => {
+    const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
+    const isiOS = /iPad|iPhone|iPod/.test(ua);
+    if (!isiOS) return;
+
+    const t = setTimeout(() => {
+      setIsInView((prev) => prev || true);
+    }, 1500);
+
+    return () => clearTimeout(t);
   }, []);
 
   return (
@@ -58,15 +83,20 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
             </div>
           )}
           <video
+            ref={videoRef}
             className={`${src.includes("iap-section") && "px-24 sm:px-44"} absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
             src={src}
             autoPlay
             muted
             loop
             playsInline
+            webkit-playsinline="true"
+            disablePictureInPicture
             controls={showControls}
-            preload="metadata"
+            preload="auto"
             aria-label={alt}
+            onLoadedData={() => setIsLoaded(true)}
+            onPlaying={() => setIsLoaded(true)}
             onCanPlay={() => setIsLoaded(true)}
             onError={() => console.error("Video failed to load")}
           />

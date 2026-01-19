@@ -46,7 +46,7 @@ function DemoVideo() {
           {isPlaying ? (
             <iframe
               data-testid="demo-video"
-              className="h-full w-full"
+              className="h-[250px] w-full sm:h-full"
               src={embedUrl}
               title="NextNative Demo Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

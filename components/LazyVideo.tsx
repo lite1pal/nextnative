@@ -64,7 +64,7 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
     >
-      {src.includes("iap-section") && (
+      {/* {src.includes("iap-section") && (
         <Image
           src="/section-videos/placeholder.webp"
           alt={alt}
@@ -74,7 +74,7 @@ function LazyVideo({ src, alt }: LazyVideoProps) {
           sizes="33vw"
           quality={25}
         />
-      )}
+      )} */}
       {isInView && (
         <>
           {!isLoaded && (

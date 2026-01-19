@@ -4,7 +4,7 @@ import Subheading from "./Subheading";
 
 export default function FeaturesSection() {
   return (
-    <div className="flex flex-col gap-28 py-16 sm:gap-52 sm:py-32">
+    <div className="flex flex-col gap-20 py-16 sm:gap-52 sm:py-32">
       {features.map((feature, index) => (
         <FeatureSection
           key={index}

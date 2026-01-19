@@ -55,7 +55,7 @@ export default function Home() {
 
       <AppsBuiltWithNextNative />
 
-      <CTAWithSocialProof className="mt-10" />
+      <CTAWithSocialProof className="mt-10 sm:mt-24" />
 
       <DemoVideo />
 

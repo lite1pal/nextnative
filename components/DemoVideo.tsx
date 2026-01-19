@@ -29,7 +29,7 @@ export default function DemoVideo() {
         >
           <DemoVideoPlayer
             videoId={videoId}
-            thumbnailSrc="/thumbnail-4.png"
+            thumbnailSrc="https://cdn.nextnative.dev/thumbnail-4.png"
             thumbnailAlt="NextNative demo - Build cross-platform mobile apps with web technologies"
           />
         </div>

@@ -59,7 +59,7 @@ function QuickStart() {
           target="_blank"
         >
           <Image
-            src="/launch-in-2-days-optimized.webp"
+            src="https://cdn.nextnative.dev/launch-in-2-days-optimized.webp"
             alt="Launch in 2 Days"
             width={1920}
             height={1080}

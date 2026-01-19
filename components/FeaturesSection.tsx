@@ -32,7 +32,7 @@ const features = [
       </>
     ),
     isImageLeft: false,
-    src: "/section-videos/splash-section.mp4",
+    src: "https://cdn.nextnative.dev/splash-section.mp4",
     alt: "Splash screen demonstration",
   },
   {
@@ -46,7 +46,7 @@ const features = [
       </>
     ),
     isImageLeft: true,
-    src: "/section-videos/onboarding-section.mp4",
+    src: "https://cdn.nextnative.dev/onboarding-section.mp4",
     alt: "Onboarding process demonstration",
   },
   {
@@ -59,7 +59,7 @@ const features = [
       </>
     ),
     isImageLeft: false,
-    src: "/section-videos/api-section.mp4",
+    src: "https://cdn.nextnative.dev/api-section.mp4",
     alt: "API routes demonstration",
   },
   {
@@ -73,7 +73,7 @@ const features = [
       </>
     ),
     isImageLeft: true,
-    src: "/section-videos/signin-section-optimized.mp4",
+    src: "https://cdn.nextnative.dev/signin-section-optimized.mp4",
     alt: "Authentication demonstration",
   },
   {
@@ -87,7 +87,7 @@ const features = [
       </>
     ),
     isImageLeft: false,
-    src: "/section-videos/transitions-section-optimized.mp4",
+    src: "https://cdn.nextnative.dev/transitions-section-optimized.mp4",
     alt: "Native-like page transitions demonstration",
   },
   {
@@ -101,7 +101,7 @@ const features = [
       </>
     ),
     isImageLeft: true,
-    src: "/section-videos/iap-section.MP4",
+    src: "https://cdn.nextnative.dev/iap-section.MP4",
     alt: "In-App Purchases demonstration",
   },
 ];

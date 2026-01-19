@@ -90,7 +90,8 @@ export const testimonials = [
     type: "video",
     name: "Leo",
     description: "Developer",
-    videoSrc: "/testimonials/Product Review for Next Native.mp4",
+    videoSrc:
+      "https://cdn.nextnative.dev/Product%20Review%20for%20Next%20Native.mp4",
     testimonial: (
       <div>
         "Thank you so much. I bought your product and I freaking loved it!{" "}

@@ -7,18 +7,18 @@ import { NextRequest, NextResponse } from "next/server";
 const KIT_BASE = "https://api.kit.com/v4";
 
 export async function POST(request: NextRequest) {
-  // ✅ Rate limit by IP
-  const headersList = await headers();
-  const ip = headersList.get("x-forwarded-for") ?? "anonymous";
-  const { success: allowed } = await ratelimit.limit(ip);
+  // // ✅ Rate limit by IP
+  // const headersList = await headers();
+  // const ip = headersList.get("x-forwarded-for") ?? "anonymous";
+  // const { success: allowed } = await ratelimit.limit(ip);
 
-  if (!allowed) {
-    trackEvent(`⛔ Rate limited IP: ${ip}`, false);
-    return NextResponse.json(
-      { error: "Too many requests. Please wait a moment." },
-      { status: 429 },
-    );
-  }
+  // if (!allowed) {
+  //   trackEvent(`⛔ Rate limited IP: ${ip}`, false);
+  //   return NextResponse.json(
+  //     { error: "Too many requests. Please wait a moment." },
+  //     { status: 429 },
+  //   );
+  // }
 
   // ✅ Protect by origin
   const origin = request.headers.get("origin");

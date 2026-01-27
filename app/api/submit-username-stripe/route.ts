@@ -3,10 +3,10 @@ import { Octokit } from "@octokit/rest";
 import { prisma } from "@/prisma/client";
 import { trackEvent } from "@/services/custom-analytics";
 import { z } from "zod";
-import { ratelimit } from "@/lib/rate-limiter";
-import { headers } from "next/headers";
+// import { ratelimit } from "@/lib/rate-limiter";
+// import { headers } from "next/headers";
 import Stripe from "stripe";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-12-15.clover",
@@ -23,18 +23,18 @@ const schema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
-    // ✅ Rate limit by IP
-    const headersList = await headers();
-    const ip = headersList.get("x-forwarded-for") ?? "anonymous";
-    const { success: allowed } = await ratelimit.limit(ip);
+    // // ✅ Rate limit by IP
+    // const headersList = await headers();
+    // const ip = headersList.get("x-forwarded-for") ?? "anonymous";
+    // const { success: allowed } = await ratelimit.limit(ip);
 
-    if (!allowed) {
-      trackEvent(`⛔ Rate limited IP: ${ip}`, false);
-      return NextResponse.json(
-        { error: "Too many requests. Please wait a moment." },
-        { status: 429 },
-      );
-    }
+    // if (!allowed) {
+    //   trackEvent(`⛔ Rate limited IP: ${ip}`, false);
+    //   return NextResponse.json(
+    //     { error: "Too many requests. Please wait a moment." },
+    //     { status: 429 },
+    //   );
+    // }
 
     const body = await request.json();
 

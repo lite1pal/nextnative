@@ -12,10 +12,6 @@ import {
 import Link from "next/link";
 import Script from "next/script";
 import Mockups from "./mockups";
-import CTAButton from "@/components/CTAButton";
-import CTAButtonSecondary from "@/components/CTASecondary";
-import PurchaseButton from "./purchase-button";
-import HighlightedSpan from "@/components/HighlightedSpan";
 import CTABlogButton from "@/app/blog/[slug]/CTABlogButton";
 
 // Generate static params for all use cases

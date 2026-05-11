@@ -5,7 +5,6 @@ import Subheading from "./Subheading";
 import Link from "next/link";
 import TrackEventWrapper from "./TrackEventWrapper";
 import CheckoutButton from "./CheckoutButton";
-import UrgencyText from "./UrgencyText";
 
 function PricingSection() {
   const plans: PricingPlan[] = [
@@ -53,8 +52,6 @@ function PricingSection() {
         className="text-start md:items-center md:text-center"
       />
 
-      <UrgencyText />
-
       <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
         {plans.map((plan) => (
           <PricingPlanCard key={plan.key} plan={plan} />
@@ -88,7 +85,7 @@ function AppsIncludedLink() {
 
 const baseFeatures: PricingFeature[] = [
   { key: "boilerplate", content: "Next.js + Capacitor boilerplate" },
-  { key: "apps", content: <AppsIncludedLink /> },
+  // { key: "apps", content: <AppsIncludedLink /> },
   { key: "backend", content: "Secure backend & Database" },
   { key: "auth", content: "Authentication & Onboarding flow" },
   { key: "push", content: "Push notifications" },
@@ -236,9 +233,7 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
           </div>
 
           <div className="mt-auto flex flex-col gap-2">
-            <span className="text-gray mt-7 font-[500]">
-              14-day money-back guarantee.
-            </span>
+            <span className="text-gray mt-7 font-[500]"></span>
 
             {plan.buttonWrapper ? (
               plan.buttonWrapper(<CheckoutButton plan={plan.key} />)

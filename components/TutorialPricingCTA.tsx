@@ -113,9 +113,7 @@ export default function TutorialPricingCTA() {
             </span>
             , {discountLimit - customersCount} spots left
           </p>
-          <p className="mt-2 text-base text-gray-600">
-            Build unlimited apps. 14-day money-back guarantee.
-          </p>
+          <p className="mt-2 text-base text-gray-600">Build unlimited apps.</p>
         </div>
 
         {/* CTA Buttons */}

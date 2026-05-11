@@ -229,7 +229,7 @@ function WatchDemoButton({
         }
       }}
     >
-      <Button variant="secondary">Watch demo</Button>
+      <Button variant="secondary">Get NextNative now</Button>
     </a>
   );
 }

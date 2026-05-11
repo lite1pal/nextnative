@@ -315,30 +315,29 @@ const faqItems = [
       </>
     ),
   },
-  {
-    question: "How often is NextNative updated?",
-    answer: (
-      <>
-        I use NextNative for my own apps (like Lasting Habits and Sproutly AI),
-        so it gets regular updates whenever there’s a real-world need.
-        <br />
-        <br />
-        You get all new features, improvements and fixes as part of your
-        one-time purchase.
-        <br />
-        <br />
-        <span className="text-primary">🔄 Last update: Dec 8, 2025</span>
-        {/* Optionally link to a changelog page here */}
-        <br />
-        <br />
-        <span className="text-lg font-semibold">🛠 Currently working on:</span>
-        <ul className="mt-2 ml-4 space-y-1">
-          <li>1. Supabase / JWT Authentication option</li>
-          <li>2. Biometrics / Face ID / Touch ID</li>
-        </ul>
-      </>
-    ),
-  },
+  // {
+  //   question: "How often is NextNative updated?",
+  //   answer: (
+  //     <>
+  //       I use NextNative for my own apps (like Lasting Habits and Sproutly AI),
+  //       so it gets regular updates whenever there’s a real-world need.
+  //       <br />
+  //       <br />
+  //       You get all new features, improvements and fixes as part of your
+  //       one-time purchase.
+  //       <br />
+  //       <br />
+  //       <span className="text-primary">🔄 Last update: Dec 8, 2025</span>
+  //       <br />
+  //       <br />
+  //       <span className="text-lg font-semibold">🛠 Currently working on:</span>
+  //       <ul className="mt-2 ml-4 space-y-1">
+  //         <li>1. Supabase / JWT Authentication option</li>
+  //         <li>2. Biometrics / Face ID / Touch ID</li>
+  //       </ul>
+  //     </>
+  //   ),
+  // },
 ];
 
 function FAQ() {

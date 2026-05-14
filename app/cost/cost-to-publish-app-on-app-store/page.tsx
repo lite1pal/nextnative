@@ -121,7 +121,7 @@ export default function CostToPublishAppPage() {
             </Link>
           </div>
           <p className="mt-4 text-center text-sm text-gray-600 sm:text-left">
-            $125 · Launch guides included · 14-day money-back guarantee
+            $125 · Launch guides included
           </p>
         </div>
 
@@ -518,7 +518,7 @@ export default function CostToPublishAppPage() {
                   Get NextNative →
                 </Link>
                 <p className="text-base text-gray-600">
-                  $125 · Launch guides included · 14-day money-back guarantee
+                  $125 · Launch guides included
                 </p>
               </div>
 

@@ -357,9 +357,7 @@ export default function AppDevelopmentCostCalculatorPage() {
                 >
                   Get NextNative →
                 </Link>
-                <p className="text-base text-gray-600">
-                  $125 · Unlimited apps · 14-day money-back guarantee
-                </p>
+                <p className="text-base text-gray-600">$125 · Unlimited apps</p>
               </div>
 
               {/* Trust badges */}

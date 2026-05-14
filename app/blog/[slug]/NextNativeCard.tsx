@@ -1,16 +1,26 @@
 "use client";
 
-import HighlightedSpan from "@/components/HighlightedSpan";
-import CTABlogButton from "./CTABlogButton";
 import LogoSymbol from "@/components/LogoSymbol";
 import Link from "next/link";
-import { AvatarList } from "@/components/AvatarList";
-import RatingSvg from "@/components/RatingSvg";
-import { useCustomersCount } from "@/hooks/use-customers-count";
+import { trackEvent } from "@/services/custom-analytics";
+import { FormEvent } from "react";
 
 function NextNativeCard({ post }: { post: { slug: string } }) {
-  const count = useCustomersCount();
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = String(formData.get("email") ?? "").trim();
 
+    if (!email) return;
+
+    try {
+      await fetch("https://nextnative.dev/api/playground-access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+    } catch {}
+  };
   return (
     <div
       style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
@@ -22,25 +32,38 @@ function NextNativeCard({ post }: { post: { slug: string } }) {
             <LogoSymbol />
           </div>
         </Link>
-        <h3 className="mt-7 text-2xl font-semibold">
-          Launch mobile apps 10x faster with{" "}
-          <HighlightedSpan>Next.js</HighlightedSpan>
+        <h3 className="mt-7 text-xl font-semibold">
+          A better way to build software
         </h3>
-        <p className="mt-2 mb-4 text-sm text-gray-600">
-          Skip native dev. Use Next.js + Capacitor to go live fast.
+        <p className="mt-2 mb-4 text-gray-600">
+          Thoughts on engineering, slow productivity, books, and building a
+          calmer career in tech.
         </p>
-        <CTABlogButton post={{ slug: post.slug }} />
 
-        <div className="mt-5 flex items-center gap-2">
-          <AvatarList />
-          <div className="flex flex-col items-start">
-            <RatingSvg />
-            <div className="pl-2 text-xs font-medium text-gray-500">
-              Loved by <span className="text-foreground">{count}+</span>{" "}
-              teams/devs
-            </div>
-          </div>
-        </div>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col items-center gap-1.5 md:flex-row"
+        >
+          <input
+            placeholder="youremail@domain.com"
+            type="email"
+            name="email"
+            className="min-h-11 rounded-lg border pl-2 placeholder:text-gray-400"
+          />
+          <button
+            onClick={() => {
+              trackEvent(`BlogPostCTA_${post.slug}_clicked`);
+            }}
+            className="bg-primary hover:text-primary border-primary inline-block rounded-lg border-2 px-4 py-2 font-medium text-white hover:bg-white sm:cursor-pointer"
+          >
+            Try it
+          </button>
+        </form>
+
+        <p className="mt-3 text-xs text-gray-500">
+          Only quality stuff, no spam ever. <br />
+          Unsubscribe anytime.
+        </p>
       </div>
     </div>
   );

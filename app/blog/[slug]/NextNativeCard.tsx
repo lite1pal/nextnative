@@ -3,9 +3,11 @@
 import LogoSymbol from "@/components/LogoSymbol";
 import Link from "next/link";
 import { trackEvent } from "@/services/custom-analytics";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 function NextNativeCard({ post }: { post: { slug: string } }) {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -14,11 +16,19 @@ function NextNativeCard({ post }: { post: { slug: string } }) {
     if (!email) return;
 
     try {
-      await fetch("https://nextnative.dev/api/playground-access", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "https://nextnative.dev/api/playground-access",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        },
+      );
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        e.currentTarget.reset();
+      }
     } catch {}
   };
   return (
@@ -59,6 +69,7 @@ function NextNativeCard({ post }: { post: { slug: string } }) {
             Try it
           </button>
         </form>
+        {isSubmitted && <p className="mt-2 text-sm text-green-600">Success!</p>}
 
         <p className="mt-3 text-xs text-gray-500">
           Only quality stuff, no spam ever. <br />

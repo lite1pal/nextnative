@@ -433,9 +433,7 @@ export default function ReactNativeDeveloperSalaryPage() {
                 >
                   Get NextNative - 50% Off →
                 </Link>
-                <p className="text-base text-gray-600">
-                  $125 · Save $115K+ · 14-day money-back guarantee
-                </p>
+                <p className="text-base text-gray-600">$125 · Save $115K+</p>
               </div>
 
               {/* Trust badges */}

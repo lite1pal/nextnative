@@ -10,9 +10,9 @@ function TrustBadge({
   description: string;
 }) {
   return (
-    <div className="flex flex-col items-center text-center gap-2">
-      <Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
-      <h3 className="font-[500] text-lg">{title}</h3>
+    <div className="flex flex-col items-center gap-2 text-center">
+      <Icon className="text-primary h-8 w-8" strokeWidth={1.5} />
+      <h3 className="text-lg font-[500]">{title}</h3>
       <p className="text-gray text-sm">{description}</p>
     </div>
   );
@@ -21,12 +21,7 @@ function TrustBadge({
 function TrustBadges() {
   return (
     <div className="py-12 md:py-20">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-        <TrustBadge
-          icon={Shield}
-          title="Money-back Guarantee"
-          description="14-day no-questions-asked refund policy if you're not satisfied"
-        />
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
         <TrustBadge
           icon={CreditCard}
           title="Secure Payment"

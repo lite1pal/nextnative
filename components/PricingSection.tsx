@@ -8,20 +8,20 @@ import CheckoutButton from "./CheckoutButton";
 
 function PricingSection() {
   const plans: PricingPlan[] = [
-    {
-      key: "starter",
-      title: "Starter",
-      price: "$249",
-      discountedPrice: "$125",
-      buttonVariant: "secondary",
-      checkoutEventName: "PricingSection_GetNextNative_Starter_clicked",
-      features: baseFeatures,
-    },
+    // {
+    //   key: "starter",
+    //   title: "Starter",
+    //   price: "$249",
+    //   discountedPrice: "$125",
+    //   buttonVariant: "secondary",
+    //   checkoutEventName: "PricingSection_GetNextNative_Starter_clicked",
+    //   features: baseFeatures,
+    // },
     {
       key: "all-in",
       title: "All-in",
       price: "$299",
-      discountedPrice: "$149",
+      discountedPrice: "$125",
       highlightPrice: true,
       mostPopular: true,
       buttonVariant: "primary",
@@ -96,11 +96,11 @@ const baseFeatures: PricingFeature[] = [
     content: "App Store/Google Play launch guides",
     dimmedOnStarter: true,
   },
-  {
-    key: "support",
-    content: "3 months developer support",
-    dimmedOnStarter: true,
-  },
+  // {
+  //   key: "support",
+  //   content: "3 months developer support",
+  //   dimmedOnStarter: true,
+  // },
   {
     key: "hands-on",
     content: "Hands-on help if you get stuck",
@@ -177,11 +177,11 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
             : "h-full w-full rounded-[32px] bg-white p-6 md:p-10"
         }
       >
-        {plan.mostPopular ? (
+        {/* {plan.mostPopular ? (
           <span className="bg-primary text-background absolute top-0 right-6 -translate-y-1/2 rounded-full px-3 py-1 text-lg font-[600]">
             Most popular
           </span>
-        ) : null}
+        ) : null} */}
 
         <div className="flex h-full flex-col gap-6 md:gap-8">
           <h3 className="w-fit text-xl font-[500] sm:text-2xl md:text-[32px]">

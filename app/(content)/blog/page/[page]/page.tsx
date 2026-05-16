@@ -6,6 +6,7 @@ import { calculatePagination } from "@/lib/pagination";
 import PostsGrid from "../../posts-grid";
 import BlogHeading from "../../blog-heading";
 import TagFilter from "../../tag-filter";
+import { Suspense } from "react";
 
 interface BlogListPageProps {
   params: any;
@@ -111,7 +112,9 @@ export default async function BlogListPage(props: BlogListPageProps) {
         </div>
       )}
 
-      <PostsGrid />
+      <Suspense>
+        <PostsGrid />
+      </Suspense>
 
       <BlogPagination
         currentPage={paginationInfo.currentPage}

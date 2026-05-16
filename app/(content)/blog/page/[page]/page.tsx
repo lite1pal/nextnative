@@ -11,6 +11,8 @@ interface BlogListPageProps {
   params: any;
 }
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata(
   props: BlogListPageProps,
 ): Promise<Metadata> {

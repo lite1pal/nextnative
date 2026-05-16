@@ -16,6 +16,8 @@ const PRODUCT_IDS: Record<string, string> = {
   "all-in": process.env.NEXT_PUBLIC_STRIPE_NEXTNATIVE_ALL_IN_PRODUCT_ID!,
 };
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: Request) {
   try {
     const { plan } = await req.json();

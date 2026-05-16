@@ -21,6 +21,8 @@ export type OutrankWebhookPayload = {
   };
 };
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   // Get the bearer token from the header
   const authToken = (req.headers.get("authorization") || "")

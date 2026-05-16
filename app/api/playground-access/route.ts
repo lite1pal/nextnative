@@ -1,10 +1,9 @@
-import { ratelimit } from "@/lib/rate-limiter";
-import { trackEvent } from "@/services/custom-analytics";
 import { sendMessageToTelegram } from "@/services/telegram";
-import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 const KIT_BASE = "https://api.kit.com/v4";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   // // ✅ Rate limit by IP

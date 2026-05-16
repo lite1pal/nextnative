@@ -3,15 +3,14 @@ import { Octokit } from "@octokit/rest";
 import { prisma } from "@/prisma/client";
 import { trackEvent } from "@/services/custom-analytics";
 import { z } from "zod";
-// import { ratelimit } from "@/lib/rate-limiter";
-// import { headers } from "next/headers";
 import Stripe from "stripe";
-// import { revalidatePath } from "next/cache";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-12-15.clover",
   typescript: true,
 });
+
+export const dynamic = "force-dynamic";
 
 const GITHUB_OWNER = "lite1pal";
 const GITHUB_REPO = "nextnative_boilerplate";

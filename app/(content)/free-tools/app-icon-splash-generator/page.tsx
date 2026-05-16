@@ -9,7 +9,6 @@ import {
   Monitor,
   CornerDownRight,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import HighlightedSpan from "@/components/HighlightedSpan";
 import { trackEvent } from "@/services/custom-analytics";
 import NextNativeCard from "@/app/(content)/blog/[slug]/NextNativeCard";
@@ -94,18 +93,14 @@ function SuccessShareCard({ visible }: SuccessShareCardProps) {
           Assets generated 🎉
         </p>
         <div className="flex flex-wrap gap-3">
-          <Button
-            size="lg"
+          <button
             onClick={handleShareOnX}
-            variant="outline"
             aria-label="Share this tool on X (Twitter)"
           >
             Share on X
-          </Button>
-          <Button
-            size="lg"
+          </button>
+          <button
             onClick={() => handleCopyAttribution("markdown")}
-            variant="ghost"
             aria-label={
               copied ? "Attribution copied" : "Copy attribution (Markdown link)"
             }
@@ -113,25 +108,21 @@ function SuccessShareCard({ visible }: SuccessShareCardProps) {
             {copied && copiedFormat === "markdown"
               ? "Copied! ✓"
               : "Copy Markdown credit"}
-          </Button>
-          <Button
-            size="lg"
+          </button>
+          <button
             onClick={() => handleCopyAttribution("html")}
-            variant="ghost"
             aria-label={copied ? "Attribution copied" : "Copy HTML credit"}
           >
             {copied && copiedFormat === "html"
               ? "Copied! ✓"
               : "Copy HTML credit"}
-          </Button>
-          <Button
-            size="lg"
+          </button>
+          <button
             onClick={() => handleCopyAttribution("url")}
-            variant="ghost"
             aria-label={copied ? "Link copied" : "Copy tool link"}
           >
             {copied && copiedFormat === "url" ? "Copied! ✓" : "Copy tool link"}
-          </Button>
+          </button>
         </div>
 
         <div className="mt-4 space-y-2">
@@ -524,11 +515,10 @@ function GenerationButton({
           </span>
         )}
       </p>
-      <Button
+      <button
         onClick={onGenerate}
         disabled={disabled || isGenerating}
-        size="lg"
-        className="px-10 py-6 text-lg font-semibold"
+        className="border px-10 py-6 text-lg font-semibold sm:cursor-pointer"
         aria-label={
           isGenerating
             ? `Generating assets, ${progress.percentage}% complete`
@@ -550,7 +540,7 @@ function GenerationButton({
             Generate & Download ZIP
           </>
         )}
-      </Button>
+      </button>
 
       {isGenerating && (
         <div className="mt-5" role="status" aria-live="polite">

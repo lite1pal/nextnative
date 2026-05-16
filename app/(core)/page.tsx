@@ -14,7 +14,7 @@ import AppsBuiltWithNextNative from "@/components/AppsBuiltWithNextNative";
 import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
 import CTAWithSocialProof from "@/components/CTAWithSocialProof";
-import JsonLD from "../json-ld";
+import JsonLD from "./json-ld";
 import FeaturesSection from "@/components/FeaturesSection";
 import DagobertTestimonial from "@/components/DagobertTestimonial";
 import LeoVideoTestimonial from "@/components/LeoVideoTestimonial";

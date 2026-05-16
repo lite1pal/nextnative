@@ -334,7 +334,7 @@ const calculateStreak = (workSessions) => {
     pricing: {
       price: 19,
       originalPrice: 39,
-      link: "https://checkout.dodopayments.com/buy/pdt_eiP4ixzuoeUYrtknt7wZB?session=sess_h7Opa61p7v",
+      link: "",
     },
   },
   {

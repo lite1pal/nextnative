@@ -1,5 +1,5 @@
 import Link from "next/link";
-import IPhoneMockup from "./note-taking/iphone-mockup";
+import IPhoneMockup from "./iphone-mockup";
 import Image from "next/image";
 import Subheading from "./Subheading";
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ChevronRight, BookOpen, Clock } from "lucide-react";
-import { tutorials } from "@/app/tutorials/[slug]/tutorials-data";
+import { tutorials } from "@/app/(content)/tutorials/[slug]/tutorials-data";
 
 const difficultyColor = {
   beginner: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",

@@ -1,9 +1,9 @@
 import { prisma } from "@/prisma/client";
 import type { MetadataRoute } from "next";
-import { comparisons } from "./comparisons/[slug]/comparisons-data";
-import { tutorials } from "./tutorials/[slug]/tutorials-data";
-import { alternatives } from "./alternatives/[slug]/alternatives-data";
-import { useCases } from "./use-cases/[slug]/use-cases-data";
+import { comparisons } from "@/app/(content)/comparisons/[slug]/comparisons-data";
+import { tutorials } from "@/app/(content)/tutorials/[slug]/tutorials-data";
+import { alternatives } from "@/app/(content)/alternatives/[slug]/alternatives-data";
+import { useCases } from "@/app/(core)/use-cases/[slug]/use-cases-data";
 
 export const revalidate = 600;
 
@@ -75,12 +75,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "https://nextnative.dev/free-tools/app-store-connect-api",
     "https://nextnative.dev/free-tools/create-android-keystore",
     "https://nextnative.dev/free-tools/app-store-fees",
-  ];
-
-  const freeComponents = [
-    "https://nextnative.dev/components",
-    "https://nextnative.dev/components/buttons",
-    "https://nextnative.dev/components/screens/pricing-screens",
   ];
 
   const costPages = [
@@ -189,14 +183,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: currentDate,
       changeFrequency: "weekly" as const,
       priority: topFreeTools.has(new URL(freeTool).pathname) ? 0.95 : 0.85,
-    })),
-
-    // Free Components
-    ...freeComponents.map((freeComponent) => ({
-      url: freeComponent,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.65,
     })),
 
     // Cost Pages

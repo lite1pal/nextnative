@@ -91,7 +91,7 @@ async function loadPageModule() {
 
   process.env.STRIPE_SECRET_KEY = "sk_test_123";
 
-  return await import("../app/thank-you-stripe/page");
+  return await import("../app/(core)/thank-you-stripe/page");
 }
 
 describe("/thank-you-stripe page", () => {

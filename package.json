@@ -10,7 +10,7 @@
     "serve": "next build && npx serve@latest out",
     "lint": "next lint --quiet",
     "typecheck": "tsc --noEmit",
-    "test": "vitest ./tests",
+    "test": "vitest run -c vitest.config.mts",
     "e2e": "playwright test"
   },
   "dependencies": {

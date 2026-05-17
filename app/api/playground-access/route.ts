@@ -11,7 +11,9 @@ export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {
-    assertAllowedOrigin(request.headers.get("origin"), ["https://nextnative.dev"]);
+    assertAllowedOrigin(request.headers.get("origin"), [
+      "https://nextnative.dev",
+    ]);
 
     if (ratelimit) {
       const ip = getRequestIp(request);
@@ -27,6 +29,7 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
     const parsed = playgroundAccessSchema.safeParse(body);
+
     if (!parsed.success) {
       throw new AppError({
         code: "INVALID_INPUT",

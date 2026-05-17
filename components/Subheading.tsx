@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import HighlightedSpan from "./HighlightedSpan";
 import HorizontalLine from "./HorizontalLine";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 function Subheading({
   heading1,

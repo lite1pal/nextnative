@@ -12,7 +12,7 @@ import {
 import HighlightedSpan from "@/components/HighlightedSpan";
 import { trackEvent } from "@/services/custom-analytics";
 import NextNativeCard from "@/app/(content)/blog/[slug]/NextNativeCard";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { useIconGenerator } from "./hooks/useIconGenerator";
 
 interface SuccessShareCardProps {

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import CTAButton from "./CTAButton";
 
 export default function CTA({ className }: { className?: string }) {

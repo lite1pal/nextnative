@@ -11,7 +11,7 @@ beforeEach(() => {
   vi.clearAllMocks();
 });
 
-describe("/lib/security/origin.ts", () => {
+describe("/lib/security/request-ip.ts", () => {
   it("returns real ip address", async () => {
     const { getRequestIp } = await import("../request-ip");
 

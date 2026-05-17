@@ -1,8 +1,8 @@
 import "server-only";
 import { NextRequest } from "next/server";
-import { ratelimit } from "../rate-limiter";
-import { getRequestIp } from "./request-ip";
-import { AppError } from "../http/app-error";
+import { ratelimit } from "@/lib/rate-limiter";
+import { getRequestIp } from "@/lib/security/request-ip";
+import { AppError } from "@/lib/http/app-error";
 
 export const assertRateLimit = async (request: NextRequest) => {
   if (!ratelimit) return;

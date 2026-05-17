@@ -13,11 +13,11 @@ const envSchema = z.object({
 
 const parsed = envSchema.safeParse(process.env);
 
-// if (!parsed.success) {
-//   const issues = parsed.error.issues
-//     .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
-//     .join("; ");
-//   throw new Error(`Invalid environment configuration: ${issues}`);
-// }
+if (!parsed.success) {
+  const issues = parsed.error.issues
+    .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
+    .join("; ");
+  throw new Error(`Invalid environment configuration: ${issues}`);
+}
 
 export const env = parsed.data;

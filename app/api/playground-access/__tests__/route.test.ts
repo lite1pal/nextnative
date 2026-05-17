@@ -72,17 +72,18 @@ describe("POST /api/playground-access", () => {
   });
 
   it("returns 429 when too many requests", async () => {
-    const limitMock = vi.fn().mockResolvedValue({ success: false });
-    const getRequestIpMock = vi.fn().mockReturnValue("127.0.0.1");
+    const { AppError } = await import("@/lib/http/app-error");
 
-    vi.doMock("@/lib/rate-limiter", () => ({
-      ratelimit: {
-        limit: limitMock,
-      },
-    }));
+    const assertRateLimitMock = vi.fn().mockRejectedValue(
+      new AppError({
+        code: "RATE_LIMITED",
+        httpStatus: 429,
+        safeMessage: "Too many requests. Please wait a moment.",
+      }),
+    );
 
-    vi.doMock("@/lib/security/request-ip", () => ({
-      getRequestIp: getRequestIpMock,
+    vi.doMock("@/lib/security/rate-limit", () => ({
+      assertRateLimit: assertRateLimitMock,
     }));
 
     const { POST } = await import("../route");
@@ -92,9 +93,7 @@ describe("POST /api/playground-access", () => {
     });
     const res = await POST(request);
 
-    expect(getRequestIpMock).toHaveBeenCalledWith(request);
-
-    expect(limitMock).toHaveBeenCalledWith("127.0.0.1");
+    expect(assertRateLimitMock).toHaveBeenCalledOnce();
 
     expect(res.status).toBe(429);
 

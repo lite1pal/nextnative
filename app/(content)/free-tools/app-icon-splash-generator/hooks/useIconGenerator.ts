@@ -1,8 +1,11 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { IconGenerator, ICON_SIZES } from "@/lib/tools/icon-generator";
-import { generateAndDownloadAssets } from "@/lib/tools/zip-generator";
+import {
+  IconGenerator,
+  ICON_SIZES,
+} from "@/app/(content)/free-tools/app-icon-splash-generator/utils/icon-generator";
+import { generateAndDownloadAssets } from "@/app/(content)/free-tools/app-icon-splash-generator/utils/zip-generator";
 
 export interface UseIconGeneratorOptions {
   appName: string;

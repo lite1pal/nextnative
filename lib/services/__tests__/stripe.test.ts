@@ -83,7 +83,7 @@ describe("/lib/services/stripe.ts", () => {
 
     const { createCheckoutUrl } = await import("../stripe");
 
-    expect(createCheckoutUrl("wrong")).rejects.toMatchObject({
+    await expect(createCheckoutUrl("wrong")).rejects.toMatchObject({
       code: "INVALID_BODY",
       httpStatus: 400,
       safeMessage: "Invalid plan",

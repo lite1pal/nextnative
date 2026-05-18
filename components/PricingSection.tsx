@@ -79,7 +79,7 @@ function BookCallCta() {
       </p>
 
       <a
-        href={process.env.NEXT_PUBLIC_BOOK_CALL_LINK}
+        href={env.NEXT_PUBLIC_BOOK_CALL_LINK}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-7 w-full"

@@ -6,7 +6,7 @@ import Button from "./Button";
 function CTAButtonSecondary() {
   return (
     <a
-      href="https://calendly.com/dev-denistarasenko/30min"
+      href={process.env.NEXT_PUBLIC_BOOK_CALL_LINK}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => {

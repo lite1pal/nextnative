@@ -7,6 +7,7 @@ import TrackEventWrapper from "./TrackEventWrapper";
 import CheckoutButton from "./CheckoutButton";
 import Button from "./Button";
 import HighlightedSpan2 from "./HighlightedSpan2";
+import { env } from "@/lib/env";
 
 function PricingSection() {
   const plans: PricingPlan[] = [
@@ -77,16 +78,8 @@ function BookCallCta() {
         app faster, without fighting iOS/Android headaches.
       </p>
 
-      {/* <ul className="space-y-3">
-        <li>Fix App Store & Play Store submission issues</li>
-        <li>Improve native feel, performance & animations</li>
-        <li>Add offline support & native mobile features</li>
-        <li>Get unstuck on build errors & deployment problems</li>
-        <li>Clear roadmap tailored to your app</li>
-      </ul> */}
-
       <a
-        href="https://calendly.com/dev-denistarasenko/30min"
+        href={process.env.NEXT_PUBLIC_BOOK_CALL_LINK}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-7 w-full"

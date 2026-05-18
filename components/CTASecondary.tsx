@@ -6,17 +6,18 @@ import Button from "./Button";
 function CTAButtonSecondary() {
   return (
     <a
-      href="/#demo"
+      href="https://calendly.com/dev-denistarasenko/30min"
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={() => {
-        trackEvent("CTA_watch_demo_clicked");
-        window?.datafast("watch_demo_clicked_from_herosection");
+        trackEvent("CTA_book_call_clicked");
       }}
     >
       <Button
         variant="primary"
-        className="hover:bg-primary border-primary text-primary border-2 bg-transparent px-4 hover:text-white md:px-10"
+        className="hover:bg-primary border-primary text-primary border-2 bg-white px-4 hover:text-white md:px-10"
       >
-        Watch demo
+        Book a 30-min call
       </Button>
     </a>
   );

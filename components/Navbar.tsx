@@ -115,7 +115,7 @@ function Navbar() {
           />
         ))}
 
-        <WatchDemoButton setIsMenuOpen={setIsMenuOpen} />
+        <NavbarCtaButton setIsMenuOpen={setIsMenuOpen} />
       </div>
 
       {/* Mobile navigation */}
@@ -129,7 +129,7 @@ function Navbar() {
             />
           ))}
 
-          <WatchDemoButton setIsMenuOpen={setIsMenuOpen} />
+          <NavbarCtaButton setIsMenuOpen={setIsMenuOpen} />
         </div>
       )}
     </div>
@@ -188,48 +188,22 @@ function MobileMenuButton({
   );
 }
 
-function TryForFreeButton({
+function NavbarCtaButton({
   setIsMenuOpen,
 }: {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
     <a
-      href="https://nextnative.dev/playground"
+      href="https://calendly.com/dev-denistarasenko/30min"
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={() => {
         setIsMenuOpen(false);
-        trackEvent("Navbar_TryForFree_clicked");
-
-        // safe guard
-        if (typeof (window as any)?.datafast === "function") {
-          (window as any).datafast("try_for_free_clicked_from_navbar");
-        }
+        trackEvent("Navbar_book_call_clicked");
       }}
     >
-      <Button variant="secondary">Try for free</Button>
-    </a>
-  );
-}
-
-function WatchDemoButton({
-  setIsMenuOpen,
-}: {
-  setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-}) {
-  return (
-    <a
-      href="/#demo"
-      onClick={() => {
-        setIsMenuOpen(false);
-        trackEvent("Navbar_watch_demo_clicked");
-
-        // safe guard
-        if (typeof (window as any)?.datafast === "function") {
-          (window as any).datafast("watch_demo_clicked_from_navbar");
-        }
-      }}
-    >
-      <Button variant="secondary">Get NextNative now</Button>
+      <Button variant="secondary">Book a 30-min call</Button>
     </a>
   );
 }

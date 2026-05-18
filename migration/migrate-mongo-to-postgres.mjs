@@ -6,7 +6,7 @@ const { Pool } = pg;
 
 process.env.MONGODB_URL="mongodb+srv://deniskatarasenko6:QAcolOohodf9gVMF@cluster0.ruroqdm.mongodb.net/prisma?retryWrites=true&w=majority&appName=Cluster0"
 process.env.MONGODB_DB_NAME="prisma"
-process.env.POSTGRES_URL="postgresql://nextnative:nextnative@localhost:5432/nextnative_dev?schema=public"
+// process.env.POSTGRES_URL="postgresql://nextnative:nextnative@localhost:5432/nextnative_dev?schema=public"
 
 const REQUIRED_ENV = ["MONGODB_URL", "MONGODB_DB_NAME", "POSTGRES_URL"];
 

@@ -5,6 +5,8 @@ import Subheading from "./Subheading";
 import Link from "next/link";
 import TrackEventWrapper from "./TrackEventWrapper";
 import CheckoutButton from "./CheckoutButton";
+import Button from "./Button";
+import HighlightedSpan2 from "./HighlightedSpan2";
 
 function PricingSection() {
   const plans: PricingPlan[] = [
@@ -52,10 +54,50 @@ function PricingSection() {
         className="text-start md:items-center md:text-center"
       />
 
-      <div className="mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:px-4">
+      <div className="mt-6 flex w-full flex-col items-center gap-6 md:mt-10 md:flex-row md:px-4">
         {plans.map((plan) => (
           <PricingPlanCard key={plan.key} plan={plan} />
         ))}
+        <BookCallCta />
+      </div>
+    </div>
+  );
+}
+
+function BookCallCta() {
+  return (
+    <div className="flex flex-col items-start gap-5 rounded-2xl bg-white p-8 text-start sm:max-w-sm">
+      <div className="text-2xl font-semibold">
+        Need help converting your
+        <HighlightedSpan2>web app to mobile app</HighlightedSpan2>?
+      </div>
+
+      <p>
+        Skip weeks of trial and error. Get direct help shipping your Capacitor
+        app faster, without fighting iOS/Android headaches.
+      </p>
+
+      {/* <ul className="space-y-3">
+        <li>Fix App Store & Play Store submission issues</li>
+        <li>Improve native feel, performance & animations</li>
+        <li>Add offline support & native mobile features</li>
+        <li>Get unstuck on build errors & deployment problems</li>
+        <li>Clear roadmap tailored to your app</li>
+      </ul> */}
+
+      <a
+        href="https://calendly.com/dev-denistarasenko/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-7 w-full"
+      >
+        <Button variant="secondary" className="w-full bg-white">
+          Book a 30-min call
+        </Button>
+      </a>
+
+      <div className="text-muted-foreground text-xs">
+        Limited availability each week.
       </div>
     </div>
   );

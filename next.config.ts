@@ -1,4 +1,9 @@
 import type { NextConfig } from "next";
+import { loadEnvConfig } from "@next/env";
+import { validateEnv } from "./lib/env-core";
+
+loadEnvConfig(process.cwd());
+validateEnv();
 
 const nextConfig: NextConfig = {
   async rewrites() {

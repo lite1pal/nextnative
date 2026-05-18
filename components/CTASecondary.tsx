@@ -2,11 +2,12 @@
 
 import { trackEvent } from "@/services/custom-analytics";
 import Button from "./Button";
+import { publicEnv } from "@/lib/public-env";
 
 function CTAButtonSecondary() {
   return (
     <a
-      href="https://calendly.com/dev-denistarasenko/30min"
+      href={publicEnv.NEXT_PUBLIC_BOOK_CALL_LINK}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => {

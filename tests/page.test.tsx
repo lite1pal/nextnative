@@ -56,7 +56,7 @@ vi.mock("@/components/VitaliyTestimonial", () =>
 // app/page.tsx imports this via "./json-ld"; mocking by the resolved path is simplest.
 vi.mock("../app/json-ld", () => mockSection("JsonLD"));
 
-import Home, { metadata } from "@/app/page";
+import Home, { metadata } from "@/app/(core)/page";
 
 describe("/ (home) page", () => {
   beforeEach(() => {

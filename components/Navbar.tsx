@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { trackEvent } from "@/services/custom-analytics";
 import { cn } from "@/lib/cn";
+import { publicEnv } from "@/lib/public-env";
 
 type NavbarItem = {
   label: string;
@@ -195,7 +196,7 @@ function NavbarCtaButton({
 }) {
   return (
     <a
-      href="https://calendly.com/dev-denistarasenko/30min"
+      href={publicEnv.NEXT_PUBLIC_BOOK_CALL_LINK}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => {

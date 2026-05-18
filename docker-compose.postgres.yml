@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: nextnative-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: nextnative
+      POSTGRES_PASSWORD: nextnative
+      POSTGRES_DB: nextnative_dev
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nextnative -d nextnative_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

@@ -79,6 +79,53 @@ export class PrismaClient<
   $disconnect(): $Utils.JsPromise<void>;
 
 /**
+   * Executes a prepared raw query and returns the number of affected rows.
+   * @example
+   * ```
+   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+   * ```
+   *
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Executes a raw query and returns the number of affected rows.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
+   * ```
+   *
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
+
+  /**
+   * Performs a prepared raw query and returns the `SELECT` data.
+   * @example
+   * ```
+   * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
+   * ```
+   *
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
+
+  /**
+   * Performs a raw query and returns the `SELECT` data.
+   * Susceptible to SQL injections, see documentation.
+   * @example
+   * ```
+   * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
+   * ```
+   *
+   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   */
+  $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
+
+
+  /**
    * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
    * @example
    * ```
@@ -91,24 +138,10 @@ export class PrismaClient<
    * 
    * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
    */
-  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P]): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
+  $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: { isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>
 
-  $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number }): $Utils.JsPromise<R>
+  $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
-  /**
-   * Executes a raw MongoDB command and returns the result of it.
-   * @example
-   * ```
-   * const user = await prisma.$runCommandRaw({
-   *   aggregate: 'User',
-   *   pipeline: [{ $match: { name: 'Bob' } }, { $project: { email: true, _id: false } }],
-   *   explain: false,
-   * })
-   * ```
-   * 
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
-   */
-  $runCommandRaw(command: Prisma.InputJsonObject): Prisma.PrismaPromise<Prisma.JsonObject>
 
   $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
     extArgs: ExtArgs
@@ -605,7 +638,7 @@ export namespace Prisma {
     }
     meta: {
       modelProps: "purchase" | "blogPost" | "globalNumber"
-      txIsolationLevel: never
+      txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
       Purchase: {
@@ -640,6 +673,10 @@ export namespace Prisma {
             args: Prisma.PurchaseCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.PurchaseCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PurchasePayload>[]
+          }
           delete: {
             args: Prisma.PurchaseDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$PurchasePayload>
@@ -656,6 +693,10 @@ export namespace Prisma {
             args: Prisma.PurchaseUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.PurchaseUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PurchasePayload>[]
+          }
           upsert: {
             args: Prisma.PurchaseUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$PurchasePayload>
@@ -667,14 +708,6 @@ export namespace Prisma {
           groupBy: {
             args: Prisma.PurchaseGroupByArgs<ExtArgs>
             result: $Utils.Optional<PurchaseGroupByOutputType>[]
-          }
-          findRaw: {
-            args: Prisma.PurchaseFindRawArgs<ExtArgs>
-            result: JsonObject
-          }
-          aggregateRaw: {
-            args: Prisma.PurchaseAggregateRawArgs<ExtArgs>
-            result: JsonObject
           }
           count: {
             args: Prisma.PurchaseCountArgs<ExtArgs>
@@ -714,6 +747,10 @@ export namespace Prisma {
             args: Prisma.BlogPostCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.BlogPostCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogPostPayload>[]
+          }
           delete: {
             args: Prisma.BlogPostDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$BlogPostPayload>
@@ -730,6 +767,10 @@ export namespace Prisma {
             args: Prisma.BlogPostUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.BlogPostUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogPostPayload>[]
+          }
           upsert: {
             args: Prisma.BlogPostUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$BlogPostPayload>
@@ -741,14 +782,6 @@ export namespace Prisma {
           groupBy: {
             args: Prisma.BlogPostGroupByArgs<ExtArgs>
             result: $Utils.Optional<BlogPostGroupByOutputType>[]
-          }
-          findRaw: {
-            args: Prisma.BlogPostFindRawArgs<ExtArgs>
-            result: JsonObject
-          }
-          aggregateRaw: {
-            args: Prisma.BlogPostAggregateRawArgs<ExtArgs>
-            result: JsonObject
           }
           count: {
             args: Prisma.BlogPostCountArgs<ExtArgs>
@@ -788,6 +821,10 @@ export namespace Prisma {
             args: Prisma.GlobalNumberCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.GlobalNumberCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalNumberPayload>[]
+          }
           delete: {
             args: Prisma.GlobalNumberDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$GlobalNumberPayload>
@@ -804,6 +841,10 @@ export namespace Prisma {
             args: Prisma.GlobalNumberUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.GlobalNumberUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GlobalNumberPayload>[]
+          }
           upsert: {
             args: Prisma.GlobalNumberUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$GlobalNumberPayload>
@@ -816,14 +857,6 @@ export namespace Prisma {
             args: Prisma.GlobalNumberGroupByArgs<ExtArgs>
             result: $Utils.Optional<GlobalNumberGroupByOutputType>[]
           }
-          findRaw: {
-            args: Prisma.GlobalNumberFindRawArgs<ExtArgs>
-            result: JsonObject
-          }
-          aggregateRaw: {
-            args: Prisma.GlobalNumberAggregateRawArgs<ExtArgs>
-            result: JsonObject
-          }
           count: {
             args: Prisma.GlobalNumberCountArgs<ExtArgs>
             result: $Utils.Optional<GlobalNumberCountAggregateOutputType> | number
@@ -835,9 +868,21 @@ export namespace Prisma {
     other: {
       payload: any
       operations: {
-        $runCommandRaw: {
-          args: Prisma.InputJsonObject,
-          result: Prisma.JsonObject
+        $executeRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $executeRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
+        }
+        $queryRaw: {
+          args: [query: TemplateStringsArray | Prisma.Sql, ...values: any[]],
+          result: any
+        }
+        $queryRawUnsafe: {
+          args: [query: string, ...values: any[]],
+          result: any
         }
       }
     }
@@ -891,6 +936,7 @@ export namespace Prisma {
     transactionOptions?: {
       maxWait?: number
       timeout?: number
+      isolationLevel?: Prisma.TransactionIsolationLevel
     }
     /**
      * Global configuration for omitting model fields by default.
@@ -1174,7 +1220,25 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["purchase"]>
 
+  export type PurchaseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    paymentId?: boolean
+    githubUsername?: boolean
+    isInvited?: boolean
+    email?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["purchase"]>
 
+  export type PurchaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    paymentId?: boolean
+    githubUsername?: boolean
+    isInvited?: boolean
+    email?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["purchase"]>
 
   export type PurchaseSelectScalar = {
     id?: boolean
@@ -1317,6 +1381,30 @@ export namespace Prisma {
     createMany<T extends PurchaseCreateManyArgs>(args?: SelectSubset<T, PurchaseCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many Purchases and returns the data saved in the database.
+     * @param {PurchaseCreateManyAndReturnArgs} args - Arguments to create many Purchases.
+     * @example
+     * // Create many Purchases
+     * const purchase = await prisma.purchase.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Purchases and only return the `id`
+     * const purchaseWithIdOnly = await prisma.purchase.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PurchaseCreateManyAndReturnArgs>(args?: SelectSubset<T, PurchaseCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a Purchase.
      * @param {PurchaseDeleteArgs} args - Arguments to delete one Purchase.
      * @example
@@ -1381,6 +1469,36 @@ export namespace Prisma {
     updateMany<T extends PurchaseUpdateManyArgs>(args: SelectSubset<T, PurchaseUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Update zero or more Purchases and returns the data updated in the database.
+     * @param {PurchaseUpdateManyAndReturnArgs} args - Arguments to update many Purchases.
+     * @example
+     * // Update many Purchases
+     * const purchase = await prisma.purchase.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Purchases and only return the `id`
+     * const purchaseWithIdOnly = await prisma.purchase.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PurchaseUpdateManyAndReturnArgs>(args: SelectSubset<T, PurchaseUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Create or update one Purchase.
      * @param {PurchaseUpsertArgs} args - Arguments to update or create a Purchase.
      * @example
@@ -1398,29 +1516,6 @@ export namespace Prisma {
      * })
      */
     upsert<T extends PurchaseUpsertArgs>(args: SelectSubset<T, PurchaseUpsertArgs<ExtArgs>>): Prisma__PurchaseClient<$Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Purchases that matches the filter.
-     * @param {PurchaseFindRawArgs} args - Select which filters you would like to apply.
-     * @example
-     * const purchase = await prisma.purchase.findRaw({
-     *   filter: { age: { $gt: 25 } }
-     * })
-     */
-    findRaw(args?: PurchaseFindRawArgs): Prisma.PrismaPromise<JsonObject>
-
-    /**
-     * Perform aggregation operations on a Purchase.
-     * @param {PurchaseAggregateRawArgs} args - Select which aggregations you would like to apply.
-     * @example
-     * const purchase = await prisma.purchase.aggregateRaw({
-     *   pipeline: [
-     *     { $match: { status: "registered" } },
-     *     { $group: { _id: "$country", total: { $sum: 1 } } }
-     *   ]
-     * })
-     */
-    aggregateRaw(args?: PurchaseAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
 
 
     /**
@@ -1803,6 +1898,26 @@ export namespace Prisma {
      * The data used to create many Purchases.
      */
     data: PurchaseCreateManyInput | PurchaseCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Purchase createManyAndReturn
+   */
+  export type PurchaseCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Purchase
+     */
+    select?: PurchaseSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Purchase
+     */
+    omit?: PurchaseOmit<ExtArgs> | null
+    /**
+     * The data used to create many Purchases.
+     */
+    data: PurchaseCreateManyInput | PurchaseCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -1831,6 +1946,32 @@ export namespace Prisma {
    * Purchase updateMany
    */
   export type PurchaseUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Purchases.
+     */
+    data: XOR<PurchaseUpdateManyMutationInput, PurchaseUncheckedUpdateManyInput>
+    /**
+     * Filter which Purchases to update
+     */
+    where?: PurchaseWhereInput
+    /**
+     * Limit how many Purchases to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Purchase updateManyAndReturn
+   */
+  export type PurchaseUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Purchase
+     */
+    select?: PurchaseSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Purchase
+     */
+    omit?: PurchaseOmit<ExtArgs> | null
     /**
      * The data used to update Purchases.
      */
@@ -1901,34 +2042,6 @@ export namespace Prisma {
      * Limit how many Purchases to delete.
      */
     limit?: number
-  }
-
-  /**
-   * Purchase findRaw
-   */
-  export type PurchaseFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
-     */
-    filter?: InputJsonValue
-    /**
-     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-  /**
-   * Purchase aggregateRaw
-   */
-  export type PurchaseAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
-     */
-    pipeline?: InputJsonValue[]
-    /**
-     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
   }
 
   /**
@@ -2156,7 +2269,33 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["blogPost"]>
 
+  export type BlogPostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    description?: boolean
+    contentMarkdown?: boolean
+    contentHtml?: boolean
+    image?: boolean
+    tags?: boolean
+    indexed?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["blogPost"]>
 
+  export type BlogPostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    slug?: boolean
+    title?: boolean
+    description?: boolean
+    contentMarkdown?: boolean
+    contentHtml?: boolean
+    image?: boolean
+    tags?: boolean
+    indexed?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["blogPost"]>
 
   export type BlogPostSelectScalar = {
     id?: boolean
@@ -2307,6 +2446,30 @@ export namespace Prisma {
     createMany<T extends BlogPostCreateManyArgs>(args?: SelectSubset<T, BlogPostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many BlogPosts and returns the data saved in the database.
+     * @param {BlogPostCreateManyAndReturnArgs} args - Arguments to create many BlogPosts.
+     * @example
+     * // Create many BlogPosts
+     * const blogPost = await prisma.blogPost.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BlogPosts and only return the `id`
+     * const blogPostWithIdOnly = await prisma.blogPost.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BlogPostCreateManyAndReturnArgs>(args?: SelectSubset<T, BlogPostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a BlogPost.
      * @param {BlogPostDeleteArgs} args - Arguments to delete one BlogPost.
      * @example
@@ -2371,6 +2534,36 @@ export namespace Prisma {
     updateMany<T extends BlogPostUpdateManyArgs>(args: SelectSubset<T, BlogPostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Update zero or more BlogPosts and returns the data updated in the database.
+     * @param {BlogPostUpdateManyAndReturnArgs} args - Arguments to update many BlogPosts.
+     * @example
+     * // Update many BlogPosts
+     * const blogPost = await prisma.blogPost.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BlogPosts and only return the `id`
+     * const blogPostWithIdOnly = await prisma.blogPost.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BlogPostUpdateManyAndReturnArgs>(args: SelectSubset<T, BlogPostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Create or update one BlogPost.
      * @param {BlogPostUpsertArgs} args - Arguments to update or create a BlogPost.
      * @example
@@ -2388,29 +2581,6 @@ export namespace Prisma {
      * })
      */
     upsert<T extends BlogPostUpsertArgs>(args: SelectSubset<T, BlogPostUpsertArgs<ExtArgs>>): Prisma__BlogPostClient<$Result.GetResult<Prisma.$BlogPostPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more BlogPosts that matches the filter.
-     * @param {BlogPostFindRawArgs} args - Select which filters you would like to apply.
-     * @example
-     * const blogPost = await prisma.blogPost.findRaw({
-     *   filter: { age: { $gt: 25 } }
-     * })
-     */
-    findRaw(args?: BlogPostFindRawArgs): Prisma.PrismaPromise<JsonObject>
-
-    /**
-     * Perform aggregation operations on a BlogPost.
-     * @param {BlogPostAggregateRawArgs} args - Select which aggregations you would like to apply.
-     * @example
-     * const blogPost = await prisma.blogPost.aggregateRaw({
-     *   pipeline: [
-     *     { $match: { status: "registered" } },
-     *     { $group: { _id: "$country", total: { $sum: 1 } } }
-     *   ]
-     * })
-     */
-    aggregateRaw(args?: BlogPostAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
 
 
     /**
@@ -2797,6 +2967,26 @@ export namespace Prisma {
      * The data used to create many BlogPosts.
      */
     data: BlogPostCreateManyInput | BlogPostCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BlogPost createManyAndReturn
+   */
+  export type BlogPostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogPost
+     */
+    select?: BlogPostSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogPost
+     */
+    omit?: BlogPostOmit<ExtArgs> | null
+    /**
+     * The data used to create many BlogPosts.
+     */
+    data: BlogPostCreateManyInput | BlogPostCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -2825,6 +3015,32 @@ export namespace Prisma {
    * BlogPost updateMany
    */
   export type BlogPostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BlogPosts.
+     */
+    data: XOR<BlogPostUpdateManyMutationInput, BlogPostUncheckedUpdateManyInput>
+    /**
+     * Filter which BlogPosts to update
+     */
+    where?: BlogPostWhereInput
+    /**
+     * Limit how many BlogPosts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BlogPost updateManyAndReturn
+   */
+  export type BlogPostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlogPost
+     */
+    select?: BlogPostSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlogPost
+     */
+    omit?: BlogPostOmit<ExtArgs> | null
     /**
      * The data used to update BlogPosts.
      */
@@ -2895,34 +3111,6 @@ export namespace Prisma {
      * Limit how many BlogPosts to delete.
      */
     limit?: number
-  }
-
-  /**
-   * BlogPost findRaw
-   */
-  export type BlogPostFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
-     */
-    filter?: InputJsonValue
-    /**
-     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-  /**
-   * BlogPost aggregateRaw
-   */
-  export type BlogPostAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
-     */
-    pipeline?: InputJsonValue[]
-    /**
-     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
   }
 
   /**
@@ -3140,7 +3328,21 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["globalNumber"]>
 
+  export type GlobalNumberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["globalNumber"]>
 
+  export type GlobalNumberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    value?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["globalNumber"]>
 
   export type GlobalNumberSelectScalar = {
     id?: boolean
@@ -3279,6 +3481,30 @@ export namespace Prisma {
     createMany<T extends GlobalNumberCreateManyArgs>(args?: SelectSubset<T, GlobalNumberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many GlobalNumbers and returns the data saved in the database.
+     * @param {GlobalNumberCreateManyAndReturnArgs} args - Arguments to create many GlobalNumbers.
+     * @example
+     * // Create many GlobalNumbers
+     * const globalNumber = await prisma.globalNumber.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GlobalNumbers and only return the `id`
+     * const globalNumberWithIdOnly = await prisma.globalNumber.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GlobalNumberCreateManyAndReturnArgs>(args?: SelectSubset<T, GlobalNumberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GlobalNumberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a GlobalNumber.
      * @param {GlobalNumberDeleteArgs} args - Arguments to delete one GlobalNumber.
      * @example
@@ -3343,6 +3569,36 @@ export namespace Prisma {
     updateMany<T extends GlobalNumberUpdateManyArgs>(args: SelectSubset<T, GlobalNumberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Update zero or more GlobalNumbers and returns the data updated in the database.
+     * @param {GlobalNumberUpdateManyAndReturnArgs} args - Arguments to update many GlobalNumbers.
+     * @example
+     * // Update many GlobalNumbers
+     * const globalNumber = await prisma.globalNumber.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GlobalNumbers and only return the `id`
+     * const globalNumberWithIdOnly = await prisma.globalNumber.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GlobalNumberUpdateManyAndReturnArgs>(args: SelectSubset<T, GlobalNumberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GlobalNumberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Create or update one GlobalNumber.
      * @param {GlobalNumberUpsertArgs} args - Arguments to update or create a GlobalNumber.
      * @example
@@ -3360,29 +3616,6 @@ export namespace Prisma {
      * })
      */
     upsert<T extends GlobalNumberUpsertArgs>(args: SelectSubset<T, GlobalNumberUpsertArgs<ExtArgs>>): Prisma__GlobalNumberClient<$Result.GetResult<Prisma.$GlobalNumberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more GlobalNumbers that matches the filter.
-     * @param {GlobalNumberFindRawArgs} args - Select which filters you would like to apply.
-     * @example
-     * const globalNumber = await prisma.globalNumber.findRaw({
-     *   filter: { age: { $gt: 25 } }
-     * })
-     */
-    findRaw(args?: GlobalNumberFindRawArgs): Prisma.PrismaPromise<JsonObject>
-
-    /**
-     * Perform aggregation operations on a GlobalNumber.
-     * @param {GlobalNumberAggregateRawArgs} args - Select which aggregations you would like to apply.
-     * @example
-     * const globalNumber = await prisma.globalNumber.aggregateRaw({
-     *   pipeline: [
-     *     { $match: { status: "registered" } },
-     *     { $group: { _id: "$country", total: { $sum: 1 } } }
-     *   ]
-     * })
-     */
-    aggregateRaw(args?: GlobalNumberAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
 
 
     /**
@@ -3763,6 +3996,26 @@ export namespace Prisma {
      * The data used to create many GlobalNumbers.
      */
     data: GlobalNumberCreateManyInput | GlobalNumberCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GlobalNumber createManyAndReturn
+   */
+  export type GlobalNumberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalNumber
+     */
+    select?: GlobalNumberSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalNumber
+     */
+    omit?: GlobalNumberOmit<ExtArgs> | null
+    /**
+     * The data used to create many GlobalNumbers.
+     */
+    data: GlobalNumberCreateManyInput | GlobalNumberCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -3791,6 +4044,32 @@ export namespace Prisma {
    * GlobalNumber updateMany
    */
   export type GlobalNumberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GlobalNumbers.
+     */
+    data: XOR<GlobalNumberUpdateManyMutationInput, GlobalNumberUncheckedUpdateManyInput>
+    /**
+     * Filter which GlobalNumbers to update
+     */
+    where?: GlobalNumberWhereInput
+    /**
+     * Limit how many GlobalNumbers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GlobalNumber updateManyAndReturn
+   */
+  export type GlobalNumberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GlobalNumber
+     */
+    select?: GlobalNumberSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GlobalNumber
+     */
+    omit?: GlobalNumberOmit<ExtArgs> | null
     /**
      * The data used to update GlobalNumbers.
      */
@@ -3864,34 +4143,6 @@ export namespace Prisma {
   }
 
   /**
-   * GlobalNumber findRaw
-   */
-  export type GlobalNumberFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
-     */
-    filter?: InputJsonValue
-    /**
-     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-  /**
-   * GlobalNumber aggregateRaw
-   */
-  export type GlobalNumberAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
-     */
-    pipeline?: InputJsonValue[]
-    /**
-     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
-     */
-    options?: InputJsonValue
-  }
-
-  /**
    * GlobalNumber without action
    */
   export type GlobalNumberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3909,6 +4160,16 @@ export namespace Prisma {
   /**
    * Enums
    */
+
+  export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
+    Serializable: 'Serializable'
+  };
+
+  export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
 
   export const PurchaseScalarFieldEnum: {
     id: 'id',
@@ -3965,6 +4226,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -4042,7 +4311,7 @@ export namespace Prisma {
     AND?: PurchaseWhereInput | PurchaseWhereInput[]
     OR?: PurchaseWhereInput[]
     NOT?: PurchaseWhereInput | PurchaseWhereInput[]
-    id?: StringFilter<"Purchase"> | string
+    id?: UuidFilter<"Purchase"> | string
     paymentId?: StringFilter<"Purchase"> | string
     githubUsername?: StringNullableFilter<"Purchase"> | string | null
     isInvited?: BoolFilter<"Purchase"> | boolean
@@ -4054,32 +4323,32 @@ export namespace Prisma {
   export type PurchaseOrderByWithRelationInput = {
     id?: SortOrder
     paymentId?: SortOrder
-    githubUsername?: SortOrder
+    githubUsername?: SortOrderInput | SortOrder
     isInvited?: SortOrder
-    email?: SortOrder
+    email?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type PurchaseWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    paymentId?: string
     AND?: PurchaseWhereInput | PurchaseWhereInput[]
     OR?: PurchaseWhereInput[]
     NOT?: PurchaseWhereInput | PurchaseWhereInput[]
-    paymentId?: StringFilter<"Purchase"> | string
     githubUsername?: StringNullableFilter<"Purchase"> | string | null
     isInvited?: BoolFilter<"Purchase"> | boolean
     email?: StringNullableFilter<"Purchase"> | string | null
     createdAt?: DateTimeFilter<"Purchase"> | Date | string
     updatedAt?: DateTimeFilter<"Purchase"> | Date | string
-  }, "id">
+  }, "id" | "paymentId">
 
   export type PurchaseOrderByWithAggregationInput = {
     id?: SortOrder
     paymentId?: SortOrder
-    githubUsername?: SortOrder
+    githubUsername?: SortOrderInput | SortOrder
     isInvited?: SortOrder
-    email?: SortOrder
+    email?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PurchaseCountOrderByAggregateInput
@@ -4091,7 +4360,7 @@ export namespace Prisma {
     AND?: PurchaseScalarWhereWithAggregatesInput | PurchaseScalarWhereWithAggregatesInput[]
     OR?: PurchaseScalarWhereWithAggregatesInput[]
     NOT?: PurchaseScalarWhereWithAggregatesInput | PurchaseScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Purchase"> | string
+    id?: UuidWithAggregatesFilter<"Purchase"> | string
     paymentId?: StringWithAggregatesFilter<"Purchase"> | string
     githubUsername?: StringNullableWithAggregatesFilter<"Purchase"> | string | null
     isInvited?: BoolWithAggregatesFilter<"Purchase"> | boolean
@@ -4104,7 +4373,7 @@ export namespace Prisma {
     AND?: BlogPostWhereInput | BlogPostWhereInput[]
     OR?: BlogPostWhereInput[]
     NOT?: BlogPostWhereInput | BlogPostWhereInput[]
-    id?: StringFilter<"BlogPost"> | string
+    id?: UuidFilter<"BlogPost"> | string
     slug?: StringFilter<"BlogPost"> | string
     title?: StringFilter<"BlogPost"> | string
     description?: StringFilter<"BlogPost"> | string
@@ -4124,9 +4393,9 @@ export namespace Prisma {
     description?: SortOrder
     contentMarkdown?: SortOrder
     contentHtml?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     tags?: SortOrder
-    indexed?: SortOrder
+    indexed?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4155,9 +4424,9 @@ export namespace Prisma {
     description?: SortOrder
     contentMarkdown?: SortOrder
     contentHtml?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     tags?: SortOrder
-    indexed?: SortOrder
+    indexed?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BlogPostCountOrderByAggregateInput
@@ -4169,7 +4438,7 @@ export namespace Prisma {
     AND?: BlogPostScalarWhereWithAggregatesInput | BlogPostScalarWhereWithAggregatesInput[]
     OR?: BlogPostScalarWhereWithAggregatesInput[]
     NOT?: BlogPostScalarWhereWithAggregatesInput | BlogPostScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"BlogPost"> | string
+    id?: UuidWithAggregatesFilter<"BlogPost"> | string
     slug?: StringWithAggregatesFilter<"BlogPost"> | string
     title?: StringWithAggregatesFilter<"BlogPost"> | string
     description?: StringWithAggregatesFilter<"BlogPost"> | string
@@ -4186,7 +4455,7 @@ export namespace Prisma {
     AND?: GlobalNumberWhereInput | GlobalNumberWhereInput[]
     OR?: GlobalNumberWhereInput[]
     NOT?: GlobalNumberWhereInput | GlobalNumberWhereInput[]
-    id?: StringFilter<"GlobalNumber"> | string
+    id?: UuidFilter<"GlobalNumber"> | string
     title?: StringFilter<"GlobalNumber"> | string
     value?: IntFilter<"GlobalNumber"> | number
     createdAt?: DateTimeFilter<"GlobalNumber"> | Date | string
@@ -4203,14 +4472,14 @@ export namespace Prisma {
 
   export type GlobalNumberWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    title?: string
     AND?: GlobalNumberWhereInput | GlobalNumberWhereInput[]
     OR?: GlobalNumberWhereInput[]
     NOT?: GlobalNumberWhereInput | GlobalNumberWhereInput[]
-    title?: StringFilter<"GlobalNumber"> | string
     value?: IntFilter<"GlobalNumber"> | number
     createdAt?: DateTimeFilter<"GlobalNumber"> | Date | string
     updatedAt?: DateTimeFilter<"GlobalNumber"> | Date | string
-  }, "id">
+  }, "id" | "title">
 
   export type GlobalNumberOrderByWithAggregationInput = {
     id?: SortOrder
@@ -4229,7 +4498,7 @@ export namespace Prisma {
     AND?: GlobalNumberScalarWhereWithAggregatesInput | GlobalNumberScalarWhereWithAggregatesInput[]
     OR?: GlobalNumberScalarWhereWithAggregatesInput[]
     NOT?: GlobalNumberScalarWhereWithAggregatesInput | GlobalNumberScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"GlobalNumber"> | string
+    id?: UuidWithAggregatesFilter<"GlobalNumber"> | string
     title?: StringWithAggregatesFilter<"GlobalNumber"> | string
     value?: IntWithAggregatesFilter<"GlobalNumber"> | number
     createdAt?: DateTimeWithAggregatesFilter<"GlobalNumber"> | Date | string
@@ -4257,6 +4526,7 @@ export namespace Prisma {
   }
 
   export type PurchaseUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     githubUsername?: NullableStringFieldUpdateOperationsInput | string | null
     isInvited?: BoolFieldUpdateOperationsInput | boolean
@@ -4266,6 +4536,7 @@ export namespace Prisma {
   }
 
   export type PurchaseUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     githubUsername?: NullableStringFieldUpdateOperationsInput | string | null
     isInvited?: BoolFieldUpdateOperationsInput | boolean
@@ -4285,6 +4556,7 @@ export namespace Prisma {
   }
 
   export type PurchaseUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     githubUsername?: NullableStringFieldUpdateOperationsInput | string | null
     isInvited?: BoolFieldUpdateOperationsInput | boolean
@@ -4294,6 +4566,7 @@ export namespace Prisma {
   }
 
   export type PurchaseUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     paymentId?: StringFieldUpdateOperationsInput | string
     githubUsername?: NullableStringFieldUpdateOperationsInput | string | null
     isInvited?: BoolFieldUpdateOperationsInput | boolean
@@ -4331,6 +4604,7 @@ export namespace Prisma {
   }
 
   export type BlogPostUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -4344,6 +4618,7 @@ export namespace Prisma {
   }
 
   export type BlogPostUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -4371,6 +4646,7 @@ export namespace Prisma {
   }
 
   export type BlogPostUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -4384,6 +4660,7 @@ export namespace Prisma {
   }
 
   export type BlogPostUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -4413,6 +4690,7 @@ export namespace Prisma {
   }
 
   export type GlobalNumberUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     value?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4420,6 +4698,7 @@ export namespace Prisma {
   }
 
   export type GlobalNumberUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     value?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4435,6 +4714,7 @@ export namespace Prisma {
   }
 
   export type GlobalNumberUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     value?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4442,10 +4722,23 @@ export namespace Prisma {
   }
 
   export type GlobalNumberUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     value?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4476,7 +4769,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-    isSet?: boolean
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -4493,6 +4785,11 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type PurchaseCountOrderByAggregateInput = {
@@ -4523,6 +4820,21 @@ export namespace Prisma {
     email?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type UuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -4559,7 +4871,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-    isSet?: boolean
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -4595,7 +4906,6 @@ export namespace Prisma {
   export type BoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-    isSet?: boolean
   }
 
   export type BlogPostCountOrderByAggregateInput = {
@@ -4644,7 +4954,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
-    isSet?: boolean
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4712,7 +5021,6 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-    unset?: boolean
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -4734,7 +5042,6 @@ export namespace Prisma {
 
   export type NullableBoolFieldUpdateOperationsInput = {
     set?: boolean | null
-    unset?: boolean
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -4743,6 +5050,17 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type NestedUuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4771,7 +5089,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-    isSet?: boolean
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -4788,6 +5105,31 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -4807,17 +5149,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -4833,7 +5164,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-    isSet?: boolean
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -4845,7 +5175,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-    isSet?: boolean
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -4873,7 +5202,6 @@ export namespace Prisma {
   export type NestedBoolNullableFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
     not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
-    isSet?: boolean
   }
 
   export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4882,7 +5210,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
-    isSet?: boolean
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {

@@ -13,6 +13,12 @@ vi.mock("@/lib/services/stripe", () => ({
     .mockResolvedValue("https://checkout.stripe.com/test"),
 }));
 
+vi.mock("@/lib/env", () => ({
+  env: {
+    NODE_ENV: "development",
+  },
+}));
+
 beforeEach(() => {
   vi.clearAllMocks();
   vi.resetModules();

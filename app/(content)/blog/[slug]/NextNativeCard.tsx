@@ -17,21 +17,16 @@ function NextNativeCard({ post }: { post: { slug: string } }) {
 
     if (!submittedEmail) return;
 
-    try {
-      const response = await fetch(
-        "https://nextnative.dev/api/playground-access",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: submittedEmail }),
-        },
-      );
+    setIsSubmitted(true);
+    setEmail("");
+    form.reset();
 
-      if (response.ok) {
-        setIsSubmitted(true);
-        setEmail("");
-        form.reset();
-      }
+    try {
+      await fetch("/api/playground-access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: submittedEmail }),
+      });
     } catch {}
   };
   return (

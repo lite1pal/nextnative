@@ -13,6 +13,12 @@ vi.mock("@/lib/services/playground-access", () => ({
   grantPlaygroundAccess: vi.fn(),
 }));
 
+vi.mock("@/lib/env", () => ({
+  env: {
+    NODE_ENV: "development",
+  },
+}));
+
 beforeEach(() => {
   vi.clearAllMocks();
   vi.resetModules();

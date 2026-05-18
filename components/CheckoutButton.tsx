@@ -20,7 +20,12 @@ export default function CheckoutButton({ plan }: CheckoutButtonProps) {
         body: JSON.stringify({ plan }),
       });
 
-      const data = await res.json();
+      if (!res.ok) {
+        const { error } = await res.json();
+        throw new Error(`${error?.code}, ${error?.message}`);
+      }
+
+      const { data } = await res.json();
 
       if (data.url) {
         window.location.href = data.url; // Redirect to Stripe Checkout

@@ -8,9 +8,19 @@ export const assertRateLimit = async (request: NextRequest) => {
   if (!ratelimit) return;
 
   const ip = getRequestIp(request);
-  const { success } = await ratelimit.limit(ip);
 
-  if (!success) {
+  let rateLimitSuccess = false;
+
+  try {
+    const { success } = await ratelimit.limit(ip);
+
+    rateLimitSuccess = success;
+  } catch (err) {
+    console.error("Rate limit isn't setup");
+    rateLimitSuccess = true;
+  }
+
+  if (!rateLimitSuccess) {
     throw new AppError({
       code: "RATE_LIMITED",
       httpStatus: 429,

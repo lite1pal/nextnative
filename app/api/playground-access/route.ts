@@ -1,3 +1,4 @@
+import { env } from "@/lib/env";
 import { fromError, ok } from "@/lib/http/api-response";
 import { AppError } from "@/lib/http/app-error";
 import { playgroundAccessSchema } from "@/lib/schemas/playground-access";
@@ -12,6 +13,7 @@ export async function POST(request: NextRequest) {
   try {
     assertAllowedOrigin(request.headers.get("origin"), [
       "https://nextnative.dev",
+      env.NODE_ENV === "development" ? "http://localhost:3000" : "",
     ]);
 
     await assertRateLimit(request);

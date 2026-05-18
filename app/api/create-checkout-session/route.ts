@@ -4,12 +4,16 @@ import { AppError } from "@/lib/http/app-error";
 import { fromError, ok } from "@/lib/http/api-response";
 import { assertRateLimit } from "@/lib/security/rate-limit";
 import { createCheckoutUrl } from "@/lib/services/stripe";
+import { env } from "@/lib/env";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
-    assertAllowedOrigin(req.headers.get("origin"), ["https://nextnative.dev"]);
+    assertAllowedOrigin(req.headers.get("origin"), [
+      "https://nextnative.dev",
+      env.NODE_ENV === "development" ? "http://localhost:3000" : "",
+    ]);
     await assertRateLimit(req);
 
     const { plan } = await req.json();

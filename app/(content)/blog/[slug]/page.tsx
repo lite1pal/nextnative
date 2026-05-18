@@ -75,7 +75,8 @@ async function addAnchorsToHeadings(html: string): Promise<string> {
   return result.toString();
 }
 
-export const revalidate = 86400;
+// export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -121,15 +122,15 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  const posts = await prisma.blogPost.findMany({
-    select: { slug: true },
-  });
+// export async function generateStaticParams() {
+//   const posts = await prisma.blogPost.findMany({
+//     select: { slug: true },
+//   });
 
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
+//   return posts.map((post) => ({
+//     slug: post.slug,
+//   }));
+// }
 
 export default async function BlogPostPage({
   params,

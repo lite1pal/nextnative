@@ -5,7 +5,8 @@ import { tutorials } from "@/app/(content)/tutorials/[slug]/tutorials-data";
 import { alternatives } from "@/app/(content)/alternatives/[slug]/alternatives-data";
 import { useCases } from "@/app/(core)/use-cases/[slug]/use-cases-data";
 
-export const revalidate = 600;
+// export const revalidate = 600;
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const noindexSlugs = [

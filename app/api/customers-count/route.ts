@@ -1,9 +1,8 @@
 import { prisma } from "@/prisma/client";
 
 export async function GET() {
-  const customersCount = await prisma.globalNumber.findUnique({
+  const customersCount = await prisma.globalNumber.findFirst({
     where: {
-      id: "99c3a4be-4565-451b-813e-82bf381568d7",
       title: "customers",
     },
   });

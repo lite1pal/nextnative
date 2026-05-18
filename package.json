@@ -11,7 +11,11 @@
     "lint": "next lint --quiet",
     "typecheck": "tsc --noEmit",
     "test": "vitest run -c vitest.config.mts",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "db:pg:up": "docker compose -f docker-compose.postgres.yml up -d",
+    "db:pg:down": "docker compose -f docker-compose.postgres.yml down",
+    "db:migrate:dry": "node migration/migrate-mongo-to-postgres.mjs --dry-run",
+    "db:migrate": "node migration/migrate-mongo-to-postgres.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^15.3.4",
@@ -32,6 +36,7 @@
     "lucide-react": "^0.476.0",
     "mongodb": "^6.17.0",
     "next": "^15.1.9",
+    "pg": "^8.16.0",
     "prism-themes": "^1.9.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

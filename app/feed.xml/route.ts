@@ -2,7 +2,8 @@ import { prisma } from "@/prisma/client";
 import { Feed } from "feed";
 import { NextResponse } from "next/server";
 
-export const revalidate = 86400; // 1 day in seconds
+// export const revalidate = 86400; // 1 day in seconds
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const posts = await prisma.blogPost.findMany({

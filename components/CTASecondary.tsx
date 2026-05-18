@@ -2,12 +2,12 @@
 
 import { trackEvent } from "@/services/custom-analytics";
 import Button from "./Button";
-import { env } from "@/lib/env";
+import { publicEnv } from "@/lib/public-env";
 
 function CTAButtonSecondary() {
   return (
     <a
-      href={env.NEXT_PUBLIC_BOOK_CALL_LINK}
+      href={publicEnv.NEXT_PUBLIC_BOOK_CALL_LINK}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => {

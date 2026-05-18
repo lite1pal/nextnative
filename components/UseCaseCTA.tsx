@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ChevronRight, Clock, DollarSign } from "lucide-react";
-import { useCases } from "@/app/use-cases/[slug]/use-cases-data";
+import { useCases } from "@/app/(core)/use-cases/[slug]/use-cases-data";
 
 export default function UseCaseCTA() {
   // Featured use cases - pick the most popular ones

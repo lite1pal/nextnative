@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { useState, useEffect } from "react";
 function StarburstSign({
   position = "top-left",
@@ -31,15 +31,15 @@ function StarburstSign({
   if (isMobile) return children;
 
   return (
-    <div className={cn("relative group", className)}>
+    <div className={cn("group relative", className)}>
       <div
         className={cn(
-          "w-fit absolute",
+          "absolute w-fit",
           position === "top-left" && "top-[-45px] left-[-45px]",
           position === "top-right" && "top-[-45px] right-[-45px]",
           position === "bottom-left" && "bottom-[-45px] left-[-45px]",
-          position === "bottom-right" && "bottom-[-45px] right-[-45px]",
-          svgClassName
+          position === "bottom-right" && "right-[-45px] bottom-[-45px]",
+          svgClassName,
         )}
       >
         <svg

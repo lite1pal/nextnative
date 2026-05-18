@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
 import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { inter, outfit } from "./fonts";
+import { inter, outfit } from "../lib/fonts";
 import LayoutWrapper from "./layout-wrapper";
 
 export const metadata: Metadata = {
@@ -75,7 +74,6 @@ export default function RootLayout({
         </noscript>
         <Toaster />
         <LayoutWrapper>{children}</LayoutWrapper>
-        <Analytics />
       </body>
       <GoogleAnalytics gaId="G-QJT70XZBP7" />
     </html>

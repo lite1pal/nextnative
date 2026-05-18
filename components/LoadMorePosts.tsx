@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { calculatePagination } from "@/lib/pagination";
@@ -120,12 +119,10 @@ export default function LoadMorePosts({
       {/* Load More Button */}
       {hasMore && (
         <div className="mt-8 flex justify-center">
-          <Button
+          <button
             onClick={loadMorePosts}
             disabled={loading}
-            variant="outline"
-            size="lg"
-            className="cursor-pointer px-8 py-2"
+            className="cursor-pointer border px-8 py-2"
           >
             {loading ? (
               <>
@@ -135,7 +132,7 @@ export default function LoadMorePosts({
             ) : (
               "Load More Posts"
             )}
-          </Button>
+          </button>
         </div>
       )}
     </div>

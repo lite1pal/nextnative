@@ -5,7 +5,7 @@ import Button from "./Button";
 import Logo from "./Logo";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { trackEvent } from "@/services/custom-analytics";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 type NavbarItem = {
   label: string;

@@ -1,4 +1,4 @@
-import Apps from "@/app/showcase/apps";
+import Apps from "@/app/(core)/showcase/apps";
 import Subheading from "./Subheading";
 import Button from "./Button";
 import Link from "next/link";

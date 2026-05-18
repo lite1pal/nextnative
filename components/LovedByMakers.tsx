@@ -1,6 +1,6 @@
 "use client";
 
-import { useCustomersCount } from "@/hooks/use-customers-count";
+import { useCustomersCount } from "@/hooks/useCustomersCount";
 
 export default function LovedByMakers() {
   const count = useCustomersCount();

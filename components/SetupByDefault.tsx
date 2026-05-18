@@ -45,24 +45,12 @@ const tools: Tool[] = [
     isRectangular: true,
     description: "Postgres-backed storage. Use as a database or file storage",
   },
-  // {
-  //   src: "/tools/daisyui.svg",
-  //   alt: "Any UI Library",
-  //   isRectangular: true,
-  //   description: "Drop-in component library styled with Tailwind",
-  // },
   {
     src: "/tools/ts.svg",
     alt: "TypeScript",
     isRectangular: false,
     description: "Catch bugs early and ship with confidence",
   },
-  // {
-  //   src: "/tools/no-lockin.svg",
-  //   alt: "No Vendor Lock-In",
-  //   isRectangular: true,
-  //   description: "No vendor lock-in. Swap to any UI library or infrastructure",
-  // },
 ];
 
 function ToolCard({ tool }: { tool: Tool }) {

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import CTA from "./CTA";
 import { AvatarList } from "./AvatarList";
 import RatingSvg from "./RatingSvg";

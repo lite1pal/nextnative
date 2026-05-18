@@ -85,10 +85,6 @@ const legalLinks: FooterLink[] = [
   },
   { label: "License", href: "/license", rel: "nofollow", prefetch: false },
 ];
-const freeComponentsLinks: FooterLink[] = [
-  { label: "Buttons", href: "/components/buttons" },
-  { label: "Pricing Screens", href: "/components/screens/pricing-screens" },
-];
 
 function FooterLinkGroup({
   title,
@@ -215,12 +211,6 @@ function Footer() {
             </div>
             <div className="mt-5 hidden flex-col gap-y-16 md:flex">
               <FooterLinkGroup title="Legal" links={legalLinks} />
-
-              <FooterLinkGroup
-                title="Free Components"
-                titleLink="/components"
-                links={freeComponentsLinks}
-              />
             </div>
           </div>
 

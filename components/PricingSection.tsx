@@ -66,8 +66,8 @@ function PricingSection() {
 
 function BookCallCta() {
   return (
-    <div className="flex flex-col items-start gap-5 rounded-2xl bg-white p-8 text-start sm:max-w-sm">
-      <div className="text-2xl font-semibold">
+    <div className="flex flex-col items-start gap-5 rounded-3xl bg-white p-10 text-start sm:max-w-lg">
+      <div className="text-2xl font-semibold sm:text-4xl sm:leading-[50px]">
         Need help converting your
         <HighlightedSpan2>web app to mobile app</HighlightedSpan2>?
       </div>

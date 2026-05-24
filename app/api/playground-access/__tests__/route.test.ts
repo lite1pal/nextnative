@@ -77,7 +77,6 @@ describe("POST /api/playground-access", () => {
     });
   });
 
-  // TODO: self-host Redis and then uncomment this line
   it("returns 429 when too many requests", async () => {
     const { AppError } = await import("@/lib/http/app-error");
 

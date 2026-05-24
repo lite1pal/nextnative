@@ -17,7 +17,6 @@ export async function POST(request: NextRequest) {
       env.NODE_ENV === "development" ? "http://localhost:3000" : "",
     ]);
 
-    // TODO: self-host Redis and then uncomment this line
     await assertRateLimit(request);
 
     const body = await request.json();

@@ -14,8 +14,7 @@ export async function POST(req: NextRequest) {
       "https://nextnative.dev",
       env.NODE_ENV === "development" ? "http://localhost:3000" : "",
     ]);
-    // TODO: self-host Redis and then uncomment this line
-    // await assertRateLimit(req);
+    await assertRateLimit(req);
 
     const { plan } = await req.json();
 

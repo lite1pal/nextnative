@@ -13,6 +13,7 @@ export async function POST(request: NextRequest) {
   try {
     assertAllowedOrigin(request.headers.get("origin"), [
       "https://nextnative.dev",
+      "https://denistarasenko.com",
       env.NODE_ENV === "development" ? "http://localhost:3000" : "",
     ]);
 

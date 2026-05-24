@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     ]);
 
     // TODO: self-host Redis and then uncomment this line
-    // await assertRateLimit(request);
+    await assertRateLimit(request);
 
     const body = await request.json();
     const parsed = playgroundAccessSchema.safeParse(body);

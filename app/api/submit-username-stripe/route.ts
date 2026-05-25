@@ -4,6 +4,9 @@ import { prisma } from "@/prisma/client";
 import { trackEvent } from "@/services/custom-analytics";
 import { z } from "zod";
 import Stripe from "stripe";
+import { assertAllowedOrigin } from "@/lib/security/origin";
+import { env } from "@/lib/env";
+import { assertRateLimit } from "@/lib/security/rate-limit";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-12-15.clover",
@@ -22,18 +25,12 @@ const schema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
-    // // ✅ Rate limit by IP
-    // const headersList = await headers();
-    // const ip = headersList.get("x-forwarded-for") ?? "anonymous";
-    // const { success: allowed } = await ratelimit.limit(ip);
+    assertAllowedOrigin(request.headers.get("origin"), [
+      "https://nextnative.dev",
+      env.NODE_ENV === "development" ? "http://localhost:3000" : "",
+    ]);
 
-    // if (!allowed) {
-    //   trackEvent(`⛔ Rate limited IP: ${ip}`, false);
-    //   return NextResponse.json(
-    //     { error: "Too many requests. Please wait a moment." },
-    //     { status: 429 },
-    //   );
-    // }
+    await assertRateLimit(request);
 
     const body = await request.json();
 

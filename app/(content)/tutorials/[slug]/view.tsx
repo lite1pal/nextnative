@@ -133,24 +133,10 @@ export default function TutorialPageView({
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link href="/#pricing">
-              <Button
-                onClick={() =>
-                  window?.datafast?.("tutorial_top_cta_get_nextnative_clicked")
-                }
-                variant="primary"
-              >
-                Get NextNative - $125 →
-              </Button>
+              <Button variant="primary">Get NextNative - $125 →</Button>
             </Link>
             <Link href="/">
-              <Button
-                onClick={() =>
-                  window?.datafast?.("tutorial_top_cta_see_features_clicked")
-                }
-                variant="secondary"
-              >
-                See All Features
-              </Button>
+              <Button variant="secondary">See All Features</Button>
             </Link>
           </div>
           <p className="mt-4 text-center text-sm text-gray-600 sm:text-left">
@@ -297,16 +283,7 @@ export default function TutorialPageView({
 
           <div className="mb-10 flex flex-col items-center gap-4">
             <Link href="/#pricing">
-              <Button
-                onClick={() =>
-                  window?.datafast?.(
-                    "tutorial_bottom_cta_get_nextnative_clicked",
-                  )
-                }
-                variant="primary"
-              >
-                Get NextNative - 50% Off →
-              </Button>
+              <Button variant="primary">Get NextNative - 50% Off →</Button>
             </Link>
             <p className="text-base text-gray-600">$125 · Unlimited apps</p>
           </div>

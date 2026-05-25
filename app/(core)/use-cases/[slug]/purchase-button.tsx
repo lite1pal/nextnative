@@ -12,7 +12,6 @@ export default function PurchaseButton({ link }: PurchaseButtonProps) {
       <a
         href={link}
         onClick={(e) => {
-          window?.datafast("purchase_clicked_from_template_page");
           trackEvent("CTA Template Page");
           // Purchase logic will be added here
         }}

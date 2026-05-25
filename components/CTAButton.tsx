@@ -8,7 +8,6 @@ function CTAButton() {
     <Button
       onClick={() => {
         trackEvent("CTA_clicked");
-        window?.datafast("cta_clicked");
         const el = document.getElementById("pricing");
         if (el) {
           el.scrollIntoView();

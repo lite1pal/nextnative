@@ -15,7 +15,6 @@ export default function MidTutorialCTA({
 }: MidTutorialCTAProps) {
   const handleClick = () => {
     trackEvent(`Tutorial_MidCTA_Step${stepNumber}_clicked`);
-    window?.datafast?.(`tutorial_mid_cta_step_${stepNumber}_clicked`);
   };
 
   return (

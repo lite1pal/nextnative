@@ -7,6 +7,7 @@ import Stripe from "stripe";
 import { assertAllowedOrigin } from "@/lib/security/origin";
 import { env } from "@/lib/env";
 import { assertRateLimit } from "@/lib/security/rate-limit";
+import { fromError, ok } from "@/lib/http/api-response";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-12-15.clover",
@@ -103,16 +104,9 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    return NextResponse.json(
-      { message: "Invitation sent successfully" },
-      { status: 200 },
-    );
+    return ok({ message: "Invitation sent successfully" });
   } catch (error: any) {
     trackEvent("💰 Error on submit-username - " + error.message + " 💔", false);
-    console.error("Error processing username:", error);
-    return NextResponse.json(
-      { error: "Failed to process username" },
-      { status: 500 },
-    );
+    return fromError(error);
   }
 }

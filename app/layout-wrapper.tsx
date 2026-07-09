@@ -5,6 +5,7 @@ import Container from "@/components/Container";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackgroundSVG from "@/components/BackgroundSVG";
+import CornerCountdown from "@/components/CornerCountdown";
 
 export default function LayoutWrapper({
   children,
@@ -19,6 +20,7 @@ export default function LayoutWrapper({
   return (
     <main className={mainClass}>
       {!isBlogPostPage && <BackgroundSVG />}
+      {pathname === "/" && <CornerCountdown />}
       <Container
         className={isBlogPostPage ? "md:max-w-[1360px] xl:max-w-[1360px]" : ""}
       >

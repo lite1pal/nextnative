@@ -84,7 +84,7 @@ function AppsIncludedLink() {
 }
 
 const baseFeatures: PricingFeature[] = [
-  { key: "boilerplate", content: "Next.js + Capacitor boilerplate" },
+  { key: "boilerplate", content: "Production-ready Next.js + Capacitor" },
   // { key: "apps", content: <AppsIncludedLink /> },
   { key: "backend", content: "Secure backend & Database" },
   { key: "auth", content: "Authentication & Onboarding flow" },

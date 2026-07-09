@@ -37,16 +37,24 @@ describe("CTA", () => {
     document.body.innerHTML = "";
   });
 
-  it("renders primary and secondary CTA buttons and the message", () => {
+  it("renders primary and secondary CTA buttons by default", () => {
     render(<CTA />);
 
     expect(
       screen.getByRole("button", { name: "Get NextNative now" }),
     ).toBeTruthy();
-    expect(screen.getByRole("button", { name: "See guides" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Book a 30-min call" })).toBeTruthy();
+  });
 
-    expect(screen.getByText("Lifetime access,")).toBeTruthy();
-    expect(screen.getByText("build unlimited apps!")).toBeTruthy();
+  it("can hide the secondary CTA", () => {
+    render(<CTA showSecondary={false} />);
+
+    expect(
+      screen.getByRole("button", { name: "Get NextNative now" }),
+    ).toBeTruthy();
+    expect(
+      screen.queryByRole("button", { name: "Book a 30-min call" }),
+    ).toBeNull();
   });
 
   it("merges wrapper className", () => {
@@ -75,21 +83,14 @@ describe("CTA", () => {
     expect(scrollSpy).toHaveBeenCalledTimes(1);
   });
 
-  it("tracks when secondary CTA (See guides) clicked", () => {
+  it("tracks when secondary CTA clicked", () => {
     render(<CTA />);
 
-    fireEvent.click(screen.getByRole("button", { name: "See guides" }));
+    fireEvent.click(screen.getByRole("button", { name: "Book a 30-min call" }));
 
-    expect(hoisted.trackEventMock).toHaveBeenCalledWith(
-      "CTA_see_guides_clicked",
-    );
-    expect((window as any).datafast).toHaveBeenCalledWith(
-      "see_guides_clicked_from_herosection",
-    );
+    expect(hoisted.trackEventMock).toHaveBeenCalledWith("CTA_book_call_clicked");
 
-    const link = screen.getByRole("link", { name: "See guides" });
-    expect((link as HTMLAnchorElement).getAttribute("href")).toBe(
-      "https://nextnative.dev/docs",
-    );
+    const link = screen.getByRole("link", { name: "Book a 30-min call" });
+    expect((link as HTMLAnchorElement).getAttribute("target")).toBe("_blank");
   });
 });

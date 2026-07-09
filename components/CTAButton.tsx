@@ -15,7 +15,7 @@ function CTAButton() {
       }}
       variant="primary"
     >
-      Get NextNative now
+      Get lifetime access for $79
     </Button>
   );
 }

@@ -29,10 +29,22 @@ vi.mock("@/components/HeroSection", () => mockSection("HeroSection"));
 
 vi.mock("@/components/CTAWithSocialProof", () => ({
   __esModule: true,
-  default: ({ className, ...rest }: any) => (
+  default: ({ className, showSecondary, ...rest }: any) => (
     <div
       data-testid="CTAWithSocialProof"
       data-classname={className ?? ""}
+      data-show-secondary={String(showSecondary)}
+      {...rest}
+    />
+  ),
+}));
+
+vi.mock("@/components/CallToAction", () => ({
+  __esModule: true,
+  default: ({ showSecondary, ...rest }: any) => (
+    <div
+      data-testid="CallToAction"
+      data-show-secondary={String(showSecondary)}
       {...rest}
     />
   ),
@@ -101,14 +113,21 @@ describe("/ (home) page", () => {
     render(<Home />);
 
     const ctas = screen.getAllByTestId("CTAWithSocialProof");
-    expect(ctas).toHaveLength(4);
+    expect(ctas).toHaveLength(3);
 
     const classNames = ctas.map((el) => el.getAttribute("data-classname"));
     expect(classNames).toEqual([
       "max-sm:mt-16",
-      "mt-10",
-      "sm:mt-10",
+      "mt-10 sm:mt-24",
       "mb-10 sm:mt-10",
     ]);
+
+    for (const cta of ctas) {
+      expect(cta.getAttribute("data-show-secondary")).toBe("false");
+    }
+
+    expect(screen.getByTestId("CallToAction").getAttribute("data-show-secondary")).toBe(
+      "false",
+    );
   });
 });

@@ -6,7 +6,6 @@ import Logo from "./Logo";
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { trackEvent } from "@/services/custom-analytics";
 import { cn } from "@/lib/cn";
-import { publicEnv } from "@/lib/public-env";
 
 type NavbarItem = {
   label: string;
@@ -195,16 +194,15 @@ function NavbarCtaButton({
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
-    <a
-      href={publicEnv.NEXT_PUBLIC_BOOK_CALL_LINK}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      href="/#pricing"
       onClick={() => {
         setIsMenuOpen(false);
-        trackEvent("Navbar_book_call_clicked");
+        trackEvent("Navbar_pricing_cta_clicked");
+        scrollToId("pricing");
       }}
     >
-      <Button variant="secondary">Book a 30-min call</Button>
-    </a>
+      <Button variant="secondary">Buy for $79</Button>
+    </Link>
   );
 }

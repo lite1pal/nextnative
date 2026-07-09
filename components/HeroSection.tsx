@@ -54,9 +54,20 @@ function HeroSection() {
             Skip React Native. Use the web tools you already know, combined with
             Capacitor, to launch cross-platform apps in days.
           </p>
+          <div className="flex flex-wrap gap-3 text-sm font-medium text-gray-600 xl:justify-center">
+            <span className="rounded-full bg-white px-3 py-1.5">
+              7 production-ready app templates included
+            </span>
+            <span className="rounded-full bg-white px-3 py-1.5">
+              Works with your existing Next.js skills
+            </span>
+            <span className="rounded-full bg-white px-3 py-1.5">
+              Buy once, use for unlimited apps
+            </span>
+          </div>
         </div>
 
-        <CTA />
+        <CTA showSecondary={false} />
 
         <div className="-mt-2.5 flex items-center gap-3 max-sm:-ml-2.5 sm:gap-2">
           <AvatarList priority />

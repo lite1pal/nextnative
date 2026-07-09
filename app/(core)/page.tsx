@@ -41,7 +41,7 @@ export default function Home() {
 
       <ShowcaseSection />
 
-      <CTAWithSocialProof className="max-sm:mt-16" />
+      <CTAWithSocialProof className="max-sm:mt-16" showSecondary={false} />
 
       <SocialProof />
 
@@ -55,7 +55,7 @@ export default function Home() {
 
       <AppsBuiltWithNextNative />
 
-      <CTAWithSocialProof className="mt-10 sm:mt-24" />
+      <CTAWithSocialProof className="mt-10 sm:mt-24" showSecondary={false} />
 
       <DemoVideo />
 
@@ -73,10 +73,10 @@ export default function Home() {
 
       <TestimonialsSection />
 
-      <CTAWithSocialProof className="mb-10 sm:mt-10" />
+      <CTAWithSocialProof className="mb-10 sm:mt-10" showSecondary={false} />
 
       <FAQ />
-      <CallToAction />
+      <CallToAction showSecondary={false} />
     </div>
   );
 }

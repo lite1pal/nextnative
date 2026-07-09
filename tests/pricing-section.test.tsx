@@ -104,7 +104,7 @@ describe("PricingSection", () => {
     cleanup();
   });
 
-  it("renders both pricing plans and core UI", async () => {
+  it("renders the pricing UI with the updated sale price", async () => {
     const { default: PricingSection } = await loadComponent();
 
     render(<PricingSection />);
@@ -114,17 +114,14 @@ describe("PricingSection", () => {
     expect(screen.getByText("One-time payment,")).toBeTruthy();
     expect(screen.getByText("lifetime value")).toBeTruthy();
 
-    // Plan titles + prices
-    expect(screen.getByText("Starter")).toBeTruthy();
     expect(screen.getByText("All-in")).toBeTruthy();
-    expect(screen.getByText("$249")).toBeTruthy();
     expect(screen.getByText("$299")).toBeTruthy();
+    expect(screen.getByText("$79")).toBeTruthy();
 
-    // /forever label appears on each plan
-    expect(screen.getAllByText("/forever")).toHaveLength(2);
-
-    // Most popular badge for All-in
-    expect(screen.getByText("Most popular")).toBeTruthy();
+    // Only one pricing card is shown
+    expect(screen.getAllByText("/forever")).toHaveLength(1);
+    expect(screen.queryByText("Starter")).toBeNull();
+    expect(screen.queryByText("Book a 30-min call")).toBeNull();
 
     // All-in price is wrapped with HighlightedSpan
     expect(screen.getAllByTestId("highlight")).toHaveLength(1);
@@ -133,28 +130,21 @@ describe("PricingSection", () => {
     expect(screen.getAllByTestId("starburst")).toHaveLength(1);
   });
 
-  it("tracks expected events for checkout buttons and apps-included link", async () => {
+  it("tracks expected events for the checkout button and apps-included link", async () => {
     const { default: PricingSection } = await loadComponent();
 
     render(<PricingSection />);
 
-    // Checkout buttons are wrapped in TrackEventWrapper
     const tracks = screen.getAllByTestId("track");
-
-    // Expect at least 3 wrappers: apps link + 2 checkout buttons
     const eventNames = tracks.map((el) => el.getAttribute("data-eventname"));
 
     expect(eventNames).toContain("Apps Included - Pricing Section");
-    expect(eventNames).toContain(
-      "PricingSection_GetNextNative_Starter_clicked",
-    );
     expect(eventNames).toContain("PricingSection_GetNextNative_All-in_clicked");
 
-    // Apps included link appears on both plans and routes to /use-cases
     const appsLinks = screen.getAllByRole("link", {
       name: "7 premium template apps included",
     });
-    expect(appsLinks).toHaveLength(2);
+    expect(appsLinks).toHaveLength(1);
 
     for (const link of appsLinks) {
       expect((link as HTMLAnchorElement).getAttribute("href")).toBe(
@@ -168,39 +158,13 @@ describe("PricingSection", () => {
     }
   });
 
-  it("dims specific features on the Starter plan only", async () => {
+  it("renders the pricing root and core features", async () => {
     const { default: PricingSection } = await loadComponent();
 
     const { container } = render(<PricingSection />);
 
-    const starterHeading = screen.getByText("Starter");
-
-    // Find the nearest card container for Starter (the pricing card root)
-    const starterCard = starterHeading.closest("div");
-    expect(starterCard).toBeTruthy();
-
-    const starterScope = within(starterCard as HTMLElement);
-
-    const dimmedFeatureText = "App Store/Google Play launch guides";
-
-    const starterFeature = starterScope.getByText(dimmedFeatureText);
-
-    // FeatureRow wraps text in a <span> that gets text-gray-500 when dimmed
-    const textSpan = starterFeature.closest("span");
-    expect(textSpan?.className).toContain("text-gray-500");
-
-    // All-in card should render the same feature without dimming
-    const allInHeading = screen.getByText("All-in");
-    const allInCard = allInHeading.closest("div");
-    expect(allInCard).toBeTruthy();
-
-    const allInScope = within(allInCard as HTMLElement);
-    const allInFeature = allInScope.getByText(dimmedFeatureText);
-
-    const allInTextSpan = allInFeature.closest("span");
-    expect(allInTextSpan?.className ?? "").not.toContain("text-gray-500");
-
-    // Sanity: pricing section root exists
+    expect(screen.getByText("Next.js + Capacitor boilerplate")).toBeTruthy();
+    expect(screen.getByText("Hands-on help if you get stuck")).toBeTruthy();
     expect(container.querySelector("#pricing")).toBeTruthy();
   });
 });

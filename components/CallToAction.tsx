@@ -3,9 +3,13 @@ import CTAWithSocialProof from "./CTAWithSocialProof";
 
 type CallToActionProps = {
   className?: string;
+  showSecondary?: boolean;
 };
 
-function CallToAction({ className }: CallToActionProps) {
+function CallToAction({
+  className,
+  showSecondary = true,
+}: CallToActionProps) {
   return (
     <div
       className={`flex flex-col gap-20 py-12 md:items-center md:py-36 md:text-center ${className}`}
@@ -15,7 +19,7 @@ function CallToAction({ className }: CallToActionProps) {
         heading2="Save weeks of work."
         className="md:items-center"
       />
-      <CTAWithSocialProof />
+      <CTAWithSocialProof showSecondary={showSecondary} />
     </div>
   );
 }

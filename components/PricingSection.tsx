@@ -5,9 +5,6 @@ import Subheading from "./Subheading";
 import Link from "next/link";
 import TrackEventWrapper from "./TrackEventWrapper";
 import CheckoutButton from "./CheckoutButton";
-import Button from "./Button";
-import HighlightedSpan2 from "./HighlightedSpan2";
-import { env } from "@/lib/env";
 
 function PricingSection() {
   const plans: PricingPlan[] = [
@@ -24,7 +21,7 @@ function PricingSection() {
       key: "all-in",
       title: "All-in",
       price: "$299",
-      discountedPrice: "$125",
+      discountedPrice: "$79",
       highlightPrice: true,
       mostPopular: true,
       buttonVariant: "primary",
@@ -59,38 +56,6 @@ function PricingSection() {
         {plans.map((plan) => (
           <PricingPlanCard key={plan.key} plan={plan} />
         ))}
-        <BookCallCta />
-      </div>
-    </div>
-  );
-}
-
-function BookCallCta() {
-  return (
-    <div className="flex flex-col items-start gap-5 rounded-3xl bg-white p-10 text-start sm:max-w-lg">
-      <div className="text-2xl font-semibold sm:text-4xl sm:leading-[50px]">
-        Need help converting your
-        <HighlightedSpan2>web app to mobile app</HighlightedSpan2>?
-      </div>
-
-      <p>
-        Skip weeks of trial and error. Get direct help shipping your Capacitor
-        app faster, without fighting iOS/Android headaches.
-      </p>
-
-      <a
-        href={env.NEXT_PUBLIC_BOOK_CALL_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-7 w-full"
-      >
-        <Button variant="secondary" className="w-full bg-white">
-          Book a 30-min call
-        </Button>
-      </a>
-
-      <div className="text-muted-foreground text-xs">
-        Limited availability each week.
       </div>
     </div>
   );
@@ -212,12 +177,6 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
             : "h-full w-full rounded-[32px] bg-white p-6 md:p-10"
         }
       >
-        {/* {plan.mostPopular ? (
-          <span className="bg-primary text-background absolute top-0 right-6 -translate-y-1/2 rounded-full px-3 py-1 text-lg font-[600]">
-            Most popular
-          </span>
-        ) : null} */}
-
         <div className="flex h-full flex-col gap-6 md:gap-8">
           <h3 className="w-fit text-xl font-[500] sm:text-2xl md:text-[32px]">
             {plan.title}
@@ -277,7 +236,17 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
             )}
 
             <span className="text-gray font-[500]">
-              Pay once, build unlimited apps!
+              Pay once, use it for unlimited apps and unlimited team members.
+            </span>
+            <span className="text-sm text-gray-500">
+              Questions before buying? Email{" "}
+              <a
+                className="text-foreground underline underline-offset-4"
+                href="mailto:denistarasenko@nextnative.dev"
+              >
+                denistarasenko@nextnative.dev
+              </a>
+              .
             </span>
           </div>
         </div>

@@ -52,7 +52,7 @@ export default function CheckoutButton({ plan }: CheckoutButtonProps) {
       {isLoading ? (
         <div className="loading loading-spinner"></div>
       ) : (
-        "Get NextNative"
+        "Get instant access"
       )}
     </Button>
   );

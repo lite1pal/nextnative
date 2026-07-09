@@ -11,12 +11,54 @@ import {
 } from "lucide-react";
 import HighlightedSpan from "@/components/HighlightedSpan";
 import { trackEvent } from "@/services/custom-analytics";
-import NextNativeCard from "@/app/(content)/blog/[slug]/NextNativeCard";
 import { cn } from "@/lib/cn";
+import Link from "next/link";
 import { useIconGenerator } from "./hooks/useIconGenerator";
 
 interface SuccessShareCardProps {
   visible: boolean;
+}
+
+function NextNativeSalesCard() {
+  return (
+    <div
+      style={{ boxShadow: "0px 4px 44px rgba(0, 0, 0, 0.05)" }}
+      className="border-primary rounded-xl border-2 bg-white p-6"
+    >
+      <div className="flex flex-col items-center text-center">
+        <div className="bg-primary/8 text-primary rounded-full px-3 py-1 text-xs font-semibold tracking-[0.18em] uppercase">
+          Build the whole app
+        </div>
+        <h3 className="mt-5 text-2xl leading-tight font-semibold text-gray-900">
+          Don&apos;t stop at icons. Ship the full mobile app with NextNative.
+        </h3>
+        <p className="mt-3 max-w-lg text-gray-600">
+          Get the production-ready Next.js + Capacitor foundation, auth,
+          payments, push notifications, and App Store launch guides.
+        </p>
+
+        <div className="mt-5 flex flex-col gap-2 text-sm font-medium text-gray-700">
+          <span>7 production-ready app templates included</span>
+          <span>Use your existing Next.js skills</span>
+          <span>One-time price, unlimited apps</span>
+        </div>
+
+        <Link
+          href="/#pricing"
+          onClick={() => {
+            trackEvent("FreeTool_SplashGenerator_NextNativeCTA_clicked");
+          }}
+          className="bg-primary border-primary mt-6 inline-block rounded-lg border-2 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-white hover:text-[var(--primary)] lg:px-10 lg:text-lg"
+        >
+          Get NextNative for $79
+        </Link>
+
+        <p className="mt-3 text-xs text-gray-500">
+          Instant access. Secure checkout. 14-day refund policy.
+        </p>
+      </div>
+    </div>
+  );
 }
 
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
@@ -792,7 +834,7 @@ export default function AppIconSplashGenerator() {
           </ButtonNextNative> */}
 
           <div className="mx-auto mt-10 max-w-xl">
-            <NextNativeCard post={{ slug: "free-tool" }} />
+            <NextNativeSalesCard />
           </div>
         </div>
 
